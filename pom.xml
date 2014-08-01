@@ -28,13 +28,9 @@
     <version>6.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>
-        The Kuali Coeus (KC) project is building a comprehensive system to manage the complexities of research
-        administration that fully addresses the needs from the faculty researcher through grants administration to
-        federal funding agencies. KC is using MIT’s proven COEUS system as its baseline design, filling in missing
-        functionality from COEUS, and updating its technical architecture for vendor independence and easier integration
-        with other administration systems.
+        This coeus s2s generator project contains s2s generators for grants.gov and research.gov form submission
     </description>
-    <url>http://${kuali.site.hostname}/kc</url>
+    <url>http://${kuali.site.hostname}/coeus/coeus-s2sgen/${project.version}</url>
     <inceptionYear>2014</inceptionYear>
     <scm>
         <connection>scm:git:https://github.com/kuali/kc-s2sgen.git</connection>
@@ -60,8 +56,24 @@
         <project.scm.vendor>git</project.scm.vendor>
         
         <require.maven.version>3.0</require.maven.version>
+
+        <avalon-framework.version>4.3.1</avalon-framework.version>
+        <bouncycastle.version>1.51</bouncycastle.version>
+        <coeus-api-all.version>6.0-SNAPSHOT</coeus-api-all.version>
+        <commons-collections4.version>4.0</commons-collections4.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <fop.version>1.1</fop.version>
+        <itext.version>2.1.7</itext.version>
+        <junit.version>4.11</junit.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <spring.version>4.0.5.RELEASE</spring.version>
+        <xalan.version>2.7.1</xalan.version>
+        <xmlsec.version>1.5.6</xmlsec.version>
+        <xmlbeans.version>2.6.0</xmlbeans.version>
         
-        <error_prone_core.version>1.1.1</error_prone_core.version>
+        <xmlbeans-maven-plugin.version>2.3.3</xmlbeans-maven-plugin.version>
+        
+        <error_prone_core.version>1.1.2</error_prone_core.version>
         <plexus-compiler-javac.version>2.3</plexus-compiler-javac.version>
         <plexus-compiler-javac-errorprone.version>2.3</plexus-compiler-javac-errorprone.version>
     </properties>
@@ -70,6 +82,248 @@
         <module>coeus-s2sgen-api</module>
         <module>coeus-s2sgen-impl</module>
     </modules>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${plugin.compiler.version}</version>
+                    <configuration>
+                        <source>${project.compile.source}</source>
+                        <target>${project.compile.target}</target>
+                        <encoding>${project.encoding}</encoding>
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
+                        <fork>true</fork>
+                        <meminitial>512m</meminitial>
+                        <maxmem>1024m</maxmem>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xmlbeans-maven-plugin</artifactId>
+                    <version>${xmlbeans-maven-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.xmlbeans</groupId>
+                            <artifactId>xmlbeans</artifactId>
+                            <version>${xmlbeans.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <memoryInitialSize>512m</memoryInitialSize>
+                        <memoryMaximumSize>1024m</memoryMaximumSize>
+                        <download>false</download>
+                        <debug>false</debug>
+                        <verbose>false</verbose>
+                        <quiet>true</quiet>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.lowagie</groupId>
+                <artifactId>itext</artifactId>
+                <version>${itext.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bcprov-jdk14</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bcmail-jdk14</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bctsp-jdk14</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>bouncycastle</groupId>
+                        <artifactId>bcprov-jdk14</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>bouncycastle</groupId>
+                        <artifactId>bcmail-jdk14</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- required for fop -->
+            <dependency>
+                <groupId>org.apache.avalon.framework</groupId>
+                <artifactId>avalon-framework-impl</artifactId>
+                <version>${avalon-framework.version}</version>
+            </dependency>
+
+            <!-- required for fop -->
+            <dependency>
+                <groupId>org.apache.avalon.framework</groupId>
+                <artifactId>avalon-framework-api</artifactId>
+                <version>${avalon-framework.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.santuario</groupId>
+                <artifactId>xmlsec</artifactId>
+                <version>${xmlsec.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>fop</artifactId>
+                <version>${fop.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-io</groupId>
+                        <artifactId>commons-io</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis-ext</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xalan</groupId>
+                        <artifactId>xalan</artifactId>
+                    </exclusion>
+
+                    <!-- org.apache.avalon.framework:avalon-framework-{api|impl}:4.2.0 does not exist in maven central -->
+                    <exclusion>
+                        <groupId>org.apache.avalon.framework</groupId>
+                        <artifactId>avalon-framework-impl</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.avalon.framework</groupId>
+                        <artifactId>avalon-framework-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.xmlbeans</groupId>
+                <artifactId>xmlbeans</artifactId>
+                <version>${xmlbeans.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>stax-api</artifactId>
+                        <groupId>stax</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcmail-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.kuali.coeus</groupId>
+                <artifactId>coeus-api-all</artifactId>
+                <version>${coeus-api-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>xalan</groupId>
+                <artifactId>xalan</artifactId>
+                <version>${xalan.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>xml-apis</artifactId>
+                        <groupId>xml-apis</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            
+        </dependencies>
+    </dependencyManagement>
     
     <profiles>
         <!-- enables the error prone compiler for strict compilation-->
@@ -81,11 +335,15 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-compiler-plugin</artifactId>
-                            <version>${maven-compiler-plugin.version}</version>
+                            <version>${plugin.compiler.version}</version>
                             <configuration>
-                                <useIncrementalCompilation>false</useIncrementalCompilation>
                                 <source>${project.compile.source}</source>
                                 <target>${project.compile.target}</target>
+                                <encoding>${project.encoding}</encoding>
+                                <useIncrementalCompilation>false</useIncrementalCompilation>
+                                <fork>false</fork>
+                                <meminitial>512m</meminitial>
+                                <maxmem>1024m</maxmem>
                                 <compilerId>javac-with-errorprone</compilerId>
                                 <forceJavacCompilerUse>true</forceJavacCompilerUse>
                             </configuration>
