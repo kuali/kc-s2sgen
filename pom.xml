@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ Copyright 2014-2014 The Kuali Foundation
+ 
+ Licensed under the Educational Community License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.opensource.org/licenses/ecl2.php
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.kuali.pom</groupId>
+        <artifactId>kuali-common</artifactId>
+        <version>4.3.5</version>
+    </parent>
+    <groupId>org.kuali.coeus</groupId>
+    <artifactId>coeus-s2sgen</artifactId>
+    <version>6.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>
+        The Kuali Coeus (KC) project is building a comprehensive system to manage the complexities of research
+        administration that fully addresses the needs from the faculty researcher through grants administration to
+        federal funding agencies. KC is using MIT’s proven COEUS system as its baseline design, filling in missing
+        functionality from COEUS, and updating its technical architecture for vendor independence and easier integration
+        with other administration systems.
+    </description>
+    <url>http://${kuali.site.hostname}/kc</url>
+    <inceptionYear>2014</inceptionYear>
+    <scm>
+        <connection>scm:git:https://github.com/kuali/kc-s2sgen.git</connection>
+        <developerConnection>scm:git:https://github.com/kuali/kc-s2sgen.git</developerConnection>
+        <url>https://github.com/kuali/kc-s2sgen/tree/${project.scm.tag}</url>
+        <tag>master</tag>
+    </scm>
+    <developers>
+        <developer>
+            <id>kc.dev</id>
+            <name>Kuali Coeus Developers</name>
+            <organization>Kuali</organization>
+            <timezone>-7</timezone>
+            <email>kc.dev@kuali.org</email>
+        </developer>
+    </developers>
+    
+    <prerequisites>
+        <maven>${require.maven.version}</maven>
+    </prerequisites>
+
+    <properties>
+        <project.scm.vendor>git</project.scm.vendor>
+        
+        <require.maven.version>3.0</require.maven.version>
+        
+        <error_prone_core.version>1.1.1</error_prone_core.version>
+        <plexus-compiler-javac.version>2.3</plexus-compiler-javac.version>
+        <plexus-compiler-javac-errorprone.version>2.3</plexus-compiler-javac-errorprone.version>
+    </properties>
+
+    <modules>
+        <module>coeus-s2sgen-api</module>
+        <module>coeus-s2sgen-impl</module>
+    </modules>
+    
+    <profiles>
+        <!-- enables the error prone compiler for strict compilation-->
+        <profile>
+            <id>error-prone</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${maven-compiler-plugin.version}</version>
+                            <configuration>
+                                <useIncrementalCompilation>false</useIncrementalCompilation>
+                                <source>${project.compile.source}</source>
+                                <target>${project.compile.target}</target>
+                                <compilerId>javac-with-errorprone</compilerId>
+                                <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>com.google.errorprone</groupId>
+                                    <artifactId>error_prone_core</artifactId>
+                                    <version>${error_prone_core.version}</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-compiler-javac</artifactId>
+                                    <version>${plexus-compiler-javac.version}</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-compiler-javac-errorprone</artifactId>
+                                    <version>${plexus-compiler-javac-errorprone.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
+</project>

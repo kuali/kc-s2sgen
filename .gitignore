@@ -1,0 +1,16 @@
+**/.project
+**/.classpath
+**/.settings
+**/target
+**/.idea
+**/coeus-s2sgen.iml
+**/.DS_Store
+**/Thumbs.db
+bin
+.project
+.classpath
+.settings
+target
+.idea
+coeus-s2sgen.iml
+**/bin
