@@ -76,6 +76,7 @@
         <error_prone_core.version>1.1.2</error_prone_core.version>
         <plexus-compiler-javac.version>2.3</plexus-compiler-javac.version>
         <plexus-compiler-javac-errorprone.version>2.3</plexus-compiler-javac-errorprone.version>
+        <kuali.javadoc.maxmemory>3g</kuali.javadoc.maxmemory>
     </properties>
 
     <modules>
