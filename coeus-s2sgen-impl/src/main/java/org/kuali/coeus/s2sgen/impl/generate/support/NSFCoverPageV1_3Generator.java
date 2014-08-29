@@ -200,21 +200,21 @@ public class NSFCoverPageV1_3Generator extends NSFCoverPageBaseGenerator {
 					&& proposalPerson.getProposalPersonRoleId().equals(
 							PRINCIPAL_INVESTIGATOR)
 					|| PI_C0_INVESTIGATOR.equals(proposalPerson.getProposalPersonRoleId())) {
-		  	List<? extends AnswerHeaderContract> headers=getPropDevQuestionAnswerService().getQuestionnaireAnswerHeaders(pdDoc.getDevelopmentProposal().getProposalNumber());
-                AnswerHeaderContract answerHeader=headers.get(0);
-		  	List <? extends AnswerContract> certificationAnswers=answerHeader.getAnswers();
-		  	
-		  	for(AnswerContract certificatonAnswer : certificationAnswers){
-		  	    if (certificatonAnswer != null
-		  	            && PROPOSAL_YNQ_LOBBYING_ACTIVITIES
-		  	            .equals(certificatonAnswer.getQuestionId())
-		  	            && YnqConstant.YES.code()
-		  	            .equals(certificatonAnswer.getAnswer())) {
-		  	        return YesNoDataType.Y_YES;
-		  	    }
-		  	    
-		  	}
-  
+                List<? extends AnswerHeaderContract> headers=getPropDevQuestionAnswerService().getQuestionnaireAnswerHeaders(pdDoc.getDevelopmentProposal().getProposalNumber());
+                if (!headers.isEmpty()) {
+                    AnswerHeaderContract answerHeader = headers.get(0);
+                    List<? extends AnswerContract> certificationAnswers = answerHeader.getAnswers();
+
+                    for (AnswerContract certificatonAnswer : certificationAnswers) {
+                        if (certificatonAnswer != null
+                                && PROPOSAL_YNQ_LOBBYING_ACTIVITIES
+                                .equals(certificatonAnswer.getQuestionId().toString())
+                                && YnqConstant.YES.code()
+                                .equals(certificatonAnswer.getAnswer())) {
+                            return YesNoDataType.Y_YES;
+                        }
+                    }
+                }
 			}
 		}
 		OrganizationContract organization = getOrganizationFromDevelopmentProposal(pdDoc.getDevelopmentProposal());

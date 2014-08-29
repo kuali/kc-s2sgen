@@ -164,16 +164,20 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
         Map<String, String> submissionInfo = new HashMap<String, String>();
         S2sOpportunityContract opportunity = pdDoc.getDevelopmentProposal().getS2sOpportunity();
         if (opportunity != null) {
-            String submissionTypeCode = opportunity.getS2sSubmissionType().getCode();
-            String submissionTypeDescription = opportunity.getS2sSubmissionType().getDescription();
-            String revisionCode = opportunity.getS2sRevisionType().getCode();
-            String revisionOtherDescription = opportunity.getRevisionOtherDescription();
+            if (opportunity.getS2sSubmissionType() != null) {
+                String submissionTypeCode = opportunity.getS2sSubmissionType().getCode();
+                String submissionTypeDescription = opportunity.getS2sSubmissionType().getDescription();
+                submissionInfo.put(SUBMISSION_TYPE_CODE, submissionTypeCode);
+                submissionInfo.put(SUBMISSION_TYPE_DESCRIPTION, submissionTypeDescription);
+            }
 
-            submissionInfo.put(SUBMISSION_TYPE_CODE, submissionTypeCode);
-            submissionInfo.put(SUBMISSION_TYPE_DESCRIPTION, submissionTypeDescription);
-            submissionInfo.put(KEY_REVISION_CODE, revisionCode);
-            if (revisionOtherDescription != null) {
-                submissionInfo.put(KEY_REVISION_OTHER_DESCRIPTION, revisionOtherDescription);
+            if (opportunity.getS2sRevisionType() != null) {
+                String revisionCode = opportunity.getS2sRevisionType().getCode();
+                submissionInfo.put(KEY_REVISION_CODE, revisionCode);
+            }
+
+            if (opportunity.getRevisionOtherDescription() != null) {
+                submissionInfo.put(KEY_REVISION_OTHER_DESCRIPTION, opportunity.getRevisionOtherDescription());
             }
         }
         return submissionInfo;

@@ -48,23 +48,25 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
     public Map<String, String> getEOStateReview(ProposalDevelopmentDocumentContract pdDoc) {
         Map<String, String> stateReview = new HashMap<String, String>();
         List<? extends AnswerHeaderContract> answerHeaders = propDevQuestionAnswerService.getQuestionnaireAnswerHeaders(pdDoc.getDevelopmentProposal().getProposalNumber());
-        for (AnswerContract answers : answerHeaders.get(0).getAnswers()) {
-            if (answers.getQuestionId() != null
-                    && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_129)) {
-                if (stateReview.get(YNQ_ANSWER) == null) {
-                    stateReview.put(YNQ_ANSWER, answers.getAnswer());
+        if (!answerHeaders.isEmpty()) {
+            for (AnswerContract answers : answerHeaders.get(0).getAnswers()) {
+                if (answers.getQuestionId() != null
+                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_129)) {
+                    if (stateReview.get(YNQ_ANSWER) == null) {
+                        stateReview.put(YNQ_ANSWER, answers.getAnswer());
+                    }
                 }
-            }
-            if (answers.getQuestionId() != null
-                    && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_130)) {
-                if (stateReview.get(YNQ_REVIEW_DATE) == null) {
-                    stateReview.put(YNQ_REVIEW_DATE, answers.getAnswer());
+                if (answers.getQuestionId() != null
+                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_130)) {
+                    if (stateReview.get(YNQ_REVIEW_DATE) == null) {
+                        stateReview.put(YNQ_REVIEW_DATE, answers.getAnswer());
+                    }
                 }
-            }
-            if (answers.getQuestionId() != null
-                    && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_131)) {
-                if (stateReview.get(YNQ_STATE_REVIEW_DATA) == null) {
-                    stateReview.put(YNQ_STATE_REVIEW_DATA, answers.getAnswer());
+                if (answers.getQuestionId() != null
+                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_131)) {
+                    if (stateReview.get(YNQ_STATE_REVIEW_DATA) == null) {
+                        stateReview.put(YNQ_STATE_REVIEW_DATA, answers.getAnswer());
+                    }
                 }
             }
         }
