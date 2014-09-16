@@ -39,6 +39,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+
 import javax.xml.namespace.QName;
 import java.util.*;
 
@@ -74,20 +75,18 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 	 * 
 	 * This method is used to validate application before submission.
 	 * 
-	 * @param pdDoc
+	 * @param pdDocContract
 	 *            Proposal Development Document.
 	 * @throws S2SException
 	 */
     @Override
 	public FormValidationResult validateForms(
-            Object pdDoc)
+            ProposalDevelopmentDocumentContract pdDocContract)
 			throws S2SException {
 
-        if (pdDoc == null) {
+        if (pdDocContract == null) {
             throw new IllegalArgumentException("pdDoc is null");
         }
-
-        ProposalDevelopmentDocumentContract pdDocContract = (ProposalDevelopmentDocumentContract) pdDoc;
 
         return generateAndValidateForms(null, null,
                 pdDocContract);
@@ -152,13 +151,11 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 	}
 
     @Override
-    public FormGenerationResult generateAndValidateForms(Object pdDoc) throws S2SException {
+    public FormGenerationResult generateAndValidateForms(ProposalDevelopmentDocumentContract pdDocContract) throws S2SException {
 
-        if (pdDoc == null) {
+        if (pdDocContract == null) {
             throw new IllegalArgumentException("pdDoc is null");
         }
-
-        ProposalDevelopmentDocumentContract pdDocContract = (ProposalDevelopmentDocumentContract) pdDoc;
 
         GrantApplicationDocument.GrantApplication.Forms forms = GrantApplicationDocument.GrantApplication.Forms.Factory.newInstance();
         List<AttachmentData> attList = new ArrayList<AttachmentData>();
@@ -271,6 +268,31 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 		// Add the form to the Forms object.
 		formCursor.moveXml(metaGrantCursor);
 	}
+
+    @Override
+    public FormValidationResult validateUserAttachedFormFile(S2sUserAttachedFormFileContract s2sUserAttachedFormFile) throws S2SException {
+        if (s2sUserAttachedFormFile == null) {
+            throw new IllegalArgumentException("s2sUserAttachedFormFile is null");
+        }
+        boolean validationSucceeded;
+        List<AuditError> auditErrors = new ArrayList<AuditError>();
+        try {
+            XmlObject xmlObject = XmlObject.Factory.parse(s2sUserAttachedFormFile.getXmlFile());
+            if(!getS2SValidatorService().validate(xmlObject, auditErrors)) {
+                validationSucceeded = false;
+            }else{
+                validationSucceeded = true;
+            }
+        } catch (Exception e) {
+            throw new S2SException();
+        }
+
+        FormGenerationResult result = new FormGenerationResult();
+        result.setValid(validationSucceeded);
+        result.setErrors(auditErrors);
+        return result;
+    }
+
 
 	/**
 	 * 
