@@ -15,6 +15,8 @@
  */
 package org.kuali.coeus.s2sgen.api.generate;
 
+import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
+import org.kuali.coeus.propdev.api.s2s.S2sUserAttachedFormFileContract;
 import org.kuali.coeus.s2sgen.api.core.S2SException;
 
 /**
@@ -33,7 +35,7 @@ public interface FormGeneratorService {
      * @throws S2SException if unable to validate
      * @throws java.lang.IllegalArgumentException if the pdDoc is null
      */
-	FormValidationResult validateForms(Object pdDoc) throws S2SException;
+	FormValidationResult validateForms(ProposalDevelopmentDocumentContract pdDoc) throws S2SException;
 
     /**
      * This service method executes form generation for a given proposal development document.  The proposal development
@@ -44,6 +46,17 @@ public interface FormGeneratorService {
      * @throws S2SException if unable to validate
      * @throws java.lang.IllegalArgumentException if the pdDoc is null
      */
-    FormGenerationResult generateAndValidateForms(Object pdDoc) throws S2SException;
+    FormGenerationResult generateAndValidateForms(ProposalDevelopmentDocumentContract pdDoc) throws S2SException;
 
+    /**
+     * This service method executes user attach form file validation.  The user attached from form file
+     * cannot be null.
+     *
+     * @param s2sUserAttachedFormFile the user attached form file.  cannot be null.
+     * @return the result of the validation
+     * @throws S2SException if unable to validate
+     * @throws java.lang.IllegalArgumentException if the s2sUserAttachedFormFile is null
+     */
+
+    FormValidationResult validateUserAttachedFormFile(S2sUserAttachedFormFileContract s2sUserAttachedFormFile) throws S2SException;
 }
