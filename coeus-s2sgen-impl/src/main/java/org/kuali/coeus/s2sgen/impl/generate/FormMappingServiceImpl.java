@@ -21,6 +21,7 @@ import org.kuali.coeus.s2sgen.api.generate.FormMappingInfo;
 import org.kuali.coeus.s2sgen.api.generate.FormMappingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -98,7 +99,11 @@ public class FormMappingServiceImpl implements FormMappingService {
     protected String createStylesheetName(String namespace) {
         String[] tokens = namespace.split("/");
         String formname = tokens[tokens.length-1];
-        return BASE_PACKAGE_PATH + "/support/"+formname+".xsl";
+        try {
+            return new ClassPathResource(BASE_PACKAGE_PATH + "/support/stylesheet/"+formname+".xsl").getURL().toString();
+        } catch (Exception e) {
+            throw new RuntimeException("No resource found at " + BASE_PACKAGE_PATH + "/support/stylesheet/"+formname+".xsl",e);
+        }
     }
 
     @Override
