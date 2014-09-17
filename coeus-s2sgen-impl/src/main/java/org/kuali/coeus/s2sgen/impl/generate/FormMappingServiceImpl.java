@@ -71,7 +71,7 @@ public class FormMappingServiceImpl implements FormMappingService {
         if (formMappingInfo != null) {
             return formMappingInfo;
         } else if (proposalNumber != null) {
-            return getUserAttachedForm(proposalNumber, namespace);
+            return getUserAttachedForm(namespace, proposalNumber);
         }
 
         return null;
