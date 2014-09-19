@@ -18,9 +18,9 @@ import java.util.Map;
 
 public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
 
-    public static final Long PROPOSAL_YNQ_QUESTION_129 = 129L;
-    public static final Long PROPOSAL_YNQ_QUESTION_130 = 130L;
-    public static final Long PROPOSAL_YNQ_QUESTION_131 = 131L;
+    public static final Long PROPOSAL_YNQ_QUESTION_765 = 765L;
+    public static final Long PROPOSAL_YNQ_QUESTION_766 = 766L ;
+    public static final Long PROPOSAL_YNQ_QUESTION_767 = 767L;
     private static final String YNQ_NOT_REVIEWED = "X";
     protected static final String YNQ_REVIEW_DATE = "reviewDate";
     protected static final String YNQ_STATE_REVIEW_DATA = "stateReviewData";
@@ -51,19 +51,19 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
         if (!answerHeaders.isEmpty()) {
             for (AnswerContract answers : answerHeaders.get(0).getAnswers()) {
                 if (answers.getQuestionId() != null
-                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_129)) {
+                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_765)) {
                     if (stateReview.get(YNQ_ANSWER) == null) {
                         stateReview.put(YNQ_ANSWER, answers.getAnswer());
                     }
                 }
                 if (answers.getQuestionId() != null
-                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_130)) {
+                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_766)) {
                     if (stateReview.get(YNQ_REVIEW_DATE) == null) {
                         stateReview.put(YNQ_REVIEW_DATE, answers.getAnswer());
                     }
                 }
                 if (answers.getQuestionId() != null
-                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_131)) {
+                        && answers.getQuestionId().equals(PROPOSAL_YNQ_QUESTION_767)) {
                     if (stateReview.get(YNQ_STATE_REVIEW_DATA) == null) {
                         stateReview.put(YNQ_STATE_REVIEW_DATA, answers.getAnswer());
                     }
