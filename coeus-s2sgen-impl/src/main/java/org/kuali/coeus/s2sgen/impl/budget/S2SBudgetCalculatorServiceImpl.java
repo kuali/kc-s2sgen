@@ -569,7 +569,8 @@ public class S2SBudgetCalculatorServiceImpl implements
             }
 
             // populate the budgetPeriod data from the BudgetPeriod
-            bpData.setFinalVersionFlag(budget.getFinalVersionFlag().toString());
+            //if there is a final budget, then thats the budget we have now.
+            bpData.setFinalVersionFlag(pdDoc.getDevelopmentProposal().getFinalBudget() != null ? "Y" : "N");
             bpData.setProposalNumber(pdDoc.getDevelopmentProposal().getProposalNumber());
             bpData.setBudgetPeriod(budgetPeriod.getBudgetPeriod());
             bpData.setVersion(budget.getBudgetVersionNumber());
