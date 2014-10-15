@@ -24,6 +24,8 @@ import org.apache.xmlbeans.impl.util.Base64;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerContract;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
 import org.kuali.coeus.common.questionnaire.api.core.QuestionAnswerService;
+import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
+import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
 import org.kuali.coeus.propdev.api.questionnaire.PropDevQuestionAnswerService;
 import org.kuali.coeus.propdev.api.person.attachment.ProposalPersonBiographyContract;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
@@ -54,6 +56,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -74,6 +78,8 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
     protected static final int CONGRESSIONAL_DISTRICT_MAX_LENGTH = 6;
     private static final String NARRATIVE_ATTACHMENT_FILE_LOCATION = "att:FileLocation";
     protected static final String DEFAULT_SORT_INDEX = "1000";
+    private static final String REPLACEMENT_CHARACTER = "_";
+    private static final String REGEX_TITLE_FILENAME_PATTERN = "([^0-9a-zA-Z\\.\\-_])";
 
     protected ProposalDevelopmentDocumentContract pdDoc = null;
     private List<AuditError> auditErrors = new ArrayList<>();
@@ -248,14 +254,14 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
 	    	
 	        attachedFileDataType = AttachedFileDataType.Factory.newInstance();
 	        attachedFileDataType.setFileLocation(fileLocation);
-	        attachedFileDataType.setFileName(narrative.getNarrativeAttachment().getName());
+	        attachedFileDataType.setFileName(getS2sNarrativeFileName(narrative));
 	        attachedFileDataType.setMimeType(InfastructureConstants.CONTENT_TYPE_OCTET_STREAM);
 			attachedFileDataType.setHashValue(getHashValue(attachementContent));
 	        AttachmentData attachmentData = new AttachmentData();
 	        attachmentData.setContent(attachementContent);
 	        attachmentData.setContentId(contentId);
 	        attachmentData.setContentType(InfastructureConstants.CONTENT_TYPE_OCTET_STREAM);
-	        attachmentData.setFileName(narrative.getNarrativeAttachment().getName());
+	        attachmentData.setFileName(getS2sNarrativeFileName(narrative));
 	        addAttachment(attachmentData);
 	    }
         return attachedFileDataType;
@@ -335,7 +341,7 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
                 fileLocation.setHref(contentId);
                 AttachedFileDataType attachedFileDataType = AttachedFileDataType.Factory.newInstance();
                 attachedFileDataType.setFileLocation(fileLocation);
-                attachedFileDataType.setFileName(proposalPersonBiography.getName());
+                attachedFileDataType.setFileName(getS2sPersonnelAttachmentFileName(pdDoc.getDevelopmentProposal(),proposalPersonBiography));
                 attachedFileDataType.setMimeType(InfastructureConstants.CONTENT_TYPE_OCTET_STREAM);
                 attachedFileDataType.setHashValue(getHashValue(proposalPersonBiography.getPersonnelAttachment()
                         .getData()));
@@ -343,9 +349,41 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
                 attachmentData.setContent(proposalPersonBiography.getPersonnelAttachment().getData());
                 attachmentData.setContentId(contentId);
                 attachmentData.setContentType(InfastructureConstants.CONTENT_TYPE_OCTET_STREAM);
-                attachmentData.setFileName(proposalPersonBiography.getName());
+                attachmentData.setFileName(getS2sPersonnelAttachmentFileName(pdDoc.getDevelopmentProposal(),proposalPersonBiography));
                 addAttachment(attachmentData);
                 return attachedFileDataType;
+            }
+        }
+        return null;
+    }
+
+    protected String getS2sNarrativeFileName(NarrativeContract narrative){
+        String fileName = narrative.getNarrativeType().getDescription();
+        String extension = StringUtils.substringAfter(narrative.getNarrativeAttachment().getName(),".");
+        return cleanFileName(fileName) + "." + extension;
+    }
+
+    protected String getS2sPersonnelAttachmentFileName(DevelopmentProposalContract developmentProposal, ProposalPersonBiographyContract biography) {
+
+        String extension = StringUtils.substringAfter(biography.getName(),".");
+        String fullName = getPerson(developmentProposal,biography.getProposalPersonNumber()).getFullName();
+        String docType = biography.getPropPerDocType().getDescription();
+        String fileName = fullName + "_" + docType;
+
+        return cleanFileName(fileName) + "." + extension;
+
+    }
+
+    protected String  cleanFileName(String fileName) {
+        Pattern pattern = Pattern.compile(REGEX_TITLE_FILENAME_PATTERN);
+        Matcher matcher = pattern.matcher(fileName);
+        return matcher.replaceAll(REPLACEMENT_CHARACTER);
+    }
+
+    protected ProposalPersonContract getPerson(DevelopmentProposalContract developmentProposal, Integer proposalPersonNumber) {
+        for (ProposalPersonContract person : developmentProposal.getProposalPersons()) {
+            if (proposalPersonNumber.equals(person.getProposalPersonNumber())) {
+                return person;
             }
         }
         return null;
