@@ -828,8 +828,8 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
                 QuestionContract question = questionnaireQuestion.getQuestion();
 
                 if (answer != null) {
-                    Integer questionId = question.getQuestionSeqId();
-                switch (questionId) {
+                    int questionSeqId = question.getQuestionSeqId();
+                switch (questionSeqId) {
                 case KIRST_START_KNOWN:
                 case KIRST_END_KNOWN:
                 case KIRST_START_DT:
@@ -838,33 +838,33 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
                 case KIRST_GRANT_NUM:
                 case PRE_OR_POST:
                 case IND_OR_INST:
-                    if (questionId == KIRST_START_KNOWN) {
+                    if (questionSeqId == KIRST_START_KNOWN) {
                         if (answer.equals(QUESTION_ANSWER_NO)) {
                             answer = FieldValueConstants.VALUE_UNKNOWN;
-                            questionId = KIRST_START_DT;
+                            questionSeqId = KIRST_START_DT;
                         } else {
                             break;
                         }
                     }
-                        if (questionId == KIRST_END_KNOWN) {
+                        if (questionSeqId == KIRST_END_KNOWN) {
                             if (answer.equals(QUESTION_ANSWER_NO)) {
                                 answer = FieldValueConstants.VALUE_UNKNOWN;
-                                questionId = KIRST_END_DT;
+                                questionSeqId = KIRST_END_DT;
                             } else {
                                 break;
                             }
                         }
-                        if (questionId == KIRST_GRANT_KNOWN) {
+                        if (questionSeqId == KIRST_GRANT_KNOWN) {
                             if (answer.equals(QUESTION_ANSWER_NO)) {
                                 answer = FieldValueConstants.VALUE_UNKNOWN;
-                                questionId = KIRST_GRANT_NUM;
+                                questionSeqId = KIRST_GRANT_NUM;
                             } else {
                                 break;
                             }
                         }
                         InternalAnswer quesAnswer = new InternalAnswer();
                         quesAnswer.setAnswer(answer);
-                        quesAnswer.setQuestionNumber(questionId);
+                        quesAnswer.setQuestionSeqId(questionSeqId);
                         answerList.add(quesAnswer);
 
                     break;
@@ -881,8 +881,8 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
     }
         Collections.sort(answerList, new Comparator<AnswerContract>() {
             public int compare(AnswerContract answer1, AnswerContract answer2) {
-                return answer1.getQuestionNumber().compareTo(
-                        answer2.getQuestionNumber());
+                return answer1.getQuestionSeqId().compareTo(
+                        answer2.getQuestionSeqId());
             }
 
         });
@@ -893,29 +893,29 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
         List<String> grantNumberList = new ArrayList<String>();
         for (AnswerContract questionnaireAnswer : answerList) {
             if (nsrSupport != null && nsrSupport.equals(NSR_SUPPORT_YES)) {
-                if (questionnaireAnswer.getQuestionNumber() == PRE_OR_POST) {
+                if (questionnaireAnswer.getQuestionSeqId() == PRE_OR_POST) {
                     levelList.add(CurrentPriorNRSASupport.Level.Enum
                             .forString(questionnaireAnswer.getAnswer()));
                 }
-                if (questionnaireAnswer.getQuestionNumber() == IND_OR_INST) {
+                if (questionnaireAnswer.getQuestionSeqId() == IND_OR_INST) {
                     typeList.add(CurrentPriorNRSASupport.Type.Enum
                             .forString(questionnaireAnswer.getAnswer()));
                 }
-                if (questionnaireAnswer.getQuestionNumber() == KIRST_START_DT){
+                if (questionnaireAnswer.getQuestionSeqId() == KIRST_START_DT){
                     if(questionnaireAnswer.getAnswer().equals(FieldValueConstants.VALUE_UNKNOWN)) {
                         startDateList.add(null);
                     }else{
                         startDateList.add(s2SDateTimeService.convertDateStringToCalendar(questionnaireAnswer.getAnswer()));
                     }
                 }
-                if (questionnaireAnswer.getQuestionNumber() == KIRST_END_DT){
+                if (questionnaireAnswer.getQuestionSeqId() == KIRST_END_DT){
                     if(questionnaireAnswer.getAnswer().equals(FieldValueConstants.VALUE_UNKNOWN)) {
                         endDateList.add(null);
                     }else{
                         endDateList.add(s2SDateTimeService.convertDateStringToCalendar(questionnaireAnswer.getAnswer()));
                     }
                 }
-                if (questionnaireAnswer.getQuestionNumber() == KIRST_GRANT_NUM) {
+                if (questionnaireAnswer.getQuestionSeqId() == KIRST_GRANT_NUM) {
                     grantNumberList.add(questionnaireAnswer.getAnswer());
                 }
             }
@@ -1110,37 +1110,55 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
         private String answer;
         private Long answerHeaderId;
         private Long questionId;
+        private Integer questionSeqId;
         private Long questionnaireQuestionsId;
         private List<InternalAnswer> parentAnswers;
 
+        @Override
         public Long getId() {
             return id;
         }
 
+        @Override
         public Integer getQuestionNumber() {
             return questionNumber;
         }
 
+        @Override
         public Integer getAnswerNumber() {
             return answerNumber;
         }
 
+        @Override
         public String getAnswer() {
             return answer;
         }
 
+        @Override
         public Long getAnswerHeaderId() {
             return answerHeaderId;
         }
 
+        @Override
         public Long getQuestionId() {
             return questionId;
         }
 
+        @Override
+        public Integer getQuestionSeqId() {
+            return questionSeqId;
+        }
+
+        public void setQuestionSeqId(Integer questionSeqId) {
+            this.questionSeqId = questionSeqId;
+        }
+
+        @Override
         public Long getQuestionnaireQuestionsId() {
             return questionnaireQuestionsId;
         }
 
+        @Override
         public List<InternalAnswer> getParentAnswers() {
             return parentAnswers;
         }
