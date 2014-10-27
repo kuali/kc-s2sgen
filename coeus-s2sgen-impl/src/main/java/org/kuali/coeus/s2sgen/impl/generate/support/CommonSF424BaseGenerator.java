@@ -3,6 +3,7 @@ package org.kuali.coeus.s2sgen.impl.generate.support;
 import org.kuali.coeus.common.api.unit.UnitContract;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerContract;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
+import org.kuali.coeus.common.questionnaire.api.core.QuestionAnswerService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.questionnaire.PropDevQuestionAnswerService;
 
@@ -18,9 +19,9 @@ import java.util.Map;
 
 public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
 
-    public static final Long PROPOSAL_YNQ_QUESTION_129 = 129L;
-    public static final Long PROPOSAL_YNQ_QUESTION_130 = 130L ;
-    public static final Long PROPOSAL_YNQ_QUESTION_131 = 131L;
+    public static final Integer PROPOSAL_YNQ_QUESTION_129 = 129;
+    public static final Integer PROPOSAL_YNQ_QUESTION_130 = 130;
+    public static final Integer PROPOSAL_YNQ_QUESTION_131 = 131;
     private static final String YNQ_NOT_REVIEWED = "X";
     protected static final String YNQ_REVIEW_DATE = "reviewDate";
     protected static final String YNQ_STATE_REVIEW_DATA = "stateReviewData";
@@ -39,7 +40,19 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
     @Qualifier("s2SCommonBudgetService")
     protected S2SCommonBudgetService s2SCommonBudgetService;
 
-    /**
+    @Autowired
+    @Qualifier("questionAnswerService")
+    private QuestionAnswerService questionAnswerService;
+
+    public QuestionAnswerService getQuestionAnswerService() {
+		return questionAnswerService;
+	}
+
+	public void setQuestionAnswerService(QuestionAnswerService questionAnswerService) {
+		this.questionAnswerService = questionAnswerService;
+	}
+
+	/**
      * This method returns a map containing the answers related to EOState REview for a given proposal
      *
      * @param pdDoc Proposal Development Document.
@@ -50,20 +63,18 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
         List<? extends AnswerHeaderContract> answerHeaders = propDevQuestionAnswerService.getQuestionnaireAnswerHeaders(pdDoc.getDevelopmentProposal().getProposalNumber());
         if (!answerHeaders.isEmpty()) {
             for (AnswerContract answers : answerHeaders.get(0).getAnswers()) {
-                if (answers.getQuestionSeqId() != null
-                        && answers.getQuestionSeqId().equals(PROPOSAL_YNQ_QUESTION_129)) {
+            	Integer questionSeqId = getQuestionAnswerService().findQuestionById(answers.getQuestionId()).getQuestionSeqId();
+                if (questionSeqId != null && questionSeqId.equals(PROPOSAL_YNQ_QUESTION_129)) {
                     if (stateReview.get(YNQ_ANSWER) == null) {
                         stateReview.put(YNQ_ANSWER, answers.getAnswer());
                     }
                 }
-                if (answers.getQuestionSeqId() != null
-                        && answers.getQuestionSeqId().equals(PROPOSAL_YNQ_QUESTION_130)) {
+                if (questionSeqId != null && questionSeqId.equals(PROPOSAL_YNQ_QUESTION_130)) {
                     if (stateReview.get(YNQ_REVIEW_DATE) == null) {
                         stateReview.put(YNQ_REVIEW_DATE, answers.getAnswer());
                     }
                 }
-                if (answers.getQuestionSeqId() != null
-                        && answers.getQuestionSeqId().equals(PROPOSAL_YNQ_QUESTION_131)) {
+                if (questionSeqId != null && questionSeqId.equals(PROPOSAL_YNQ_QUESTION_131)) {
                     if (stateReview.get(YNQ_STATE_REVIEW_DATA) == null) {
                         stateReview.put(YNQ_STATE_REVIEW_DATA, answers.getAnswer());
                     }
@@ -115,4 +126,5 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
     public void setS2SCommonBudgetService(S2SCommonBudgetService s2SCommonBudgetService) {
         this.s2SCommonBudgetService = s2SCommonBudgetService;
     }
+
 }
