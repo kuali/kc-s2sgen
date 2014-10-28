@@ -358,7 +358,12 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
     }
 
     protected String getS2sNarrativeFileName(NarrativeContract narrative){
-        String fileName = narrative.getNarrativeType().getDescription();
+        String fileName = null;
+        if (narrative.getNarrativeType().isAllowMultiple()) {
+            fileName = narrative.getModuleTitle();
+        } else {
+            fileName = narrative.getNarrativeType().getDescription();
+        }
         String extension = StringUtils.substringAfter(narrative.getNarrativeAttachment().getName(),".");
         return cleanFileName(fileName) + "." + extension;
     }
