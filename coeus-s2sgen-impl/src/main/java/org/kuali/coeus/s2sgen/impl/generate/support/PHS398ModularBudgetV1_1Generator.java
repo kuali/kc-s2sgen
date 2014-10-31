@@ -351,11 +351,13 @@ public class PHS398ModularBudgetV1_1Generator extends
 		OrganizationContract organization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization().getOrganization();
 		if (organization != null) {
-			RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-			if (rolodex != null) {
-				indirectCost
-						.setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
-			}
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost
+                            .setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
+                }
+            }
 
 			if (organization.getIndirectCostRateAgreement() != null) {
 				indirectCost.setIndirectCostAgreementDate(s2SDateTimeService
@@ -501,11 +503,14 @@ public class PHS398ModularBudgetV1_1Generator extends
 		OrganizationContract organization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization().getOrganization();
 		if (organization != null) {
-            RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-			if (rolodex != null) {
-				indirectCost2
-						.setCognizantFederalAgency2(getCognizantFederalAgency(rolodex));
-			}
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost2
+                            .setCognizantFederalAgency2(getCognizantFederalAgency(rolodex));
+                }
+            }
+
 			if (organization.getIndirectCostRateAgreement() != null) {
 				indirectCost2.setIndirectCostAgreementDate2(s2SDateTimeService
 						.convertDateStringToCalendar(organization
@@ -647,11 +652,13 @@ public class PHS398ModularBudgetV1_1Generator extends
 		OrganizationContract organization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization().getOrganization();
 		if (organization != null) {
-            RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-			if (rolodex != null) {
-				indirectCost3
-						.setCognizantFederalAgency3(getCognizantFederalAgency(rolodex));
-			}
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost3
+                            .setCognizantFederalAgency3(getCognizantFederalAgency(rolodex));
+                }
+            }
 
 			if (organization.getIndirectCostRateAgreement() != null) {
 				indirectCost3.setIndirectCostAgreementDate3(s2SDateTimeService
@@ -790,11 +797,14 @@ public class PHS398ModularBudgetV1_1Generator extends
 		OrganizationContract organization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization().getOrganization();
 		if (organization != null) {
-            RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-			if (rolodex != null) {
-				indirectCost4
-						.setCognizantFederalAgency4(getCognizantFederalAgency(rolodex));
-			}
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost4
+                            .setCognizantFederalAgency4(getCognizantFederalAgency(rolodex));
+                }
+            }
+
 			if (organization.getIndirectCostRateAgreement() != null) {
 				indirectCost4.setIndirectCostAgreementDate4(s2SDateTimeService
 						.convertDateStringToCalendar(organization
@@ -934,11 +944,14 @@ public class PHS398ModularBudgetV1_1Generator extends
 		OrganizationContract organization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization().getOrganization();
 		if (organization != null) {
-            RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-			if (rolodex != null) {
-				indirectCost5
-						.setCognizantFederalAgency5(getCognizantFederalAgency(rolodex));
-			}
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost5
+                            .setCognizantFederalAgency5(getCognizantFederalAgency(rolodex));
+                }
+            }
+
 			if (organization.getIndirectCostRateAgreement() != null) {
 				indirectCost5.setIndirectCostAgreementDate5(s2SDateTimeService
 						.convertDateStringToCalendar(organization

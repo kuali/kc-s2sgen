@@ -315,13 +315,15 @@ PHS398ModularBudgetBaseGenerator{
 	            OrganizationContract organization = pdDoc.getDevelopmentProposal()
 	            .getApplicantOrganization().getOrganization();
 	            if (organization != null) {
-                    RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-	                if (rolodex != null) {
-	                    indirectCost
-	                    .setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
-	                }
+                    if (organization.getCognizantAuditor() != null) {
+                        RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                        if (rolodex != null) {
+                            indirectCost
+                                    .setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
+                        }
+                    }
 
-	                if (organization.getIndirectCostRateAgreement() != null) {
+                    if (organization.getIndirectCostRateAgreement() != null) {
 	                    indirectCost.setIndirectCostAgreementDate(s2SDateTimeService
 	                            .convertDateStringToCalendar(organization
 	                                    .getIndirectCostRateAgreement()));
