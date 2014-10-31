@@ -342,19 +342,23 @@ public class PHS398ModularBudgetV1_0Generator extends
 		periods.setDirectCost(directCost);
 
 		// CognizantFederalAgency
-		OrganizationContract organization = pdDoc.getDevelopmentProposal()
-				.getApplicantOrganization().getOrganization();
-		RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+        OrganizationContract organization = pdDoc.getDevelopmentProposal()
+                .getApplicantOrganization().getOrganization();
+        if (organization != null) {
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost
+                            .setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
+                }
+            }
 
-		if (rolodex != null) {
-			indirectCost
-					.setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
-		}
-		if (organization.getIndirectCostRateAgreement() != null) {
-			indirectCost.setIndirectCostAgreementDate(s2SDateTimeService
-					.convertDateStringToCalendar(organization
-							.getIndirectCostRateAgreement()));
-		}
+            if (organization.getIndirectCostRateAgreement() != null) {
+                indirectCost.setIndirectCostAgreementDate(s2SDateTimeService
+                        .convertDateStringToCalendar(organization
+                                .getIndirectCostRateAgreement()));
+            }
+        }
 
 		// TotalFundsRequestedIndirectCost
 		indirectCost.setTotalFundsRequestedIndirectCost(bdTotalIndirectCost
@@ -485,11 +489,14 @@ public class PHS398ModularBudgetV1_0Generator extends
 		OrganizationContract organization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization().getOrganization();
 		if (organization != null) {
-			RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
-			if (rolodex != null) {
-				indirectCost2
-						.setCognizantFederalAgency2(getCognizantFederalAgency(rolodex));
-			}
+            if (organization.getCognizantAuditor() != null) {
+                RolodexContract rolodex = rolodexService.getRolodex(organization.getCognizantAuditor());
+                if (rolodex != null) {
+                    indirectCost2
+                            .setCognizantFederalAgency2(getCognizantFederalAgency(rolodex));
+                }
+            }
+
 			if (organization.getIndirectCostRateAgreement() != null) {
 				indirectCost2.setIndirectCostAgreementDate2(s2SDateTimeService
 						.convertDateStringToCalendar(organization
