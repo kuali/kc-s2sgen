@@ -335,7 +335,12 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
                     && documentType.equals(proposalPersonBiography.getPropPerDocType().getCode())) {
                 personBiographyFound = true;
             }
-            if (personBiographyFound) {
+            byte[] attachmentContent = null;
+            if(proposalPersonBiography.getPersonnelAttachment() != null){
+                attachmentContent = proposalPersonBiography.getPersonnelAttachment().getData();
+            }
+
+            if (personBiographyFound && attachmentContent != null && attachmentContent.length > 0) {
                 FileLocation fileLocation = FileLocation.Factory.newInstance();
                 String contentId = createContentId(proposalPersonBiography);
                 fileLocation.setHref(contentId);
