@@ -26,15 +26,20 @@ import gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Docu
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.KcPersonContract;
+import org.kuali.coeus.common.api.person.KcPersonRepositoryService;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.common.api.rolodex.RolodexService;
+import org.kuali.coeus.common.api.unit.UnitContract;
+import org.kuali.coeus.common.api.unit.UnitRepositoryService;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonDegreeContract;
+import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.api.core.AuditError;
+import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 import org.kuali.coeus.s2sgen.impl.util.FieldValueConstants;
 
@@ -79,6 +84,18 @@ public class RRKeyPersonExpandedV2_0Generator extends
     @Autowired
     @Qualifier("rolodexService")
 	private RolodexService rolodexService;
+    
+    @Autowired
+    @Qualifier("kcPersonRepositoryService")
+	private KcPersonRepositoryService kcPersonRepositoryService;
+    
+    @Autowired
+    @Qualifier("s2SConfigurationService")
+	private S2SConfigurationService s2SConfigurationService;
+    
+    @Autowired
+    @Qualifier("unitRepositoryService")
+	private UnitRepositoryService unitRepositoryService;
 
 	/*
 	 * This method gives details of Principal Investigator,KeyPersons and the
@@ -233,7 +250,16 @@ public class RRKeyPersonExpandedV2_0Generator extends
 		String divisionName = PI.getDivision();
 		if (divisionName != null) {
 			profile.setDivisionName(divisionName);
-		}
+        } else {
+            String personId = PI.getPersonId();
+            KcPersonContract kcPersonContact = kcPersonRepositoryService.findKcPersonByPersonId(personId);
+            if(!kcPersonContact.getOrganizationIdentifier().isEmpty()) {
+            divisionName=getPIDivision(kcPersonContact.getOrganizationIdentifier());
+            }
+            if (divisionName != null) {
+              profile.setDivisionName(divisionName);
+           }
+        }
 		if (PI.getEraCommonsUserName() != null) {
 			profile.setCredential(PI.getEraCommonsUserName());
 		} else {
@@ -246,6 +272,36 @@ public class RRKeyPersonExpandedV2_0Generator extends
 		setAttachments(profile, PI);
 		profileDataType.setProfile(profile);
 	}
+	
+	private String getPIDivision(String departmentId) {
+        String divisionName = null;
+        String unitName=getUnitName(departmentId);
+        String heirarchyLevelDivisionName= null;       
+        int hierarchyLevel = Integer.parseInt(s2SConfigurationService.getValueAsString(ConfigurationConstants.HIERARCHY_LEVEL));
+        int levelCount =1;
+        List<UnitContract> heirarchyUnits = unitRepositoryService.getUnitHierarchyForUnit(departmentId);
+        for(UnitContract heirarchyUnit:heirarchyUnits) {
+            if(levelCount < hierarchyLevel && heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+                 divisionName=heirarchyUnit.getUnitName();
+            }
+            else if(levelCount == hierarchyLevel) {
+                heirarchyLevelDivisionName=heirarchyUnit.getUnitName();
+                if(heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+                    divisionName=heirarchyLevelDivisionName;  
+                }
+            }
+            else if(levelCount > hierarchyLevel && heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+                divisionName=heirarchyLevelDivisionName;
+            }
+            levelCount++;
+        }
+        return divisionName;
+    }
+	
+	private String getUnitName(String departmentCode) {
+		 UnitContract unit = unitRepositoryService.findUnitByUnitNumber(departmentCode);
+	        return unit==null?null:unit.getUnitName();
+	}
 
 	/*
 	 * This method is used to add department name to profile
@@ -253,7 +309,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	private void setDepartmentNameToProfile(Profile profile, ProposalPersonContract PI) {
 		if(PI.getHomeUnit() != null) {
             KcPersonContract kcPerson = PI.getPerson();
-            String departmentName =  kcPerson.getOrganizationIdentifier();
+            String departmentName =  kcPerson.getUnit().getUnitName();
             profile.setDepartmentName(departmentName);
         }
         else
@@ -470,7 +526,10 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	 */
 	private void setProjectRoleCategoryToProfile(ProposalPersonContract keyPerson,
 			Profile profileKeyPerson) {
-	    if (keyPerson.getRolodexId() == null) {
+		if (keyPerson.getRolodexId() != null 
+				&& keyPerson.getProjectRole().equals(ProjectRoleDataType.PD_PI.toString())) {
+			profileKeyPerson.setProjectRole(ProjectRoleDataType.PD_PI);
+		} else {
 	        profileKeyPerson.setProjectRole(ProjectRoleDataType.OTHER_SPECIFY);
 	        OtherProjectRoleCategory otherProjectRole = OtherProjectRoleCategory.Factory
 	                .newInstance();
@@ -487,9 +546,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	        }
 	        otherProjectRole.setStringValue(otherRole);
 	        profileKeyPerson.setOtherProjectRoleCategory(otherProjectRole);
-	    } else {
-            profileKeyPerson.setProjectRole(ProjectRoleDataType.PD_PI);
-        }
+	    }
 	}
 
 	/**
@@ -516,7 +573,33 @@ public class RRKeyPersonExpandedV2_0Generator extends
         this.rolodexService = rolodexService;
     }
 
-    @Override
+    public KcPersonRepositoryService getKcPersonRepositoryService() {
+		return kcPersonRepositoryService;
+	}
+
+	public void setKcPersonRepositoryService(
+			KcPersonRepositoryService kcPersonRepositoryService) {
+		this.kcPersonRepositoryService = kcPersonRepositoryService;
+	}
+
+	public S2SConfigurationService getS2SConfigurationService() {
+		return s2SConfigurationService;
+	}
+
+	public void setS2SConfigurationService(
+			S2SConfigurationService s2sConfigurationService) {
+		s2SConfigurationService = s2sConfigurationService;
+	}
+
+	public UnitRepositoryService getUnitRepositoryService() {
+		return unitRepositoryService;
+	}
+
+	public void setUnitRepositoryService(UnitRepositoryService unitRepositoryService) {
+		this.unitRepositoryService = unitRepositoryService;
+	}
+
+	@Override
     public String getNamespace() {
         return namespace;
     }
