@@ -34,6 +34,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.KcPersonContract;
+import org.kuali.coeus.common.api.person.KcPersonRepositoryService;
 import org.kuali.coeus.common.api.org.OrganizationContract;
 import org.kuali.coeus.common.api.ynq.YnqConstant;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
@@ -44,6 +45,8 @@ import org.kuali.coeus.common.budget.api.nonpersonnel.BudgetLineItemContract;
 import org.kuali.coeus.common.budget.api.period.BudgetPeriodContract;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.common.api.sponsor.SponsorContract;
+import org.kuali.coeus.common.api.unit.UnitContract;
+import org.kuali.coeus.common.api.unit.UnitRepositoryService;
 import org.kuali.coeus.propdev.api.budget.ProposalDevelopmentBudgetExtContract;
 import org.kuali.coeus.propdev.api.budget.modular.BudgetModularIdcContract;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
@@ -54,10 +57,13 @@ import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 
 import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
+import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.person.DepartmentalPersonDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
@@ -92,6 +98,14 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
     @Value("120")
     private int sortIndex;
+    
+    @Autowired
+    @Qualifier("kcPersonRepositoryService")
+    private KcPersonRepositoryService kcPersonRepositoryService;
+    
+    @Autowired
+    @Qualifier("unitRepositoryService")
+    private UnitRepositoryService unitRepositoryService;
 
 	/**
 	 * 
@@ -283,9 +297,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			orgType.setOrganizationName(organization.getOrganizationName());
 			orgType.setDUNSID(organization.getDunsNumber());
 		}
-		if (pdDoc.getDevelopmentProposal().getOwnedByUnit() != null) {
-			String departmentName = pdDoc.getDevelopmentProposal()
-					.getOwnedByUnit().getUnitName();
+		UnitContract leadUnit = pdDoc.getDevelopmentProposal().getOwnedByUnit();
+		if (leadUnit != null) {
+			String departmentName = leadUnit.getUnitName();
 			if (departmentName != null
 					&& departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
 				departmentName = departmentName.substring(0,
@@ -294,7 +308,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			orgType.setDepartmentName(departmentName);
 
 			// divisionName
-			String divisionName = getDivisionName(pdDoc);
+			String divisionName =getPIDivision(leadUnit.getUnitNumber());
 			if (divisionName != null) {
 				orgType.setDivisionName(divisionName);
 			}
@@ -501,13 +515,55 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		String divisionName = PI.getDivision();
 		if (divisionName != null) {
 			PDPI.setDivisionName(divisionName);
+		} else {
+			String personId = PI.getPersonId();
+			KcPersonContract kcPersons = kcPersonRepositoryService.findKcPersonByPersonId(personId);
+			
+			if (kcPersons.getOrganizationIdentifier() != null) {
+				divisionName = getPIDivision(kcPersons.getOrganizationIdentifier());
+			}
+			if (divisionName != null) {
+				PDPI.setDivisionName(divisionName);
+			}
 		}
+	}
+	
+	private String getPIDivision(String departmentId) {
+		String divisionName = null;
+		String unitName = getUnitName(departmentId);
+		String heirarchyLevelDivisionName = null;
+		int hierarchyLevel = Integer.parseInt(s2SConfigurationService
+				.getValueAsString(ConfigurationConstants.HIERARCHY_LEVEL));
+		int levelCount = 1;
+		List<UnitContract> heirarchyUnits = unitRepositoryService
+				.getUnitHierarchyForUnit(departmentId);
+		for (UnitContract heirarchyUnit : heirarchyUnits) {
+			if (levelCount < hierarchyLevel
+					&& heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+				divisionName = heirarchyUnit.getUnitName();
+			} else if (levelCount == hierarchyLevel) {
+				heirarchyLevelDivisionName = heirarchyUnit.getUnitName();
+				if (heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+					divisionName = heirarchyLevelDivisionName;
+				}
+			} else if (levelCount > hierarchyLevel
+					&& heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+				divisionName = heirarchyLevelDivisionName;
+			}
+			levelCount++;
+		}
+		return divisionName;
+	}
+	
+	private String getUnitName(String departmentCode) {
+		UnitContract unit = unitRepositoryService.findUnitByUnitNumber(departmentCode);
+		return unit == null ? null : unit.getUnitName();
 	}
 
 	private void setDepartmentName(OrganizationContactPersonDataType PDPI,ProposalPersonContract PI) {
 	    if(PI.getHomeUnit() != null) {
-	        KcPersonContract kcPerson = PI.getPerson();
-	        String departmentName =  kcPerson.getOrganizationIdentifier();
+	    	String personId = PI.getPersonId();
+	    	String departmentName = getPrimaryDepartment(personId);
 	        PDPI.setDepartmentName(departmentName);
 	    }
 	    else
@@ -516,6 +572,11 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	        PDPI.setDepartmentName(developmentProposal.getOwnedByUnit().getUnitName());
 	    }
 	}
+	
+	private String getPrimaryDepartment(String personId) {		
+		KcPersonContract kcPersons = kcPersonRepositoryService.findKcPersonByPersonId(personId);
+		return getUnitName(kcPersons.getOrganizationIdentifier());
+	}	
 
 	private void setDirectoryTitle(OrganizationContactPersonDataType PDPI,
 			ProposalPersonContract PI) {
@@ -613,19 +674,12 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		aorInfoType.setAddress(address);
 		aorInfoType.setPhone(departmentalPerson.getOfficePhone());
 		aorInfoType.setFax(departmentalPerson.getFaxNumber());
-		String departmentName = departmentalPerson.getDirDept();
-		if (departmentName != null
-		        && departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
-		    departmentName = departmentName.substring(0,
-		            DEPARTMENT_NAME_MAX_LENGTH - 1);
-		}
-		aorInfoType.setDepartmentName(departmentName);
 		aorInfoType.setEmail(departmentalPerson.getEmailAddress());
 	}
 
 	private void setDivisionName(AORInfoType aorInfoType) {
 		if (departmentalPerson.getHomeUnit() != null) {
-			aorInfoType.setDivisionName(departmentalPerson.getHomeUnit());
+			aorInfoType.setDivisionName(getUnitName(departmentalPerson.getHomeUnit()));
 		}
 	}
 
@@ -944,4 +998,21 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
     public void setSortIndex(int sortIndex) {
         this.sortIndex = sortIndex;
     }
+
+	public KcPersonRepositoryService getKcPersonRepositoryService() {
+		return kcPersonRepositoryService;
+	}
+
+	public void setKcPersonRepositoryService(
+			KcPersonRepositoryService kcPersonRepositoryService) {
+		this.kcPersonRepositoryService = kcPersonRepositoryService;
+	}
+
+	public UnitRepositoryService getUnitRepositoryService() {
+		return unitRepositoryService;
+	}
+
+	public void setUnitRepositoryService(UnitRepositoryService unitRepositoryService) {
+		this.unitRepositoryService = unitRepositoryService;
+	}
 }
