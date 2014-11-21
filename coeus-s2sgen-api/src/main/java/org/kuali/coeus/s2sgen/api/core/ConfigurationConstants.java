@@ -82,6 +82,7 @@ public final class ConfigurationConstants {
     public static final String NON_US_CITIZEN_WITH_TEMPORARY_VISA_TYPE_CODE = "NON_US_CITIZEN_WITH_TEMPORARY_VISA_TYPE_CODE";
     public static final String US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE = "US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE";
     public static final String PERMANENT_RESIDENT_OF_US_PENDING = "PERMANENT_RESIDENT_OF_US_PENDING";
+    public static final String HIERARCHY_LEVEL = "HIERARCHY_LEVEL";
 
     //printing
     public static final String PRINT_XML_DIRECTORY = "print.xml.directory";
