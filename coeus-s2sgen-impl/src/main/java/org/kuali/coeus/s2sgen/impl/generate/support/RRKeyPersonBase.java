@@ -8,6 +8,7 @@ import gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProf
 import gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProfileList.ExtraKeyPerson;
 import gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProfileList.ExtraKeyPerson.Address.Country.Enum;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.kuali.coeus.common.api.unit.UnitContract;
@@ -325,7 +326,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 			if (proposalPerson.getEmailAddress() != null) {
 				extraPerson.setEmail(proposalPerson.getEmailAddress());
 			}
-			if (proposalPerson.getFaxNumber() != null) {
+			if (StringUtils.isNotEmpty(proposalPerson.getFaxNumber())) {
 				extraPerson.setFax(proposalPerson.getFaxNumber());
 			}
             UnitContract unit = unitRepositoryService.findUnitByUnitNumber(proposalPerson.getHomeUnit());

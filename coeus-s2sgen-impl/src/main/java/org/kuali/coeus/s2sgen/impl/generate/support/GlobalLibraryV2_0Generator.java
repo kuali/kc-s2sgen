@@ -20,6 +20,7 @@ import gov.grants.apply.system.globalLibraryV20.ContactPersonDataType;
 import gov.grants.apply.system.globalLibraryV20.HumanNameDataType;
 import gov.grants.apply.system.universalCodesV20.CountryCodeDataType;
 import gov.grants.apply.system.universalCodesV20.StateCodeDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
@@ -349,7 +350,7 @@ public class GlobalLibraryV2_0Generator {
 				contactPerson.setTitle(title);
 			}
 			String fax = person.getFaxNumber();
-			if (fax != null && !fax.equals("")) {
+			if (StringUtils.isNotEmpty(fax)) {
 				contactPerson.setFax(fax);
 			}
 			contactPerson.setAddress(getAddressDataType(person));
@@ -368,7 +369,7 @@ public class GlobalLibraryV2_0Generator {
                 contactPerson.setPhone(phone);
             }
             String fax = person.getFaxNumber();
-            if (fax != null && !fax.equals("")) {
+            if (StringUtils.isNotEmpty(fax)) {
                 contactPerson.setFax(fax);
             }
             String email = person.getEmailAddress();

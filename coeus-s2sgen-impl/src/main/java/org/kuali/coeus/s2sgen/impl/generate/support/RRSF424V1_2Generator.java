@@ -619,7 +619,9 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 
 		aorInfoType.setAddress(address);
 		aorInfoType.setPhone(departmentalPerson.getOfficePhone());
-		aorInfoType.setFax(departmentalPerson.getFaxNumber());
+        if (StringUtils.isNotEmpty(departmentalPerson.getFaxNumber())) {
+		    aorInfoType.setFax(departmentalPerson.getFaxNumber());
+        }
 		String departmentName = departmentalPerson.getDirDept();
 		if (departmentName != null
 		        && departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {

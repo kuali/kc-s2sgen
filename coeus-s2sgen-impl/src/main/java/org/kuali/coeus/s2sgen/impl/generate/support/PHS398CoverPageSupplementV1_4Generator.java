@@ -23,6 +23,7 @@ import gov.grants.apply.forms.phs398CoverPageSupplement14V14.PHS398CoverPageSupp
 import gov.grants.apply.forms.phs398CoverPageSupplement14V14.PHS398CoverPageSupplement14Document.PHS398CoverPageSupplement14.StemCells;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType.Enum;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.ynq.YnqConstant;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
@@ -156,8 +157,7 @@ public class PHS398CoverPageSupplementV1_4Generator extends
         contactPersonInfo.setContactName(globLibV20Generator
                 .getHumanNameDataType(person));
         contactPersonInfo.setContactPhone(person.getOfficePhone());
-        if (person.getFaxNumber() != null
-                && !person.getFaxNumber().equals("")) {
+        if (StringUtils.isNotEmpty(person.getFaxNumber())) {
             contactPersonInfo.setContactFax(person.getFaxNumber());
         }
         if (person.getEmailAddress() != null

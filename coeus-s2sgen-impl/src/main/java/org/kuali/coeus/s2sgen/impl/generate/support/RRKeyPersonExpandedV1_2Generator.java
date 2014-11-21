@@ -25,6 +25,7 @@ import gov.grants.apply.forms.rrKeyPersonExpanded12V12.RRKeyPersonExpanded12Docu
 import gov.grants.apply.forms.rrKeyPersonExpanded12V12.RRKeyPersonExpanded12Document.RRKeyPersonExpanded12.BioSketchsAttached;
 import gov.grants.apply.forms.rrKeyPersonExpanded12V12.RRKeyPersonExpanded12Document.RRKeyPersonExpanded12.SupportsAttached;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
@@ -204,7 +205,7 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		setDirectoryTitleToProfile(profile, PI);
 		profile.setAddress(globLibV20Generator.getAddressDataType(PI));
 		profile.setPhone(PI.getOfficePhone());
-		if (PI.getFaxNumber() != null) {
+		if (StringUtils.isNotEmpty(PI.getFaxNumber())) {
 			profile.setFax(PI.getFaxNumber());
 		}
 		if (PI.getDegree() != null) {
@@ -393,7 +394,7 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		profileKeyPerson.setAddress(globLibV20Generator
 				.getAddressDataType(keyPerson));
 		profileKeyPerson.setPhone(keyPerson.getOfficePhone());
-		if (keyPerson.getFaxNumber() != null) {
+		if (StringUtils.isNotEmpty(keyPerson.getFaxNumber())) {
 			profileKeyPerson.setFax(keyPerson.getFaxNumber());
 		}
 		if (keyPerson.getDegree() != null) {

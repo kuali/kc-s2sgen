@@ -31,6 +31,7 @@ import gov.grants.apply.forms.sf424V10.SubmittingOrganizationDocument.Submitting
 import gov.grants.apply.system.globalV10.YesNoType;
 import gov.grants.apply.system.universalCodesV10.CountryCodeType;
 import gov.grants.apply.system.universalCodesV10.CurrencyCodeType;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -292,7 +293,7 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 		if (aorInfo.getOfficePhone() != null) {
 			authorizedRep.setTelephoneNumber(aorInfo.getOfficePhone());
 		}
-		if (aorInfo.getFaxNumber() != null) {
+		if (StringUtils.isNotEmpty(aorInfo.getFaxNumber())) {
 			authorizedRep.setFaxNumber(aorInfo.getFaxNumber());
 		}
 
@@ -388,7 +389,7 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 			if (PI.getOfficePhone() != null) {
 				contact.setTelephoneNumber(PI.getOfficePhone());
 			}
-			if (PI.getFaxNumber() != null) {
+			if (StringUtils.isNotEmpty(PI.getFaxNumber())) {
 				contact.setFaxNumber(PI.getFaxNumber());
 			}
 		}

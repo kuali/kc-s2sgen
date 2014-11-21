@@ -21,6 +21,7 @@ import gov.grants.apply.system.globalLibraryV10.ContactPersonDataType;
 import gov.grants.apply.system.globalLibraryV10.HumanNameDataType;
 import gov.grants.apply.system.universalCodesV10.CountryCodeType;
 
+import org.apache.commons.lang3.StringUtils;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
@@ -327,7 +328,7 @@ public class GlobalLibraryV1_0Generator {
                 contactPerson.setTitle(title);
             }
             String fax = person.getFaxNumber();
-            if (fax != null && !fax.equals("")) {
+            if (StringUtils.isNotEmpty(fax)) {
                 contactPerson.setFax(fax);
             }
             contactPerson.setAddress(getAddressDataType(person));

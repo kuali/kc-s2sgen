@@ -32,6 +32,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -238,7 +239,7 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
                 sf424V21.setTitle(personInfo.getDirectoryTitle());
             }
             sf424V21.setPhoneNumber(personInfo.getOfficePhone());
-            if (personInfo.getFaxNumber() != null) {
+            if (StringUtils.isNotEmpty(personInfo.getFaxNumber())) {
                 sf424V21.setFax(personInfo.getFaxNumber());
             }
             sf424V21.setEmail(personInfo.getEmailAddress());
