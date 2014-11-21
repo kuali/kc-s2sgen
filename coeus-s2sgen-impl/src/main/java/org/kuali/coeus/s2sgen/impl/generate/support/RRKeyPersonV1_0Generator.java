@@ -25,6 +25,7 @@ import gov.grants.apply.forms.rrKeyPersonV10.RRKeyPersonDocument.RRKeyPerson.Add
 import gov.grants.apply.forms.rrKeyPersonV10.RRKeyPersonDocument.RRKeyPerson.BioSketchsAttached;
 import gov.grants.apply.forms.rrKeyPersonV10.RRKeyPersonDocument.RRKeyPerson.SupportsAttached;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
@@ -147,7 +148,7 @@ public class RRKeyPersonV1_0Generator extends RRKeyPersonBaseGenerator {
             }
             profile.setAddress(globLibV10Generator.getAddressRequireCountryDataType(PI));
             profile.setPhone(PI.getOfficePhone());
-            if (PI.getFaxNumber() != null) {
+            if (StringUtils.isNotEmpty(PI.getFaxNumber())) {
                 profile.setFax(PI.getFaxNumber());
             }
             profile.setEmail(PI.getEmailAddress());
@@ -226,7 +227,7 @@ public class RRKeyPersonV1_0Generator extends RRKeyPersonBaseGenerator {
                 }
                 profileKeyPerson.setAddress(globLibV10Generator.getAddressRequireCountryDataType(keyPerson));
                 profileKeyPerson.setPhone(keyPerson.getOfficePhone());
-                if (keyPerson.getFaxNumber() != null) {
+                if (StringUtils.isNotEmpty(keyPerson.getFaxNumber())) {
                     profileKeyPerson.setFax(keyPerson.getFaxNumber());
                 }
                 profileKeyPerson.setEmail(keyPerson.getEmailAddress());

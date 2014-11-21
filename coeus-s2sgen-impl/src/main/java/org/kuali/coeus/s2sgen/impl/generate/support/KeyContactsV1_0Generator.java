@@ -19,6 +19,7 @@ import gov.grants.apply.forms.keyContactsV10.KeyContactsDocument;
 import gov.grants.apply.forms.keyContactsV10.KeyContactsDocument.KeyContacts;
 import gov.grants.apply.forms.keyContactsV10.KeyContactsDocument.KeyContacts.RoleOnProject;
 import gov.grants.apply.system.globalLibraryV20.AddressDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
@@ -117,7 +118,9 @@ public class KeyContactsV1_0Generator extends S2SBaseFormGenerator {
             roleOnProject.setContactTitle(aorInfo.getPrimaryTitle());
             roleOnProject.setContactPhone(aorInfo.getOfficePhone());
             roleOnProject.setContactEmail(aorInfo.getEmailAddress());
-            roleOnProject.setContactFax(aorInfo.getFaxNumber());
+            if (StringUtils.isNotEmpty(aorInfo.getFaxNumber())){
+                roleOnProject.setContactFax(aorInfo.getFaxNumber());
+            }
             roleOnProject.setContactName(globLibV20Generator.getHumanNameDataType(aorInfo));
             roleOnProject.setContactProjectRole(AUTHORIZED_REPRESENTATIVE);
             

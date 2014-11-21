@@ -25,6 +25,7 @@ import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import gov.grants.apply.system.globalLibraryV20.ApplicantTypeCodeDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -236,7 +237,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
                 sf424V2.setTitle(personInfo.getDirectoryTitle());
             }
             sf424V2.setPhoneNumber(personInfo.getOfficePhone());
-            if (personInfo.getFaxNumber() != null) {
+            if (StringUtils.isNotEmpty(personInfo.getFaxNumber())) {
                 sf424V2.setFax(personInfo.getFaxNumber());
             }
             sf424V2.setEmail(personInfo.getEmailAddress());

@@ -25,6 +25,7 @@ import gov.grants.apply.forms.rrKeyPersonExpandedV10.RRKeyPersonExpandedDocument
 import gov.grants.apply.forms.rrKeyPersonExpandedV10.RRKeyPersonExpandedDocument.RRKeyPersonExpanded.BioSketchsAttached;
 import gov.grants.apply.forms.rrKeyPersonExpandedV10.RRKeyPersonExpandedDocument.RRKeyPersonExpanded.SupportsAttached;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -158,7 +159,7 @@ public class RRKeyPersonExpandedV1_0Generator extends RRKeyPersonExpandedBaseGen
             }
             profile.setAddress(globLibV10Generator.getAddressRequireCountryDataType(PI));
             profile.setPhone(PI.getOfficePhone());
-            if (PI.getFaxNumber() != null) {
+            if (StringUtils.isNotEmpty(PI.getFaxNumber())) {
                 profile.setFax(PI.getFaxNumber());
             }
             profile.setEmail(PI.getEmailAddress());
@@ -241,7 +242,7 @@ public class RRKeyPersonExpandedV1_0Generator extends RRKeyPersonExpandedBaseGen
                 }
                 profileKeyPerson.setAddress(globLibV10Generator.getAddressRequireCountryDataType(keyPerson));
                 profileKeyPerson.setPhone(keyPerson.getOfficePhone());
-                if (keyPerson.getFaxNumber() != null) {
+                if (StringUtils.isNotEmpty(keyPerson.getFaxNumber())) {
                     profileKeyPerson.setFax(keyPerson.getFaxNumber());
                 }
                 profileKeyPerson.setEmail(keyPerson.getEmailAddress());
