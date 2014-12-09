@@ -248,7 +248,9 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 				}
 				totalCost = totalCost.add(totalDirectCost);
 				totalCost = totalCost.add(fundsRequested);
-			}
+			} else {
+	         	   totalCost=budget.getTotalCost();
+	        }
 
 			ScaleTwoDecimal fedNonFedCost = ScaleTwoDecimal.ZERO;
 			fedNonFedCost = fedNonFedCost.add(totalCost);
