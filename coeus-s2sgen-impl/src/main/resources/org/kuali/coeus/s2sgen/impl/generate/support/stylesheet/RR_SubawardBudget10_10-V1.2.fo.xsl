@@ -61,11 +61,11 @@
 							<fo:table-row>
 								<fo:table-cell width="0.2in"><fo:block>&#160;</fo:block></fo:table-cell>
 								<fo:table-cell width="7.5in">
-									<fo:block text-align="center" font-family="Helvetica,Times,Courier" font-size="11pt" font-weight="bold">R&amp;R SUBAWARD BUDGET ATTACHMENT(S) FORM                              </fo:block>
+									<fo:block text-align="center" font-family="Helvetica,Times,Courier" font-size="11pt" font-weight="bold">10 YEAR R&amp;R SUBAWARD BUDGET ATTACHMENT(S) FORM</fo:block>
 									<fo:block>&#160;</fo:block>
 									<fo:block font-size="8pt" hyphenate="true" language="en" wrap-option="wrap">
 										<fo:inline font-weight="bold" font-size="8pt">Instructions:</fo:inline>
-                                     On this form, you will attach the R&amp;R Subaward Budget files for your grant application.  Complete the subawardee budget(s) in accordance with the R&amp;R budget instructions.  Please remember that any files you attach must be a Pure Edge document.
+                                     On this form, you will attach the 10 Year R&amp;R Subaward Budget files for your grant application. Complete the subawardee budget(s) in accordance with the 10 Year R&amp;R budget instructions. Please remember that any files you attach must be a PDF document.
                            </fo:block>
 									<fo:block line-height="4pt">&#160;</fo:block>
 									<fo:block>&#160;</fo:block>
