@@ -123,20 +123,22 @@ public class PerformanceSiteV1_4Generator extends PerformanceSiteBaseGenerator {
                         organization = proposalSite.getOrganization();
                         setSiteLocationDataType(siteLocationDataType, organization);
                         rolodex = rolodexService.getRolodex(organization.getContactAddressId());
+                        siteLocationDataType.setOrganizationName(proposalSite.getLocationName());
                         break;
                     case(OTHER_ORG_LOCATION_TYPE_CODE):
                         organization = proposalSite.getOrganization();
                         rolodex = rolodexService.getRolodex(organization.getContactAddressId());
                         siteLocationDataType = performanceSite.addNewOtherSite();
+                        siteLocationDataType.setOrganizationName(organization.getOrganizationName());
                         break;
                     case(PERFORMANCE_SITE_LOCATION_TYPE_CODE):
                         organization = proposalSite.getOrganization();
                         rolodex = proposalSite.getRolodex();
                         siteLocationDataType = performanceSite.addNewOtherSite();
+                        siteLocationDataType.setOrganizationName(rolodex.getOrganization());
                         break;
                 }
                 if(siteLocationDataType!=null){
-                    siteLocationDataType.setOrganizationName(proposalSite.getLocationName());
                     siteLocationDataType.setAddress(globLibV20Generator.getAddressDataType(rolodex));
                     if (organization!=null && organization.getDunsNumber() != null) {
                         siteLocationDataType.setDUNSNumber(organization.getDunsNumber());
