@@ -245,6 +245,15 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
                             graduateDegreeSought.setDegreeType(DegreeTypeDataType.MDOT_OTHER_DOCTOR_OF_MEDICINE);
                             graduateDegreeSought.setOtherDegreeTypeText(answer);
                             break;
+                        case OTHER_DBOTH:
+                       	   if (graduateDegreeSought.getDegreeType().equals(DegreeTypeDataType.OTH_OTHER)) {                    		  
+                              	   graduateDegreeSought.setOtherDegreeTypeText(answer);                    		   
+                       	   }                        	
+                           	break;
+                        case OTHER_DOCT:
+                           	graduateDegreeSought.setDegreeType(DegreeTypeDataType.DOTH_OTHER_DOCTORATE);
+                           	graduateDegreeSought.setOtherDegreeTypeText(answer);
+                           	break;
                         case BROAD_TRAINING:
                         case FIELD_TRAINING:
                             if (!answer.toUpperCase().equals("SUB CATEGORY NOT FOUND"))
