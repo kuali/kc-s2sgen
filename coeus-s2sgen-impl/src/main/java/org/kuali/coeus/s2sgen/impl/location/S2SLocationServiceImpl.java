@@ -1,5 +1,6 @@
 package org.kuali.coeus.s2sgen.impl.location;
 
+import org.apache.commons.lang3.StringUtils;
 import org.kuali.coeus.common.api.country.CountryContract;
 import org.kuali.coeus.common.api.country.KcCountryService;
 import org.kuali.coeus.common.api.state.KcStateService;
@@ -27,7 +28,7 @@ public class S2SLocationServiceImpl implements S2SLocationService {
      */
     @Override
     public CountryContract getCountryFromCode(String countryCode) {
-        if(countryCode==null) return null;
+        if(StringUtils.isBlank(countryCode)) return null;
         CountryContract country = getKcCountryService().getCountryByAlternateCode(countryCode);
         if(country==null){
             country = getKcCountryService().getCountry(countryCode);
