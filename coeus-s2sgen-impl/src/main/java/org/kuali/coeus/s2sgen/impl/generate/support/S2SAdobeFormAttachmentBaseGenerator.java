@@ -270,11 +270,11 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
         List<BudgetSubAwardsContract> budgetSubAwardsList = new ArrayList<BudgetSubAwardsContract>();
         BudgetContract budget = findBudgetFromProposal(proposalDevelopmentDocument);
         if(budget==null){
-            getAuditErrors().add(s2SErrorHandlerService.getError(SUB_AWARD_BUDGET_NOT_FOUND));
+            getAuditErrors().add(s2SErrorHandlerService.getError(SUB_AWARD_BUDGET_NOT_FOUND, getFormName()));
         }else{
             budgetSubAwardsList = findBudgetSubawards(namespace, budget,checkNull);
             if(budgetSubAwardsList.isEmpty()){
-                getAuditErrors().add(s2SErrorHandlerService.getError(SUB_AWARD_BUDGET_NOT_FOUND));
+                getAuditErrors().add(s2SErrorHandlerService.getError(SUB_AWARD_BUDGET_NOT_FOUND, getFormName()));
             }
         }
         return budgetSubAwardsList;

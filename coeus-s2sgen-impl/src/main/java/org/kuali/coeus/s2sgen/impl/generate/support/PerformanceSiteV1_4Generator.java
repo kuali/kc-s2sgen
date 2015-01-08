@@ -145,7 +145,7 @@ public class PerformanceSiteV1_4Generator extends PerformanceSiteBaseGenerator {
                     }
                     String congressionalDistrict = getCongressionalDistrict(proposalSite);
                     if (congressionalDistrict == null) {
-                        getAuditErrors().add(s2SErrorHandlerService.getError(CONGRESSIONAL_DISTRICT));
+                        getAuditErrors().add(s2SErrorHandlerService.getError(CONGRESSIONAL_DISTRICT, getFormName()));
                         siteLocationDataType.setCongressionalDistrictProgramProject(null);
                     }else{
                         siteLocationDataType.setCongressionalDistrictProgramProject(congressionalDistrict);

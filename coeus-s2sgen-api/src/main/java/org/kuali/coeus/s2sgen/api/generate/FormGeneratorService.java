@@ -53,10 +53,11 @@ public interface FormGeneratorService {
      * cannot be null.
      *
      * @param s2sUserAttachedFormFile the user attached form file.  cannot be null.
+     * @param formName is the formName. cannot be null.
      * @return the result of the validation
      * @throws S2SException if unable to validate
-     * @throws java.lang.IllegalArgumentException if the s2sUserAttachedFormFile is null
+     * @throws java.lang.IllegalArgumentException if the s2sUserAttachedFormFile is null or if the formName is null.
      */
 
-    FormValidationResult validateUserAttachedFormFile(S2sUserAttachedFormFileContract s2sUserAttachedFormFile) throws S2SException;
+    FormValidationResult validateUserAttachedFormFile(S2sUserAttachedFormFileContract s2sUserAttachedFormFile,String formName) throws S2SException;
 }

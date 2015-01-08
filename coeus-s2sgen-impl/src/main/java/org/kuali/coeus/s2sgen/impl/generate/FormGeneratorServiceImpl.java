@@ -19,6 +19,8 @@ import gov.grants.apply.system.globalV10.HashValueDocument;
 import gov.grants.apply.system.headerV10.GrantSubmissionHeaderDocument;
 import gov.grants.apply.system.metaGrantApplication.GrantApplicationDocument;
 import gov.grants.apply.system.metaGrantApplication.GrantApplicationDocument.GrantApplication.Forms;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
@@ -127,7 +129,7 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
             auditErrors.addAll(s2sFormGenerator.getAuditErrors());
 			try {
 				XmlObject formObject = s2sFormGenerator.getFormObject(pdDoc);
-				if (s2SValidatorService.validate(formObject, auditErrors)) {
+				if (s2SValidatorService.validate(formObject, auditErrors, info.getFormName())) {
 					if (forms != null && attList != null) {
 						setFormObject(forms, formObject);
 					}
@@ -270,15 +272,18 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 	}
 
     @Override
-    public FormValidationResult validateUserAttachedFormFile(S2sUserAttachedFormFileContract s2sUserAttachedFormFile) throws S2SException {
+    public FormValidationResult validateUserAttachedFormFile(S2sUserAttachedFormFileContract s2sUserAttachedFormFile,String formName) throws S2SException {
         if (s2sUserAttachedFormFile == null) {
             throw new IllegalArgumentException("s2sUserAttachedFormFile is null");
+        }
+        if (StringUtils.isBlank(formName)) {
+            throw new IllegalArgumentException("formName is blank");
         }
         boolean validationSucceeded;
         List<AuditError> auditErrors = new ArrayList<AuditError>();
         try {
             XmlObject xmlObject = XmlObject.Factory.parse(s2sUserAttachedFormFile.getXmlFile());
-            if(!getS2SValidatorService().validate(xmlObject, auditErrors)) {
+            if(!getS2SValidatorService().validate(xmlObject, auditErrors, formName)) {
                 validationSucceeded = false;
             }else{
                 validationSucceeded = true;
