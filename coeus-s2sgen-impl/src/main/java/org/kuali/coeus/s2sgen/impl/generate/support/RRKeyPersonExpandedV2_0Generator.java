@@ -250,7 +250,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
 		setDepartmentNameToProfile(profile,PI);
 		String divisionName = PI.getDivision();
 		if (divisionName != null) {
-			profile.setDivisionName(divisionName);
+			profile.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
         } else {
             String personId = PI.getPersonId();
             KcPersonContract kcPersonContact = kcPersonRepositoryService.findKcPersonByPersonId(personId);
@@ -258,7 +258,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
             divisionName=getPIDivision(kcPersonContact.getOrganizationIdentifier());
             }
             if (divisionName != null) {
-              profile.setDivisionName(divisionName);
+              profile.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
            }
         }
 		if (PI.getEraCommonsUserName() != null) {
@@ -480,7 +480,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
 		setDepartmentNameToProfile(profileKeyPerson,keyPerson);
 		String divisionName = keyPerson.getDivision();
 		if (divisionName != null) {
-			profileKeyPerson.setDivisionName(divisionName);
+			profileKeyPerson.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 		}
 		if (keyPerson.getEraCommonsUserName() != null) {
 			profileKeyPerson.setCredential(keyPerson.getEraCommonsUserName());

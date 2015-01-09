@@ -483,7 +483,7 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 		}
 		String divisionName = getDivisionName(pdDoc);
 		if (divisionName != null) {
-			organization.setDivisionName(divisionName);
+			organization.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 		}
 		if (pdDoc.getDevelopmentProposal().getApplicantOrganization() != null) {
 			organization.setEmployerID(pdDoc.getDevelopmentProposal()
