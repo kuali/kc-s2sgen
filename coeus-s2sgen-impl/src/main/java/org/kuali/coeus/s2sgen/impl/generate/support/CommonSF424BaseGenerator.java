@@ -28,7 +28,7 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
     protected static final String YNQ_STATE_NOT_SELECTED = "Not Selected";
     protected static final String YNQ_STATE_NOT_COVERED = "Not Covered";
 
-    private static final int DIVISION_NAME_MAX_LENGTH = 30;
+    protected static final int DIVISION_NAME_MAX_LENGTH = 30;
 
     protected static final String YNQ_ANSWER = "answer";
 

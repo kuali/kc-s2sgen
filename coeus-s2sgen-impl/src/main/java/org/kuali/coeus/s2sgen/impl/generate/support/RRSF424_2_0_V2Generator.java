@@ -525,7 +525,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 				divisionName = getPIDivision(kcPersons.getOrganizationIdentifier());
 			}
 			if (divisionName != null) {
-				PDPI.setDivisionName(divisionName);
+				PDPI.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 			}
 		}
 	}

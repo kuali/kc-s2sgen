@@ -228,7 +228,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
         }
         String divisionName = getDivisionName(pdDoc);
         if (divisionName != null) {
-            sf424V2.setDivisionName(divisionName);
+            sf424V2.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
         }
         ProposalPersonContract personInfo = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
         if (personInfo != null) {
