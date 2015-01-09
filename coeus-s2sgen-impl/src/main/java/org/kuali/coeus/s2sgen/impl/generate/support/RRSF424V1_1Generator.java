@@ -349,7 +349,7 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 			// divisionName
 			String divisionName = getDivisionName(pdDoc);
 			if (divisionName != null) {
-				orgType.setDivisionName(divisionName);
+				orgType.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 			}
 		}
 		appInfo.setOrganizationInfo(orgType);
@@ -561,7 +561,7 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 				// divisionName
 				String divisionName = proposalPerson.getDivision();
 				if (divisionName != null) {
-					PDPI.setDivisionName(divisionName);
+					PDPI.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 				}
 				if (applicantOrganization != null) {
 					PDPI.setOrganizationName(applicantOrganization
@@ -617,7 +617,7 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 			aorInfoType.setDepartmentName(departmentalPerson.getDirDept());
 			aorInfoType.setEmail(departmentalPerson.getEmailAddress());
 			if (departmentalPerson.getHomeUnit() != null) {
-				aorInfoType.setDivisionName(departmentalPerson.getHomeUnit());
+				aorInfoType.setDivisionName(StringUtils.substring(departmentalPerson.getHomeUnit(), 0, DIVISION_NAME_MAX_LENGTH));
 			}
 		}
 		if (applicantOrganization != null) {

@@ -312,7 +312,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			// divisionName
 			String divisionName =getPIDivision(leadUnit.getUnitNumber());
 			if (divisionName != null) {
-				orgType.setDivisionName(divisionName);
+				orgType.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 			}
 		}
 		return orgType;
@@ -516,7 +516,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	private void setDivisionName(OrganizationContactPersonDataType PDPI,ProposalPersonContract PI) {
 		String divisionName = PI.getDivision();
 		if (divisionName != null) {
-			PDPI.setDivisionName(divisionName);
+			PDPI.setDivisionName(StringUtils.substring(divisionName, 0, DIVISION_NAME_MAX_LENGTH));
 		} else {
 			String personId = PI.getPersonId();
 			KcPersonContract kcPersons = kcPersonRepositoryService.findKcPersonByPersonId(personId);
@@ -683,7 +683,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
 	private void setDivisionName(AORInfoType aorInfoType) {
 		if (departmentalPerson.getHomeUnit() != null) {
-			aorInfoType.setDivisionName(getUnitName(departmentalPerson.getHomeUnit()));
+			aorInfoType.setDivisionName(StringUtils.substring(getUnitName(departmentalPerson.getHomeUnit()), 0, DIVISION_NAME_MAX_LENGTH));
 		}
 	}
 
