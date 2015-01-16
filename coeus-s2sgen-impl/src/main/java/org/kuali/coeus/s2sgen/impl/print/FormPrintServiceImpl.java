@@ -369,7 +369,7 @@ public class FormPrintServiceImpl implements FormPrintService {
             errors.addAll(s2sFormGenerator.getAuditErrors());
 			XmlObject formObject = s2sFormGenerator.getFormObject(pdDoc);
 			
-			if (s2SValidatorService.validate(formObject, errors) && errors.isEmpty()) {
+			if (s2SValidatorService.validate(formObject, errors, info.getFormName()) && errors.isEmpty()) {
 			    String applicationXml = formObject.xmlText(s2SFormGeneratorService.getXmlOptionsPrefixes());
 			    String filteredApplicationXml = s2SDateTimeService.removeTimezoneFactor(applicationXml);
 				byte[] formXmlBytes = filteredApplicationXml.getBytes();

@@ -39,8 +39,9 @@ public interface S2SValidatorService {
      * 
      * @param formObject XML document as {@link}XMLObject
      * @param errors List list of XPaths of the error nodes.
+     * @param formName is the FormName.
      * @return validation result true if valid false otherwise.
      */
-    boolean validate(XmlObject formObject, List<AuditError> errors);
-
+    boolean validate(XmlObject formObject, List<AuditError> errors, String formName);
+    
 }

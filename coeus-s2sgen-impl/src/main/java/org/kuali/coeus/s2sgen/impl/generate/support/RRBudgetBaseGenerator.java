@@ -295,13 +295,13 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
                        s2sBudgetCalculatorService.getMatchingLineItems(period.getBudgetLineItems(), participantSupportCode);
                int numberOfParticipants = period.getNumberOfParticipants() == null ? 0 : period.getNumberOfParticipants();
                if (!participantSupportLineItems.isEmpty() && numberOfParticipants == 0) {
-                   AuditError auditError= s2SErrorHandlerService.getError(PARTICIPANT_COUNT_REQUIRED);
+                   AuditError auditError= s2SErrorHandlerService.getError(PARTICIPANT_COUNT_REQUIRED, getFormName());
                    AuditError error= new AuditError(auditError.getErrorKey(),
                           auditError.getMessageKey()+period.getBudgetPeriod(),auditError.getLink());
                    getAuditErrors().add(error);
                    valid = false;
                } else if (numberOfParticipants > 0 && participantSupportLineItems.isEmpty()) {
-                   getAuditErrors().add(s2SErrorHandlerService.getError(PARTICIPANT_COSTS_REQUIRED));
+                   getAuditErrors().add(s2SErrorHandlerService.getError(PARTICIPANT_COSTS_REQUIRED, getFormName()));
                    valid = false;
                }
            }

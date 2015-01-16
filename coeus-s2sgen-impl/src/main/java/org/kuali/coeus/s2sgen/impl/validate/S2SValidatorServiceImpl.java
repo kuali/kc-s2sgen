@@ -55,20 +55,19 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
      * @return validation result true if valid false otherwise.
      * @see S2SValidatorService#validate(org.apache.xmlbeans.XmlObject, java.util.List)
      */
-    public boolean validate(XmlObject formObject, List<AuditError> errors) {
+    public boolean validate(XmlObject formObject, List<AuditError> errors,String formName) {
 
         List<String> formErrors = new ArrayList<String>();
         boolean result = false;
         result = validateXml(formObject, formErrors);
 
         for (String validationError : formErrors) {
-            errors.add(s2SErrorHandlerService.getError(GRANTS_GOV_PREFIX + validationError));
+            errors.add(s2SErrorHandlerService.getError(GRANTS_GOV_PREFIX + validationError, formName));
         }
 
         return result;
     }
-
-
+    
     /**
      * 
      * This method receives an XMLObject and validates it against its schema and returns the validation result. It also receives a

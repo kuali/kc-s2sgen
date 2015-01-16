@@ -16,9 +16,9 @@ public class S2SErrorHandlerServiceImpl implements S2SErrorHandlerService {
     private S2sErrorService s2sErrorService;
 
     @Override
-    public AuditError getError(String key) {
+    public AuditError getError(String key, String formName) {
         final S2sErrorContract s2sError = s2sErrorService.findS2sErrorByKey(key);
-        return s2sError == null ? new AuditError(AuditError.NO_FIELD_ERROR_KEY, key + " is not valid", AuditError.GG_LINK) :
+        return s2sError == null ? new AuditError(AuditError.NO_FIELD_ERROR_KEY, key + " is not valid in "+formName, AuditError.GG_LINK) :
                 new AuditError(s2sError.getKey(), s2sError.getMessage(), s2sError.getLink());
     }
 }
