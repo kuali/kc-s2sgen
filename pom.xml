@@ -41,8 +41,8 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:https://github.com/kuali/kc-s2sgen.git</connection>
-        <developerConnection>scm:git:https://github.com/kuali/kc-s2sgen.git</developerConnection>
+        <connection>scm:git:git@github.com:kuali/kc-s2sgen.git</connection>
+        <developerConnection>scm:git:git@github.com:kuali/kc-s2sgen.git</developerConnection>
         <url>https://github.com/kuali/kc-s2sgen/tree/${project.scm.tag}</url>
         <tag>master</tag>
     </scm>
