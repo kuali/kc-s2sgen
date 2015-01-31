@@ -26,7 +26,7 @@
     </parent>
     <groupId>org.kuali.coeus</groupId>
     <artifactId>coeus-s2sgen</artifactId>
-    <version>6.0.0</version>
+    <version>6.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>
         This coeus s2s generator project contains s2s generators for grants.gov and research.gov form submission
@@ -44,7 +44,7 @@
         <connection>scm:git:git@github.com:kuali/kc-s2sgen.git</connection>
         <developerConnection>scm:git:git@github.com:kuali/kc-s2sgen.git</developerConnection>
         <url>https://github.com/kuali/kc-s2sgen/tree/${project.scm.tag}</url>
-        <tag>coeus-s2sgen-6.0.0</tag>
+        <tag>master</tag>
     </scm>
     <developers>
         <developer>
