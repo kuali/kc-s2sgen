@@ -62,6 +62,7 @@ import org.springframework.core.io.Resource;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -81,7 +82,6 @@ import java.util.Map;
 public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerator {
 
     private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudgetV1_0Generator.class);
-    private static final String EXTRA_KEYPERSON_ATTACHMENT_NON_FED_XSL = "/org/kuali/kra/s2s/stylesheet/ExtraKeyPersonAttachmentNonFed.xsl";
     private static final String EXTRA_KEYPERSONS = "RRFEDNONFED_EXTRA_KEYPERSONS";
     private static final int EXTRA_KEYPERSONS_TYPE = 11;
     private static final String EXTRA_KEYPERSONS_COMMENT = "RRFEDNONFED_EXTRA_KEYPERSONS";
@@ -107,6 +107,12 @@ public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerat
     @Autowired
     @Qualifier("s2SPrintingService")
     private S2SPrintingService s2SPrintingService;
+
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/AdditionalEquipmentAttachmentNonFed.xsl")
+    private  Resource additionalEquipmentAttachmentNonFedStyleSheet;
+
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/ExtraKeyPersonAttachmentNonFed.xsl")
+    private Resource extraKeyPersonAttachmentNonFedStyleSheet;
 
     /**
      * This method returns RRFedNonFedBudgetDocument object based on proposal development document which contains the informations
@@ -1330,10 +1336,12 @@ public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerat
                     .newInstance();
             additionalEquipmentDoc
                     .setAdditionalEquipmentList(additionalEquipmentList);
-            Source xsltSource = new StreamSource(
-                    getClass()
-                            .getResourceAsStream(
-                                    "/org/kuali/kra/s2s/stylesheet/AdditionalEquipmentAttachmentNonFed.xsl"));
+            Source xsltSource = null;
+            try {
+                xsltSource =  new StreamSource(additionalEquipmentAttachmentNonFedStyleSheet.getInputStream());
+            } catch(IOException e) {
+                throw new RuntimeException("the stream could not be opened",e);
+            }
             Map<String, Source> xSLTemplateWithBookmarks = new HashMap<String, Source>();
             xSLTemplateWithBookmarks.put("", xsltSource);
 
@@ -1391,8 +1399,12 @@ public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerat
             String xmlData = extraKeyPersonListDocument.xmlText();
             Map<String, byte[]> streamMap = new HashMap<String, byte[]>();
             streamMap.put("", xmlData.getBytes());
-            Source xsltSource = new StreamSource(getClass()
-                    .getResourceAsStream(EXTRA_KEYPERSON_ATTACHMENT_NON_FED_XSL));
+            Source xsltSource = null;
+            try {
+                xsltSource =  new StreamSource(extraKeyPersonAttachmentNonFedStyleSheet.getInputStream());
+            } catch(IOException e) {
+                throw new RuntimeException("the stream could not be opened",e);
+            }
             Map<String, Source> xSLTemplateWithBookmarks = new HashMap<String, Source>();
             xSLTemplateWithBookmarks.put("", xsltSource);
             
@@ -1887,5 +1899,21 @@ public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerat
 
     public void setSortIndex(int sortIndex) {
         this.sortIndex = sortIndex;
+    }
+
+    public Resource getAdditionalEquipmentAttachmentNonFedStyleSheet() {
+        return additionalEquipmentAttachmentNonFedStyleSheet;
+    }
+
+    public void setAdditionalEquipmentAttachmentNonFedStyleSheet(Resource additionalEquipmentAttachmentNonFedStyleSheet) {
+        this.additionalEquipmentAttachmentNonFedStyleSheet = additionalEquipmentAttachmentNonFedStyleSheet;
+    }
+
+    public Resource getExtraKeyPersonAttachmentNonFedStyleSheet() {
+        return extraKeyPersonAttachmentNonFedStyleSheet;
+    }
+
+    public void setExtraKeyPersonAttachmentNonFedStyleSheet(Resource extraKeyPersonAttachmentNonFedStyleSheet) {
+        this.extraKeyPersonAttachmentNonFedStyleSheet = extraKeyPersonAttachmentNonFedStyleSheet;
     }
 }
