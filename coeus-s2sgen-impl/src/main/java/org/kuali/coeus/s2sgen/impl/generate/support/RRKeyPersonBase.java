@@ -45,6 +45,8 @@ import org.kuali.coeus.s2sgen.impl.print.S2SPrintingService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
@@ -73,7 +75,6 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 	protected static final String PROFILE_COMMENT = "PROFILE";
     protected static final int PROFILE_TYPE = 18;
 	protected static final int DIVISION_NAME_MAX_LENGTH = 30;
-	protected static final String ADDITIONALKEYPERSONPROFILES_XSL = "/org/kuali/kra/s2s/stylesheet/additionalkeypersonprofiles.xsl";
 	protected static final String NIH_CO_INVESTIGATOR = "Co-Investigator";
     protected static final String ERROR_ERA_COMMON_USER_NAME="eRA Commons User Name is missing for ";
 
@@ -88,6 +89,9 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
     @Autowired
     @Qualifier("s2SProposalPersonService")
     protected S2SProposalPersonService s2SProposalPersonService;
+
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/additionalkeypersonprofiles.xsl")
+    private Resource additionalkeypersonprofilesStyleSheet;
 
 	protected void saveKeyPersonAttachmentsToProposal() {
 	    if(extraPersons!=null && !extraPersons.isEmpty()){
@@ -457,8 +461,12 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 			Map<String, byte[]> streamMap = new HashMap<String, byte[]>();
 			streamMap.put("", xmlData.getBytes());
 
-			Source xsltSource = new StreamSource(getClass()
-					.getResourceAsStream(ADDITIONALKEYPERSONPROFILES_XSL));
+            Source xsltSource = null;
+            try {
+                xsltSource =  new StreamSource(additionalkeypersonprofilesStyleSheet.getInputStream());
+            } catch(IOException e) {
+                throw new RuntimeException("the stream could not be opened",e);
+            }
 			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<String, Source>();
 			xSLTemplateWithBookmarks.put("", xsltSource);
 			
@@ -499,5 +507,13 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 
     public void setS2SProposalPersonService(S2SProposalPersonService s2SProposalPersonService) {
         this.s2SProposalPersonService = s2SProposalPersonService;
+    }
+
+    public Resource getAdditionalkeypersonprofilesStyleSheet() {
+        return additionalkeypersonprofilesStyleSheet;
+    }
+
+    public void setAdditionalkeypersonprofilesStyleSheet(Resource additionalkeypersonprofilesStyleSheet) {
+        this.additionalkeypersonprofilesStyleSheet = additionalkeypersonprofilesStyleSheet;
     }
 }
