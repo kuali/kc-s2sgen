@@ -1585,7 +1585,9 @@ public class S2SBudgetCalculatorServiceImpl implements
                                 equipCostInfo.setCostSharing(equipCostInfo.getCostSharing().add(lineItem.getCostSharingAmount()));
                             }
                         }
-                        costInfoMap.put(key, equipCostInfo);
+                        if (StringUtils.isNotEmpty(lineItem.getLineItemDescription())) {
+                            costInfoMap.put(key, equipCostInfo);
+                        }
                         costInfos.add(equipCostInfo);
                     }
                 }
