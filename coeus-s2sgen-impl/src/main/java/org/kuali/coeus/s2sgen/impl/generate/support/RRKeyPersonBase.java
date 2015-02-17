@@ -77,6 +77,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 	protected static final int DIVISION_NAME_MAX_LENGTH = 30;
 	protected static final String NIH_CO_INVESTIGATOR = "Co-Investigator";
     protected static final String ERROR_ERA_COMMON_USER_NAME="eRA Commons User Name is missing for ";
+    protected static final int DEPARTMENT_NAME_MAX_LENGTH = 30;
 
     @Autowired
     @Qualifier("unitRepositoryService")

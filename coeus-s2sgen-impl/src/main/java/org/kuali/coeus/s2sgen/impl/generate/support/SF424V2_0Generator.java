@@ -29,8 +29,6 @@ import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import gov.grants.apply.system.globalLibraryV20.ApplicantTypeCodeDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.org.OrganizationContract;
 import org.kuali.coeus.common.api.org.OrganizationYnqContract;
@@ -76,18 +74,12 @@ import java.util.Map;
 @FormGenerator("SF424V2_0Generator")
 public class SF424V2_0Generator extends SF424BaseGenerator {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SF424V2_0Generator.class);
-
     private DepartmentalPersonDto aorInfo = null;
     private String applicantTypeOtherSpecify = null;
     private String federalDebtExp;
     private String stateReviewDate = null;
     private String strReview = null;
     private static final String ORGANIZATION_YNQ_ANSWER_YES = "Y";
-
-    @Autowired
-    @Qualifier("s2SConfigurationService")
-    protected S2SConfigurationService s2SConfigurationService;
 
     @Value("http://apply.grants.gov/forms/SF424-V2.0")
     private String namespace;
@@ -103,6 +95,10 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
 
     @Value(DEFAULT_SORT_INDEX)
     private int sortIndex;
+
+    @Autowired
+    @Qualifier("s2SConfigurationService")
+    protected S2SConfigurationService s2SConfigurationService;
 
     /**
      * 
@@ -222,12 +218,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
             departmentName = pdDoc.getDevelopmentProposal().getOwnedByUnit().getUnitName();
         }
         if (departmentName != null) {
-            if (departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
-                sf424V2.setDepartmentName(departmentName.substring(0, DEPARTMENT_NAME_MAX_LENGTH));
-            }
-            else {
-                sf424V2.setDepartmentName(departmentName);
-            }
+            sf424V2.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
         }
         String divisionName = getDivisionName(pdDoc);
         if (divisionName != null) {
@@ -348,7 +339,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
             if (budget.getTotalCost() != null) {
                 sf424V2.setFederalEstimatedFunding(budget.getTotalCost().bigDecimalValue());
             }
-            ScaleTwoDecimal fedNonFedCost = budget.getTotalCost();
+
             ScaleTwoDecimal costSharingAmount = ScaleTwoDecimal.ZERO;
 
             for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()) {
@@ -367,7 +358,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
             if(!hasBudgetLineItem && budget.getSubmitCostSharingFlag()){
                 costSharingAmount = budget.getCostSharingAmount();      
             }
-            fedNonFedCost = fedNonFedCost.add(costSharingAmount);
+
             sf424V2.setApplicantEstimatedFunding(costSharingAmount.bigDecimalValue());
             BigDecimal projectIncome = BigDecimal.ZERO;
             for (BudgetProjectIncomeContract budgetProjectIncome : budget.getBudgetProjectIncomes()) {

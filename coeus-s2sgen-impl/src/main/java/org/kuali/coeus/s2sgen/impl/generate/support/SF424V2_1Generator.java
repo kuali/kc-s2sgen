@@ -28,16 +28,7 @@ import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import gov.grants.apply.system.globalLibraryV20.ApplicantTypeCodeDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.org.OrganizationContract;
 import org.kuali.coeus.common.api.org.OrganizationYnqContract;
@@ -67,6 +58,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
 /**
  * This Class is used to generate XML object for grants.gov SF424V2.1. This form is generated using XMLBean classes and is based on
  * SF424-V2.1 schema.
@@ -75,8 +72,6 @@ import org.springframework.core.io.Resource;
  */
 @FormGenerator("SF424V2_1Generator")
 public class SF424V2_1Generator extends SF424BaseGenerator {
-
-    private static final Logger LOG = LoggerFactory.getLogger(SF424V2_1Generator.class);
 
     private DepartmentalPersonDto aorInfo = null;
     private String applicantTypeOtherSpecify = null;
@@ -225,11 +220,7 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
             departmentName = pdDoc.getDevelopmentProposal().getOwnedByUnit().getUnitName();
         }
         if (departmentName != null) {
-            if (departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
-                sf424V21.setDepartmentName(departmentName.substring(0, DEPARTMENT_NAME_MAX_LENGTH));
-            } else {
-                sf424V21.setDepartmentName(departmentName);
-            }
+            sf424V21.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
         }
         String divisionName = getDivisionName(pdDoc);
         if (divisionName != null) {
@@ -340,7 +331,6 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
             if (budget.getTotalCost() != null) {
                 sf424V21.setFederalEstimatedFunding(budget.getTotalCost().bigDecimalValue());
             }
-            ScaleTwoDecimal fedNonFedCost = budget.getTotalCost();
             ScaleTwoDecimal costSharingAmount = ScaleTwoDecimal.ZERO;
 
             for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()) {
@@ -358,7 +348,6 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
             if (!hasBudgetLineItem && budget.getSubmitCostSharingFlag()) {
                 costSharingAmount = budget.getCostSharingAmount();      
             }
-            fedNonFedCost = fedNonFedCost.add(costSharingAmount);
             sf424V21.setApplicantEstimatedFunding(costSharingAmount.bigDecimalValue());
             BigDecimal projectIncome = BigDecimal.ZERO;
             for (BudgetProjectIncomeContract budgetProjectIncome : budget.getBudgetProjectIncomes()) {
