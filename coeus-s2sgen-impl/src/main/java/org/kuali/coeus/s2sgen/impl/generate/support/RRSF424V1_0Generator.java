@@ -350,7 +350,6 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 	 *
 	 * This method is used to get Contact person information
 	 *
-	 * @param rolodexOrganization
 	 * @return ContactPersonInfo corresponding to the Rolodex object.
 	 */
 	private ContactPersonInfo getContactInfo(RolodexContract rolodexOrganization) {
@@ -567,12 +566,12 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 				if(PI.getHomeUnit() != null) {
                     KcPersonContract kcPerson = PI.getPerson();
 		            String departmentName =  kcPerson.getOrganizationIdentifier();
-		            PDPI.setDepartmentName(departmentName);
+		            PDPI.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
 		        }
 		        else
 		        {
 		            DevelopmentProposalContract developmentProposal = pdDoc.getDevelopmentProposal();
-		            PDPI.setDepartmentName(developmentProposal.getOwnedByUnit().getUnitName());
+		            PDPI.setDepartmentName(StringUtils.substring(developmentProposal.getOwnedByUnit().getUnitName(), 0, DEPARTMENT_NAME_MAX_LENGTH));
 		        }
 
 				// divisionName
@@ -619,7 +618,7 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
             if (StringUtils.isNotEmpty(departmentalPerson.getFaxNumber())) {
 			    aorInfoType.setFax(departmentalPerson.getFaxNumber());
             }
-			aorInfoType.setDepartmentName(departmentalPerson.getDirDept());
+			aorInfoType.setDepartmentName(departmentalPerson.getDirDept().substring(0, DEPARTMENT_NAME_MAX_LENGTH));
 			aorInfoType.setEmail(departmentalPerson.getEmailAddress());
 			if (departmentalPerson.getHomeUnit() != null) {
 				aorInfoType.setDivisionName(StringUtils.substring(departmentalPerson.getHomeUnit(), 0, DIVISION_NAME_MAX_LENGTH));

@@ -177,12 +177,12 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBaseGenerator {
             if(PI.getHomeUnit() != null) {
                 KcPersonContract kcPerson = PI.getPerson();
                 String departmentName =  kcPerson.getOrganizationIdentifier();
-                profile.setDepartmentName(departmentName);
+                profile.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
             }
             else
             {
                 DevelopmentProposalContract developmentProposal = pdDoc.getDevelopmentProposal();
-                profile.setDepartmentName(developmentProposal.getOwnedByUnit().getUnitName());
+                profile.setDepartmentName(StringUtils.substring(developmentProposal.getOwnedByUnit().getUnitName(), 0, DEPARTMENT_NAME_MAX_LENGTH));
             }
             String divisionName = PI.getDivision();
             if (divisionName != null) {
@@ -272,12 +272,12 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBaseGenerator {
                 if(keyPerson.getHomeUnit() != null) {
                     KcPersonContract kcPerson = keyPerson.getPerson();
                     String departmentName =  kcPerson.getOrganizationIdentifier();
-                    profileKeyPerson.setDepartmentName(departmentName);
+                    profileKeyPerson.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
                 }
                 else
                 {
                     DevelopmentProposalContract developmentProposal = pdDoc.getDevelopmentProposal();
-                    profileKeyPerson.setDepartmentName(developmentProposal.getOwnedByUnit().getUnitName());
+                    profileKeyPerson.setDepartmentName(StringUtils.substring(developmentProposal.getOwnedByUnit().getUnitName(), 0, DEPARTMENT_NAME_MAX_LENGTH));
                 }
                 String divisionName = keyPerson.getDivision();
                 if (divisionName != null) {

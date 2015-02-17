@@ -18,10 +18,6 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
-import org.kuali.coeus.s2sgen.impl.person.S2SProposalPersonService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 /**
  * This abstract class has methods that are common to all the versions of RRKeyPerson form.
  * 
@@ -31,7 +27,6 @@ public abstract class RRKeyPersonBaseGenerator extends RRKeyPersonBase {
 
     protected static final String BIOSKETCH_TYPE = "1";
     protected static final String CURRENT_PENDING_TYPE = "2";
-    protected static final String CO_INVESTIGATOR = "COI";
     protected static final int MAX_KEY_PERSON_COUNT = 8;
     protected static final int DIRECTORY_TITLE_MAX_LENGTH = 45;
     protected static final int ROLE_DESCRIPTION_MAX_LENGTH = 40;
