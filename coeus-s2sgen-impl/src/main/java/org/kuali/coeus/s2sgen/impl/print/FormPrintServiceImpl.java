@@ -134,8 +134,9 @@ public class FormPrintServiceImpl implements FormPrintService {
             pResult = getPDFStream(pdDocContract);
 		}
 	    if(pdDocContract.getDevelopmentProposal().getGrantsGovSelectFlag()){
-		
-		return null;
+            FormPrintResult result = new FormPrintResult();
+            result.setErrors(pResult.errors);
+            return result;
 	    }
         S2SFile attachmentDataSource = s2SPrintingService
         	.print(pResult.printables);
