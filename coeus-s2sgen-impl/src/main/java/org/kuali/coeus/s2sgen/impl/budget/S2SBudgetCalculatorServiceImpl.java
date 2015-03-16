@@ -1251,6 +1251,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         for (CostDto costInfo : costInfoList) {
             if (costInfo.getCategory().equals(s2SConfigurationService.getValueAsString(
                     ConfigurationConstants.S2SBUDGET_MATERIALS_AND_SUPPLIES_CATEGORY))) {
+                materialCost = materialCost.add(costInfo.getCost());
                 if (budget.getSubmitCostSharingFlag()) {
                     materialCostSharing = materialCostSharing.add(costInfo.getCostSharing());
                 }
