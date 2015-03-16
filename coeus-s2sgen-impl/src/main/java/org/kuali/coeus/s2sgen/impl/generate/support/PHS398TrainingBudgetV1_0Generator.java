@@ -139,7 +139,7 @@ public class PHS398TrainingBudgetV1_0Generator extends S2SBaseFormGenerator {
 
     private PHS398TrainingBudget getPHS398TrainingBudget(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException{
         DevelopmentProposalContract developmentProposal = proposalDevelopmentDocument.getDevelopmentProposal();
-        ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
+        ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(developmentProposal);
 
         PHS398TrainingBudget trainingBudgetType = PHS398TrainingBudget.Factory.newInstance();
         if (budget != null) {
