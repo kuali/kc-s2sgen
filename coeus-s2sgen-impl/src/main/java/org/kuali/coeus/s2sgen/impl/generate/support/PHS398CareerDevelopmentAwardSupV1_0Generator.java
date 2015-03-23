@@ -107,7 +107,7 @@ public class PHS398CareerDevelopmentAwardSupV1_0Generator extends
 				
 			}
 		}
-		return CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S;
+		return null;
 	}
 
 	private ApplicationType getApplicationType() {
