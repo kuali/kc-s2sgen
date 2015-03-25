@@ -112,10 +112,20 @@ public class NSFCoverPageV1_6Generator extends NSFCoverPageBaseGenerator {
 
 
 
-	protected void setFundingOpportunityNumber(NSFCoverPage16 nsfCoverPage16) {
-        nsfCoverPage16.setFundingOpportunityNumber(StringUtils.substring(pdDoc
-                        .getDevelopmentProposal()
-                        .getProgramAnnouncementNumber(), 0, PROGRAM_ANNOUNCEMENT_NUMBER_MAX_LENGTH));
+	private void setFundingOpportunityNumber(NSFCoverPage16 nsfCoverPage16) {
+		if (pdDoc.getDevelopmentProposal().getProgramAnnouncementNumber() != null) {
+			if (pdDoc.getDevelopmentProposal().getProgramAnnouncementNumber()
+					.length() > PROGRAM_ANNOUNCEMENT_NUMBER_MAX_LENGTH) {
+				nsfCoverPage16.setFundingOpportunityNumber(pdDoc
+						.getDevelopmentProposal()
+						.getProgramAnnouncementNumber().substring(0,
+								PROGRAM_ANNOUNCEMENT_NUMBER_MAX_LENGTH));
+			} else {
+				nsfCoverPage16.setFundingOpportunityNumber(pdDoc
+						.getDevelopmentProposal()
+						.getProgramAnnouncementNumber());
+			}
+		}
 	}
 
 	/**
