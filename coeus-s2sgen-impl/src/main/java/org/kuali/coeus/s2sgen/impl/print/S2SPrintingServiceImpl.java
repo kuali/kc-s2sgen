@@ -132,6 +132,9 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         String applicationUrl = s2SConfigurationService.getValueAsString(ConfigurationConstants.APPLICATION_URL_KEY);
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         foUserAgent.setBaseURL(applicationUrl);
+
+
+
         for (Map.Entry<String, byte[]> xmlData : streamMap.entrySet()) {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ByteArrayInputStream inputStream = new ByteArrayInputStream(xmlData.getValue());
