@@ -166,14 +166,19 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
             Integer citizenShip;
             Boolean allowOverride = s2SConfigurationService.getValueAsBoolean(
                     ConfigurationConstants.ALLOW_PROPOSAL_PERSON_TO_OVERRIDE_KC_PERSON_EXTENDED_ATTRIBUTES);
+            citizenShip = null;
             if (allowOverride) {
-                citizenShip = proposalPerson.getCitizenshipType().getCode();
+                if (proposalPerson.getCitizenshipType() != null) {
+                    citizenShip = proposalPerson.getCitizenshipType().getCode();
+                }
             }
             else {
                 citizenShip = proposalPerson.getPerson().getCitizenshipTypeCode();
             }
-            CitizenshipType retVal = null;
-            String citizenShipCode = String.valueOf(citizenShip);
+            String citizenShipCode = "";
+            if (citizenShip != null) {
+                citizenShipCode = String.valueOf(citizenShip);
+            }
             if (citizenShipCode.equals(s2SConfigurationService.getValueAsString(
                     ConfigurationConstants.NON_US_CITIZEN_WITH_TEMPORARY_VISA_TYPE_CODE))) {
                 return CitizenshipType.NON_US_CITIZEN_WITH_TEMPORARY_VISA;
@@ -191,7 +196,7 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
                 return CitizenshipType.PERMANENT_RESIDENT_OF_US_PENDING;
             }
             else {
-                throw new IllegalArgumentException("Invalid citizenship type provided");
+               return CitizenshipType.NOT_AVAILABLE;
             }
 
         }
