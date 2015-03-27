@@ -65,20 +65,9 @@
         <xmlsec.version>1.5.6</xmlsec.version>
         <xmlbeans.version>2.6.0</xmlbeans.version>
 
-        <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
-        <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
-        <maven-scm-provider-gitexe.version>1.9.4</maven-scm-provider-gitexe.version>
-        <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <maven-source-plugin.version>2.4</maven-source-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-        <wagon.s3.version>1.2.1</wagon.s3.version>
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <xmlbeans-maven-plugin.version>2.3.3</xmlbeans-maven-plugin.version>
-        <error_prone_core.version>2.0.2</error_prone_core.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <error_prone_core.version>2.0.1</error_prone_core.version>
         <plexus-compiler-javac.version>2.5</plexus-compiler-javac.version>
         <plexus-compiler-javac-errorprone.version>2.5</plexus-compiler-javac-errorprone.version>
         <kuali.javadoc.maxmemory>3g</kuali.javadoc.maxmemory>
@@ -448,6 +437,63 @@
                 <dm.repository.url>s3://rsmart-dev/artifacts/maven/release</dm.repository.url>
             </properties>
 
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.rsmart</groupId>
+                        <artifactId>tokenauth</artifactId>
+                        <version>${rsmart.cx.token.auth.version}</version>
+                        <scope>runtime</scope>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>log4j</groupId>
+                                <artifactId>log4j</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>co.kuali</groupId>
+                        <artifactId>kc-sql</artifactId>
+                        <version>${kc-sql.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>com.rsmart.kuali</groupId>
+                        <artifactId>kc_hr_rest</artifactId>
+                        <version>${rsmart.hr.rest.version}</version>
+                        <scope>runtime</scope>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>log4j</groupId>
+                                <artifactId>log4j</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.codehaus.jackson</groupId>
+                                <artifactId>jackson-core-asl</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>asm</groupId>
+                                <artifactId>asm</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>co.kuali.schemaspy</groupId>
+                        <artifactId>schemaspy</artifactId>
+                        <version>${schemaspy.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+
+                </dependencies>
+            </dependencyManagement>
+
             <repositories>
                 <repository>
                     <id>rsmart-dev</id>
@@ -554,8 +600,7 @@
         <connection>${scm.connection}</connection>
         <developerConnection>${scm.developerConnection}</developerConnection>
         <url>${scm.url}</url>
-      <tag>coeus-s2sgen-6.0.2</tag>
-  </scm>
+    </scm>
 
     <distributionManagement>
         <snapshotRepository>
