@@ -65,6 +65,7 @@
         <xmlsec.version>1.5.6</xmlsec.version>
         <xmlbeans.version>2.6.0</xmlbeans.version>
 
+        <maven-javadoc-plugin.version>2.10.2</maven-javadoc-plugin.version>
         <maven-scm-provider-gitexe.version>1.9.2</maven-scm-provider-gitexe.version>
         <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
         <wagon.s3.version>1.2.1</wagon.s3.version>
@@ -124,6 +125,14 @@
                         <fork>true</fork>
                         <meminitial>512m</meminitial>
                         <maxmem>1024m</maxmem>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                    <configuration>
+                        <maxmemory>${kuali.javadoc.maxmemory}</maxmemory>
                     </configuration>
                 </plugin>
                 <plugin>
