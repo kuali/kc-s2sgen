@@ -138,6 +138,7 @@
                     <version>${maven-javadoc-plugin.version}</version>
                     <configuration>
                         <maxmemory>${kuali.javadoc.maxmemory}</maxmemory>
+                        <excludePackageNames>gov.grants.apply.*:schemaorg_apache_xmlbeans.*</excludePackageNames>
                     </configuration>
                 </plugin>
                 <plugin>
