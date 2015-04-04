@@ -65,6 +65,8 @@
         <xmlsec.version>1.5.6</xmlsec.version>
         <xmlbeans.version>2.6.0</xmlbeans.version>
 
+        <maven-scm-provider-gitexe.version>1.9.2</maven-scm-provider-gitexe.version>
+        <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
         <wagon.s3.version>1.2.1</wagon.s3.version>
         <xmlbeans-maven-plugin.version>2.3.3</xmlbeans-maven-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
@@ -124,7 +126,18 @@
                         <maxmem>1024m</maxmem>
                     </configuration>
                 </plugin>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.scm</groupId>
+                            <artifactId>maven-scm-provider-gitexe</artifactId>
+                            <version>${maven-scm-provider-gitexe.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>xmlbeans-maven-plugin</artifactId>
