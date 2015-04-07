@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kuali.coeus</groupId>
     <artifactId>coeus-s2sgen</artifactId>
-    <version>6.0.3</version>
+    <version>6.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>
         This coeus s2s generator project contains s2s generators for grants.gov and research.gov form submission
@@ -517,7 +517,7 @@
         <connection>${scm.connection}</connection>
         <developerConnection>${scm.developerConnection}</developerConnection>
         <url>${scm.url}</url>
-      <tag>coeus-s2sgen-6.0.3</tag>
+      <tag>coeus-s2sgen-6.0.2</tag>
   </scm>
 
     <distributionManagement>
