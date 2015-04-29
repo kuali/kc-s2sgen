@@ -22,11 +22,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.kuali.coeus.propdev.api.s2s.UserAttachedFormService;
 import org.kuali.coeus.s2sgen.api.generate.FormMappingInfo;
 import org.kuali.coeus.s2sgen.api.generate.FormMappingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -35,6 +39,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FormMappingServiceImpl implements FormMappingService {
 
     private static final String BASE_PACKAGE_PATH = "org/kuali/coeus/s2sgen/impl/generate";
+    private static final Logger LOG = LoggerFactory.getLogger(FormMappingServiceImpl.class);
+
 
     private Map<String, FormMappingInfo> bindings = new ConcurrentHashMap<>();
     private Map<Integer, Set<String>> sortedNameSpaces = new ConcurrentHashMap<>();
@@ -102,11 +108,21 @@ public class FormMappingServiceImpl implements FormMappingService {
     protected String createStylesheetName(String namespace) {
         String[] tokens = namespace.split("/");
         String formname = tokens[tokens.length-1];
-        try {
-            return new ClassPathResource(BASE_PACKAGE_PATH + "/support/stylesheet/"+formname+".xsl").getURL().toString();
-        } catch (Exception e) {
-            throw new RuntimeException("No resource found at " + BASE_PACKAGE_PATH + "/support/stylesheet/"+formname+".xsl",e);
+
+        String pathUrl = BASE_PACKAGE_PATH + "/support/stylesheet/" + formname + ".xsl";
+        Resource resource = new ClassPathResource(pathUrl);
+        String path;
+        if (resource.exists()) {
+            try {
+                path = resource.getURL().toString();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            LOG.warn("No resource found at " + pathUrl);
+            path = "";
         }
+       return path;
     }
 
     @Override
