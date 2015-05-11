@@ -151,7 +151,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
                 }
             }
             sf424V2.setApplicationType(applicationTypeEnum);
-            String revisionType = s2sOpportunity.getS2sRevisionType().getCode();
+            String revisionType = s2sOpportunity.getS2sRevisionType() != null ? s2sOpportunity.getS2sRevisionType().getCode() : null;
             if (revisionType != null) {
                 RevisionType.Enum revType = null;
                 if (revisionType.equals(INCREASE_AWARD_CODE)) {
