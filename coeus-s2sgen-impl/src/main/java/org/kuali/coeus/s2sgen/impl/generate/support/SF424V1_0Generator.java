@@ -35,6 +35,7 @@ import gov.grants.apply.system.globalV10.YesNoType;
 import gov.grants.apply.system.universalCodesV10.CountryCodeType;
 import gov.grants.apply.system.universalCodesV10.CurrencyCodeType;
 import org.apache.commons.lang3.StringUtils;
+import org.kuali.coeus.propdev.api.s2s.S2sRevisionTypeContract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -149,9 +150,8 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 		if (pdDoc.getDevelopmentProposal().getS2sOpportunity() != null
 				&& pdDoc.getDevelopmentProposal().getS2sOpportunity()
 						.getS2sSubmissionType() != null) {
-
-			String revisionCode = pdDoc.getDevelopmentProposal()
-					.getS2sOpportunity().getS2sRevisionType().getCode();
+			S2sRevisionTypeContract revisionTypeContract = pdDoc.getDevelopmentProposal().getS2sOpportunity().getS2sRevisionType();
+			String revisionCode = revisionTypeContract != null ? revisionTypeContract.getCode() : null;
 			if (revisionCode != null) {
 				Revision revision = Revision.Factory.newInstance();
 				String revision1 = null;
