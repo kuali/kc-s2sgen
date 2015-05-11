@@ -1,5 +1,9 @@
 
 
+##coeus-s2sgen-1505.1
+* No Changes
+
+
 ##coeus-s2sgen-1504.7
 *  Fixing STE related to user attached forms.
   * If a user needs to attach particular files to be able to connect to an S2S opportunity, the system is not seeing the forms correctly and throws STE
