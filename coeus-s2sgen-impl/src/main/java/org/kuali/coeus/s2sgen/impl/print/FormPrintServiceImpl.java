@@ -115,9 +115,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 	 * @param pdDoc (ProposalDevelopmentDocumentContract)
 	 * @return {@link KcFile} which contains all information
 	 *         related to the generated PDF
-	 * @throws
-	 * @throws S2SException
-	 * 
 	 */
     @Override
 	public FormPrintResult printForm(Object pdDoc) throws S2SException {
@@ -234,7 +231,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 	 * @param pdDoc
 	 *            Proposal Development Document.
 	 * @return ByteArrayOutputStream[] of the submitted application data.
-	 * @throws S2SException
 	 */
 	protected PrintableResult getSubmittedPDFStream(
 			ProposalDevelopmentDocumentContract pdDoc) throws S2SException {
@@ -351,7 +347,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 	 * @param pdDoc
 	 *            ProposalDevelopmentDocumentContract
 	 * @return ByteArrayOutputStream[] PDF byte Array
-	 * @throws S2SException
 	 */
 	protected PrintableResult getPDFStream(ProposalDevelopmentDocumentContract pdDoc)
 			throws S2SException {
@@ -538,9 +533,8 @@ public class FormPrintServiceImpl implements FormPrintService {
 	 * This method sorts all the forms in order as specified in
 	 * S2sFormBinding.xml and returns the list of namespaces in sorted order.
 	 * 
-	 * @param s2sOppForms
-	 *            list of S2sOppForms.
-	 * @return List<String> list of sorted name spaces.
+	 * @param s2sOppForms list of S2sOppForms.
+	 * @return List&lt;String&gt; list of sorted name spaces.
 	 */
 	protected List<String> getSortedNameSpaces(String proposalNumber,List<? extends S2sOppFormsContract> s2sOppForms) {
 		List<String> orderedNamespaces = new ArrayList<String>();
@@ -575,23 +569,11 @@ public class FormPrintServiceImpl implements FormPrintService {
         return userAttachedFormService.findFormNamespaces(proposalNumber);
     }
 
-    /**
-	 * 
-	 * Setter for {@link org.kuali.coeus.s2sgen.impl.generate.S2SFormGeneratorRetrievalService}
-	 * 
-	 * @param s2SFormGeneratorService
-	 */
 	public void setS2SFormGeneratorService(
 			S2SFormGeneratorRetrievalService s2SFormGeneratorService) {
 		this.s2SFormGeneratorService = s2SFormGeneratorService;
 	}
 
-	/**
-	 * 
-	 * Setter for {@link org.kuali.coeus.s2sgen.impl.generate.S2SFormGeneratorRetrievalService}
-	 * 
-	 * @param s2SValidatorService
-	 */
 	public void setS2SValidatorService(S2SValidatorService s2SValidatorService) {
 		this.s2SValidatorService = s2SValidatorService;
 	}

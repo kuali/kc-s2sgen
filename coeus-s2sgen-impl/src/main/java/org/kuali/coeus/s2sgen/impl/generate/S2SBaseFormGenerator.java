@@ -126,7 +126,7 @@ public abstract class S2SBaseFormGenerator implements S2SFormGenerator, Initiali
      * Gets the list of attachments associated with a form. As the form generator fills the form data, the attachment information is
      * stored into the instance variable
      * 
-     * @return List<AttachementData> List of attachments associated with the the form. Returns an empty list if no attachment is
+     * @return List&lt;AttachementData&gt; List of attachments associated with the the form. Returns an empty list if no attachment is
      *         available.
      */
 

@@ -161,7 +161,7 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
      * This method creates and returns Map of submission details like submission type, description and Revision code
      *
      * @param pdDoc Proposal Development Document.
-     * @return Map<String, String> Map of submission details.
+     * @return Map&lt;String, String&gt; Map of submission details.
      */
     public Map<String, String> getSubmissionType(ProposalDevelopmentDocumentContract pdDoc) {
         Map<String, String> submissionInfo = new HashMap<String, String>();

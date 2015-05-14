@@ -1134,7 +1134,7 @@ public class S2SBudgetCalculatorServiceImpl implements
      * This method computes Other Dirtect Costs for the given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract} and Sponsor
      * 
      * @param budgetPeriod given BudgetPeriod.
-     * @return List<OtherDirectCostInfo> list of OtherDirectCostInfo corresponding to the BudgetPeriod object.
+     * @return List<&lt;OtherDirectCostInfo&gt; list of OtherDirectCostInfo corresponding to the BudgetPeriod object.
      */
     protected List<OtherDirectCostInfoDto> getOtherDirectCosts(BudgetPeriodContract budgetPeriod, BudgetContract budget) {
         OtherDirectCostInfoDto otherDirectCostInfo = new OtherDirectCostInfoDto();
@@ -1530,7 +1530,7 @@ public class S2SBudgetCalculatorServiceImpl implements
      * This method computes the Equipment Costs for a given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract}
      * 
      * @param budgetPeriod given BudgetPeriod.
-     * @return List<EquipmentInfo> list of equipment cost corresponding to the BudgetPeriod object.
+     * @return List&lt;EquipmentInfo&gt; list of equipment cost corresponding to the BudgetPeriod object.
      */
     protected List<EquipmentDto> getEquipment(BudgetPeriodContract budgetPeriod, BudgetContract budget) {
         List<CostDto> cvExtraEquipment = new ArrayList<CostDto>();
@@ -1628,7 +1628,7 @@ public class S2SBudgetCalculatorServiceImpl implements
      * @param budgetPeriod given BudgetPeriod.
      * @param pdDoc Proposal Development Document.
      * @param numKeyPersons number of key persons.
-     * @return List<List<KeyPersonInfo>> list of KeyPersonInfo list.
+     * @return List&lt;List&lt;KeyPersonInfo&gt;&gt; list of KeyPersonInfo list.
      */
     protected List<List<KeyPersonDto>> getKeyPersons(BudgetPeriodContract budgetPeriod, ProposalDevelopmentDocumentContract pdDoc,
             int numKeyPersons, BudgetContract budget) {
