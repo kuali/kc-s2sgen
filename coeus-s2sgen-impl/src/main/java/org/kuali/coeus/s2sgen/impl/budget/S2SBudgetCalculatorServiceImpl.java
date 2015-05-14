@@ -1134,7 +1134,7 @@ public class S2SBudgetCalculatorServiceImpl implements
      * This method computes Other Dirtect Costs for the given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract} and Sponsor
      * 
      * @param budgetPeriod given BudgetPeriod.
-     * @return List<&lt;OtherDirectCostInfo&gt; list of OtherDirectCostInfo corresponding to the BudgetPeriod object.
+     * @return List&lt;OtherDirectCostInfo&gt; list of OtherDirectCostInfo corresponding to the BudgetPeriod object.
      */
     protected List<OtherDirectCostInfoDto> getOtherDirectCosts(BudgetPeriodContract budgetPeriod, BudgetContract budget) {
         OtherDirectCostInfoDto otherDirectCostInfo = new OtherDirectCostInfoDto();
