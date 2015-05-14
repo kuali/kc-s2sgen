@@ -1,5 +1,9 @@
 
 
+##coeus-s2sgen-1505.4
+* Fixing javadoc for strict java 8 javadoc tool
+  * Travis Schneberger on Thu, 14 May 2015 08:36:40 -0400 [View Commit](../../commit/93ee4fe982199d7f1ded03ab37a96e628551fbd3)
+
 ##coeus-s2sgen-1505.3
 * Move to Java 8
   * Travis Schneberger on Thu, 23 Apr 2015 16:13:24 -0400 [View Commit](../../commit/d9146ad961aaa91782660e83a1270c2970bd8bdd)
