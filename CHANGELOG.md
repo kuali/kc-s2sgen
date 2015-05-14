@@ -1,5 +1,9 @@
 
 
+##coeus-s2sgen-1505.3
+* Move to Java 8
+  * Travis Schneberger on Thu, 23 Apr 2015 16:13:24 -0400 [View Commit](../../commit/d9146ad961aaa91782660e83a1270c2970bd8bdd)
+
 ##coeus-s2sgen-1505.2
 * Fixed STE on S2S form SF424
 
