@@ -56,7 +56,6 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
      * @param formObject XML document as {@link}XMLObject
      * @param errors List list of XPaths of the error nodes.
      * @return validation result true if valid false otherwise.
-     * @see S2SValidatorService#validate(org.apache.xmlbeans.XmlObject, java.util.List)
      */
     public boolean validate(XmlObject formObject, List<AuditError> errors,String formName) {
 
