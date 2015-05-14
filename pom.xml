@@ -53,7 +53,7 @@
     <properties>
         <avalon-framework.version>4.3.1</avalon-framework.version>
         <bouncycastle.version>1.51</bouncycastle.version>
-        <coeus-api-all.version>1504.3</coeus-api-all.version>
+        <coeus-api-all.version>1505.2</coeus-api-all.version>
         <commons-collections4.version>4.0</commons-collections4.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <fop.version>1.1</fop.version>
@@ -89,7 +89,7 @@
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-        <project.java.version>1.7</project.java.version>
+        <project.java.version>1.8</project.java.version>
         <!-- These are used by multiple plugins (compiler, javadoc, xref, etc) -->
         <project.compile.source>${project.java.version}</project.compile.source>
         <project.compile.target>${project.java.version}</project.compile.target>
