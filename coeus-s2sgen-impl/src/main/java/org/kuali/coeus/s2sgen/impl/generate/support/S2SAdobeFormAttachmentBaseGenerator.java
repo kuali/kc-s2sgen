@@ -266,7 +266,7 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
      * This method is used to get BudgetSubAwrads from ProposalDevelopmentDocumentContract
      * 
      * @param proposalDevelopmentDocument (ProposalDevelopmentDocumentContract)
-     * @return List<BudgetSubAwards> list of budget sub awards.
+     * @return List&lt;BudgetSubAwards&gt; list of budget sub awards.
      */
     protected List<BudgetSubAwardsContract> getBudgetSubAwards(ProposalDevelopmentDocumentContract proposalDevelopmentDocument,
             String namespace,boolean checkNull) {

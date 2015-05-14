@@ -72,7 +72,7 @@ public class GrantApplicationHash {
 	 *            The Grants.gov application XML.
 	 * @return The SHA-1 hash value of &lt;grant:forms&gt; tag inside the
 	 *         application XML.
-	 * @throws Exception
+	 * @throws S2SException
 	 *             When the XML cannot be parsed.
 	 */
 	public final static String computeGrantFormsHash(String xml) throws S2SException {
@@ -91,7 +91,6 @@ public class GrantApplicationHash {
 	 * 
 	 * @param attachment
 	 * @return The SHA-1 hash value of the attachment byte array.
-	 * @throws Exception
 	 */
 	public final static String computeAttachmentHash(byte[] attachment) {
 

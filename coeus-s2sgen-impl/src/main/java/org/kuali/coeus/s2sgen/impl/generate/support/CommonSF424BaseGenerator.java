@@ -74,7 +74,7 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
      * This method returns a map containing the answers related to EOState REview for a given proposal
      *
      * @param pdDoc Proposal Development Document.
-     * @return Map<String, String> map containing the answers related to EOState Review for a given proposal.
+     * @return Map&lt;String, String&gt; map containing the answers related to EOState Review for a given proposal.
      */
     public Map<String, String> getEOStateReview(ProposalDevelopmentDocumentContract pdDoc) {
         Map<String, String> stateReview = new HashMap<String, String>();

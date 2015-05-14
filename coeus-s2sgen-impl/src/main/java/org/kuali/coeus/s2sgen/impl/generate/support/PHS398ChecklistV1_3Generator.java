@@ -303,7 +303,7 @@ public class PHS398ChecklistV1_3Generator extends PHS398ChecklistBaseGenerator {
 
 	/**
 	 * This method creates {@link XmlObject} of type
-	 * {@link PHS398Checklist13Document by populating data from the given
+	 * {@link PHS398Checklist13Document} by populating data from the given
 	 * {@link ProposalDevelopmentDocumentContract}
 	 * 
 	 * @param proposalDevelopmentDocument
