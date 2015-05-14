@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  *
  * This interface marks reports, notifications, BOs and Documents as printable
- * in Kuali-Coeus. KC Docs & BOs that will be printed via KC printing services
+ * in Kuali Coeus. KC Docs and BOs that will be printed via KC printing services
  * should implement this interface.
  */
 public interface S2SPrintable {
