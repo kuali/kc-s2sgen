@@ -1,5 +1,19 @@
 
 
+##coeus-s2sgen-1505.2
+* Fixed STE on S2S form SF424
+
+  * Continued testing of s2s forms
+  * Located SF424 2.1 in opportunity: 03162012-TEST
+  * Listed as 'available'
+  * Uses proposal mapped data, must have authorized approver info and requires s2s questionnaire EO question only.
+  * See proposal #448 in Res-Demo 1
+  * (note: I can successfully print this form in MIT Coeus Consortium instance.)
+  * Tried to print in Kualico and MIT QA: got this STE:
+
+  * java.lang.NullPointerException at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getSF42421(SF424V2_1Generator.java:157) at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getSF42421Doc(SF424V2_1Generator.java:115) at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getFormObject(SF424V2_1Generator.java:576) at org.kuali.coeus.s2sgen.impl.print.FormPrintServiceImpl.getPDFStream(FormPrintServiceImpl.java:374) at
+  * Joe Williams on Mon, 11 May 2015 14:27:40 -0500 [View Commit](../../commit/a0af6190219dc324acd1f0ff75d95fbae6292dca)
+
 ##coeus-s2sgen-1505.1
 * No Changes
 
