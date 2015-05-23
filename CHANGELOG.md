@@ -1,5 +1,110 @@
 
 
+##CURRENT
+* No Changes
+
+
+##coeus-s2sgen-1505.6
+*  fix material budget type mapping
+  * Joe Williams on Thu, 12 Mar 2015 14:38:36 -0500 [View Commit](../../commit/a6bcab7b431336b34a0bca34685e555c52df07f7)
+*  fix training budget generator STE
+  * Joe Williams on Fri, 13 Mar 2015 16:01:14 -0500 [View Commit](../../commit/8e73357f874f7a7e0e7b6379298d68a29e6e69f4)
+* next iteration
+  * Travis Schneberger on Mon, 16 Mar 2015 14:30:59 -0400 [View Commit](../../commit/56cc9651350bde2d8df383dc7a7568b3267345b1)
+* creates s2s error instead of throw exception for missing citizenship
+  * Joe Williams on Mon, 23 Mar 2015 12:46:32 -0500 [View Commit](../../commit/bbc0eceae80cfb5d078c749f219755274b6a8713)
+* move to kualico build
+  * Travis Schneberger on Fri, 27 Mar 2015 08:43:32 -0400 [View Commit](../../commit/c00bddff261350d16ee9b4dd4098aa4cc3627be1)
+* fixing error prone profile
+  * Travis Schneberger on Fri, 27 Mar 2015 08:51:32 -0400 [View Commit](../../commit/77b354e0e369e2cf95079830fb3d948be964f516)
+* add s3 wagon
+  * Travis Schneberger on Fri, 27 Mar 2015 09:04:02 -0400 [View Commit](../../commit/fe7e8c83a012f03b8fe0028cb118687c7af8310a)
+* remove dm section
+  * Travis Schneberger on Fri, 27 Mar 2015 09:06:49 -0400 [View Commit](../../commit/d6c0a9c3bde43c9505256ce124a97de6c4e9c5e3)
+* release plugin
+  * Travis Schneberger on Fri, 3 Apr 2015 21:13:09 -0400 [View Commit](../../commit/3ec77ff11840b015544a8e2f17467910b64df7a2)
+* release plugin
+  * Travis Schneberger on Fri, 3 Apr 2015 22:57:54 -0400 [View Commit](../../commit/939a5caa4fa4e97b39c5f2d6b95a57d2c86a617c)
+* Update pom.xml
+  * Travis Schneeberger on Fri, 3 Apr 2015 22:59:17 -0400 [View Commit](../../commit/36c2f7d343074cc0a63a680922a423aa802863c8)
+* Update pom.xml
+  * Travis Schneeberger on Fri, 3 Apr 2015 22:59:34 -0400 [View Commit](../../commit/d6da43ccfebc0e48f2c3522eae5575a612f9f7cc)
+* Update pom.xml
+  * Travis Schneeberger on Fri, 3 Apr 2015 22:59:56 -0400 [View Commit](../../commit/f751aa59a521f7906131162c3885e0f77185d6c1)
+* release plugin
+  * Travis Schneberger on Sat, 4 Apr 2015 00:14:48 -0400 [View Commit](../../commit/c812b6586500c274d5d8004bd870291da616f4d1)
+* Update pom.xml
+  * Travis Schneeberger on Sat, 4 Apr 2015 00:15:56 -0400 [View Commit](../../commit/e42678d59bd9a711533ef73af9258ba3f4aa51dc)
+* Update pom.xml
+  * Travis Schneeberger on Sat, 4 Apr 2015 00:16:15 -0400 [View Commit](../../commit/870cb8735797e5c4f7995f0da2a7b23420e181c6)
+* Update pom.xml
+  * Travis Schneeberger on Sat, 4 Apr 2015 00:16:33 -0400 [View Commit](../../commit/943936ac5af4b7deaaf0255c73bfcaf997abbb6b)
+* Update pom.xml
+  * Travis Schneeberger on Sat, 4 Apr 2015 00:32:16 -0400 [View Commit](../../commit/40bd017de329d2918b4fc95f00ba873ebedcaa80)
+* Update pom.xml
+  * Travis Schneeberger on Sat, 4 Apr 2015 00:32:41 -0400 [View Commit](../../commit/fff6153487580d663c4697e7714e001e09137b7b)
+* Update pom.xml
+  * Travis Schneeberger on Sat, 4 Apr 2015 00:32:55 -0400 [View Commit](../../commit/81c335c147c094f1f6f8d040e0aba85dea594da6)
+*  new nsf cover page 1-6
+  * Gayathri on Wed, 25 Mar 2015 09:52:41 -0700 [View Commit](../../commit/4b2e14076d2e2298c92d607c8164d2fb30744411)
+* review comments
+  * Gayathri on Wed, 25 Mar 2015 15:54:24 -0700 [View Commit](../../commit/869aef0e46070e19314710588e119ec5d80fb0b2)
+* update pom dependencies
+  * Travis Schneberger on Thu, 16 Apr 2015 15:36:24 -0400 [View Commit](../../commit/991700ddcd735bacc56adfcc5f653a0b840718ca)
+* next iteration
+  * Travis Schneberger on Mon, 16 Mar 2015 14:30:59 -0400 [View Commit](../../commit/a86e6cb460629dd588427b079ecadf0dbf69d94f)
+*  new nsf cover page 1-6
+  * Gayathri on Wed, 25 Mar 2015 09:52:41 -0700 [View Commit](../../commit/877fca3fc11fee1b89d5cea443d1fc4afb04955c)
+* review comments
+  * Gayathri on Wed, 25 Mar 2015 15:54:24 -0700 [View Commit](../../commit/1391d63186844fdcaded6455caf73ee559c5a9e0)
+* move to kualico build
+  * Travis Schneberger on Fri, 27 Mar 2015 08:43:32 -0400 [View Commit](../../commit/b80b64f8142a63ab1409b9855f04396d63c321e3)
+* add s3 wagon
+  * Travis Schneberger on Fri, 27 Mar 2015 09:04:02 -0400 [View Commit](../../commit/ec941bac64a32f9390aa6ebc83e5c98abba838fc)
+* remove dm section
+  * Travis Schneberger on Fri, 27 Mar 2015 09:06:49 -0400 [View Commit](../../commit/fb89bb92fd946b32261442047b323d10425e4f6c)
+* release plugin
+  * Travis Schneberger on Fri, 3 Apr 2015 21:13:09 -0400 [View Commit](../../commit/fe2ae08eb1003b79975f3ef1dd24322f52550c9d)
+* release plugin
+  * Travis Schneberger on Fri, 3 Apr 2015 22:57:54 -0400 [View Commit](../../commit/3cde5bab218cca9a3aa26c2ef2c7e12058fd79de)
+* Update pom.xml  * Travis Schneeberger on Fri, 3 Apr 2015 22:59:17 -0400 [View Commit](../../commit/69531f56c884c1bed7526d57edfe8f5b5887cb85)
+* Update pom.xml  * Travis Schneeberger on Fri, 3 Apr 2015 22:59:34 -0400 [View Commit](../../commit/395e7eb1b471fa45b5de2db0cc7faac61517f0f5)
+* Update pom.xml  * Travis Schneeberger on Fri, 3 Apr 2015 22:59:56 -0400 [View Commit](../../commit/fa2363af5de242ae4a192d984828bc99a50d34a6)
+* release plugin
+  * Travis Schneberger on Sat, 4 Apr 2015 00:14:48 -0400 [View Commit](../../commit/925c967cdb75480e4bb13543420506b2b23b65b0)
+* Update pom.xml  * Travis Schneeberger on Sat, 4 Apr 2015 00:15:56 -0400 [View Commit](../../commit/79996a5de42e240c8b7d5e77ccb2b45932488c80)
+* Update pom.xml  * Travis Schneeberger on Sat, 4 Apr 2015 00:16:15 -0400 [View Commit](../../commit/62f6091f686869332909e6e4ce633ad180077cfe)
+* Update pom.xml  * Travis Schneeberger on Sat, 4 Apr 2015 00:16:33 -0400 [View Commit](../../commit/cea5ffe33f197a48f26d0d1328dab0d8d42ce326)
+* Update pom.xml  * Travis Schneeberger on Sat, 4 Apr 2015 00:32:16 -0400 [View Commit](../../commit/6b08216facab2492d83b668c52c0d2cf0d5974e8)
+* Update pom.xml  * Travis Schneeberger on Sat, 4 Apr 2015 00:32:41 -0400 [View Commit](../../commit/215ce47f0213cfd5c6db2c53a8a76b68e1587391)
+* Update pom.xml  * Travis Schneeberger on Sat, 4 Apr 2015 00:32:55 -0400 [View Commit](../../commit/50b94a46dc2ba199184101155e6d1b5b94880302)
+* update pom dependencies
+  * Travis Schneberger on Thu, 16 Apr 2015 15:36:24 -0400 [View Commit](../../commit/e48fe1ace82cdf1198db875e4fea93b5871522b9)
+*  Fixing STE related to user attached forms.
+  * If a user needs to attach particular files to be able to connect to an S2S opportunity, the system is not seeing the forms correctly and throws STE
+  * For opportunity ID USDA-NIFA-SRGP-001930, user needs to add three forms to allow connection to S2S.
+  * Prior to adding if user tries to connect to S2S, a good error message appears to show user which files are needed.
+  * However, if those files are added, user gets STE when selecting the opportunity. See attached steps from MIT for this opportunity. Files used in testing are attached here also.
+  * STE:
+  * java.lang.RuntimeException: No resource found at org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/NIFA_Supplemental_Info_1_2-V1.2.xsl at org.kuali.coeus.s2sgen.impl.generate.FormMappingServiceImpl.createStylesheetName(FormMappingServiceImpl.java:108) at org.kuali.coeus.s2sgen.impl.generate.FormMappingServiceImpl.getUserAttachedForm(FormMappingServiceImpl.java:93) at org.kuali.coeus.s2sgen.impl.generate.FormMappingServiceImpl.getFormInfo(FormMappingServiceImpl.java:78) at org.kuali.coeus.propdev.impl.s2s.connect.OpportunitySchemaParserServiceImpl.getForms(OpportunitySchemaParserServiceImpl.java:130) at org.kuali.coeus.propdev.impl.s2s.S2sSubmissionServiceImpl.parseOpportunityForms(S2sSubmissionServiceImpl.java:485) at org.kuali.coeus.propdev.impl.s2s.ProposalDevelopmentS2SController.refresh(ProposalDevelopmentS2SController.java:128) at org.kuali.coeus.propdev.impl.s2s.ProposalDevelopmentS2SController$$FastClassBySpringCGLIB$$5f5dd18.invoke(<generated>) at
+  * Gayathri on Wed, 29 Apr 2015 15:20:14 -0700 [View Commit](../../commit/742efb7773c50ffffe71752b7eeeb96b4489830e)
+* Fixed STE on S2S form SF424
+
+  * Continued testing of s2s forms
+  * Located SF424 2.1 in opportunity: 03162012-TEST
+  * Listed as 'available'
+  * Uses proposal mapped data, must have authorized approver info and requires s2s questionnaire EO question only.
+  * See proposal #448 in Res-Demo 1
+  * (note: I can successfully print this form in MIT Coeus Consortium instance.)
+  * Tried to print in Kualico and MIT QA: got this STE:
+
+  * java.lang.NullPointerException at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getSF42421(SF424V2_1Generator.java:157) at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getSF42421Doc(SF424V2_1Generator.java:115) at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getFormObject(SF424V2_1Generator.java:576) at org.kuali.coeus.s2sgen.impl.print.FormPrintServiceImpl.getPDFStream(FormPrintServiceImpl.java:374) at
+  * Joe Williams on Mon, 11 May 2015 14:27:40 -0500 [View Commit](../../commit/688abc6ec2aff6c628d16b7b7cacac269d362be4)
+* Move to Java 8
+  * Travis Schneberger on Thu, 23 Apr 2015 16:13:24 -0400 [View Commit](../../commit/3fa101a52d43aa6a25c452f59e2f99a0b24dd085)
+* Fixing javadoc for strict java 8 javadoc tool
+  * Travis Schneberger on Thu, 14 May 2015 08:36:40 -0400 [View Commit](../../commit/7273285941470c58d0d68fd2032af53e9a9d7bfa)
+
 ##coeus-s2sgen-1505.5
 * No Changes
 
