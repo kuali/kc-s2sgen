@@ -1,6 +1,32 @@
 
 
 ##CURRENT
+* only pi/contact is required on s2s budget form, other roles are only displayed if they are on the budget
+
+  * Fix required for RR budgets 1-2, 1-3
+  * As a proposal creator, I need to add an external address book person to my proposal as Multi PI. The person is the Subcontract PI, and thus will not be assigned to personnel expense in my proposal budget; instead, they will appear in the uploaded subaward budget. But for purposes of other forms (Sr/Key Person); the external Multi PI must be listed in key personnel.
+  * The current problem is that these external Multi PI's populate on the RR Budget form in the Senior Person section, even though I have not assigned them to the budget period. This undesired row will cause validation errors at NIH eCommons.
+  * The RR Budget form does mandate that the PI is required on the budget form. BUT
+  * Multi-PI's should ONLY appear on the RR budget forms if the user assigns their expense to the budget.
+
+  * To duplicate:
+  * Create a proposal using a federal sponsor (example NIH 000340)
+  * Link an s2s opportunity that utilizes the RR Budget 1-3 form. (Example; PA-C-R01)
+  * Add a Person to be PI.
+  * Add a Rolodex person to be Multi PI
+  * Save
+  * create a budget version
+  * Assign the PI to the budget; generate all periods & Save
+  * Return to proposal
+  * Toolbar > Print > Grants.gov Forms > RR Budget 1-3 -check to include, check select > create PDF.
+
+  * Result:
+  * Both the budget PI and the non-budget Multi-PI generate in the Senior Personnel section of the form.
+
+  * Desired Result: Only the PI should be mandatory published to the budget forms. Multi-PI should only appear if they have been specifically assigned to this proposal budget.
+  * Joe Williams on Tue, 2 Jun 2015 09:47:13 -0500 [View Commit](../../commit/79ce1962d4f86c1956ce11ddb95eed131854815f)
+
+##coeus-s2sgen-1505.7
 * No Changes
 
 
