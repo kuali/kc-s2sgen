@@ -1633,7 +1633,7 @@ public class S2SBudgetCalculatorServiceImpl implements
     protected List<List<KeyPersonDto>> getKeyPersons(BudgetPeriodContract budgetPeriod, ProposalDevelopmentDocumentContract pdDoc,
             int numKeyPersons, BudgetContract budget) {
         List<KeyPersonDto> keyPersons = new ArrayList<KeyPersonDto>();
-        List<KeyPersonDto> seniorPersons = new ArrayList<KeyPersonDto>();
+
         KeyPersonDto keyPerson = new KeyPersonDto();
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
 
@@ -1673,7 +1673,9 @@ public class S2SBudgetCalculatorServiceImpl implements
             }else{
                 keyPerson.setRole(KEYPERSON_CO_PD_PI);
             }
-            keyPersons.add(keyPerson);
+            if (hasPersonnelBudget(budgetPeriod,keyPerson)) {
+                keyPersons.add(keyPerson);
+            }
         }
 
         for (ProposalPersonContract propPerson : s2SProposalPersonService.getKeyPersons(pdDoc)) {
@@ -1760,14 +1762,9 @@ public class S2SBudgetCalculatorServiceImpl implements
                 }
             }
         }
-        for(KeyPersonDto seniorPerson : keyPersons){
-            if(seniorPerson.getRole().equals(NID_PD_PI)||hasPersonnelBudget(budgetPeriod,seniorPerson)){
-                seniorPersons.add(seniorPerson);
-            }            
-        }
 
-        List<KeyPersonDto> nKeyPersons = getNKeyPersons(seniorPersons, true, numKeyPersons);
-        List<KeyPersonDto> extraPersons = getNKeyPersons(seniorPersons, false, numKeyPersons);
+        List<KeyPersonDto> nKeyPersons = getNKeyPersons(keyPersons, true, numKeyPersons);
+        List<KeyPersonDto> extraPersons = getNKeyPersons(keyPersons, false, numKeyPersons);
         CompensationDto compensationInfo;
         for (KeyPersonDto keyPersonInfo : nKeyPersons) {
             keyPerson = keyPersonInfo;
@@ -1818,7 +1815,9 @@ public class S2SBudgetCalculatorServiceImpl implements
             for (BudgetPersonnelDetailsContract budgetPersonnelDetails : lineItem.getBudgetPersonnelDetailsList()) {
                 if( budgetPersonnelDetails.getPersonId().equals(keyPerson.getPersonId())){
                     return true;
-                } 
+                } else if (keyPerson.getRolodexId() != null && budgetPersonnelDetails.getPersonId().equals(keyPerson.getRolodexId().toString())) {
+                    return true;
+                }
             }
         }
         return false;
