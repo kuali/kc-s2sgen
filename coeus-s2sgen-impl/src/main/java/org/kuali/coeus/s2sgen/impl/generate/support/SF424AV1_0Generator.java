@@ -241,7 +241,9 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         
         if (pdDoc.getDevelopmentProposal().getS2sOpportunity() != null && pdDoc.getDevelopmentProposal().getS2sOpportunity().getS2sSubmissionType() != null) {
             summaryLineItem.setActivityTitle(pdDoc.getDevelopmentProposal().getS2sOpportunity().getOpportunityTitle());
-            summaryLineItem.setCFDANumber(pdDoc.getDevelopmentProposal().getS2sOpportunity().getCfdaNumber());
+            if (pdDoc.getDevelopmentProposal().getS2sOpportunity().getCfdaNumber() != null) {
+                summaryLineItem.setCFDANumber(pdDoc.getDevelopmentProposal().getS2sOpportunity().getCfdaNumber());
+            }
         }
         if (budget != null) {
             ScaleTwoDecimal fedNonFedCost = budget.getTotalCost();
