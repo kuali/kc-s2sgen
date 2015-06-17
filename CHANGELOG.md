@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  If CFDA is null, do not add it to the element to the XML.
+  * Gayathri Athreya on Wed, 17 Jun 2015 10:28:44 -0700 [View Commit](../../commit/22eb3c18ca2cf86f1595a9d339cee403d17ea67a)
+
+##coeus-s2sgen-1506.1
 * only pi/contact is required on s2s budget form, other roles are only displayed if they are on the budget
 
   * Fix required for RR budgets 1-2, 1-3
