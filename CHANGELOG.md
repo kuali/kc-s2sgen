@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  Fixing print when apply rate flag is checked.
+  * Gayathri Athreya on Wed, 8 Jul 2015 18:50:42 -0700 [View Commit](../../commit/600558cde27e3e456db1d8e0fb33192d205ae4f5)
+
+##coeus-s2sgen-1506.2
 *  If CFDA is null, do not add it to the element to the XML.
   * Gayathri Athreya on Wed, 17 Jun 2015 10:28:44 -0700 [View Commit](../../commit/22eb3c18ca2cf86f1595a9d339cee403d17ea67a)
 
