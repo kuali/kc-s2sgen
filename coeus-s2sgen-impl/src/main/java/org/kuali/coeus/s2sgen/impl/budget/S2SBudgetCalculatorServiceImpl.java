@@ -1073,10 +1073,11 @@ public class S2SBudgetCalculatorServiceImpl implements
                         keyBuilder.append("-");
                         keyBuilder.append(appliedRate);
                         String key = keyBuilder.toString();
+                        boolean applyRateFlag = getApplyRateFlagForRateBase(rateBase.getBudgetLineItemId(), lineItem.getBudgetLineItemCalculatedAmounts());
                         if (costDetailsMap.get(key) == null) {
                             indirectCostDetails = new IndirectCostDetailsDto();
-                            indirectCostDetails.setBase(rateBase.getBaseCost() == null ? ScaleTwoDecimal.ZERO : rateBase
-                                    .getBaseCost());
+                            indirectCostDetails.setBase(rateBase.getBaseCost() == null ? ScaleTwoDecimal.ZERO : applyRateFlag ? rateBase
+                                    .getBaseCost() : ScaleTwoDecimal.ZERO);
                             indirectCostDetails.setBaseCostSharing(rateBase.getBaseCostSharing() == null ? ScaleTwoDecimal.ZERO
                                     : rateBase.getBaseCostSharing());
                             if (canBudgetLineItemCostSharingInclude(budget, lineItem)) {
@@ -1091,7 +1092,8 @@ public class S2SBudgetCalculatorServiceImpl implements
                         else {
                             indirectCostDetails = costDetailsMap.get(key);
                             baseCost = indirectCostDetails.getBase().add(
-                                    rateBase.getBaseCost() == null ? ScaleTwoDecimal.ZERO : rateBase.getBaseCost());
+                                    rateBase.getBaseCost() == null ? ScaleTwoDecimal.ZERO : applyRateFlag ? rateBase
+                                            .getBaseCost() : ScaleTwoDecimal.ZERO);
                             baseCostSharing = indirectCostDetails.getBaseCostSharing().add(
                                     rateBase.getBaseCostSharing() == null ? ScaleTwoDecimal.ZERO : rateBase.getBaseCostSharing());
                             calculatedCost = indirectCostDetails.getFunds().add(
@@ -1127,6 +1129,15 @@ public class S2SBudgetCalculatorServiceImpl implements
         indirectCostInfo.setTotalIndirectCosts(totalIndirectCosts);
         indirectCostInfo.setTotalIndirectCostSharing(totalIndirectCostSharing);
         return indirectCostInfo;
+    }
+
+    protected boolean getApplyRateFlagForRateBase(Long budgetLineItemId, List<? extends BudgetLineItemCalculatedAmountContract> budgetLineItemCalculatedAmounts) {
+        for (BudgetLineItemCalculatedAmountContract lineItemCalculatedAmount : budgetLineItemCalculatedAmounts) {
+            if (lineItemCalculatedAmount.getBudgetLineItemId() == budgetLineItemId) {
+                return lineItemCalculatedAmount.getApplyRateFlag();
+            }
+        }
+        return true;
     }
 
     /**
