@@ -2005,7 +2005,9 @@ public class S2SBudgetCalculatorServiceImpl implements
                     }
                     BudgetPersonContract budgetPerson = personDetails.getBudgetPerson();
                     if (budgetPerson != null) {
-                        baseAmount = budgetPerson.getCalculationBase();
+                    	ScaleTwoDecimal baseSalaryByPeriod = getBaseSalaryByPeriod(budget.getBudgetId(), budgetPeriod.getBudgetPeriod(), keyPerson);
+                    	if(baseSalaryByPeriod!=null){
+                    		baseAmount = baseSalaryByPeriod;
                         // baseAmount must be set to the first record value in
                         // case
                         // the execution doesnt enter the if condition below
@@ -2014,8 +2016,9 @@ public class S2SBudgetCalculatorServiceImpl implements
                                 ConfigurationConstants.S2SBUDGET_APPOINTMENT_TYPE_SUM_EMPLOYEE))
                                 && !apptTypeCode.equals(s2SConfigurationService.getValueAsString(
                                 ConfigurationConstants.S2SBUDGET_APPOINTMENT_TYPE_TMP_EMPLOYEE))) {
-                            baseAmount = budgetPerson.getCalculationBase();
+                        	baseAmount = baseSalaryByPeriod;
                         }
+                    	}
                     }
                 }
 
