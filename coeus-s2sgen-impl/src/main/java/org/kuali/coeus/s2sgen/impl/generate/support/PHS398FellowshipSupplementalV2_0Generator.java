@@ -939,23 +939,20 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
         String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
         TypeOfApplication.Enum typeOfApplication = null;
         if (proposalTypeCode != null) {
-            if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW))) {
+            if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).contains(proposalTypeCode)) {
                 typeOfApplication = TypeOfApplication.NEW;
             }
-            else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION))) {
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)) {
                 typeOfApplication = TypeOfApplication.CONTINUATION;
             }
-            else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION))) {
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)){ 
                 typeOfApplication = TypeOfApplication.REVISION;
             }
-            else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL))) {
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode)){ 
                 typeOfApplication = TypeOfApplication.RENEWAL;
             }
-            else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION))) {
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).contains(proposalTypeCode)){ 
                 typeOfApplication = TypeOfApplication.RESUBMISSION;
-            }
-            else if (proposalTypeCode.equals(PROPOSAL_TYPE_CODE_NEW7)) {
-                typeOfApplication = TypeOfApplication.NEW;
             }
         }
         return typeOfApplication;

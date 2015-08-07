@@ -23,6 +23,7 @@ import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398Researc
 import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ApplicationType;
 import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ResearchTrainingProgramPlanAttachments;
 import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ResearchTrainingProgramPlanAttachments.*;
+import gov.grants.apply.forms.phsFellowshipSupplemental11V11.PHSFellowshipSupplemental11Document.PHSFellowshipSupplemental11.ApplicationType.TypeOfApplication;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import org.apache.xmlbeans.XmlObject;
@@ -237,27 +238,22 @@ public class PHS398ResTrainProgPlanV1_0Generator extends S2SBaseFormGenerator{
     }
 
     private gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ApplicationType.TypeOfApplication.Enum getTypeOfApplication(String proposalTypeCode) {
-        String proposalTypeCodeRenewal = 
-            getS2SConfigurationService().getValueAsString(ConfigurationConstants.PROPOSALDEVELOPMENT_PROPOSALTYPE_RENEWAL);
-        String proposalTypeCodeRevision =
-            getS2SConfigurationService().getValueAsString(ConfigurationConstants.PROPOSALDEVELOPMENT_PROPOSALTYPE_REVISION);
-        String proposalTypeCodeContinuation =
-            getS2SConfigurationService().getValueAsString(ConfigurationConstants.PROPOSALDEVELOPMENT_PROPOSALTYPE_CONTINUATION);
-        String proposalTypeCodeNew =
-            getS2SConfigurationService().getValueAsString(ConfigurationConstants.PROPOSALDEVELOPMENT_PROPOSALTYPE_NEW);
-        String proposalTypeCodeResubmission =
-            getS2SConfigurationService().getValueAsString(ConfigurationConstants.PROPOSALDEVELOPMENT_PROPOSALTYPE_RESUBMISSION);
         gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ApplicationType.TypeOfApplication.Enum proposalTypeEnum = null;
-        if(proposalTypeCode.equals(proposalTypeCodeRenewal))
+        if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode)){ 
             proposalTypeEnum = ApplicationType.TypeOfApplication.RENEWAL;
-        else if(proposalTypeCode.equals(proposalTypeCodeRevision))
-            proposalTypeEnum = ApplicationType.TypeOfApplication.REVISION;
-        else if(proposalTypeCode.equals(proposalTypeCodeContinuation))
-            proposalTypeEnum = ApplicationType.TypeOfApplication.CONTINUATION;
-        else if(proposalTypeCode.equals(proposalTypeCodeNew))
+        }
+        else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)){ 
+        	proposalTypeEnum = ApplicationType.TypeOfApplication.REVISION;
+        }
+        else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)) {
+        	proposalTypeEnum = ApplicationType.TypeOfApplication.CONTINUATION;
+        }
+        else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).contains(proposalTypeCode)) {
             proposalTypeEnum = ApplicationType.TypeOfApplication.NEW;
-        else if(proposalTypeCode.equals(proposalTypeCodeResubmission))
+        }
+        else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).contains(proposalTypeCode)){ 
             proposalTypeEnum =  ApplicationType.TypeOfApplication.RESUBMISSION;
+        }
         return proposalTypeEnum;
     }
 

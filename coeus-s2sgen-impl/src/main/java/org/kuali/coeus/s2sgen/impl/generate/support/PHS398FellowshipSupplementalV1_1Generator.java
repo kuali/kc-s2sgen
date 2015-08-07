@@ -984,31 +984,27 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	 * DevelopmentProposal
 	 */
 	private TypeOfApplication.Enum getTypeOfApplication() {
-		String proposalTypeCode = pdDoc.getDevelopmentProposal()
-				.getProposalType().getCode();
-		TypeOfApplication.Enum typeOfApplication = null;
-		if (proposalTypeCode != null) {
-			if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW))) {
-				typeOfApplication = TypeOfApplication.NEW;
-			} else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION))) {
-				typeOfApplication = TypeOfApplication.CONTINUATION;
-			} else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION))) {
-				typeOfApplication = TypeOfApplication.REVISION;
-			} else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL))) {
-				typeOfApplication = TypeOfApplication.RENEWAL;
-			} else if (proposalTypeCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION))) {
-				typeOfApplication = TypeOfApplication.RESUBMISSION;
-			} else if (proposalTypeCode.equals(PROPOSAL_TYPE_CODE_NEW7)) {
-				typeOfApplication = TypeOfApplication.NEW;
-			}
-		}
-		return typeOfApplication;
-	}
+        String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
+        TypeOfApplication.Enum typeOfApplication = null;
+        if (proposalTypeCode != null) {
+            if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).contains(proposalTypeCode)) {
+                typeOfApplication = TypeOfApplication.NEW;
+            }
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)) {
+                typeOfApplication = TypeOfApplication.CONTINUATION;
+            }
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)){ 
+                typeOfApplication = TypeOfApplication.REVISION;
+            }
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode)){ 
+                typeOfApplication = TypeOfApplication.RENEWAL;
+            }
+            else if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).contains(proposalTypeCode)){ 
+                typeOfApplication = TypeOfApplication.RESUBMISSION;
+            }
+        }
+        return typeOfApplication;
+    }
 
 	/*
 	 * 
