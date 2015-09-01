@@ -19,12 +19,11 @@
 package org.kuali.coeus.s2sgen.impl.person;
 
 
+import org.kuali.coeus.common.api.person.attr.CitizenshipType;
+import org.kuali.coeus.common.api.person.attr.CitizenshipTypeService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
 import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
-
-import org.kuali.coeus.s2sgen.impl.citizenship.CitizenshipType;
-import org.kuali.coeus.s2sgen.impl.citizenship.CitizenshipTypeService;
 import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -153,52 +152,6 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
      */
     @Override
     public CitizenshipType getCitizenship(ProposalPersonContract proposalPerson) {
-        String citizenSource = "1";
-        String piCitizenShipValue = s2SConfigurationService.getValueAsString(ConfigurationConstants.PI_CUSTOM_DATA);
-        if (piCitizenShipValue != null) {
-            citizenSource = piCitizenShipValue;
-        }
-        if (citizenSource.equals("0")) {
-            CitizenshipType citizenShipType = citizenshipTypeService.getCitizenshipDataFromExternalSource();
-            return citizenShipType;
-        }
-        else {
-            Integer citizenShip;
-            Boolean allowOverride = s2SConfigurationService.getValueAsBoolean(
-                    ConfigurationConstants.ALLOW_PROPOSAL_PERSON_TO_OVERRIDE_KC_PERSON_EXTENDED_ATTRIBUTES);
-            citizenShip = null;
-            if (allowOverride) {
-                if (proposalPerson.getCitizenshipType() != null) {
-                    citizenShip = proposalPerson.getCitizenshipType().getCode();
-                }
-            }
-            else {
-                citizenShip = proposalPerson.getPerson().getCitizenshipTypeCode();
-            }
-            String citizenShipCode = "";
-            if (citizenShip != null) {
-                citizenShipCode = String.valueOf(citizenShip);
-            }
-            if (citizenShipCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.NON_US_CITIZEN_WITH_TEMPORARY_VISA_TYPE_CODE))) {
-                return CitizenshipType.NON_US_CITIZEN_WITH_TEMPORARY_VISA;
-            }
-            else if (citizenShipCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PERMANENT_RESIDENT_OF_US_TYPE_CODE))) {
-                return CitizenshipType.PERMANENT_RESIDENT_OF_US;
-            }
-            else if (citizenShipCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE))) {
-                return CitizenshipType.US_CITIZEN_OR_NONCITIZEN_NATIONAL;
-            }
-            else if (citizenShipCode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PERMANENT_RESIDENT_OF_US_PENDING))) {
-                return CitizenshipType.PERMANENT_RESIDENT_OF_US_PENDING;
-            }
-            else {
-               return CitizenshipType.NOT_AVAILABLE;
-            }
-
-        }
+    	return citizenshipTypeService.getPersonCitizenshipType(proposalPerson);
     }
 }

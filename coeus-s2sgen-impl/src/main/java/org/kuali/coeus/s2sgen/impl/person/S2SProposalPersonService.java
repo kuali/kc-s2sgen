@@ -18,10 +18,9 @@
  */
 package org.kuali.coeus.s2sgen.impl.person;
 
+import org.kuali.coeus.common.api.person.attr.CitizenshipType;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-
-import org.kuali.coeus.s2sgen.impl.citizenship.CitizenshipType;
 
 import java.util.List;
 
