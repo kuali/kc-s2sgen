@@ -51,8 +51,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.xmlbeans.XmlObject;
+import org.kuali.coeus.common.api.person.attr.CitizenshipType;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.s2sgen.impl.citizenship.CitizenshipType;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;

@@ -29,16 +29,16 @@ import gov.grants.apply.forms.phs398CareerDevelopmentAwardSup11V11.PHS398CareerD
 import gov.grants.apply.forms.phs398ResearchPlan12V12.PHS398ResearchPlan12Document;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
+
 import org.apache.xmlbeans.XmlObject;
+import org.kuali.coeus.common.api.person.attr.CitizenshipType;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.s2sgen.impl.citizenship.CitizenshipType;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
