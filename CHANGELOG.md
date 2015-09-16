@@ -1,6 +1,13 @@
 
 
 ##CURRENT
+* RESKC-840 : NIFA form formatting and Directory Title length in RRSF424
+  * MITKC-2121- NIFA_Supplemental_Info_1_2-V1.2 User Attached form causing
+  * STE- issue fixed
+  * MITKC-2098-sf424 form title fieldvalidation issue fixed
+  * vineeth on Sat, 18 Jul 2015 18:00:48 -0400 [View Commit](../../commit/7aa2cca7043b5bb988a2ae8534ece0b09db3e8b2)
+
+##coeus-s2sgen-1509.0005
 *  PD - S2S Forms screen Create PDF of Grants.gov Form CD-511 poorly formatted and illegible
 
   * MITKC-2100
