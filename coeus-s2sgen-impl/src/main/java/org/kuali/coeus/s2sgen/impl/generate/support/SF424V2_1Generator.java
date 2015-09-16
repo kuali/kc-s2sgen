@@ -231,7 +231,9 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
         if (personInfo != null) {
             sf424V21.setContactPerson(globLibV20Generator.getHumanNameDataType(personInfo));
             if (personInfo.getDirectoryTitle() != null) {
-                sf424V21.setTitle(personInfo.getDirectoryTitle());
+            	String directoryTitle = personInfo.getDirectoryTitle();
+            	directoryTitle = directoryTitle.length() > 45 ? directoryTitle.substring(0,44) : directoryTitle;
+                sf424V21.setTitle(directoryTitle);
             }
             sf424V21.setPhoneNumber(personInfo.getOfficePhone());
             if (StringUtils.isNotEmpty(personInfo.getFaxNumber())) {
