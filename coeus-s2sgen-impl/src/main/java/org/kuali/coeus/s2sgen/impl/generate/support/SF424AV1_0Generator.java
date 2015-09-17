@@ -146,7 +146,6 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
     }
 
     protected ScaleTwoDecimal getIndirectBaseCost() {
-        BudgetContract budget = pdDoc.getDevelopmentProposal().getFinalBudget();
         ScaleTwoDecimal indirectCostBase = ScaleTwoDecimal.ZERO;
         for (BudgetPeriodContract period : budget.getBudgetPeriods()) {
             for (BudgetLineItemContract lineItem : period.getBudgetLineItems()) {
@@ -176,6 +175,8 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         ScaleTwoDecimal travelCost = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal programIncome = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal calculatedCost = ScaleTwoDecimal.ZERO;
+        ScaleTwoDecimal laSalaries = ScaleTwoDecimal.ZERO;
+        ScaleTwoDecimal labAllocation = ScaleTwoDecimal.ZERO;
 
         BudgetCategories budgetCategories = BudgetCategories.Factory.newInstance();
         CategoryTotals categoryTotals = CategoryTotals.Factory.newInstance();
@@ -216,11 +217,16 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
                     }
                 }
 
-                for (BudgetLineItemCalculatedAmountContract budgetLineItemCalculatedAmount : budgetLineItem
-                        .getBudgetLineItemCalculatedAmounts()) {
+                for (BudgetLineItemCalculatedAmountContract budgetLineItemCalculatedAmount : budgetLineItem.getBudgetLineItemCalculatedAmounts()) {
                     if (budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_EMPLOYEE_BENEFITS)
                             || budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_VACATION)) {
                         calculatedCost = calculatedCost.add(budgetLineItemCalculatedAmount.getCalculatedCost());
+                    }
+                    if (budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_LA_SALARIES)) {
+                        laSalaries = laSalaries.add(budgetLineItemCalculatedAmount.getCalculatedCost());
+                    }
+                    if (budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_LAB_ALLOCATION)) {
+                        labAllocation = labAllocation.add(budgetLineItemCalculatedAmount.getCalculatedCost());
                     }
                 }
             }
@@ -229,6 +235,9 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         for (BudgetProjectIncomeContract budgetProjectIncome : budget.getBudgetProjectIncomes()) {
             programIncome = programIncome.add(new ScaleTwoDecimal(budgetProjectIncome.getProjectIncome().bigDecimalValue()));
         }
+
+        BigDecimal otherCostWithLA = labAllocation.bigDecimalValue().add(otherCost.bigDecimalValue());
+        BigDecimal salariesWithLA = personnelCost.bigDecimalValue().add(laSalaries.bigDecimalValue());
 
         categorySet.setBudgetConstructionRequestedAmount(constructionCost.bigDecimalValue());
         categoryTotals.setBudgetConstructionRequestedAmount(constructionCost.bigDecimalValue());
@@ -240,10 +249,10 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         categoryTotals.setBudgetFringeBenefitsRequestedAmount(calculatedCost.bigDecimalValue());
         categorySet.setBudgetIndirectChargesAmount(budget.getTotalIndirectCost().bigDecimalValue());
         categoryTotals.setBudgetIndirectChargesAmount(budget.getTotalIndirectCost().bigDecimalValue());
-        categorySet.setBudgetOtherRequestedAmount(otherCost.bigDecimalValue());
-        categoryTotals.setBudgetOtherRequestedAmount(otherCost.bigDecimalValue());
-        categorySet.setBudgetPersonnelRequestedAmount(personnelCost.bigDecimalValue());
-        categoryTotals.setBudgetPersonnelRequestedAmount(personnelCost.bigDecimalValue());
+        categorySet.setBudgetOtherRequestedAmount(otherCostWithLA);
+        categoryTotals.setBudgetOtherRequestedAmount(otherCostWithLA);
+        categorySet.setBudgetPersonnelRequestedAmount(salariesWithLA);
+        categoryTotals.setBudgetPersonnelRequestedAmount(salariesWithLA);
         categorySet.setBudgetSuppliesRequestedAmount(suppliesCost.bigDecimalValue());
         categoryTotals.setBudgetSuppliesRequestedAmount(suppliesCost.bigDecimalValue());
         categorySet.setBudgetTotalAmount(budget.getTotalCost().bigDecimalValue());

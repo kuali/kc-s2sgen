@@ -76,6 +76,10 @@ public abstract class SF424BaseGenerator extends CommonSF424BaseGenerator {
     protected static final String TARGET_CATEGORY_TYPE_CODE_PERSONNEL = "P";
 
     protected static final String RATE_CLASS_TYPE_EMPLOYEE_BENEFITS = "E";
+    protected static final String RATE_CLASS_TYPE_LA_SALARIES = "Y";
+    protected static final String RATE_CLASS_TYPE_LAB_ALLOCATION = "L";
+
+
     protected static final String RATE_CLASS_TYPE_VACATION = "V";
     protected static final String PROGRAM_TYPE = "Non-Construction";
 
