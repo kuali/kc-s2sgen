@@ -34,10 +34,13 @@ import gov.grants.apply.forms.sf424AV10.FederalFundsNeededDocument.FederalFundsN
 import gov.grants.apply.forms.sf424AV10.FundsLineItemDocument.FundsLineItem;
 import gov.grants.apply.forms.sf424AV10.FundsTotalsDocument.FundsTotals;
 import gov.grants.apply.forms.sf424AV10.NonFederalResourcesDocument.NonFederalResources;
+import gov.grants.apply.forms.sf424AV10.OtherInformationDocument;
 import gov.grants.apply.forms.sf424AV10.ResourceLineItemDocument.ResourceLineItem;
 import gov.grants.apply.forms.sf424AV10.ResourceTotalsDocument.ResourceTotals;
 import gov.grants.apply.forms.sf424AV10.SummaryLineItemDocument.SummaryLineItem;
 import gov.grants.apply.forms.sf424AV10.SummaryTotalsDocument.SummaryTotals;
+import org.kuali.coeus.common.budget.api.nonpersonnel.BudgetRateAndBaseContract;
+import org.kuali.coeus.common.budget.api.rate.RateClassType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -71,6 +74,10 @@ import java.util.List;
 public class SF424AV1_0Generator extends SF424BaseGenerator {
 
     private static final Logger LOG = LoggerFactory.getLogger(SF424AV1_0Generator.class);
+    private static final int MAX_LENGTH = 50;
+    public static final String RATE_TYPE = "Type=";
+    public static final String IDC_BASE = " Base=";
+    public static final String IDC_EXP = " IDCExp=";
 
     private BudgetContract budget = null;
 
@@ -118,8 +125,39 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         SF424A.setNonFederalResources(nonFederalResources);
         SF424A.setBudgetForecastedCashNeeds(budgetForecastedCashNeeds);
         SF424A.setFederalFundsNeeded(federalFundsNeeded);
+        SF424A.setOtherInformation(getOtherInformation());
         budgetInformationDocument.setBudgetInformation(SF424A);
         return budgetInformationDocument;
+    }
+
+    protected OtherInformationDocument.OtherInformation getOtherInformation() {
+        ScaleTwoDecimal indirectCostBase = getIndirectBaseCost();
+
+        OtherInformationDocument.OtherInformation otherInformation = OtherInformationDocument.OtherInformation.Factory.newInstance();
+        String indirectChargesExplanation = RATE_TYPE + budget.getRateClass().getDescription() +
+                IDC_BASE +  indirectCostBase + IDC_EXP + budget.getTotalIndirectCost();
+        if (indirectChargesExplanation.length() > MAX_LENGTH) {
+            indirectChargesExplanation = RATE_TYPE + budget.getRateClass().getDescription() +
+                    IDC_BASE +  indirectCostBase;
+        }
+
+        otherInformation.setOtherIndirectChargesExplanation(indirectChargesExplanation);
+        return otherInformation;
+    }
+
+    protected ScaleTwoDecimal getIndirectBaseCost() {
+        BudgetContract budget = pdDoc.getDevelopmentProposal().getFinalBudget();
+        ScaleTwoDecimal indirectCostBase = ScaleTwoDecimal.ZERO;
+        for (BudgetPeriodContract period : budget.getBudgetPeriods()) {
+            for (BudgetLineItemContract lineItem : period.getBudgetLineItems()) {
+                for(BudgetRateAndBaseContract rateAndBase : lineItem.getBudgetRateAndBaseList()) {
+                    if (rateAndBase.getRateClass().getRateClassType().getCode().equalsIgnoreCase(RateClassType.OVERHEAD.getRateClassType())) {
+                        indirectCostBase = indirectCostBase.add(rateAndBase.getBaseCost());
+                    }
+                }
+            }
+        }
+        return indirectCostBase;
     }
 
     /**
@@ -144,7 +182,6 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         if (budget == null) {
             return budgetCategories;
         }
-        BudgetPeriodContract budgetPeriod = budget.getBudgetPeriods().get(0);
 
         CategorySet[] categorySetArray = new CategorySet[1];
         CategorySet categorySet = CategorySet.Factory.newInstance();
@@ -154,40 +191,37 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
 
         List<? extends BudgetCategoryMapContract> budgetCategoryMapList = s2sBudgetCalculatorService.getBudgetCategoryMapList(
                 new ArrayList<String>(), new ArrayList<String>());
-        for (BudgetLineItemContract budgetLineItem : budgetPeriod.getBudgetLineItems()) {
-            for (BudgetCategoryMapContract budgetCategoryMap : budgetCategoryMapList) {
-                for (BudgetCategoryMappingContract budgetCategoryMapping : budgetCategoryMap.getBudgetCategoryMappings()) {
-                    if (budgetLineItem.getBudgetCategory().getCode().equals(budgetCategoryMapping.getBudgetCategoryCode())) {
-                        if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_CONSTRUCTION)) {
-                            constructionCost = constructionCost.add(budgetLineItem.getLineItemCost());
-                        }
-                        else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_CONTRACTUAL)) {
-                            contractualCost = contractualCost.add(budgetLineItem.getLineItemCost());
-                        }
-                        else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_EQUIPMENT)) {
-                            equipmentCost = equipmentCost.add(budgetLineItem.getLineItemCost());
-                        }
-                        else if (budgetCategoryMap.getCategoryType().equals(TARGET_CATEGORY_TYPE_CODE_PERSONNEL)) {
-                            personnelCost = personnelCost.add(budgetLineItem.getLineItemCost());
-                        }
-                        else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_SUPPLIES)) {
-                            suppliesCost = suppliesCost.add(budgetLineItem.getLineItemCost());
-                        }
-                        else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_TRAVEL)
-                                || budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_FOREIGN_TRAVEL)) {
-                            travelCost = travelCost.add(budgetLineItem.getLineItemCost());
-                        }
-                       	else{
-                        	otherCost = otherCost.add(budgetLineItem.getLineItemCost());
+        for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()) {
+            for (BudgetLineItemContract budgetLineItem : budgetPeriod.getBudgetLineItems()) {
+                for (BudgetCategoryMapContract budgetCategoryMap : budgetCategoryMapList) {
+                    for (BudgetCategoryMappingContract budgetCategoryMapping : budgetCategoryMap.getBudgetCategoryMappings()) {
+                        if (budgetLineItem.getBudgetCategory().getCode().equals(budgetCategoryMapping.getBudgetCategoryCode())) {
+                            if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_CONSTRUCTION)) {
+                                constructionCost = constructionCost.add(budgetLineItem.getLineItemCost());
+                            } else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_CONTRACTUAL)) {
+                                contractualCost = contractualCost.add(budgetLineItem.getLineItemCost());
+                            } else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_EQUIPMENT)) {
+                                equipmentCost = equipmentCost.add(budgetLineItem.getLineItemCost());
+                            } else if (budgetCategoryMap.getCategoryType().equals(TARGET_CATEGORY_TYPE_CODE_PERSONNEL)) {
+                                personnelCost = personnelCost.add(budgetLineItem.getLineItemCost());
+                            } else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_SUPPLIES)) {
+                                suppliesCost = suppliesCost.add(budgetLineItem.getLineItemCost());
+                            } else if (budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_TRAVEL)
+                                    || budgetCategoryMap.getTargetCategoryCode().equals(TARGET_CATEGORY_CODE_FOREIGN_TRAVEL)) {
+                                travelCost = travelCost.add(budgetLineItem.getLineItemCost());
+                            } else {
+                                otherCost = otherCost.add(budgetLineItem.getLineItemCost());
+                            }
                         }
                     }
                 }
-            }
-            for (BudgetLineItemCalculatedAmountContract budgetLineItemCalculatedAmount : budgetLineItem
-                    .getBudgetLineItemCalculatedAmounts()) {
-                if (budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_EMPLOYEE_BENEFITS)
-                        || budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_EMPLOYEE_BENEFITS)) {
-                    calculatedCost = calculatedCost.add(budgetLineItemCalculatedAmount.getCalculatedCost());
+
+                for (BudgetLineItemCalculatedAmountContract budgetLineItemCalculatedAmount : budgetLineItem
+                        .getBudgetLineItemCalculatedAmounts()) {
+                    if (budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_EMPLOYEE_BENEFITS)
+                            || budgetLineItemCalculatedAmount.getRateClass().getRateClassType().getCode().equals(RATE_CLASS_TYPE_VACATION)) {
+                        calculatedCost = calculatedCost.add(budgetLineItemCalculatedAmount.getCalculatedCost());
+                    }
                 }
             }
         }
@@ -406,17 +440,9 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
      */
     private FederalFundsNeeded getFederalFundsNeeded() {
 
-        ScaleTwoDecimal firstYearCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal firstYearCostSharing = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal firstYearNetCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal secondYearCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal secondYearCostSharing = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal secondYearNetCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal thirdYearCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal thirdYearCostSharing = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal thirdYearNetCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal fourthYearCost = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal fourthYearCostSharing = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal fourthYearNetCost = ScaleTwoDecimal.ZERO;
 
         FederalFundsNeeded federalFundsNeeded = FederalFundsNeeded.Factory.newInstance();
@@ -434,19 +460,17 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         }
 
         for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()) {
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P2.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P1.getNum()) {
                 firstYearNetCost = firstYearNetCost.add(budgetPeriod.getTotalCost());
             }
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P3.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P2.getNum()) {
                 secondYearNetCost = secondYearNetCost.add(budgetPeriod.getTotalCost());
             }
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P4.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P3.getNum()) {
                 thirdYearNetCost = thirdYearNetCost.add(budgetPeriod.getTotalCost());
             }
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P5.getNum()) {
-                fourthYearCost = fourthYearCost.add(budgetPeriod.getTotalCost());
-                fourthYearCostSharing = fourthYearCostSharing.add(budgetPeriod.getCostSharingAmount());
-                fourthYearNetCost = fourthYearCost.subtract(fourthYearCostSharing);
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P4.getNum()) {
+                fourthYearNetCost = fourthYearNetCost.add(budgetPeriod.getTotalCost());
             }
         }
         fundsLineItem.setBudgetFirstYearAmount(firstYearNetCost.bigDecimalValue());
