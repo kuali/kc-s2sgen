@@ -1,6 +1,30 @@
 
 
 ##CURRENT
+*  Fixing sf424A
+
+  * Section B > Budget Categories >a. Personnel is not populating with data. reads as $0.
+  * See res-demo 1 example proposal 854 and 852 (lab allocated).
+  * Issue #1:
+  * Section B. Budget Categories: Subsection 6, Column 1
+  * Items a through h: Currently we are publishing categories but only for P1 expense.
+  * Desired results: these fields should be the TOTAL ALL PERIODS expense in each category.
+  * (note that items i, j, and k DO reflect the totals)
+  * Issue #2:
+  * Section E - Budget Estimates of Federal Funds Needed for Balance of Project
+  * This section has columns for up to 4 budget periods. We are not consistently providing the necessary data for the defined project periods. Please fix.
+  * In one test proposal that had 3 periods, on 2 columns - periods 1 & 2 populated.
+  * In another test proposal with 4 periods, only 3 columns populated.
+  * Issue #3:
+  * Section F: Other Budget Information
+  * Field 21; Direct Charges. The DATstates; "Use this space to explain amounts for individual direct object class cost categories that may appear to be out of the ordinary or to explain the details as required by the Federal grantor agency" I don't see how this can be supported easily from the budget, and it is not a required field.
+*Field 22: Indirect Charges: I do believe we should populate this, *as it is the ONLY place on this budget form to provide IDC rate information.
+  * Form DAT requests the following:
+  * "Enter the type of indirect rate (provisional, predetermined, final or fixed) that will be in effect during the funding period, the estimated amount of the base to which the rate is applied, and the total indirect expense."
+  * I think we can provide that easily from budget data as follows:* Rate Type: "xxxx"; Indirect Base: "$xxxx"; Total Indirect Expense: "$xxxx"*
+  * Gayathri Athreya on Wed, 16 Sep 2015 17:04:20 -0700 [View Commit](../../commit/2c1ca615700d0401970957fc2bd3703bb44041fe)
+
+##coeus-s2sgen-1509.0006
 * RESKC-840 : NIFA form formatting and Directory Title length in RRSF424
   * MITKC-2121- NIFA_Supplemental_Info_1_2-V1.2 User Attached form causing
   * STE- issue fixed
