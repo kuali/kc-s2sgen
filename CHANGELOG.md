@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  Add missing LA amounts
+  * Gayathri Athreya on Thu, 17 Sep 2015 12:55:26 -0700 [View Commit](../../commit/5816bde6a12cd8f9d5090d5f76ecd318e9740554)
+
+##coeus-s2sgen-1509.0007
 *  Fixing sf424A
 
   * Section B > Budget Categories >a. Personnel is not populating with data. reads as $0.
