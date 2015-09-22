@@ -29,14 +29,13 @@
 			</fo:simple-page-master>
 		</fo:layout-master-set>
 	</xsl:variable>
-	<xsl:template match="/">
+	<xsl:template match="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 		<fo:root>
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 				<xsl:call-template name="headerall"/>
 				<fo:flow flow-name="xsl-region-body">
 					<fo:block>
-						<xsl:for-each select="$XML">
 							<fo:inline-container>
 								<fo:block>
 									<xsl:text>&#x2029;</xsl:text>
@@ -77,7 +76,6 @@
 														<fo:table-row>
 															<fo:table-cell padding-left="22pt" padding="2pt" display-align="center">
 																<fo:block>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ApplicationType">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TypeOfApplication">
 																				<xsl:choose>
@@ -97,8 +95,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ApplicationType">
 																			<xsl:choose>
 																				<xsl:when test="string(.)='Resubmission'">
@@ -116,8 +112,6 @@
 																				<xsl:text> Resubmission&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																			</fo:inline>
 																		</xsl:for-each>
-																	</xsl:for-each>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ApplicationType">
 																			<xsl:choose>
 																				<xsl:when test="string(.)='Renewal'">
@@ -135,8 +129,6 @@
 																				<xsl:text> Renewal&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																			</fo:inline>
 																		</xsl:for-each>
-																	</xsl:for-each>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ApplicationType">
 																			<xsl:choose>
 																				<xsl:when test="string(.)='Continuation'">
@@ -154,8 +146,6 @@
 																				<xsl:text> Continuation&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																			</fo:inline>
 																		</xsl:for-each>
-																	</xsl:for-each>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ApplicationType">
 																			<xsl:choose>
 																				<xsl:when test="string(.)='Revision'">
@@ -173,7 +163,6 @@
 																				<xsl:text> Revision&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																			</fo:inline>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -231,7 +220,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:IntroductionToApplication">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -255,7 +243,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
@@ -291,7 +278,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SpecificAims">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -315,7 +301,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -348,7 +333,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchStrategy">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -372,7 +356,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -409,7 +392,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ProgressReportPublicationList">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -433,7 +415,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -489,7 +470,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Are Human Subjects Involved?&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:HumanSubjectsInvolved">
 																									<xsl:choose>
@@ -524,7 +504,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text>&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																						</fo:inline>
@@ -549,7 +528,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:HumanSubjectsIndefinite">
 																				<xsl:choose>
@@ -584,7 +562,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -601,7 +578,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ClinicalTrial">
 																				<xsl:choose>
@@ -636,7 +612,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -653,7 +628,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Phase3ClinicalTrial">
 																				<xsl:choose>
@@ -688,7 +662,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -716,7 +689,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ProtectionOfHumanSubjects">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -740,7 +712,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -773,7 +744,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:InclusionOfWomenAndMinorities">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -797,7 +767,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -830,7 +799,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:InclusionOfChildren">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -854,7 +822,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -910,7 +877,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Are Vertebrate Animals Used?&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:VertebrateAnimalsUsed">
 																									<xsl:choose>
@@ -945,7 +911,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -967,7 +932,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:VertebrateAnimalsIndefinite">
 																				<xsl:choose>
@@ -1002,7 +966,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -1030,7 +993,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:VertebrateAnimals">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -1054,7 +1016,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1087,7 +1048,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SelectAgentResearch">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -1111,7 +1071,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1144,7 +1103,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResourceSharingPlan">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -1168,7 +1126,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1201,7 +1158,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:RespectiveContributions">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -1225,7 +1181,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1258,7 +1213,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SelectionOfSponsorAndInstitution">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -1282,7 +1236,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1315,7 +1268,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ResponsibleConductOfResearch">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -1339,7 +1291,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1389,7 +1340,6 @@
 																	<fo:inline>
 																		<xsl:text>1. * Does the proposed project involve human embryonic stem cells?&#160;&#160; </xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																				<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:isHumanStemCellsInvolved">
@@ -1426,7 +1376,6 @@
 																				</xsl:for-each>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -1441,7 +1390,6 @@
 																		<xsl:text>Registry will be used:</xsl:text>
 																	</fo:inline>
 																	<fo:block/>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																				<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCellsIndicator">
@@ -1460,7 +1408,6 @@
 																				</xsl:for-each>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																	<fo:inline>
 																		<xsl:text>&#160;&#160; Specific stem cell line cannot be referenced at this time. One from the registry will be used.</xsl:text>
 																	</fo:inline>
@@ -1496,7 +1443,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1520,7 +1466,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1528,7 +1473,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1552,7 +1496,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1560,7 +1503,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1584,7 +1526,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
@@ -1592,7 +1533,6 @@
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
 																					<fo:block>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1616,7 +1556,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
@@ -1629,7 +1568,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1653,7 +1591,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1661,7 +1598,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1685,7 +1621,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1693,7 +1628,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1717,7 +1651,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1725,7 +1658,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1749,7 +1681,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1759,7 +1690,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1783,7 +1713,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1791,7 +1720,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1815,7 +1743,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1823,7 +1750,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1847,7 +1773,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1855,7 +1780,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1879,7 +1803,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -1889,7 +1812,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1913,7 +1835,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1921,7 +1842,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1945,7 +1865,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1953,7 +1872,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -1977,7 +1895,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -1985,7 +1902,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -2009,7 +1925,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -2019,7 +1934,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -2043,7 +1957,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2051,7 +1964,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -2075,7 +1987,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2083,7 +1994,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -2107,7 +2017,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2115,7 +2024,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CellLines">
@@ -2139,7 +2047,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -2198,7 +2105,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AlernatePhoneNumber">
 																									<xsl:variable name="value-of-template">
@@ -2218,7 +2124,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -2293,7 +2198,6 @@
 																											<fo:inline>
 																												<xsl:text>&#160;</xsl:text>
 																											</fo:inline>
-																											<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																												<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																													<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:GraduateDegreeSought">
 																														<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:DegreeType">
@@ -2315,7 +2219,6 @@
 																														</xsl:for-each>
 																													</xsl:for-each>
 																												</xsl:for-each>
-																											</xsl:for-each>
 																										</fo:block>
 																									</fo:table-cell>
 																								</fo:table-row>
@@ -2339,7 +2242,6 @@
 																											<fo:inline>
 																												<xsl:text>&#160;</xsl:text>
 																											</fo:inline>
-																											<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																												<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																													<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:GraduateDegreeSought">
 																														<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:OtherDegreeTypeText">
@@ -2361,7 +2263,6 @@
 																														</xsl:for-each>
 																													</xsl:for-each>
 																												</xsl:for-each>
-																											</xsl:for-each>
 																										</fo:block>
 																									</fo:table-cell>
 																								</fo:table-row>
@@ -2385,7 +2286,6 @@
 																											<fo:inline>
 																												<xsl:text>&#160;</xsl:text>
 																											</fo:inline>
-																											<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																												<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																													<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:GraduateDegreeSought">
 																														<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:DegreeDate">
@@ -2407,7 +2307,6 @@
 																														</xsl:for-each>
 																													</xsl:for-each>
 																												</xsl:for-each>
-																											</xsl:for-each>
 																										</fo:block>
 																									</fo:table-cell>
 																								</fo:table-row>
@@ -2445,7 +2344,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:FieldOfTraining">
 																									<xsl:variable name="value-of-template">
@@ -2465,7 +2363,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -2480,7 +2377,6 @@
 																	<fo:inline>
 																		<xsl:text>5. * Current Or Prior Kirschstein-NRSA Support?&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupportIndicator">
 																				<xsl:choose>
@@ -2515,7 +2411,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -2586,7 +2481,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() = 1">
@@ -2610,12 +2504,10 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
 																					<fo:block>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =1">
@@ -2639,7 +2531,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2647,7 +2538,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =1">
@@ -2663,7 +2553,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2671,7 +2560,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =1">
@@ -2687,7 +2575,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2695,7 +2582,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =1">
@@ -2719,7 +2605,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -2729,7 +2614,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() = 2">
@@ -2753,7 +2637,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2761,7 +2644,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =2">
@@ -2785,7 +2667,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2793,7 +2674,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =2">
@@ -2809,7 +2689,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2817,7 +2696,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =2">
@@ -2833,7 +2711,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2841,7 +2718,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =2">
@@ -2865,7 +2741,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -2875,7 +2750,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() = 3">
@@ -2899,7 +2773,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2907,7 +2780,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =3">
@@ -2931,7 +2803,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2939,7 +2810,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =3">
@@ -2955,7 +2825,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2963,7 +2832,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =3">
@@ -2979,7 +2847,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -2987,7 +2854,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =3">
@@ -3011,7 +2877,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -3021,7 +2886,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() = 4">
@@ -3045,7 +2909,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -3053,7 +2916,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =4">
@@ -3077,7 +2939,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -3085,7 +2946,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =4">
@@ -3101,7 +2961,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -3109,7 +2968,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =4">
@@ -3125,7 +2983,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -3133,7 +2990,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:CurrentPriorNRSASupport">
 																									<xsl:if test="position() =4">
@@ -3157,7 +3013,6 @@
 																									</xsl:if>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -3179,7 +3034,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ConcurrentSupport">
 																				<xsl:choose>
@@ -3214,7 +3068,6 @@
 																				</fo:inline>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -3231,7 +3084,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ConcurrentSupportDescription">
 																				<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -3255,7 +3107,6 @@
 																				</xsl:for-each>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -3272,7 +3123,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:FellowshipTrainingAndCareerGoals">
 																				<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -3296,7 +3146,6 @@
 																				</xsl:for-each>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -3313,7 +3162,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ActivitiesPlannedUnderThisAward">
 																				<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -3337,7 +3185,6 @@
 																				</xsl:for-each>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -3358,7 +3205,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:DissertationAndResearchExperience">
 																				<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -3382,7 +3228,6 @@
 																				</xsl:for-each>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																</fo:block>
 															</fo:table-cell>
 														</fo:table-row>
@@ -3416,7 +3261,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Citizenship">
 																									<xsl:choose>
@@ -3433,7 +3277,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text> U.S. Citizen or noncitizen national</xsl:text>
 																						</fo:inline>
@@ -3444,7 +3287,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Citizenship">
 																									<xsl:choose>
@@ -3461,7 +3303,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text> Permanent Resident of U.S. Pending</xsl:text>
 																						</fo:inline>
@@ -3474,7 +3315,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Citizenship">
 																									<xsl:choose>
@@ -3491,7 +3331,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text> Permanent Resident of U.S.</xsl:text>
 																						</fo:inline>
@@ -3509,7 +3348,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Citizenship">
 																									<xsl:choose>
@@ -3526,7 +3364,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
@@ -3559,7 +3396,6 @@
 																	<fo:inline>
 																		<xsl:text>11.&#160; </xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:ChangeOfInstitution">
 																				<xsl:choose>
@@ -3576,7 +3412,6 @@
 																				</xsl:choose>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																	<fo:inline>
 																		<xsl:text> Change of Sponsoring Institution</xsl:text>
 																	</fo:inline>
@@ -3607,7 +3442,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:FormerInstitution">
 																									<xsl:variable name="value-of-template">
@@ -3627,7 +3461,6 @@
 																									</xsl:choose>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -3688,7 +3521,6 @@
 																							<fo:inline>
 																								<xsl:text>&#160;</xsl:text>
 																							</fo:inline>
-																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Sponsors">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SponsorCosponsorInformation">
 																										<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:attFile">
@@ -3712,7 +3544,6 @@
 																										</xsl:for-each>
 																									</xsl:for-each>
 																								</xsl:for-each>
-																							</xsl:for-each>
 																							<fo:inline>
 																								<xsl:text>&#160;</xsl:text>
 																							</fo:inline>
@@ -3771,7 +3602,6 @@
 																	<fo:inline>
 																		<xsl:text>&#160;</xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionAndFeesRequested">
 																				<xsl:choose>
@@ -3788,11 +3618,9 @@
 																				</xsl:choose>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																	<fo:inline>
 																		<xsl:text> None Requested&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </xsl:text>
 																	</fo:inline>
-																	<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																		<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																			<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionAndFeesRequested">
 																				<xsl:choose>
@@ -3809,7 +3637,6 @@
 																				</xsl:choose>
 																			</xsl:for-each>
 																		</xsl:for-each>
-																	</xsl:for-each>
 																	<fo:inline>
 																		<xsl:text> Funds Requested:</xsl:text>
 																	</fo:inline>
@@ -3843,7 +3670,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedYear1">
 																									<fo:inline>
@@ -3854,7 +3680,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -3887,7 +3712,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedYear2">
 																									<fo:inline>
@@ -3898,7 +3722,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -3931,7 +3754,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedYear3">
 																									<fo:inline>
@@ -3942,7 +3764,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -3975,7 +3796,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedYear4">
 																									<fo:inline>
@@ -3986,7 +3806,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4019,7 +3838,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedYear5">
 																									<fo:inline>
@@ -4030,7 +3848,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4063,7 +3880,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedYear6">
 																									<fo:inline>
@@ -4074,7 +3890,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4107,7 +3922,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:TuitionRequestedTotal">
 																									<fo:inline>
@@ -4118,7 +3932,6 @@
 																									</fo:inline>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4185,7 +3998,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:InstitutionalBaseSalary">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Amount">
@@ -4198,7 +4010,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -4206,7 +4017,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:InstitutionalBaseSalary">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:AcademicPeriod">
@@ -4228,7 +4038,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -4236,7 +4045,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:InstitutionalBaseSalary">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:NumberOfMonths">
@@ -4258,7 +4066,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4321,7 +4128,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:FederalStipendRequested">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Amount">
@@ -4334,7 +4140,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -4342,7 +4147,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:FederalStipendRequested">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:NumberOfMonths">
@@ -4364,7 +4168,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="0" padding="2pt" display-align="center">
@@ -4421,7 +4224,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SupplementationFromOtherSources">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Amount">
@@ -4434,7 +4236,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="solid 1pt gray" padding="2pt" display-align="center">
@@ -4442,7 +4243,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SupplementationFromOtherSources">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:NumberOfMonths">
@@ -4464,7 +4264,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																				<fo:table-cell border="0" padding="2pt" display-align="center">
@@ -4512,7 +4311,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SupplementationFromOtherSources">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Type">
@@ -4534,7 +4332,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4575,7 +4372,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Budget">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:SupplementationFromOtherSources">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Source">
@@ -4597,7 +4393,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4647,7 +4442,6 @@
 																						<fo:inline>
 																							<xsl:text>&#160;</xsl:text>
 																						</fo:inline>
-																						<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:PHS_Fellowship_Supplemental_2_0">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_2_0:Appendix">
 																								<xsl:for-each select="att:AttachedFile">
 																									<xsl:for-each select="att:FileName">
@@ -4669,7 +4463,6 @@
 																									</xsl:for-each>
 																								</xsl:for-each>
 																							</xsl:for-each>
-																						</xsl:for-each>
 																					</fo:block>
 																				</fo:table-cell>
 																			</fo:table-row>
@@ -4690,7 +4483,6 @@
 									</fo:table-row>
 								</fo:table-body>
 							</fo:table>
-						</xsl:for-each>
 					</fo:block>
 					<fo:block id="SV_RefID_PageTotal"/>
 				</fo:flow>
