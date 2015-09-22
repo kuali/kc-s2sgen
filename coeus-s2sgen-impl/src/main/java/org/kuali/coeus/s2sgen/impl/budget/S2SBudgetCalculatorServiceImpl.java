@@ -60,6 +60,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This class contains the implementation for common budget calculations required for S2S Form generators
@@ -876,36 +877,18 @@ public class S2SBudgetCalculatorServiceImpl implements
                                         if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
                                                         ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_ACADEMIC_MONTHS))) {
-                                            if (lineItem.getSubmitCostSharingFlag()) {
-                                                academicMonths = academicMonths.add(personDetails.getPercentEffort().bigDecimalValue()
-                                                        .multiply(numberOfMonths).multiply(POINT_ZERO_ONE));
-                                            } else {
-                                                academicMonths = academicMonths.add(personDetails.getPercentCharged().bigDecimalValue()
-                                                        .multiply(numberOfMonths).multiply(POINT_ZERO_ONE));
-                                            }                                            
+                                        	academicMonths = getPersonEffortMonths(academicMonths,numberOfMonths, lineItem,personDetails);                                            
                                         }
                                         else if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
                                                         ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_SUMMER_MONTHS))) {
-                                            if (lineItem.getSubmitCostSharingFlag()) {
-                                                summerMonths = summerMonths.add(personDetails.getPercentEffort().bigDecimalValue().multiply(numberOfMonths)
-                                                        .multiply(POINT_ZERO_ONE));
-                                            } else {
-                                                summerMonths = summerMonths.add(personDetails.getPercentCharged().bigDecimalValue().multiply(numberOfMonths)
-                                                        .multiply(POINT_ZERO_ONE));
-                                            }
+                                        	summerMonths = getPersonEffortMonths(summerMonths,numberOfMonths, lineItem,personDetails);
                                             
                                         }
                                         else if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
                                                         ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_CALENDAR_MONTHS))) {
-                                            if (lineItem.getSubmitCostSharingFlag()) {
-                                                calendarMonths = calendarMonths.add(personDetails.getPercentEffort().bigDecimalValue().multiply(numberOfMonths)
-                                                        .multiply(POINT_ZERO_ONE));
-                                            } else {
-                                                calendarMonths = calendarMonths.add(personDetails.getPercentCharged().bigDecimalValue().multiply(numberOfMonths)
-                                                        .multiply(POINT_ZERO_ONE));
-                                            }
+                                        	calendarMonths = getPersonEffortMonths(calendarMonths,numberOfMonths, lineItem,personDetails);
                                         }
                                         else if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
@@ -1014,6 +997,14 @@ public class S2SBudgetCalculatorServiceImpl implements
         return otherPersonnelInfo;
     }
 
+	private BigDecimal getPersonEffortMonths(BigDecimal effortMonths,
+			BigDecimal numberOfMonths, BudgetLineItemContract lineItem,
+			BudgetPersonnelDetailsContract personDetails) {
+		effortMonths = effortMonths.add(personDetails.getPercentEffort().bigDecimalValue()
+		            .multiply(numberOfMonths).multiply(POINT_ZERO_ONE));
+		return effortMonths;
+	}
+
     /**
      * 
      * This method computes the indirect costs for a given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract}
@@ -1073,7 +1064,7 @@ public class S2SBudgetCalculatorServiceImpl implements
                         keyBuilder.append("-");
                         keyBuilder.append(appliedRate);
                         String key = keyBuilder.toString();
-                        boolean applyRateFlag = getApplyRateFlagForRateBase(rateBase.getBudgetLineItemId(), lineItem.getBudgetLineItemCalculatedAmounts());
+                        boolean applyRateFlag = getApplyRateFlagForRateBase(rateBase, lineItem.getBudgetLineItemCalculatedAmounts());
                         if (costDetailsMap.get(key) == null) {
                             indirectCostDetails = new IndirectCostDetailsDto();
                             indirectCostDetails.setBase(rateBase.getBaseCost() == null ? ScaleTwoDecimal.ZERO : applyRateFlag ? rateBase
@@ -1131,9 +1122,9 @@ public class S2SBudgetCalculatorServiceImpl implements
         return indirectCostInfo;
     }
 
-    protected boolean getApplyRateFlagForRateBase(Long budgetLineItemId, List<? extends BudgetLineItemCalculatedAmountContract> budgetLineItemCalculatedAmounts) {
+    protected boolean getApplyRateFlagForRateBase(BudgetRateAndBaseContract rateBase, List<? extends BudgetLineItemCalculatedAmountContract> budgetLineItemCalculatedAmounts) {
         for (BudgetLineItemCalculatedAmountContract lineItemCalculatedAmount : budgetLineItemCalculatedAmounts) {
-            if (lineItemCalculatedAmount.getBudgetLineItemId() == budgetLineItemId) {
+            if (lineItemCalculatedAmount.getBudgetLineItemId().equals(rateBase.getBudgetLineItemId()) && rateBase.getRateClassCode().equals(lineItemCalculatedAmount.getRateClass().getCode())) {
                 return lineItemCalculatedAmount.getApplyRateFlag();
             }
         }
@@ -1644,7 +1635,6 @@ public class S2SBudgetCalculatorServiceImpl implements
     protected List<List<KeyPersonDto>> getKeyPersons(BudgetPeriodContract budgetPeriod, ProposalDevelopmentDocumentContract pdDoc,
             int numKeyPersons, BudgetContract budget) {
         List<KeyPersonDto> keyPersons = new ArrayList<KeyPersonDto>();
-
         KeyPersonDto keyPerson = new KeyPersonDto();
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
 
@@ -1701,7 +1691,9 @@ public class S2SBudgetCalculatorServiceImpl implements
 
             keyPerson.setRole(getBudgetPersonRoleOther());
             keyPerson.setKeyPersonRole(propPerson.getProjectRole());
-            keyPersons.add(keyPerson);
+           if (hasPersonnelBudget(budgetPeriod,keyPerson)) {
+            	keyPersons.add(keyPerson);
+           }
         }
 
         boolean personAlreadyAdded = false;
@@ -1773,9 +1765,11 @@ public class S2SBudgetCalculatorServiceImpl implements
                 }
             }
         }
-
+        final List<KeyPersonDto> seniorPersons = keyPersons.stream()
+			.filter(person -> hasPersonnelBudget(budgetPeriod,person))
+			.collect(Collectors.toList());
         List<KeyPersonDto> nKeyPersons = getNKeyPersons(keyPersons, true, numKeyPersons);
-        List<KeyPersonDto> extraPersons = getNKeyPersons(keyPersons, false, numKeyPersons);
+        List<KeyPersonDto> extraPersons = getNKeyPersons(seniorPersons, false, numKeyPersons);
         CompensationDto compensationInfo;
         for (KeyPersonDto keyPersonInfo : nKeyPersons) {
             keyPerson = keyPersonInfo;
@@ -1904,46 +1898,21 @@ public class S2SBudgetCalculatorServiceImpl implements
                     if (personDetails.getPeriodTypeCode().equals(
                             s2SConfigurationService.getValueAsString(
                                     ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_ACADEMIC_MONTHS))) {
-                        if (lineItem.getSubmitCostSharingFlag()) {
-                            academicMonths = academicMonths.add(personDetails.getPercentEffort().bigDecimalValue()
-                                    .multiply(numberOfMonths).multiply(POINT_ZERO_ONE));
-                        } else {
-                            academicMonths = academicMonths.add(personDetails.getPercentCharged().bigDecimalValue()
-                                    .multiply(numberOfMonths).multiply(POINT_ZERO_ONE));
-                        }
+                        academicMonths = getPersonEffortMonths(academicMonths,numberOfMonths, lineItem, personDetails);
                     }
                     else if (personDetails.getPeriodTypeCode().equals(
                             s2SConfigurationService.getValueAsString(
                                     ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_SUMMER_MONTHS))) {
-                        if (lineItem.getSubmitCostSharingFlag()) {
-                            summerMonths = summerMonths.add(personDetails.getPercentEffort().bigDecimalValue().multiply(numberOfMonths)
-                                    .multiply(POINT_ZERO_ONE));
-                        } else {
-                            summerMonths = summerMonths.add(personDetails.getPercentCharged().bigDecimalValue().multiply(numberOfMonths)
-                                    .multiply(POINT_ZERO_ONE));
-                        }
+                        summerMonths = getPersonEffortMonths(summerMonths,numberOfMonths, lineItem, personDetails);
                     }
                     else {
                         if (StringUtils.isNotBlank(personDetails.getBudgetPerson().getTbnId())) {
                             if (lineItem.getBudgetCategory()
                                     .getCode().equals(budgetCatagoryCodePersonnel)) {
-                                if (lineItem.getSubmitCostSharingFlag()) {
-                                    calendarMonths = calendarMonths.add(personDetails.getPercentEffort().bigDecimalValue().multiply(numberOfMonths)
-                                            .multiply(POINT_ZERO_ONE));
-                                } else {
-                                    calendarMonths = calendarMonths.add(personDetails.getPercentCharged().bigDecimalValue().multiply(numberOfMonths)
-                                            .multiply(POINT_ZERO_ONE));
-                                }
+                                calendarMonths = getPersonEffortMonths(calendarMonths, numberOfMonths, lineItem, personDetails);
                             } 
                         }else {
-                            if (lineItem.getSubmitCostSharingFlag()) {
-                                calendarMonths = calendarMonths.add(personDetails.getPercentEffort().bigDecimalValue().multiply(numberOfMonths)
-                                        .multiply(POINT_ZERO_ONE));
-                            }
-                            else {
-                                calendarMonths = calendarMonths.add(personDetails.getPercentCharged().bigDecimalValue().multiply(numberOfMonths)
-                                        .multiply(POINT_ZERO_ONE));
-                            }
+                            calendarMonths = getPersonEffortMonths(calendarMonths, numberOfMonths, lineItem, personDetails);
                         }
                     }
                     if (StringUtils.isNotBlank(personDetails.getBudgetPerson().getTbnId() ) ){
