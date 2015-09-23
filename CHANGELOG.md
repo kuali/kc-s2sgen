@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  Fix populating months effort for costshare on personal line items
+  * Geo Thomas on Tue, 22 Sep 2015 16:09:32 -0400 [View Commit](../../commit/3e7373cf083fef6a8eaef6d7e457a991d1c5869e)
+
+##coeus-s2sgen-1509.0010
 *  Fix stylesheet for PHS_fellowship_supplemental-V2
   * Geo Thomas on Tue, 22 Sep 2015 17:01:18 -0400 [View Commit](../../commit/4a49c0cdb9554a0f4046e50765d0d7429e1370ce)
 
