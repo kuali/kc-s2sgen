@@ -823,22 +823,25 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
             if (proposalPerson.isInvestigator()) {
                 hasInvestigator = true;
                 CitizenshipType citizenShip = s2SProposalPersonService.getCitizenship(proposalPerson);
-                if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())) {
-                    additionalInformation.setCitizenship(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA);
+                if(citizenShip!=null){
+	                if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())) {
+	                    additionalInformation.setCitizenship(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA);
+	                }
+	                else if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())) {
+	                    additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S);
+	                }
+	                else if (citizenShip.getCitizenShip().trim().equals(
+	                        CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL.toString())) {
+	                    additionalInformation.setCitizenship(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL);
+	                }
+	                else if (citizenShip.getCitizenShip().trim().equals(
+	                        CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())) {
+	                    additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING);
+	                }
                 }
-                else if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())) {
-                    additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S);
+                else{
+                	additionalInformation.setCitizenship(null);
                 }
-                else if (citizenShip.getCitizenShip().trim().equals(
-                        CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL.toString())) {
-                    additionalInformation.setCitizenship(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL);
-                }
-                else if (citizenShip.getCitizenShip().trim().equals(
-                        CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())) {
-                    additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING);
-                }
-
-
             }
         }
         if (principalInvestigator != null && principalInvestigator.getMobilePhoneNumber() != null) {
