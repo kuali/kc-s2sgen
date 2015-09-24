@@ -33,11 +33,6 @@ public final class ConfigurationConstants {
     public static final String PROPOSAL_TYPE_CODE_CONTINUATION = "PROPOSAL_TYPE_CODE_CONTINUATION";
     public static final String PROPOSAL_TYPE_CODE_REVISION = "PROPOSAL_TYPE_CODE_REVISION";
     public static final String ACTIVITY_TYPE_CODE_CONSTRUCTION = "ACTIVITY_TYPE_CODE_CONSTRUCTION";
-    public static final String PROPOSALDEVELOPMENT_PROPOSALTYPE_NEW = "proposaldevelopment.proposaltype.new";
-    public static final String PROPOSALDEVELOPMENT_PROPOSALTYPE_RENEWAL = "proposaldevelopment.proposaltype.renewal";
-    public static final String PROPOSALDEVELOPMENT_PROPOSALTYPE_REVISION = "proposaldevelopment.proposaltype.revision";
-    public static final String PROPOSALDEVELOPMENT_PROPOSALTYPE_CONTINUATION = "proposaldevelopment.proposaltype.continuation";
-    public static final String PROPOSALDEVELOPMENT_PROPOSALTYPE_RESUBMISSION = "proposaldevelopment.proposaltype.resubmission";
     public static final String MULTI_CAMPUS_ENABLED = "MULTI_CAMPUS_ENABLED";
 
     //s2s specific
