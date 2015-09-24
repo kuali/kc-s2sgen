@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  Fixed populating correct Proposal Types on Grants.gov PHS_Fellowship_Supplemental_X_X and PHS398ResTrainProgPlanV1_0 forms by setting comma separated parameter values
+  * vineeth on Fri, 7 Aug 2015 13:21:04 -0400 [View Commit](../../commit/cdb97747f985b17208495bb6d21b5b42e46ff95b)
+
+##coeus-s2sgen-1509.0013
 * No Changes
 
 
