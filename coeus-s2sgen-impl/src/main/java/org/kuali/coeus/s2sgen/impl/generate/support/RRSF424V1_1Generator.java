@@ -18,6 +18,7 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
+import gov.grants.apply.forms.phsFellowshipSupplemental11V11.PHSFellowshipSupplemental11Document.PHSFellowshipSupplemental11.ApplicationType.TypeOfApplication;
 import gov.grants.apply.forms.rrSF424V11.*;
 import gov.grants.apply.forms.rrSF424V11.RRSF424Document.RRSF424;
 import gov.grants.apply.forms.rrSF424V11.RRSF424Document.RRSF424.*;
@@ -56,6 +57,7 @@ import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 
 import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
+import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
@@ -424,36 +426,30 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 	private ApplicationType getApplicationType() {
 		ApplicationType applicationType = ApplicationType.Factory.newInstance();
 		Map<String, String> submissionInfo = getSubmissionType(pdDoc);
-		if (pdDoc.getDevelopmentProposal().getProposalType() != null
-				&& Integer.parseInt(pdDoc.getDevelopmentProposal()
-						.getProposalType().getCode()) < PROPOSAL_TYPE_CODE_6) {
-			// Check <6 to ensure that if proposalType='TASk ORDER", it must not
-			// set. THis is because enum ApplicationType has no
-			// entry for TASK ORDER
+		String proposalTypeCode=pdDoc.getDevelopmentProposal().getProposalType().getCode();
+		if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
 			ApplicationTypeCodeDataType.Enum applicationTypeCodeDataType = ApplicationTypeCodeDataType.Enum
 					.forInt(Integer.parseInt(pdDoc.getDevelopmentProposal()
 							.getProposalType().getCode()));
 			applicationType.setApplicationTypeCode(applicationTypeCodeDataType);
-			if (Integer.parseInt(pdDoc.getDevelopmentProposal()
-					.getProposalType().getCode()) == ApplicationTypeCodeDataType.INT_REVISION) {
-				String revisionCode = null;
-				if (submissionInfo.get(KEY_REVISION_CODE) != null) {
-					revisionCode = submissionInfo
-							.get(KEY_REVISION_CODE);
-					RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum
-							.forString(revisionCode);
-					applicationType.setRevisionCode(revisionCodeApplication);
-				}
-				String revisionCodeOtherDesc = null;
-				if (submissionInfo
-						.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
-					revisionCodeOtherDesc = submissionInfo
-							.get(KEY_REVISION_OTHER_DESCRIPTION);
-					applicationType
-							.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
-				}
+			String revisionCode = null;
+			if (submissionInfo.get(KEY_REVISION_CODE) != null) {
+				revisionCode = submissionInfo.get(KEY_REVISION_CODE);
+				RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum.forString(revisionCode);
+				applicationType.setRevisionCode(revisionCodeApplication);
+			}
+			String revisionCodeOtherDesc = null;
+			if (submissionInfo
+					.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
+				revisionCodeOtherDesc = submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION);
+				applicationType.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
 			}
 		}
+		if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
+			setProposalApplicationType(proposalTypeCode,applicationType);
+			
+		}
+		
 		YesNoDataType.Enum answer = null;
         String answerdetails = getAnswer(ANSWER_128, answerHeaders);
         if (answerdetails != null && !answerdetails.equals(NOT_ANSWERED)) {
@@ -468,7 +464,21 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
         }
 		return applicationType;
 	}
-
+	
+	private void setProposalApplicationType(String proposalTypeCode,ApplicationType applicationType) {
+        if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).contains(proposalTypeCode)) {
+	          applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_NEW));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_REVISION));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode))  {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_RENEWAL));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_RESUBMISSION));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_CONTINUATION));
+		}
+	}
+	
 	/**
 	 * 
 	 * This method is used to get Proposed Project Period for RRSF424
