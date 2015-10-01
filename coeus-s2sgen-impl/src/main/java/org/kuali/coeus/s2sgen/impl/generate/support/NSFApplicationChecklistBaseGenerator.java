@@ -1,18 +1,18 @@
 /*
  * Kuali Coeus, a comprehensive research administration system for higher education.
- * 
+ *
  * Copyright 2005-2015 Kuali, Inc.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -34,7 +34,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 /**
  * This class will contain all common features that will be used in generators
  * for different versions of NSFApplicationCheckList forms
- * 
+ *
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
 public abstract class NSFApplicationChecklistBaseGenerator extends
@@ -101,10 +101,10 @@ public abstract class NSFApplicationChecklistBaseGenerator extends
     protected S2SConfigurationService s2SConfigurationService;
 
 	/**
-	 * 
+	 *
 	 * This method returns the YesNoDataType answer for all the Questions based
 	 * on the QuestionId passes in to the method.
-	 * 
+	 *
 	 * @param questionId
 	 *            passed to get the corresponding answer.
 	 * @return answer (int) Proposal Ynq answer returned for the corresponding
@@ -119,12 +119,11 @@ public abstract class NSFApplicationChecklistBaseGenerator extends
 			break;
 		}
 		case 2: {
-			String proposaltypecode = pdDoc.getDevelopmentProposal()
-					.getProposalType().getCode();
-			if (proposaltypecode != null
-					&& (proposaltypecode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION)) || proposaltypecode
-							.equals(PROPOSAL_TYPE_CODE_8))) {
+			String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
+			if (proposalTypeCode != null
+						&& (s2SConfigurationService.getValuesFromCommaSeparatedParam(
+							ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)
+					 	|| proposalTypeCode.equals(PROPOSAL_TYPE_CODE_8))) {
 				answer = ANSWER_YES;
 			} else {
 				answer = ANSWER_NA;
@@ -154,13 +153,12 @@ public abstract class NSFApplicationChecklistBaseGenerator extends
 			break;
 		}
 		case 4: {
-			String proposaltypecode = pdDoc.getDevelopmentProposal()
-					.getProposalType().getCode();
-			if (proposaltypecode != null
-					&& (proposaltypecode.equals(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION)) || proposaltypecode
-							.equals(s2SConfigurationService.getValueAsString(
-                                    ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL)))) {
+			String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
+			if (proposalTypeCode != null
+					&& (s2SConfigurationService.getValuesFromCommaSeparatedParam(
+										ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)
+									|| s2SConfigurationService.getValuesFromCommaSeparatedParam(
+										ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode))) {
 				answer = ANSWER_NO;
 			} else {
 				answer = ANSWER_YES;
@@ -237,13 +235,12 @@ public abstract class NSFApplicationChecklistBaseGenerator extends
 			break;
 		}
 		case 13: {
-			String proposaltypecode = null;
+			String proposalTypeCode = null;
 			if (pdDoc.getDevelopmentProposal().getProposalType().getCode() != null) {
-				proposaltypecode = pdDoc.getDevelopmentProposal()
-						.getProposalType().getCode();
+				proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
 			}
-			if (s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).equals(proposaltypecode)) {
+			if (s2SConfigurationService.getValuesFromCommaSeparatedParam(
+							ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
 				answer = ANSWER_YES;
 			} else {
 				answer = ANSWER_NA;
