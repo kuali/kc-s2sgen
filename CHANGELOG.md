@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  Application Types are populating on RRSF424 with comma separated proposal types and new proposal type constants have been added for setting proper submission type on RRSF424
+  * Geo Thomas on Wed, 30 Sep 2015 19:41:32 -0400 [View Commit](../../commit/77a556fc7bd95aac37766de8553aaff0f4ba9ea4)
+
+##coeus-s2sgen-1509.0014
 *  Fixed populating correct Proposal Types on Grants.gov PHS_Fellowship_Supplemental_X_X and PHS398ResTrainProgPlanV1_0 forms by setting comma separated parameter values
   * vineeth on Fri, 7 Aug 2015 13:21:04 -0400 [View Commit](../../commit/cdb97747f985b17208495bb6d21b5b42e46ff95b)
 
