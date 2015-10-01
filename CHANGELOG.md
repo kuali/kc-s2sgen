@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  fixing proposal type check for NSFApplicationCheckList form. It will use comma separated param list for populating question answers on the form
+  * Geo Thomas on Thu, 1 Oct 2015 17:19:06 -0400 [View Commit](../../commit/681de377f5414c866e17124b0fa3c1acbee3cc0e)
+
+##coeus-s2sgen-1510.0001
 *  Application Types are populating on RRSF424 with comma separated proposal types and new proposal type constants have been added for setting proper submission type on RRSF424
   * Geo Thomas on Wed, 30 Sep 2015 19:41:32 -0400 [View Commit](../../commit/77a556fc7bd95aac37766de8553aaff0f4ba9ea4)
 
