@@ -58,6 +58,7 @@ import org.kuali.coeus.s2sgen.impl.validate.S2SErrorHandlerService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 
 import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
+import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
@@ -376,38 +377,40 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 	private ApplicationType getApplicationType() {
 		ApplicationType applicationType = ApplicationType.Factory.newInstance();
 		Map<String, String> submissionInfo = getSubmissionType(pdDoc);
-		if (pdDoc.getDevelopmentProposal().getProposalType() != null
-				&& Integer.parseInt(pdDoc.getDevelopmentProposal()
-						.getProposalType().getCode()) < PROPOSAL_TYPE_CODE_6) {
-			// Check <6 to ensure that if proposalType='TASk ORDER", it must not
-			// set. THis is because enum ApplicationType has no
-			// entry for TASK ORDER
-			applicationType
-					.setApplicationTypeCode(getApplicationTypeCodeDataType());
-			if (Integer.parseInt(pdDoc.getDevelopmentProposal()
-					.getProposalType().getCode()) == ApplicationTypeCodeDataType.INT_REVISION) {
-
-				String revisionCode = null;
-				if (submissionInfo.get(KEY_REVISION_CODE) != null) {
-					revisionCode = submissionInfo
-							.get(KEY_REVISION_CODE);
-					RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum
-							.forString(revisionCode);
-					applicationType.setRevisionCode(revisionCodeApplication);
-				}
-
-				String revisionCodeOtherDesc = null;
-				if (submissionInfo
-						.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
-					revisionCodeOtherDesc = submissionInfo
-							.get(KEY_REVISION_OTHER_DESCRIPTION);
-					applicationType
-							.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
-				}
+		String proposalTypeCode=pdDoc.getDevelopmentProposal().getProposalType().getCode();
+		if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(getApplicationTypeCodeDataType());
+			String revisionCode = null;
+			if (submissionInfo.get(KEY_REVISION_CODE) != null) {
+				revisionCode = submissionInfo.get(KEY_REVISION_CODE);
+				RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum.forString(revisionCode);
+				applicationType.setRevisionCode(revisionCodeApplication);
 			}
+			String revisionCodeOtherDesc = null;
+			if (submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
+				revisionCodeOtherDesc = submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION);
+				applicationType.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
+			}
+		}
+		if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
+			setProposalApplicationType(proposalTypeCode,applicationType);
 		}
 		setOtherAgencySubmissionDetails(applicationType);
 		return applicationType;
+	}
+	
+	private void setProposalApplicationType(String proposalTypeCode,ApplicationType applicationType) {
+		if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_NEW));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_REVISION));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode))  {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_RENEWAL));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_RESUBMISSION));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_CONTINUATION));
+		}
 	}
 
 	private void setOtherAgencySubmissionDetails(ApplicationType applicationType) {

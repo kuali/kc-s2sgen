@@ -1,18 +1,18 @@
 /*
  * Kuali Coeus, a comprehensive research administration system for higher education.
- * 
+ *
  * Copyright 2005-2015 Kuali, Inc.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -77,7 +77,7 @@ import java.util.*;
 /**
  * Class for generating the XML object for grants.gov RRSF424V1_0. Form is
  * generated using XMLBean classes and is based on RRSF424V1_2 schema.
- * 
+ *
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
 @FormGenerator("RRSF424_2_0_V2Generator")
@@ -101,19 +101,19 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
     @Value("120")
     private int sortIndex;
-    
+
     @Autowired
     @Qualifier("kcPersonRepositoryService")
     private KcPersonRepositoryService kcPersonRepositoryService;
-    
+
     @Autowired
     @Qualifier("unitRepositoryService")
     private UnitRepositoryService unitRepositoryService;
 
 	/**
-	 * 
+	 *
 	 * This method gives information of applications that are used in RRSF424
-	 * 
+	 *
 	 * @return rrSF424Document {@link XmlObject} of type RRSF424Document.
 	 */
 	private RRSF42420Document getRRSF424() {
@@ -163,9 +163,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is to get estimated project funds for RRSF424
-	 * 
+	 *
 	 * @return EstimatedProjectFunding estimated total cost for the project.
 	 * @throws S2SException
 	 */
@@ -246,10 +246,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method gives the information for an application which consists of
 	 * personal details
-	 * 
+	 *
 	 * @return appInfo(ApplicantInfo) applicant details.
 	 */
 	private ApplicantInfo getApplicationInfo() {
@@ -322,9 +322,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is used to get Contact person information
-	 * 
+	 *
 	 * @param rolodex Rolodex
 	 * @return ContactPersonInfo corresponding to the Rolodex object.
 	 */
@@ -345,9 +345,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method gives the review information of a state
-	 * 
+	 *
 	 * @return stateReview(StateReview) corresponding to the state review code.
 	 */
 	private StateReview getStateReview() {
@@ -358,7 +358,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
         String stateReviewData = null;
         String stateReviewDate = null;
         Calendar reviewDate = null;
-        
+
         if (STATE_REVIEW_YES.equals(strReview)) {
             stateReviewCodeType = StateReviewCodeTypeDataType.Y_YES;
             stateReviewDate = eoStateReview.get(YNQ_REVIEW_DATE);
@@ -377,46 +377,48 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
     }
 
 	/**
-	 * 
+	 *
 	 * This method is used to get ApplicationType for the form RRSF424
-	 * 
+	 *
 	 * @return ApplicationType corresponding to the proposal type code.
 	 */
 	private ApplicationType getApplicationType() {
 		ApplicationType applicationType = ApplicationType.Factory.newInstance();
 		Map<String, String> submissionInfo = getSubmissionType(pdDoc);
-		if (pdDoc.getDevelopmentProposal().getProposalType() != null
-				&& Integer.parseInt(pdDoc.getDevelopmentProposal()
-						.getProposalType().getCode()) < PROPOSAL_TYPE_CODE_6) {
-			// Check <6 to ensure that if proposalType='TASk ORDER", it must not
-			// set. THis is because enum ApplicationType has no
-			// entry for TASK ORDER
-			applicationType
-					.setApplicationTypeCode(getApplicationTypeCodeDataType());
-			if (Integer.parseInt(pdDoc.getDevelopmentProposal()
-					.getProposalType().getCode()) == ApplicationTypeCodeDataType.INT_REVISION) {
-
-				String revisionCode = null;
-				if (submissionInfo.get(KEY_REVISION_CODE) != null) {
-					revisionCode = submissionInfo
-							.get(KEY_REVISION_CODE);
-					RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum
-							.forString(revisionCode);
-					applicationType.setRevisionCode(revisionCodeApplication);
-				}
-
-				String revisionCodeOtherDesc = null;
-				if (submissionInfo
-						.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
-					revisionCodeOtherDesc = submissionInfo
-							.get(KEY_REVISION_OTHER_DESCRIPTION);
-					applicationType
-							.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
-				}
+		String proposalTypeCode=pdDoc.getDevelopmentProposal().getProposalType().getCode();
+		if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_REVISION));
+			String revisionCode = null;
+			if (submissionInfo.get(KEY_REVISION_CODE) != null) {
+				revisionCode = submissionInfo.get(KEY_REVISION_CODE);
+				RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum.forString(revisionCode);
+				applicationType.setRevisionCode(revisionCodeApplication);
 			}
+			String revisionCodeOtherDesc = null;
+			if (submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
+				revisionCodeOtherDesc = submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION);
+				applicationType.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
+			}
+		}
+		if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
+			setProposalApplicationType(proposalTypeCode,applicationType);
 		}
 		setOtherAgencySubmissionDetails(applicationType);
 		return applicationType;
+	}
+
+	private void setProposalApplicationType(String proposalTypeCode,ApplicationType applicationType) {
+		if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_NEW));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_REVISION));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).contains(proposalTypeCode))  {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_RENEWAL));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_RESUBMISSION));
+		}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).contains(proposalTypeCode)) {
+			applicationType.setApplicationTypeCode(ApplicationTypeCodeDataType.Enum.forInt(ApplicationTypeCodeDataType.INT_CONTINUATION));
+		}
 	}
 
 	private void setOtherAgencySubmissionDetails(ApplicationType applicationType) {
@@ -440,9 +442,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is used to get Proposed Project Period for RRSF424
-	 * 
+	 *
 	 * @return ProposedProjectPeriod project start date and end date.
 	 */
 	private RRSF42420.ProposedProjectPeriod getProjectPeriod() {
@@ -458,9 +460,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is used to get Congressional District for RRSF424
-	 * 
+	 *
 	 * @return CongressionalDistrict congressional district for the Applicant
 	 *         and Project.
 	 */
@@ -480,10 +482,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is used to get details of Principal Investigator for
 	 * Organization Contact
-	 * 
+	 *
 	 * @return OrganizationContactPersonDataType Principal investigator details.
 	 */
 	private OrganizationContactPersonDataType getPDPI() {
@@ -523,7 +525,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		} else {
 			String personId = PI.getPersonId();
 			KcPersonContract kcPersons = kcPersonRepositoryService.findKcPersonByPersonId(personId);
-			
+
 			if (kcPersons.getOrganizationIdentifier() != null) {
 				divisionName = getPIDivision(kcPersons.getOrganizationIdentifier());
 			}
@@ -532,7 +534,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			}
 		}
 	}
-	
+
 	private String getPIDivision(String departmentId) {
 		String divisionName = null;
 		String unitName = getUnitName(departmentId);
@@ -559,7 +561,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		}
 		return divisionName;
 	}
-	
+
 	private String getUnitName(String departmentCode) {
 		UnitContract unit = unitRepositoryService.findUnitByUnitNumber(departmentCode);
 		return unit == null ? null : unit.getUnitName();
@@ -577,11 +579,11 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	        PDPI.setDepartmentName(StringUtils.substring(developmentProposal.getOwnedByUnit().getUnitName(), 0, DEPARTMENT_NAME_MAX_LENGTH));
 	    }
 	}
-	
-	private String getPrimaryDepartment(String personId) {		
+
+	private String getPrimaryDepartment(String personId) {
 		KcPersonContract kcPersons = kcPersonRepositoryService.findKcPersonByPersonId(personId);
 		return getUnitName(kcPersons.getOrganizationIdentifier());
-	}	
+	}
 
 	private void setDirectoryTitle(OrganizationContactPersonDataType PDPI,
 			ProposalPersonContract PI) {
@@ -596,9 +598,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is used to get AOR Information for RRSf424
-	 * 
+	 *
 	 * @return aorInfoType(AORInfoType) Authorized representative information.
 	 */
 	private AORInfoType getAORInfoType() {
@@ -691,9 +693,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	/**
-	 * 
+	 *
 	 * This method is used to get Applicant type for RRSF424
-	 * 
+	 *
 	 * @return applicantType(ApplicantType) type of applicant.
 	 */
 	private ApplicantType getApplicantType() {
@@ -806,6 +808,18 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 				&& s2sOpportunity.getS2sSubmissionType() != null) {
 			submissionTypeCode = s2sOpportunity.getS2sSubmissionType().getCode();
 		}
+
+		if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
+			String proposalTypeCode=pdDoc.getDevelopmentProposal().getProposalType().getCode();
+			if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW_CHANGE_CORRECTED).contains(proposalTypeCode) ||
+					s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_SUPPLEMENT_CHANGE_CORRECTED).contains(proposalTypeCode) ||
+					s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL_CHANGE_CORRECTED).contains(proposalTypeCode) ||
+					s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION_CHANGE_CORRECTED).contains(proposalTypeCode)) {
+				submissionTypeCode=Integer.toString(SubmissionTypeDataType.INT_CHANGE_CORRECTED_APPLICATION);
+			}else if(s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_PRE_PROPOSAL).contains(proposalTypeCode)) {
+				submissionTypeCode=Integer.toString(SubmissionTypeDataType.INT_PREAPPLICATION);
+			}
+		}
 		return submissionTypeCode;
 	}
 
@@ -824,8 +838,8 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		ProposalSiteContract applicantOrganization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization();
 		boolean isNih  = isSponsorInHierarchy(pdDoc.getDevelopmentProposal(), SPONSOR_GROUPS,SPONSOR_NIH);
-        if (applicantOrganization != null) {            
-            if(applicantOrganization.getOrganization().getPhsAccount()!= null && isNih){             
+        if (applicantOrganization != null) {
+            if(applicantOrganization.getOrganization().getPhsAccount()!= null && isNih){
                 employerId = applicantOrganization.getOrganization()
                         .getPhsAccount();
             }else{
@@ -873,7 +887,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			}
 		}
 	}
-	
+
 	private void setCoverLetterAttachment (RRSF42420 rrsf42420) {
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal()
                 .getNarratives()) {
@@ -942,7 +956,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	/**
 	 * This method creates {@link XmlObject} of type {@link RRSF42420Document}
 	 * by populating data from the given {@link ProposalDevelopmentDocumentContract}
-	 * 
+	 *
 	 * @param proposalDevelopmentDocument
 	 *            for which the {@link XmlObject} needs to be created
 	 * @return {@link XmlObject} which is generated using the given
