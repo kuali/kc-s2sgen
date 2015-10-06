@@ -77,9 +77,9 @@
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <xmlbeans-maven-plugin.version>2.3.3</xmlbeans-maven-plugin.version>
-        <error_prone_core.version>2.0.4</error_prone_core.version>
-        <plexus-compiler-javac.version>2.5</plexus-compiler-javac.version>
-        <plexus-compiler-javac-errorprone.version>2.5</plexus-compiler-javac-errorprone.version>
+        <error_prone_core.version>2.0.5</error_prone_core.version>
+        <plexus-compiler-javac.version>2.6</plexus-compiler-javac.version>
+        <plexus-compiler-javac-errorprone.version>2.6</plexus-compiler-javac-errorprone.version>
         <kuali.javadoc.maxmemory>3g</kuali.javadoc.maxmemory>
 
         <require.maven.version>3.0</require.maven.version>
