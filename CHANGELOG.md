@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* No Changes
+
+
+##coeus-s2sgen-1510.0002
 *  fixing proposal type check for NSFApplicationCheckList form. It will use comma separated param list for populating question answers on the form
   * Geo Thomas on Thu, 1 Oct 2015 17:19:06 -0400 [View Commit](../../commit/681de377f5414c866e17124b0fa3c1acbee3cc0e)
 
