@@ -70,7 +70,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
-
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -146,7 +145,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		if(pdDoc.getDevelopmentProposal().getCfdaNumber()!=null){
 		    rrsf42420.setCFDANumber(pdDoc.getDevelopmentProposal().getCfdaNumber());
 		}
-		rrsf42420.setActivityTitle(getActivityTitle());
+        String activityTitle = getActivityTitle();
+        if (!StringUtils.isEmpty(activityTitle)) {
+            rrsf42420.setActivityTitle(activityTitle);
+        }
 		setFederalId(rrsf42420);
 		rrsf42420.setPDPIContactInfo(getPDPI());
 		rrsf42420.setEstimatedProjectFunding(getProjectFunding());
@@ -912,38 +914,17 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
     private void setFederalId(RRSF42420 rrsf42420) {
         String federalId = pdDoc.getDevelopmentProposal().getSponsorProposalNumber();
-        if (federalId != null) {
-            if (federalId.length() > 30) {
-                rrsf42420.setFederalID(federalId.substring(0, 30));
-            }
-            else {
-                rrsf42420.setFederalID(federalId);
-            }
-        }
+        rrsf42420.setFederalID(StringUtils.substring(federalId, 0, ConfigurationConstants.FEDERAL_ID_MAX_LENGTH));
     }
 
 	private String getActivityTitle() {
-		String announcementTitle = "";
-		if (pdDoc.getDevelopmentProposal().getProgramAnnouncementTitle() != null) {
-			if (pdDoc.getDevelopmentProposal().getProgramAnnouncementTitle()
-					.length() > 120) {
-				announcementTitle = pdDoc.getDevelopmentProposal()
-						.getProgramAnnouncementTitle().substring(0, 120);
-			} else {
-				announcementTitle = pdDoc.getDevelopmentProposal()
-						.getProgramAnnouncementTitle();
-			}
-		}
-		return announcementTitle;
+			return StringUtils.substring(pdDoc.getDevelopmentProposal().getS2sOpportunity().getCfdaDescription(), 0, ConfigurationConstants.CFDA_TITLE_MAX_LENGTH);
 	}
 
 	private String getProjectTitle() {
-		String title = pdDoc.getDevelopmentProposal().getTitle();
-		if (title != null && title.length() > 200) {
-			title = title.substring(0, 200);
-		}
-		return title;
+			return StringUtils.substring(pdDoc.getDevelopmentProposal().getTitle(), 0, ConfigurationConstants.PROJECT_TITLE_MAX_LENGTH);
 	}
+
 	private String getAgencyRoutingNumber(){
 		String sponserProgramCode= pdDoc.getDevelopmentProposal().getAgencyRoutingIdentifier();
 	       return sponserProgramCode;
