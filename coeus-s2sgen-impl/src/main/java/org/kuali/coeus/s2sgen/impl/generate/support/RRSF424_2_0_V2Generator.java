@@ -33,8 +33,6 @@ import gov.grants.apply.system.globalLibraryV20.OrganizationDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
 import gov.grants.apply.system.universalCodesV20.CountryCodeDataType;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.common.api.person.KcPersonRepositoryService;
@@ -81,7 +79,9 @@ import java.util.*;
  */
 @FormGenerator("RRSF424_2_0_V2Generator")
 public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
-	private static final Logger LOG = LoggerFactory.getLogger(RRSF424_2_0_V2Generator.class);
+	private static final int CFDA_TITLE_MAX_LENGTH = 119;
+	private static final int PROJECT_TITLE_MAX_LENGTH = 200;
+
 	private DepartmentalPersonDto departmentalPerson;
 	protected static final int RRSF424_Cover_Letter = 139;
     private List<? extends AnswerHeaderContract> answerHeaders;
@@ -913,16 +913,15 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
     private void setFederalId(RRSF42420 rrsf42420) {
-        String federalId = pdDoc.getDevelopmentProposal().getSponsorProposalNumber();
-        rrsf42420.setFederalID(StringUtils.substring(federalId, 0, ConfigurationConstants.FEDERAL_ID_MAX_LENGTH));
+        rrsf42420.setFederalID(getFederalId());
     }
 
 	private String getActivityTitle() {
-			return StringUtils.substring(pdDoc.getDevelopmentProposal().getS2sOpportunity().getCfdaDescription(), 0, ConfigurationConstants.CFDA_TITLE_MAX_LENGTH);
+			return StringUtils.substring(pdDoc.getDevelopmentProposal().getS2sOpportunity().getCfdaDescription(), 0, CFDA_TITLE_MAX_LENGTH);
 	}
 
 	private String getProjectTitle() {
-			return StringUtils.substring(pdDoc.getDevelopmentProposal().getTitle(), 0, ConfigurationConstants.PROJECT_TITLE_MAX_LENGTH);
+			return StringUtils.substring(pdDoc.getDevelopmentProposal().getTitle(), 0, PROJECT_TITLE_MAX_LENGTH);
 	}
 
 	private String getAgencyRoutingNumber(){

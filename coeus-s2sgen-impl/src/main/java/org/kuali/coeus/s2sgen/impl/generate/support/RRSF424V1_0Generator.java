@@ -132,14 +132,9 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 		if (rolodex != null) {
 			rrsf424.setStateID(rolodex.getState());
 		}
-		String federalId = getSubmissionInfoService().getFederalId(pdDoc.getDevelopmentProposal().getProposalNumber());
-		if (federalId != null) {
-			if (federalId.length() > 30) {
-				rrsf424.setFederalID(federalId.substring(0, 30));
-			} else {
-				rrsf424.setFederalID(federalId);
-			}
-		}
+
+		rrsf424.setFederalID(getFederalId());
+
 		rrsf424.setApplicantInfo(getApplicationInfo());
 		rrsf424.setApplicantType(getApplicantType());
 		rrsf424.setApplicationType(getApplicationType());

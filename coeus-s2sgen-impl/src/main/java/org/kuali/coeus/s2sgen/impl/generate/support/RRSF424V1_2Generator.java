@@ -835,14 +835,7 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 	}
 
 	private void setFederalId(RRSF42412 rrsf42412) {
-		String federalId = getSubmissionInfoService().getFederalId(pdDoc.getDevelopmentProposal().getProposalNumber());
-		if (federalId != null) {
-			if (federalId.length() > 30) {
-				rrsf42412.setFederalID(federalId.substring(0, 30));
-			} else {
-				rrsf42412.setFederalID(federalId);
-			}
-		}
+		rrsf42412.setFederalID(getFederalId());
 	}
 
 	private String getActivityTitle() {

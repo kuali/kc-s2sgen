@@ -19,7 +19,8 @@
 package org.kuali.coeus.s2sgen.api.core;
 
 /**
- * Configuration constants used by the s2s subsystem.
+ * Configuration constants used by the s2s subsystem.  The constants in this class should only
+ * refer to configuration names used by the {@link org.kuali.coeus.propdev.api.s2s.S2SConfigurationService}.
  */
 public final class ConfigurationConstants {
 
@@ -101,9 +102,6 @@ public final class ConfigurationConstants {
     public static final String US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE = "US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE";
     public static final String PERMANENT_RESIDENT_OF_US_PENDING = "PERMANENT_RESIDENT_OF_US_PENDING";
     public static final String HIERARCHY_LEVEL = "HIERARCHY_LEVEL";
-    public static final int CFDA_TITLE_MAX_LENGTH = 119;
-    public static final int PROJECT_TITLE_MAX_LENGTH = 200;
-    public static final int FEDERAL_ID_MAX_LENGTH = 30;
 
 
     //printing

@@ -18,7 +18,6 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
-import gov.grants.apply.forms.phsFellowshipSupplemental11V11.PHSFellowshipSupplemental11Document.PHSFellowshipSupplemental11.ApplicationType.TypeOfApplication;
 import gov.grants.apply.forms.rrSF424V11.*;
 import gov.grants.apply.forms.rrSF424V11.RRSF424Document.RRSF424;
 import gov.grants.apply.forms.rrSF424V11.RRSF424Document.RRSF424.*;
@@ -135,14 +134,9 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 			String state = rolodex.getState();
 			rrsf424.setStateID(state);
 		}
-		String federalId = getSubmissionInfoService().getFederalId(pdDoc.getDevelopmentProposal().getProposalNumber());
-		if (federalId != null) {
-			if (federalId.length() > 30) {
-				rrsf424.setFederalID(federalId.substring(0, 30));
-			} else {
-				rrsf424.setFederalID(federalId);
-			}
-		}
+
+		rrsf424.setFederalID(getFederalId());
+
 		rrsf424.setApplicantInfo(getApplicationInfo());
 		rrsf424.setApplicantType(getApplicantType());
 		rrsf424.setApplicationType(getApplicationType());
