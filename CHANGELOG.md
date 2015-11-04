@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+*  The SF 424 R&R version 1-2 must be updated to allow field 4.a to be populated no matter what the proposal type (new/renewal/revision/etc.)
+*This logic was already updated for the 2-0 form version and needs to be applied to the 1-2 because this version of the form was not retire*d.
+  * The field mapping from KC is “Sponsor Proposal ID” on the Sponsor and Program Info screen.
+  * Travis Schneeberger on Wed, 4 Nov 2015 14:56:42 -0500 [View Commit](../../commit/8ae8bd8ff2eb4a7144bf52b1a3f27e5092358e34)
+
+##coeus-s2sgen-1511.0002
 *  Remove activity title from forms
   * KC needs to populate the "ActivityTitle" with the CFDA Description data from the S2S opportunity if available; and ALWAYS trim the length to stay under the 120 character limit.
   * IF the CFDA is blank in the opportunity, this field should remain blank in the SF424 RR forms.*
