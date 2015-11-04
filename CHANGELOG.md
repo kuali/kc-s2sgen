@@ -1,6 +1,14 @@
 
 
 ##CURRENT
+*  Remove activity title from forms
+  * KC needs to populate the "ActivityTitle" with the CFDA Description data from the S2S opportunity if available; and ALWAYS trim the length to stay under the 120 character limit.
+  * IF the CFDA is blank in the opportunity, this field should remain blank in the SF424 RR forms.*
+  * With the CFDA *blank *in the sponsor opportunity package, the RR SF424 form CFDA Title/Description field continues to be populated with the "Opportunity Title" rather than being left blank.
+  * When CFDA is *included *in the sponsor opportunity package, the RR SF424 form CFDA Title/Description field is populated with the "Opportunity Title" rather than with the CFDA Description data from the S2S opportunity. (the CFDA number does print correctly)
+  * Gayathri Athreya on Tue, 3 Nov 2015 17:13:36 -0700 [View Commit](../../commit/d87968e84818b75550920b5971552fc8f73ca544)
+
+##coeus-s2sgen-1511.0001
 * Prevent an NPE where the ProposalPerson.Person instance ProposalPerson.Person.Unit instance is null
   * Travis Schneeberger on Wed, 28 Oct 2015 16:03:25 -0400 [View Commit](../../commit/9f1573d21feb0379c7715e45cdb0366d699a977b)
 
