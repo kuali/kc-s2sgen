@@ -254,9 +254,8 @@ public class RRKeyPersonExpandedV1_2Generator extends
 	 * This method is used to add department name to profile
 	 */
 	private void setDepartmentNameToProfile(Profile profile, ProposalPersonContract PI) {
-		if(PI.getHomeUnit() != null) {
-            KcPersonContract kcPerson = PI.getPerson();
-            String departmentName =  kcPerson.getOrganizationIdentifier();
+		if(PI.getHomeUnit() != null && PI.getPerson() != null) {
+            final String departmentName =  PI.getPerson().getOrganizationIdentifier();
             profile.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
         }
         else
