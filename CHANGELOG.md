@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* Prevent an NPE where the ProposalPerson.Person instance ProposalPerson.Person.Unit instance is null
+  * Travis Schneeberger on Wed, 28 Oct 2015 16:03:25 -0400 [View Commit](../../commit/9f1573d21feb0379c7715e45cdb0366d699a977b)
+
+##coeus-s2sgen-1510.0003
 * No Changes
 
 
