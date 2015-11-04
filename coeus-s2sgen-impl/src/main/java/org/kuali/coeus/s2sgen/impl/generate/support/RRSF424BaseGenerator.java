@@ -18,11 +18,11 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
-import org.kuali.coeus.propdev.api.core.SubmissionInfoService;
 import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.propdev.api.s2s.S2sOpportunityContract;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
@@ -57,7 +57,6 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
     protected static final String STATE_REVIEW_YES = "Y";
     protected static final String STATE_REVIEW_NO = "N";
     protected static final int PROGRAM_ANNOUNCEMENT_TITLE_MAX_LENGTH = 120;
-    protected static final int PROPOSAL_TYPE_CODE_6 = 6;
     protected static final String PROPOSAL_YNQ_OTHER_AGENCY_SUBMISSION = "15";
     protected static final String VALUE_YES = "Yes";
     protected static final int PRIMARY_TITLE_MAX_LENGTH = 45;
@@ -74,6 +73,7 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
     private static final String SUBMISSION_TYPE_DESCRIPTION = "submissionTypeDescription";
     protected static final String KEY_REVISION_CODE = "revisionCode";
     protected static final String KEY_REVISION_OTHER_DESCRIPTION = "revisionOtherDescription";
+    private static final int FEDERAL_ID_MAX_LENGTH = 30;
 
     @Autowired
     @Qualifier("s2SDateTimeService")
@@ -94,10 +94,6 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
     @Autowired
     @Qualifier("questionAnswerService")
     protected QuestionAnswerService questionAnswerService;
-
-    @Autowired
-    @Qualifier("submissionInfoService")
-    protected SubmissionInfoService submissionInfoService;
 
     protected String getOtherAgencySubmissionExplanation() {
         Long answerId = getAnswerId(ANSWER_111, getAnswerHeaders());
@@ -133,6 +129,11 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
         }
         return contactType;
     }
+
+    protected String getFederalId() {
+        final String federalId = pdDoc.getDevelopmentProposal().getSponsorProposalNumber();
+        return StringUtils.substring(federalId, 0, FEDERAL_ID_MAX_LENGTH);
+    }
     /**
      * 
      * This method is used to get the details of Contact person
@@ -148,10 +149,6 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
     
     /**
      * This method tests whether a document's sponsor is in a given sponsor hierarchy.
-     * @param sponsorable
-     * @param sponsorHierarchy The name of a sponsor hierarchy
-     * @param level1 
-     * @return
      */
     public boolean isSponsorInHierarchy(DevelopmentProposalContract sponsorable, String sponsorHierarchy,String level1) {
         return sponsorHierarchyService.isSponsorInHierarchy(sponsorable.getSponsor().getSponsorCode(), sponsorHierarchy, 1, level1);
@@ -164,7 +161,7 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
      * @return Map&lt;String, String&gt; Map of submission details.
      */
     public Map<String, String> getSubmissionType(ProposalDevelopmentDocumentContract pdDoc) {
-        Map<String, String> submissionInfo = new HashMap<String, String>();
+        Map<String, String> submissionInfo = new HashMap<>();
         S2sOpportunityContract opportunity = pdDoc.getDevelopmentProposal().getS2sOpportunity();
         if (opportunity != null) {
             if (opportunity.getS2sSubmissionType() != null) {
@@ -226,13 +223,5 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
 
     public void setQuestionAnswerService(QuestionAnswerService questionAnswerService) {
         this.questionAnswerService = questionAnswerService;
-    }
-
-    public SubmissionInfoService getSubmissionInfoService() {
-        return submissionInfoService;
-    }
-
-    public void setSubmissionInfoService(SubmissionInfoService submissionInfoService) {
-        this.submissionInfoService = submissionInfoService;
     }
 }

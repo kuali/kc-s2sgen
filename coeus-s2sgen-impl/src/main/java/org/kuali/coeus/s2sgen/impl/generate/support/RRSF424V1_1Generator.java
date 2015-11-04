@@ -18,7 +18,6 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
-import gov.grants.apply.forms.phsFellowshipSupplemental11V11.PHSFellowshipSupplemental11Document.PHSFellowshipSupplemental11.ApplicationType.TypeOfApplication;
 import gov.grants.apply.forms.rrSF424V11.*;
 import gov.grants.apply.forms.rrSF424V11.RRSF424Document.RRSF424;
 import gov.grants.apply.forms.rrSF424V11.RRSF424Document.RRSF424.*;
@@ -135,14 +134,9 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 			String state = rolodex.getState();
 			rrsf424.setStateID(state);
 		}
-		String federalId = getSubmissionInfoService().getFederalId(pdDoc.getDevelopmentProposal().getProposalNumber());
-		if (federalId != null) {
-			if (federalId.length() > 30) {
-				rrsf424.setFederalID(federalId.substring(0, 30));
-			} else {
-				rrsf424.setFederalID(federalId);
-			}
-		}
+
+		rrsf424.setFederalID(getFederalId());
+
 		rrsf424.setApplicantInfo(getApplicationInfo());
 		rrsf424.setApplicantType(getApplicantType());
 		rrsf424.setApplicationType(getApplicationType());
@@ -191,11 +185,11 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
             return rrSF424Document;
         }
         rrsf424.setStateReview(getStateReview());
-        // Value is hardcoded
+
         rrsf424.setTrustAgree(YesNoDataType.Y_YES);
         rrsf424.setAORInfo(getAORInfoType());
         for (NarrativeContract narrative : devProp.getNarratives()) {
-            AttachedFileDataType attachedFileDataType=null;
+            AttachedFileDataType attachedFileDataType;
             switch(Integer.parseInt(narrative.getNarrativeType().getCode())){
                 case(PRE_APPLICATION):
                     attachedFileDataType = getAttachedFileType(narrative);
@@ -395,7 +389,7 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
         Map<String, String> eoStateReview = getEOStateReview(pdDoc);
         StateReviewCodeTypeDataType.Enum stateReviewCodeType = null;
         String strReview = eoStateReview.get(YNQ_ANSWER);
-        String stateReviewData = null;
+        String stateReviewData;
         String stateReviewDate = null;
         
         if (STATE_REVIEW_YES.equals(strReview)) {
@@ -432,13 +426,13 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 					.forInt(Integer.parseInt(pdDoc.getDevelopmentProposal()
 							.getProposalType().getCode()));
 			applicationType.setApplicationTypeCode(applicationTypeCodeDataType);
-			String revisionCode = null;
+			String revisionCode;
 			if (submissionInfo.get(KEY_REVISION_CODE) != null) {
 				revisionCode = submissionInfo.get(KEY_REVISION_CODE);
 				RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum.forString(revisionCode);
 				applicationType.setRevisionCode(revisionCodeApplication);
 			}
-			String revisionCodeOtherDesc = null;
+			String revisionCodeOtherDesc;
 			if (submissionInfo
 					.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
 				revisionCodeOtherDesc = submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION);
@@ -538,7 +532,7 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
 	private OrganizationContactPersonDataType getPDPI() {
 		OrganizationContactPersonDataType PDPI = OrganizationContactPersonDataType.Factory
 				.newInstance();
-		ProposalPersonContract PI = null;
+		ProposalPersonContract PI;
 		for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal()
 				.getProposalPersons()) {
 			if (PRINCIPAL_INVESTIGATOR.equals(proposalPerson
@@ -664,7 +658,7 @@ public class RRSF424V1_1Generator extends RRSF424BaseGenerator {
                     .getApplicantOrganization().getOrganization()
                     .getOrganizationTypes().get(0).getOrganizationTypeList().getCode();
         }
-        ApplicantTypeCodeDataType.Enum applicantTypeCode = null;
+        ApplicantTypeCodeDataType.Enum applicantTypeCode;
 
         switch (orgTypeCode) {
             case 1:

@@ -132,14 +132,9 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 		if (rolodex != null) {
 			rrsf424.setStateID(rolodex.getState());
 		}
-		String federalId = getSubmissionInfoService().getFederalId(pdDoc.getDevelopmentProposal().getProposalNumber());
-		if (federalId != null) {
-			if (federalId.length() > 30) {
-				rrsf424.setFederalID(federalId.substring(0, 30));
-			} else {
-				rrsf424.setFederalID(federalId);
-			}
-		}
+
+		rrsf424.setFederalID(getFederalId());
+
 		rrsf424.setApplicantInfo(getApplicationInfo());
 		rrsf424.setApplicantType(getApplicantType());
 		rrsf424.setApplicationType(getApplicationType());
@@ -378,7 +373,7 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 	private StateReview getStateReview() {
 		Map<String, String> eoStateReview = getEOStateReview(pdDoc);
 		StateReviewCodeTypeDataType.Enum stateReviewCodeType = null;
-		String stateReviewData = null;
+		String stateReviewData;
 		String strReview = eoStateReview.get(YNQ_ANSWER);
 		if (STATE_REVIEW_YES.equals(strReview)) {
 			stateReviewCodeType = StateReviewCodeTypeDataType.YES;
@@ -409,14 +404,14 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 					.forInt(Integer.parseInt(proposalTypeCode));
 			applicationType.setApplicationTypeCode(applicationTypeCodeDataType);
 			Map<String, String> submissionInfo = getSubmissionType(pdDoc);
-				String revisionCode = null;
+				String revisionCode;
 				if (submissionInfo.get(KEY_REVISION_CODE) != null) {
 					revisionCode = submissionInfo.get(KEY_REVISION_CODE);
 					RevisionCode revisionCodeApplication = RevisionCode.Factory.newInstance();
 					revisionCodeApplication.setStringValue(revisionCode);
 					applicationType.setRevisionCode(revisionCodeApplication);
 				}
-				String revisionCodeOtherDesc = null;
+				String revisionCodeOtherDesc;
 				if (submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
 					revisionCodeOtherDesc = submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION);
 					RevisionCodeOtherExplanation revisionCodeOtherExplanation = RevisionCodeOtherExplanation.Factory.newInstance();
@@ -530,7 +525,7 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 
 		OrganizationContactPersonDataType PDPI = OrganizationContactPersonDataType.Factory
 				.newInstance();
-		ProposalPersonContract PI = null;
+		ProposalPersonContract PI;
 		for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal()
 				.getProposalPersons()) {
 			if (PRINCIPAL_INVESTIGATOR.equals(proposalPerson
@@ -649,7 +644,7 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 					.getApplicantOrganization().getOrganization()
 					.getOrganizationTypes().get(0).getOrganizationTypeList().getCode();
 		}
-		ApplicantTypeCodeDataType.Enum applicantTypeCode = null;
+		ApplicantTypeCodeDataType.Enum applicantTypeCode;
 		switch (orgTypeCode) {
 		case 1: {
 			// local
@@ -708,8 +703,6 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 		}
 		case 14: {
 			// disadvantaged
-			applicantTypeCode = ApplicantTypeCodeDataType.P_OTHER_SPECIFY;
-			// value is hardcoded
 			isSociallyEconomicallyDisadvantaged.setStringValue(VALUE_YES);
 			applicantTypeCode = ApplicantTypeCodeDataType.O_SMALL_BUSINESS;
 			smallOrganizationType.setApplicantTypeCode(applicantTypeCode);
@@ -719,9 +712,6 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 			break;
 		}
 		case 15: {
-			// women owned
-			applicantTypeCode = ApplicantTypeCodeDataType.P_OTHER_SPECIFY;
-			// value is hardcoded
 			isWomenOwned.setStringValue(VALUE_YES);
 			applicantTypeCode = ApplicantTypeCodeDataType.O_SMALL_BUSINESS;
 			smallOrganizationType.setApplicantTypeCode(applicantTypeCode);

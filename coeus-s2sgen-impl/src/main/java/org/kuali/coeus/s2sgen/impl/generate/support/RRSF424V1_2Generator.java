@@ -33,8 +33,6 @@ import gov.grants.apply.system.globalLibraryV20.OrganizationDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
 import gov.grants.apply.system.universalCodesV20.CountryCodeDataType;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.common.api.org.OrganizationContract;
@@ -80,7 +78,6 @@ import java.util.*;
  */
 @FormGenerator("RRSF424V1_2Generator")
 public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
-	private static final Logger LOG = LoggerFactory.getLogger(RRSF424V1_2Generator.class);
 
     private static final String MODULAR_BUDGET_REQUIRED = "s2s.budget.modularbudget.required";
 
@@ -347,9 +344,9 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
         Map<String, String> eoStateReview = getEOStateReview(pdDoc);
         StateReviewCodeTypeDataType.Enum stateReviewCodeType = null;
         String strReview = eoStateReview.get(YNQ_ANSWER);
-        String stateReviewData = null;
-        String stateReviewDate = null;
-        Calendar reviewDate = null;
+        String stateReviewData;
+        String stateReviewDate;
+        Calendar reviewDate;
         
         if (STATE_REVIEW_YES.equals(strReview)) {
             stateReviewCodeType = StateReviewCodeTypeDataType.Y_YES;
@@ -380,13 +377,13 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 		String proposalTypeCode=pdDoc.getDevelopmentProposal().getProposalType().getCode();
 		if (s2SConfigurationService.getValuesFromCommaSeparatedParam(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).contains(proposalTypeCode)) {
 			applicationType.setApplicationTypeCode(getApplicationTypeCodeDataType());
-			String revisionCode = null;
+			String revisionCode;
 			if (submissionInfo.get(KEY_REVISION_CODE) != null) {
 				revisionCode = submissionInfo.get(KEY_REVISION_CODE);
 				RevisionTypeCodeDataType.Enum revisionCodeApplication = RevisionTypeCodeDataType.Enum.forString(revisionCode);
 				applicationType.setRevisionCode(revisionCodeApplication);
 			}
-			String revisionCodeOtherDesc = null;
+			String revisionCodeOtherDesc;
 			if (submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION) != null) {
 				revisionCodeOtherDesc = submissionInfo.get(KEY_REVISION_OTHER_DESCRIPTION);
 				applicationType.setRevisionCodeOtherExplanation(revisionCodeOtherDesc);
@@ -484,7 +481,7 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 	private OrganizationContactPersonDataType getPDPI() {
 		OrganizationContactPersonDataType PDPI = OrganizationContactPersonDataType.Factory
 				.newInstance();
-		ProposalPersonContract PI = null;
+		ProposalPersonContract PI;
 		for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal()
 				.getProposalPersons()) {
 			if (PRINCIPAL_INVESTIGATOR.equals(proposalPerson
@@ -669,7 +666,7 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 					.getApplicantOrganization().getOrganization()
 					.getOrganizationTypes().get(0).getOrganizationTypeList().getCode();
 		}
-		ApplicantTypeCodeDataType.Enum applicantTypeCode = null;
+		ApplicantTypeCodeDataType.Enum applicantTypeCode;
 
 		switch (orgTypeCode) {
 		case 1:
@@ -835,14 +832,7 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 	}
 
 	private void setFederalId(RRSF42412 rrsf42412) {
-		String federalId = getSubmissionInfoService().getFederalId(pdDoc.getDevelopmentProposal().getProposalNumber());
-		if (federalId != null) {
-			if (federalId.length() > 30) {
-				rrsf42412.setFederalID(federalId.substring(0, 30));
-			} else {
-				rrsf42412.setFederalID(federalId);
-			}
-		}
+		rrsf42412.setFederalID(getFederalId());
 	}
 
 	private String getActivityTitle() {
