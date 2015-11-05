@@ -132,6 +132,7 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
 
     protected String getFederalId() {
         final String federalId = pdDoc.getDevelopmentProposal().getSponsorProposalNumber();
+
         return StringUtils.substring(federalId, 0, FEDERAL_ID_MAX_LENGTH);
     }
     /**

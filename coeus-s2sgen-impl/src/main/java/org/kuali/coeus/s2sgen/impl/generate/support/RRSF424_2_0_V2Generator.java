@@ -907,7 +907,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
     private void setFederalId(RRSF42420 rrsf42420) {
-        rrsf42420.setFederalID(getFederalId());
+        final String federalId = getFederalId();
+		if (StringUtils.isNotBlank(federalId)) {
+			rrsf42420.setFederalID(federalId);
+		}
     }
 
 	private String getActivityTitle() {
