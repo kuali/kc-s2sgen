@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  preventing the federalId from being set to blank
+  * Travis Schneeberger on Thu, 5 Nov 2015 17:00:18 -0500 [View Commit](../../commit/1e761aa5f01fcfc5afa506ad32284697f18428a0)
+
+##coeus-s2sgen-1511.0003
 *  The SF 424 R&R version 1-2 must be updated to allow field 4.a to be populated no matter what the proposal type (new/renewal/revision/etc.)
 *This logic was already updated for the 2-0 form version and needs to be applied to the 1-2 because this version of the form was not retire*d.
   * The field mapping from KC is “Sponsor Proposal ID” on the Sponsor and Program Info screen.
