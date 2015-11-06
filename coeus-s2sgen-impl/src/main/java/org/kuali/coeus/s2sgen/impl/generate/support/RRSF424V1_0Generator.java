@@ -132,9 +132,10 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 		if (rolodex != null) {
 			rrsf424.setStateID(rolodex.getState());
 		}
-
-		rrsf424.setFederalID(getFederalId());
-
+		final String federalId = getFederalId();
+		if (StringUtils.isNotBlank(federalId)) {
+			rrsf424.setFederalID(federalId);
+		}
 		rrsf424.setApplicantInfo(getApplicationInfo());
 		rrsf424.setApplicantType(getApplicantType());
 		rrsf424.setApplicationType(getApplicationType());
