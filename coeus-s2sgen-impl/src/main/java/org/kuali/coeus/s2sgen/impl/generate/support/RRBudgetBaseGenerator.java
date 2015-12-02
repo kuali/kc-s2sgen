@@ -225,7 +225,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
 			keyPerson.setFirstName(keyPersonInfo.getFirstName());
 			keyPerson.setMiddleName(keyPersonInfo.getMiddleName());
 			keyPerson.setLastName(keyPersonInfo.getLastName());
-			keyPerson.setProjectRole(keyPersonInfo.getRole());
+			keyPerson.setProjectRole(keyPersonInfo.getKeyPersonRole());
 			keyPerson.setCompensation(getExtraKeyPersonCompensation(keyPersonInfo));
 			keypersonslist.add(keyPerson);
 		}
