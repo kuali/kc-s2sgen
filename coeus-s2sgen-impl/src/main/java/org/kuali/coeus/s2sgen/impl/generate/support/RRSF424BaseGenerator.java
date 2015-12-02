@@ -19,6 +19,8 @@
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
 import org.apache.commons.lang3.StringUtils;
+import org.kuali.coeus.common.api.person.KcPersonContract;
+import org.kuali.coeus.common.api.unit.UnitContract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
@@ -182,6 +184,11 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
             }
         }
         return submissionInfo;
+    }
+
+    protected String getDepartmentName(KcPersonContract kcPerson) {
+        final UnitContract unit = kcPerson.getUnit();
+        return unit != null ? StringUtils.substring(unit.getUnitName(), 0, DEPARTMENT_NAME_MAX_LENGTH) : "";
     }
 
     protected abstract List<? extends AnswerHeaderContract> getAnswerHeaders();

@@ -565,20 +565,13 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
 	private void setDepartmentName(OrganizationContactPersonDataType PDPI,ProposalPersonContract PI) {
 	    if(PI.getHomeUnit() != null) {
-	    	String personId = PI.getPersonId();
-	    	String departmentName = getPrimaryDepartment(personId);
-	        PDPI.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
+			PDPI.setDepartmentName(getDepartmentName(PI.getPerson()));
 	    }
 	    else
 	    {
 	        DevelopmentProposalContract developmentProposal = pdDoc.getDevelopmentProposal();
 	        PDPI.setDepartmentName(StringUtils.substring(developmentProposal.getOwnedByUnit().getUnitName(), 0, DEPARTMENT_NAME_MAX_LENGTH));
 	    }
-	}
-
-	private String getPrimaryDepartment(String personId) {
-		KcPersonContract kcPersons = kcPersonRepositoryService.findKcPersonByPersonId(personId);
-		return getUnitName(kcPersons.getOrganizationIdentifier());
 	}
 
 	private void setDirectoryTitle(OrganizationContactPersonDataType PDPI,
