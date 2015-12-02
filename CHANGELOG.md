@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  PD - Grants.gov RR SF424 v1-2, RR SF424 v1-1, RR SF424 v1-0 forms populate PD/PI "Department" field with unit code - should be Unit Name
+  * Travis Schneeberger on Wed, 2 Dec 2015 11:25:41 -0500 [View Commit](../../commit/89188b4f161edaa0aaa56c8a42f4621bf9854039)
+
+##coeus-s2sgen-1512.0001
 *  Fix key person role.
   * PD Budget - G.gov form RR Budget v1-3, system generated attachment "Additional Senior Key Persons" not not populating project role
   * On the system generated attachment "Additional Senior Key Persons," KC should populate the "Project Role" field as it does for Senior/Key persons listed on the budget form.
