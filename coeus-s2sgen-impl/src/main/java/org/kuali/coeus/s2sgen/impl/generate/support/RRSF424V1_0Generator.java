@@ -38,7 +38,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.org.OrganizationContract;
-import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.common.api.ynq.YnqConstant;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
 import org.kuali.coeus.common.api.rolodex.RolodexService;
@@ -553,9 +552,7 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 				}
 
 				if(PI.getHomeUnit() != null) {
-                    KcPersonContract kcPerson = PI.getPerson();
-		            String departmentName =  kcPerson.getOrganizationIdentifier();
-		            PDPI.setDepartmentName(StringUtils.substring(departmentName, 0, DEPARTMENT_NAME_MAX_LENGTH));
+					PDPI.setDepartmentName(getDepartmentName(PI.getPerson()));
 		        }
 		        else
 		        {
