@@ -1,6 +1,30 @@
 
 
 ##CURRENT
+*  Fix key person role.
+  * PD Budget - G.gov form RR Budget v1-3, system generated attachment "Additional Senior Key Persons" not not populating project role
+  * On the system generated attachment "Additional Senior Key Persons," KC should populate the "Project Role" field as it does for Senior/Key persons listed on the budget form.
+  * Currently, if a key person, has "Project Role: Other (Specify)
+  * This should instead be the "Other" that is entered in the Proposal > Key Personnel> Personnel section of the proposal, such as "Senior Research Scientist"
+  * This should be consistent with the project role populating in Section A of the rr budget form.
+  * To duplicate:
+  * Create a proposal with the minimum required fields to save, including a federal sponsor code to connect to Grants.gov.
+  * S2S Opportunity > Grants.gov PA-C-R01 contains the RR Budget 1-3.
+  * Key Personnel: add a PI and at least 8 more key personnel to surpass the 8 detailed persons in the s2s form.
+  * Budget > Create a detailed budget
+  * >maintain salaries for all the persons and assign them to P1, generate all periods
+  * >Mark the budget complete and for submission
+  * Return to proposal
+  * Attachments > add a budget justification PDF file
+  * S2S Opportunity > Forms > RR Budget 1-3 check to Include & save
+  * Check to Print the RR Budget 1-3, click create pdf
+  * Result:
+  * The primary budget form publishes the Project Role for the 8 persons in the Sr/Key budget section, but the Additional Key Persons sheet does NOT provide the project role for the additional persons.
+  * Desired Results:
+  * The additional key personnel sheet(s) should provide the Project Role as defined in Key Personnel, just as is done for the prime budget.
+  * Gayathri Athreya on Wed, 2 Dec 2015 11:38:51 -0700 [View Commit](../../commit/d6ad5ea3f56acfead4c0acddb615880e04d7a78f)
+
+##coeus-s2sgen-1511.0006
 * No Changes
 
 
