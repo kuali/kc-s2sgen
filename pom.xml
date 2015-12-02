@@ -77,9 +77,6 @@
         <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <xmlbeans-maven-plugin.version>2.3.3</xmlbeans-maven-plugin.version>
-        <error_prone_core.version>2.0.6</error_prone_core.version>
-        <plexus-compiler-javac.version>2.6</plexus-compiler-javac.version>
-        <plexus-compiler-javac-errorprone.version>2.6</plexus-compiler-javac-errorprone.version>
         <kuali.javadoc.maxmemory>3g</kuali.javadoc.maxmemory>
 
         <require.maven.version>3.0</require.maven.version>
@@ -469,9 +466,64 @@
             </pluginRepositories>
         </profile>
 
-        <!-- enables the error prone compiler for strict compilation-->
+        <!--
+        uses the java jdk jdeps tool to confirm no internal jdk apis are used.  Some of these apis will be removed in
+        later versions of java.
+        -->
+        <profile>
+            <id>jdeps</id>
+
+            <activation>
+                <property>
+                    <name>enforce-project-quality</name>
+                </property>
+            </activation>
+
+            <properties>
+                <maven-jdeps-plugin.version>3.0.0</maven-jdeps-plugin.version>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-jdeps-plugin</artifactId>
+                            <version>${maven-jdeps-plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>ban internal jdk apis</id>
+                                    <goals>
+                                        <goal>jdkinternals</goal>
+                                        <goal>test-jdkinternals</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jdeps-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- enables the error prone compiler for strict compilation -->
         <profile>
             <id>error-prone</id>
+            <activation>
+                <property>
+                    <name>enforce-project-quality</name>
+                </property>
+            </activation>
+
+            <properties>
+                <error_prone_core.version>2.0.6</error_prone_core.version>
+                <plexus-compiler-javac.version>2.6</plexus-compiler-javac.version>
+                <plexus-compiler-javac-errorprone.version>2.6</plexus-compiler-javac-errorprone.version>
+            </properties>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -480,10 +532,10 @@
                             <artifactId>maven-compiler-plugin</artifactId>
                             <version>${maven-compiler-plugin.version}</version>
                             <configuration>
+                                <useIncrementalCompilation>false</useIncrementalCompilation>
                                 <source>${project.compile.source}</source>
                                 <target>${project.compile.target}</target>
                                 <encoding>${project.encoding}</encoding>
-                                <useIncrementalCompilation>false</useIncrementalCompilation>
                                 <fork>false</fork>
                                 <meminitial>512m</meminitial>
                                 <maxmem>1024m</maxmem>
