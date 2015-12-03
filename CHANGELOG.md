@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+* Fix issue due to recent change that caused exception when validating s2s forms
+
+  * Due to ProposalAdminDetails being created on routing, an assumption in S2S was incorrect and would cause the generators to lookup a blank user for the AOR. This corrects this and instead only uses the proposaladmindetails signedBy when it exists.
+  * blackcathacker on Thu, 3 Dec 2015 11:03:57 -0800 [View Commit](../../commit/9c069a9d91c0095d2a6d49460036440bd8bfeac4)
+
+##coeus-s2sgen-1512.0003
 *  Fix application type.
   * Regardless of proposal type selected, the Data Validation and/or the Opportunity Search > Forms screen return error based on S2S Application Type.
   * With form SF424-V2.1:
