@@ -1,6 +1,30 @@
 
 
 ##CURRENT
+*  Fix application type.
+  * Regardless of proposal type selected, the Data Validation and/or the Opportunity Search > Forms screen return error based on S2S Application Type.
+  * With form SF424-V2.1:
+  * /GrantApplication/Forms/SF424_2_1/ApplicationType is not valid in SF424-V2.1
+  * and
+  * With form SF424-V2.0:
+  * /GrantApplication/Forms/SF424/ApplicationType is not valid in SF424-V2.0
+
+  * Steps to recreate:
+  * Create a PD record, with basic info to save and Proposal Type = New
+  * In S2S Opportunity Search, search for Grants.gov test opportunity NISTNOTRR2 and link.
+  * Add a PI
+  * Questionnaire: answer the GG Form questionnaire
+  * S2S Opportunity Search > Create the PDF for the SF424-V2.1
+  * Results:
+  * error stating the Application Type not Valid in SF424-V2.1
+  * Return to Proposal Details and change proposal type to any other.
+  * Attempt to Print.
+  * Same error re Application Type remains.
+  * This is may be a result of the recently added Proposal Types and/or RESKC-360 which was for a problem in MIT KC Production soon after go-live related to the same form.
+  * PD S2S - Error messages re "Application Type" for SF424-V2.1 and SF424-V2.0 (NOT RR versions)
+  * Gayathri Athreya on Wed, 2 Dec 2015 17:29:17 -0700 [View Commit](../../commit/2bbd144823d898a54b75f92c13bd6d4ba16d317d)
+
+##coeus-s2sgen-1512.0002
 *  PD - Grants.gov RR SF424 v1-2, RR SF424 v1-1, RR SF424 v1-0 forms populate PD/PI "Department" field with unit code - should be Unit Name
   * Travis Schneeberger on Wed, 2 Dec 2015 11:25:41 -0500 [View Commit](../../commit/89188b4f161edaa0aaa56c8a42f4621bf9854039)
 
