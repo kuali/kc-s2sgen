@@ -59,10 +59,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This Class is used to generate XML object for grants.gov SF424V2.1. This form is generated using XMLBean classes and is based on
@@ -136,20 +133,15 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
             ApplicationType.Enum applicationTypeEnum = null;
             if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
                 String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
-                if (s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).equals(proposalTypeCode)) {
+                if (doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW, proposalTypeCode)) {
 			        applicationTypeEnum = ApplicationType.NEW;
-                } else if (s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).equals(proposalTypeCode)) {
+                } else if (doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION, proposalTypeCode)) {
 					applicationTypeEnum = ApplicationType.REVISION;
-                } else if (s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).equals(proposalTypeCode)) {
+                } else if (doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL, proposalTypeCode)) {
                     applicationTypeEnum = ApplicationType.CONTINUATION;
-                } else if (s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).equals(proposalTypeCode)) {
+                } else if (doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION, proposalTypeCode)) {
                     applicationTypeEnum = ApplicationType.CONTINUATION;
-                } else if (s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).equals(proposalTypeCode)) {
+                } else if (doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION, proposalTypeCode)) {
                     applicationTypeEnum = ApplicationType.REVISION;
                 }
             }
@@ -425,6 +417,11 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
         sf424V21.setAORSignature(aorInfo.getFullName());
         sf424V21.setDateSigned(Calendar.getInstance());
         return sf424V21;
+    }
+
+    protected boolean doesParameterContainCode(String parameterName, String code) {
+        List<String> parameterValues = s2SConfigurationService.getValuesFromCommaSeparatedParam(parameterName);
+        return parameterValues.contains(code);
     }
 
     private void setApplicatTypeCodes(SF42421 sf424V21) {
