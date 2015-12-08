@@ -219,7 +219,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
             return true;
         }
         catch (IOException e) {
-            return false;
+            throw new S2SException(e);
         }
     }
 

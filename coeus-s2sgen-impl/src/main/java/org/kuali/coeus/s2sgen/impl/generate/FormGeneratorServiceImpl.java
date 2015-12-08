@@ -129,9 +129,9 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
             if(info==null) continue;
 			String namespace = info.getNameSpace();
             S2SFormGenerator s2sFormGenerator = s2SFormGeneratorService.getS2SGenerator(developmentProposal.getProposalNumber(),namespace);
-            auditErrors.addAll(s2sFormGenerator.getAuditErrors());
 			try {
 				XmlObject formObject = s2sFormGenerator.getFormObject(pdDoc);
+                auditErrors.addAll(s2sFormGenerator.getAuditErrors());
 				if (s2SValidatorService.validate(formObject, auditErrors, info.getFormName())) {
 					if (forms != null && attList != null) {
 						setFormObject(forms, formObject);

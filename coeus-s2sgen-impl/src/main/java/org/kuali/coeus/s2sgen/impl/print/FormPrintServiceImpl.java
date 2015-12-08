@@ -367,9 +367,8 @@ public class FormPrintServiceImpl implements FormPrintService {
             FormMappingInfo info = formMappingService.getFormInfo(namespace,proposalNumber);
 			if(info==null) continue;
             S2SFormGenerator s2sFormGenerator = s2SFormGeneratorService.getS2SGenerator(proposalNumber,info.getNameSpace());
-            errors.addAll(s2sFormGenerator.getAuditErrors());
 			XmlObject formObject = s2sFormGenerator.getFormObject(pdDoc);
-			
+			errors.addAll(s2sFormGenerator.getAuditErrors());
 			if (s2SValidatorService.validate(formObject, errors, info.getFormName()) && errors.isEmpty() && StringUtils.isNotBlank(info.getStyleSheet())) {
 			    String applicationXml = formObject.xmlText(s2SFormGeneratorService.getXmlOptionsPrefixes());
 			    String filteredApplicationXml = s2SDateTimeService.removeTimezoneFactor(applicationXml);
