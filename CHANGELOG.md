@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  When printing s2s forms and validation errors exist those validation errors are never displayed to the end user.  Instead s2s pdf generation will be unable to create a pdf due to incomplete xml being input into the print process.
+  * Travis Schneeberger on Tue, 8 Dec 2015 15:28:28 -0500 [View Commit](../../commit/82b9eabb7b0781be58e30bf83d081a8cf2215d6e)
+
+##coeus-s2sgen-1512.0004
 * Fix issue due to recent change that caused exception when validating s2s forms
 
   * Due to ProposalAdminDetails being created on routing, an assumption in S2S was incorrect and would cause the generators to lookup a blank user for the AOR. This corrects this and instead only uses the proposaladmindetails signedBy when it exists.
