@@ -116,10 +116,10 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 		List<? extends S2sOppFormsContract> opportunityForms = developmentProposal.getS2sOppForms();
 
 		if (attList == null) {
-		    attList = new ArrayList<AttachmentData>();
+		    attList = new ArrayList<>();
 		}
 
-        List<AuditError> auditErrors = new ArrayList<AuditError>();
+        List<AuditError> auditErrors = new ArrayList<>();
         getNarrativeService().deleteSystemGeneratedNarratives(pdDoc.getDevelopmentProposal().getNarratives());
 		for (S2sOppFormsContract opportunityForm : opportunityForms) {
 			if (!opportunityForm.getInclude()) {
@@ -129,11 +129,11 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
             if(info==null) continue;
 			String namespace = info.getNameSpace();
             S2SFormGenerator s2sFormGenerator = s2SFormGeneratorService.getS2SGenerator(developmentProposal.getProposalNumber(),namespace);
-            auditErrors.addAll(s2sFormGenerator.getAuditErrors());
 			try {
 				XmlObject formObject = s2sFormGenerator.getFormObject(pdDoc);
+                auditErrors.addAll(s2sFormGenerator.getAuditErrors());
 				if (s2SValidatorService.validate(formObject, auditErrors, info.getFormName())) {
-					if (forms != null && attList != null) {
+					if (forms != null) {
 						setFormObject(forms, formObject);
 					}
 				} else {
@@ -163,7 +163,7 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
         }
 
         GrantApplicationDocument.GrantApplication.Forms forms = GrantApplicationDocument.GrantApplication.Forms.Factory.newInstance();
-        List<AttachmentData> attList = new ArrayList<AttachmentData>();
+        List<AttachmentData> attList = new ArrayList<>();
         final FormGenerationResult result = generateAndValidateForms(forms, attList, pdDocContract);
         if (result.isValid()) {
             String applicationXml = getGrantApplicationDocument(pdDocContract,forms);
@@ -241,8 +241,7 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
     private String getXmlFromDocument(XmlObject grantApplicationDocument) {
         String applicationXmlText = grantApplicationDocument
                 .xmlText(s2SFormGeneratorService.getXmlOptionsPrefixes());
-        String applicationXml = s2SDateTimeService.removeTimezoneFactor(applicationXmlText);
-        return applicationXml;
+        return s2SDateTimeService.removeTimezoneFactor(applicationXmlText);
     }
 
 
@@ -282,15 +281,11 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
         if (StringUtils.isBlank(formName)) {
             throw new IllegalArgumentException("formName is blank");
         }
-        boolean validationSucceeded;
-        List<AuditError> auditErrors = new ArrayList<AuditError>();
+        final boolean validationSucceeded;
+        List<AuditError> auditErrors = new ArrayList<>();
         try {
             XmlObject xmlObject = XmlObject.Factory.parse(s2sUserAttachedFormFile.getXmlFile());
-            if(!getS2SValidatorService().validate(xmlObject, auditErrors, formName)) {
-                validationSucceeded = false;
-            }else{
-                validationSucceeded = true;
-            }
+            validationSucceeded = getS2SValidatorService().validate(xmlObject, auditErrors, formName);
         } catch (Exception e) {
             throw new S2SException();
         }
@@ -301,42 +296,19 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
         return result;
     }
 
-
-	/**
-	 * 
-	 * Setter for {@link S2SFormGeneratorRetrievalService}
-	 * 
-	 * @param s2SFormGeneratorService
-	 */
 	public void setS2SFormGeneratorService(
 			S2SFormGeneratorRetrievalService s2SFormGeneratorService) {
 		this.s2SFormGeneratorService = s2SFormGeneratorService;
 	}
 
-	/**
-	 * Gets the s2SFormGeneratorService attribute.
-	 * 
-	 * @return Returns the s2SFormGeneratorService.
-	 */
 	public S2SFormGeneratorRetrievalService getS2SFormGeneratorService() {
 		return s2SFormGeneratorService;
 	}
 
-	/**
-	 * Gets the s2SValidatorService attribute.
-	 * 
-	 * @return Returns the s2SValidatorService.
-	 */
 	public S2SValidatorService getS2SValidatorService() {
 		return s2SValidatorService;
 	}
 
-	/**
-	 * Sets the s2SValidatorService attribute value.
-	 * 
-	 * @param validatorService
-	 *            The s2SValidatorService to set.
-	 */
 	public void setS2SValidatorService(S2SValidatorService validatorService) {
 		s2SValidatorService = validatorService;
 	}

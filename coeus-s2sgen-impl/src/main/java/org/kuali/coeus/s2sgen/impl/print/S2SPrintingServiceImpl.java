@@ -80,7 +80,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
                 LOG.error(ex.getMessage());
             }
 
-            Map<String, byte[]> pdfByteMap = new LinkedHashMap<String, byte[]>();
+            Map<String, byte[]> pdfByteMap = new LinkedHashMap<>();
 
             FopFactory fopFactory = FopFactory.newInstance();
 
@@ -94,7 +94,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
                     if(xslt.getInputStream()==null || xslt.getInputStream().available()<=0){
                         LOG.error("Stylesheet is not available");
                     }else{
-                        createPdfWithFOP(streamMap, pdfByteMap, fopFactory, xslCount, xslt, printableArtifact);
+                        createPdfWithFOP(streamMap, pdfByteMap, fopFactory, xslCount, xslt);
                     }
                 }
             }
@@ -102,8 +102,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
                 Map<String, Source> templatesWithBookmarks = printableArtifact.getXSLTemplateWithBookmarks();
                 for (Map.Entry<String, Source> templatesWithBookmark : templatesWithBookmarks.entrySet()) {
                     StreamSource xslt = (StreamSource) templatesWithBookmark.getValue();
-                    createPdfWithFOP(streamMap, pdfByteMap, fopFactory, xslCount, xslt, templatesWithBookmark.getKey(),
-                            printableArtifact);
+                    createPdfWithFOP(streamMap, pdfByteMap, fopFactory, xslCount, xslt, templatesWithBookmark.getKey());
                 }
 
             }
@@ -120,12 +119,12 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
     }
 
     protected void createPdfWithFOP(Map<String, byte[]> streamMap, Map<String, byte[]> pdfByteMap, FopFactory fopFactory,
-            int xslCount, StreamSource xslt, S2SPrintable printableArtifact) throws FOPException, TransformerException {
-        createPdfWithFOP(streamMap, pdfByteMap, fopFactory, xslCount, xslt, null, printableArtifact);
+            int xslCount, StreamSource xslt) throws FOPException, TransformerException {
+        createPdfWithFOP(streamMap, pdfByteMap, fopFactory, xslCount, xslt, null);
     }
 
     protected void createPdfWithFOP(Map<String, byte[]> streamMap, Map<String, byte[]> pdfByteMap, FopFactory fopFactory,
-            int xslCount, StreamSource xslt, String bookmark, S2SPrintable printableArtifact) throws FOPException,
+            int xslCount, StreamSource xslt, String bookmark) throws FOPException,
             TransformerException {
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer(xslt);
@@ -152,8 +151,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
 
 
     protected String createBookMark(int xslCount, String bookmarkKey) {
-        String pdfMapKey = bookmarkKey + (xslCount == 1 ? "" : " " + xslCount);
-        return pdfMapKey;
+        return bookmarkKey + (xslCount == 1 ? "" : " " + xslCount);
     }
 
     /**
@@ -164,7 +162,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
      * @return PDF bytes
      */
     public S2SFile print(S2SPrintable printableArtifacts) {
-        List<S2SPrintable> printables = new ArrayList<S2SPrintable>();
+        List<S2SPrintable> printables = new ArrayList<>();
         printables.add(printableArtifacts);
         return print(printables);
     }
@@ -181,9 +179,9 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
     }
 
     public S2SFile print(List<S2SPrintable> printableArtifactList, boolean headerFooterRequired) {
-        S2SFile printablePdf = null;
-        List<String> bookmarksList = new ArrayList<String>();
-        List<byte[]> pdfBaosList = new ArrayList<byte[]>();
+        S2SFile printablePdf;
+        List<String> bookmarksList = new ArrayList<>();
+        List<byte[]> pdfBaosList = new ArrayList<>();
         for (S2SPrintable printableArtifact : printableArtifactList) {
             Map<String, byte[]> printBytes = getPrintBytes(printableArtifact);
             for (String bookmark : printBytes.keySet()) {
@@ -219,7 +217,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
             return true;
         }
         catch (IOException e) {
-            return false;
+            throw new S2SException(e);
         }
     }
 
@@ -241,7 +239,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         int pdfReaderCount = 0;
         for (byte[] fileBytes : pdfBytesList) {
             LOG.debug("File Size " + fileBytes.length + " For " + bookmarksList.get(pdfReaderCount));
-            PdfReader reader = null;
+            PdfReader reader;
             try {
                 reader = new PdfReader(fileBytes);
                 pdfReaderArr[pdfReaderCount] = reader;
