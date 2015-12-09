@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  fixing the stylesheet so that it will print without Apache FOP throwing an exception.
+  * Travis Schneeberger on Tue, 8 Dec 2015 20:06:05 -0500 [View Commit](../../commit/e9e2f5ae05e5c38c4809d241a7c508a0948c0c84)
+
+##coeus-s2sgen-1512.0005
 *  When printing s2s forms and validation errors exist those validation errors are never displayed to the end user.  Instead s2s pdf generation will be unable to create a pdf due to incomplete xml being input into the print process.
   * Travis Schneeberger on Tue, 8 Dec 2015 15:28:28 -0500 [View Commit](../../commit/82b9eabb7b0781be58e30bf83d081a8cf2215d6e)
 
