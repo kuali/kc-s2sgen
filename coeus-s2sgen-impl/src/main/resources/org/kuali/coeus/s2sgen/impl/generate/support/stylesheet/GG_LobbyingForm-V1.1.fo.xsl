@@ -239,11 +239,7 @@
 								</fo:table-row>
 								<fo:table-row>
 									<fo:table-cell number-columns-spanned="2" text-align="right" height="20pt">
-										<!--
-										<fo:block>
-											<fo:inline font-size="8pt">OMB No. 0348-0046</fo:inline>
-										</fo:block>
-										-->
+
 										<!--==HR==-->
 										<fo:block>
 											<fo:leader leader-length="100%" leader-pattern="rule"/>

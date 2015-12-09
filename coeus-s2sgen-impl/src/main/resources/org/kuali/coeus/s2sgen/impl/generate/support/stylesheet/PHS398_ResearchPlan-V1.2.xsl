@@ -34,25 +34,8 @@ xmlns:PHS398_ResearchPlan_1_2="http://apply.grants.gov/forms/PHS398_ResearchPlan
 				</fo:simple-page-master>
 			</fo:layout-master-set>
 			<fo:page-sequence master-reference="default-page" format="1" initial-page-number="1">
-				<!--fo:static-content flow-name="xsl-region-after">
-					<fo:block>
-						<fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-						</fo:inline>
-					</fo:block>
-				</fo:static-content-->
+
 				<fo:flow flow-name="xsl-region-body">
-					<!--fo:block-container background-color="black" border-style="none" position="absolute" left="18px" top="55px" width="530px" height="0.60px"/>
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px" top="79px" width="530px" height="0.60px"/>
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px" top="195px" width="530px" height="0.60px"/>
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px" top="715px" width="530px" height="0.60px"/>
-					
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px" top="390px" width="530px" height="0.30px"/>
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px" top="530px" width="530px" height="0.30px"/>
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px"  top="685px" width="530px" height="0.20px"/>
-
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="18px"  top="55px" width="0.60px" height="660px"/>
-					<fo:block-container background-color="black" border-style="none" position="absolute" left="548px" top="55px" width="0.60px" height="660px"/-->
-
 					
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="188.4848484848485px" hyphenate="true" language="en" top="239.39393939393943px" height="13.333333333333334px" width="340.21212121212122px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
@@ -262,10 +245,7 @@ xmlns:PHS398_ResearchPlan_1_2="http://apply.grants.gov/forms/PHS398_ResearchPlan
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="190.75757575757578px" hyphenate="true" language="en" top="60.666666666666667px" height="18.78787878787879px" width="200.03030303030303px">
 						<fo:block background-color="transparent" color="#000000" font-size="14pt" font-style="normal" font-family="Helvetica" font-weight="bold">PHS 398 Research Plan</fo:block>
 					</fo:block-container>
-					
-					<!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="212.12121212121212px" hyphenate="true" language="en" top="25.454545454545457px" height="12.121212121212121px" width="71.51515151515152px">
-						<fo:block background-color="transparent" color="#000000" font-size="12pt" font-style="normal" font-family="Helvetica" font-weight="bold"> Research Plan</fo:block>
-					</fo:block-container-->
+
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="22.424242424242426px" hyphenate="true" language="en" top="93.33333333333334px" height="12.121212121212121px" width="100.60606060606061px">
 						<fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">1. Application Type:</fo:block>
 					</fo:block-container>
@@ -295,9 +275,6 @@ xmlns:PHS398_ResearchPlan_1_2="http://apply.grants.gov/forms/PHS398_ResearchPlan
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="480.7575757575758px" hyphenate="true" language="en" top="35.8484848484849px" height="12.121212121212121px" width="105.45454545454545px">
 						<fo:block background-color="transparent" color="#000000" font-size="6pt" font-style="normal" font-family="Helvetica" font-weight="normal">OMB Number: 0925-0001</fo:block>
 					</fo:block-container>
-					<!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="478.51515151515156px" hyphenate="true" language="en" top="45.7878787878789px" height="12.121212121212121px" width="129.69696969696972px">
-						<fo:block background-color="transparent" color="#000000" font-size="6pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 9/30/2007</fo:block>
-					</fo:block-container-->
 					
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="21.81818181818182px" hyphenate="true" language="en" top="270.1212121212121px" height="13.333333333333334px" width="68.48484848484848px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">2. Specific Aims</fo:block>
@@ -456,12 +433,7 @@ specific Funding Opportunity Announcement to determine which sections must be su
 				</fo:flow>
 			</fo:page-sequence>
 			<fo:page-sequence master-reference="default-page" format="1" initial-page-number="2">
-				<!--fo:static-content flow-name="xsl-region-after">
-					<fo:block>
-						<fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-						</fo:inline>
-					</fo:block>
-				</fo:static-content-->
+
 				<fo:flow flow-name="xsl-region-body">
 					<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
 						<fo:table-column column-width="proportional-column-width(1)"/>

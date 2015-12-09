@@ -164,7 +164,7 @@
                            <fo:inline color="#FFFFFF">&#160;</fo:inline>
                         </xsl:when>
                         <xsl:otherwise>
-                           <!--<xsl:value-of select="format-number(//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE1/NASA_OtherProjectInformation:FTE1, '#,##0.00')"/>-->
+
                            <xsl:value-of select="//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE1/NASA_OtherProjectInformation:FTE1"/>
                         </xsl:otherwise>
                      </xsl:choose>
@@ -189,7 +189,7 @@
                            <fo:inline color="#FFFFFF">&#160;</fo:inline>
                         </xsl:when>
                         <xsl:otherwise>
-                           <!--<xsl:value-of select="format-number(//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE2/NASA_OtherProjectInformation:FTE2, '#,##0.00')"/>-->
+
                             <xsl:value-of select="//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE2/NASA_OtherProjectInformation:FTE2"/>
                         </xsl:otherwise>
                      </xsl:choose>
@@ -214,7 +214,7 @@
                            <fo:inline color="#FFFFFF">&#160;</fo:inline>
                         </xsl:when>
                         <xsl:otherwise>
-                           <!--<xsl:value-of select="format-number(//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE3/NASA_OtherProjectInformation:FTE3, '#,##0.00')"/>-->
+
                            <xsl:value-of select="//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE3/NASA_OtherProjectInformation:FTE3"/>
                         </xsl:otherwise>
                      </xsl:choose>
@@ -239,7 +239,7 @@
                            <fo:inline color="#FFFFFF">&#160;</fo:inline>
                         </xsl:when>
                         <xsl:otherwise>
-                          <!-- <xsl:value-of select="format-number(//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE4/NASA_OtherProjectInformation:FTE4, '#,##0.00')"/>-->
+
                            <xsl:value-of select="//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE4/NASA_OtherProjectInformation:FTE4"/>
                         </xsl:otherwise>
                      </xsl:choose>
@@ -264,7 +264,7 @@
                            <fo:inline color="#FFFFFF">&#160;</fo:inline>
                         </xsl:when>
                         <xsl:otherwise>
-                           <!--<xsl:value-of select="format-number(//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE5/NASA_OtherProjectInformation:FTE5, '#,##0.00')"/>-->
+
                            <xsl:value-of select="//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE5/NASA_OtherProjectInformation:FTE5"/>
                         </xsl:otherwise>
                      </xsl:choose>
@@ -289,7 +289,6 @@
                            <fo:inline color="#FFFFFF">&#160;</fo:inline>
                         </xsl:when>
                         <xsl:otherwise>
-                           <!--<xsl:value-of select="format-number(//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE6/NASA_OtherProjectInformation:FTE6, '#,##0.00')"/>-->
                            <xsl:value-of select="//NASA_OtherProjectInformation:NASA_OtherProjectInformation/NASA_OtherProjectInformation:NASACivilServicePersonnel/NASA_OtherProjectInformation:FYFTE6/NASA_OtherProjectInformation:FTE6"/>
                         </xsl:otherwise>
                      </xsl:choose>

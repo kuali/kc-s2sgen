@@ -91,7 +91,7 @@
 						<fo:table-column column-width="proportional-column-width(1)" />
 						<fo:table-column column-width="proportional-column-width(1)" />
 						<fo:table-body> 
-						<!--  -->
+
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en"
 									padding-start="0pt" padding-end="0pt" padding-before="1pt"

@@ -539,18 +539,7 @@ xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0"
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="121.81818181818183px" hyphenate="true" language="en" keep-together="always" top="640px" height="13.333333333333334px" width="149.0909090909091px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
-                     <xsl:choose>
-                        <xsl:when test="not(//PHS398_Checklist_1_3:PHS398_Checklist_1_3/PHS398_Checklist_1_3:CertificationExplanation/PHS398_Checklist_1_3:Certifications/att:FileName) or /PHS398_Checklist_1_3:PHS398_Checklist_1_3/PHS398_Checklist_1_3:CertificationExplanation/PHS398_Checklist_1_3:Certifications/att:FileName = ''">
-                           <fo:inline color="#FFFFFF">&#160;</fo:inline>
-                        </xsl:when>
-                        <xsl:otherwise>
-                           <xsl:value-of select="//PHS398_Checklist_1_3:PHS398_Checklist_1_3/PHS398_Checklist_1_3:CertificationExplanation/PHS398_Checklist_1_3:Certifications/att:FileName"/>
-                        </xsl:otherwise>
-                     </xsl:choose>
-                  </fo:block>
-               </fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="132.72727272727275px" hyphenate="true" language="en" keep-together="always" top="133.93939393939394px" height="12.121212121212121px" width="18.181818181818183px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal">
                      <xsl:choose>
@@ -684,25 +673,14 @@ source(s).  Otherwise, leave this section blank.</fo:block>
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="141.21212121212122px" hyphenate="true" language="en" keep-together="always" top="522.93939393939394px" height="12.121212121212121px" width="13.333333333333334px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">No</fo:block>
                </fo:block-container>
-               
-              <!-- <fo:block-container background-color="transparent" border-style="none" position="absolute" left="28.484848484848488px" hyphenate="true" language="en" keep-together="always" top="522.4242424242425px" height="71.51515151515152px" width="478.7878787878788px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">*Human Subjects; *Research Using Human Embryonic Stem Cells;  *Research on Transplantation of Human Fetal Tissue;  *Women and Minority Inclusion Policy; *Inclusion of Children Policy; *Vertebrate Animals;  *Debarment and Suspension; *Drug- Free Workplace (applicable to new [Type 1] or revised [Type 1] applications only) ; *Lobbying;  *Non-Delinquency on Federal Debt;  *Research Misconduct; *Civil Rights (Form HHS 441 or HHS 690); *Handicapped Individuals (Form HHS 641 or HHS 690); *Sex Discrimination (Form HHS 639-A or HHS 690); *Age Discrimination (Form HHS 680 or HHS 690); *Recinant DNA and Human Gene Transfer Research; *Financial Conflict of Interest (except Phase I SBIR/STTR); *Prohibited Research; *Select Agents; *Smoke-Free Workplace;  *STTR ONLY: Certification of Research Institution Participation.</fo:block>
-               </fo:block-container>-->
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="28.484848484848488px" hyphenate="true" language="en" keep-together="always" top="611.5151515151515px" height="12.121212121212121px" width="153.93939393939394px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt"  text-decoration="underline" font-style="normal" font-family="Helvetica" font-weight="normal">If unable to certify compliance</fo:block>
-               </fo:block-container-->
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="74.54545454545455px" hyphenate="true" language="en" keep-together="always" top="640px" height="12.121212121212121px" width="61.81818181818182px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Explanation:</fo:block>
-               </fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="82.42424242424242px" hyphenate="true" language="en" keep-together="always" top="133.93939393939394px" height="12.121212121212121px" width="18.181818181818183px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Yes</fo:block>
                </fo:block-container>
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="83.03030303030303px" hyphenate="true" language="en" keep-together="always" top="203.03030303030303px" height="12.121212121212121px" width="110.30303030303031px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">*Anticipated Amount ($)</fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="135.15151515151516px" hyphenate="true" language="en" keep-together="always" top="611.5151515151515px" height="12.121212121212121px" width="294.54545454545456px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">, where applicable, provide an explanation and attach below.</fo:block>
-               </fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="141.21212121212122px" hyphenate="true" language="en" keep-together="always" top="133.93939393939394px" height="12.121212121212121px" width="13.333333333333334px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">No</fo:block>
                </fo:block-container>
@@ -712,49 +690,6 @@ source(s).  Otherwise, leave this section blank.</fo:block>
                <!--Draw lines-->
             </fo:flow>
          </fo:page-sequence>
-         <!--fo:page-sequence master-reference="default-page" format="1" initial-page-number="1">
-            <fo:flow flow-name="xsl-region-body">
-               <fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
-                  <fo:table-column column-width="proportional-column-width(1)"/>
-                  <fo:table-column column-width="proportional-column-width(1)"/>
-                  <fo:table-body>
-                     <fo:table-row>
-                        <fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center" border-style="solid" border-width="0pt" border-color="white" number-columns-spanned="2">
-                           <fo:block font-size="14pt" text-decoration="underline">Attachments</fo:block>
-                        </fo:table-cell>
-                     </fo:table-row>
-                     <fo:table-row>
-                        <fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white" number-columns-spanned="2">
-                           <xsl:call-template name="addBlankLines">
-                              <xsl:with-param name="numLines">1</xsl:with-param>
-                           </xsl:call-template>
-                           <fo:block font-size="10pt">CertificationExplanation_attDataGroup0</fo:block>
-                        </fo:table-cell>
-                     </fo:table-row>
-                     <fo:table-row>
-                        <fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-                           <fo:block font-size="8pt" font-weight="bold">File Name</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-                           <fo:block font-size="8pt" font-weight="bold">Mime Type</fo:block>
-                        </fo:table-cell>
-                     </fo:table-row>
-                     <fo:table-row>
-                        <fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-                           <fo:block font-size="8pt">
-                              <xsl:value-of select="//PHS398_Checklist_1_3:PHS398_Checklist_1_3/PHS398_Checklist_1_3:CertificationExplanation/PHS398_Checklist_1_3:Certifications/att:FileName"/>
-                           </fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-                           <fo:block font-size="8pt">
-                              <xsl:value-of select="//PHS398_Checklist_1_3:PHS398_Checklist_1_3/PHS398_Checklist_1_3:CertificationExplanation/PHS398_Checklist_1_3:Certifications/att:MimeType"/>
-                           </fo:block>
-                        </fo:table-cell>
-                     </fo:table-row>
-                  </fo:table-body>
-               </fo:table>
-            </fo:flow>
-         </fo:page-sequence-->
       </fo:root>
    </xsl:template>
    <xsl:template name="radioButton">

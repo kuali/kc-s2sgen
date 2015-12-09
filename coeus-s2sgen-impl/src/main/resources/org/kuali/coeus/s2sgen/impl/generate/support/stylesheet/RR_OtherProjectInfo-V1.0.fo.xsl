@@ -19,7 +19,7 @@
  -->
 <!-- $Revision:   1.22  $ -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:RR_OtherProjectInfo="http://apply.grants.gov/forms/RR_OtherProjectInfo-V1.0" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:header="http://devapply.row.com/system/Header-V1.0">
-	<!--    -->
+
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="default-page" page-height="11in" page-width="8.5in" margin-left="0.34in" margin-right="0.34in">
@@ -30,7 +30,7 @@
 	</xsl:variable>
 	<xsl:template match="RR_OtherProjectInfo:RR_OtherProjectInfo">
 		<fo:root>
-			<!-- -->
+
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 				<fo:static-content flow-name="xsl-region-after">
@@ -57,8 +57,7 @@
 						</fo:table-body>
 					</fo:table>
 				</fo:static-content>
-				<!-- -->
-				<!-- -->
+
 				<fo:flow flow-name="xsl-region-body">
 					<fo:block text-align="center" font-family="Helvetica,Times,Courier" font-size="11pt" font-weight="bold">
          RESEARCH &amp; RELATED Other Project Information
@@ -932,10 +931,10 @@
 								<xsl:with-param name="block_num">11.</xsl:with-param>
 								<xsl:with-param name="block_title">Other Attachments</xsl:with-param>
 								<xsl:with-param name="filename">
-									<!--<xsl:value-of select="RR_OtherProjectInfo:OtherAttachments/RR_OtherProjectInfo:OtherAttachment/att:FileName"/>-->
+
 									<xsl:value-of select="att:FileName"/>
 								</xsl:with-param>
-								<!--<xsl:with-param name="mimetype" select="RR_OtherProjectInfo:OtherAttachments/RR_OtherProjectInfo:OtherAttachment/att:MimeType"/>-->
+
 								<xsl:with-param name="mimetype" select="att:MimeType"/>
 							</xsl:call-template>
 							</xsl:for-each>

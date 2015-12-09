@@ -19,7 +19,7 @@
  -->
 <!-- $Revision:   1.4  $ -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:RR_FedNonFed_SubawardBudget="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget-V1.2" xmlns:RR_FedNonFedBudget="http://apply.grants.gov/forms/RR_FedNonFedBudget-V1.1" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<!--    -->
+
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="AB" page-height="8.5in" page-width="11in" margin-left="0.3in" margin-right="0.3in">
@@ -44,7 +44,7 @@
 	</xsl:variable>
 	<xsl:template match="RR_FedNonFed_SubawardBudget:RR_FedNonFed_SubawardBudget">
 		<fo:root>
-			<!-- -->
+
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 				<fo:static-content flow-name="xsl-region-after">
@@ -71,8 +71,7 @@
 						</fo:table-body>
 					</fo:table>
 				</fo:static-content>
-				<!-- -->
-				<!-- -->
+
 				<fo:flow flow-name="xsl-region-body">
 					<fo:table width="100%">
 						<fo:table-column column-width="0.2in"/>
@@ -108,9 +107,7 @@
 					<fo:table width="100%">
 						<fo:table-column/>
 						<fo:table-body>
-							<!-- <fo:table-row>
-                                                         <fo:table-cell>
-                                                         	<fo:block>-->
+
 							<xsl:if test="RR_FedNonFed_SubawardBudget:ATT1!=''">
 								<xsl:call-template name="attach_block">
 									<xsl:with-param name="block_num"/>
@@ -201,9 +198,7 @@
 									</xsl:with-param>
 								</xsl:call-template>
 							</xsl:if>
-							<!--</fo:block>
-                                                            </fo:table-cell>
-                                                                </fo:table-row>-->
+
 						</fo:table-body>
 					</fo:table>
 				</fo:flow>
@@ -574,7 +569,7 @@
 					</fo:table>
 				</fo:static-content>
 				<fo:flow flow-name="xsl-region-body">
-					<!--<xsl:for-each select="XXX">-->
+
 					<fo:table width="100%" space-before.optimum="3pt" space-after.optimum="2pt">
 						<fo:table-column/>
 						<fo:table-body>
@@ -1488,7 +1483,7 @@
 									<fo:table-row>
 										<fo:table-cell hyphenate="true" language="en" padding-before="3pt" padding-after="3pt">
 											<fo:block>
-												<!--EDITED BY MATT!-->
+
 												<fo:inline font-weight="bold">6. </fo:inline>Equipment or Facility Rental/User Fees</fo:block>
 										</fo:table-cell>
 										<fo:table-cell text-align="right">
@@ -1873,7 +1868,7 @@
 						</fo:table>
 						<fo:block font-size="8pt">RESEARCH &amp; RELATED Budget (Total Fed + Non-Fed)</fo:block>
 					</fo:block>
-					<!--</xsl:for-each>-->
+
 					<!--================== end new section summary ======================= -->
 					</fo:flow>
 				</fo:page-sequence>
@@ -2454,9 +2449,7 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-			<!--
-      
-          -->
+
 			<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
 				<fo:table-column/>
 				<fo:table-body>
@@ -3183,7 +3176,7 @@
 													<fo:inline font-size="8pt" font-weight="bold">Total Other Personnel &#160;&#160;&#160;&#160;</fo:inline>
 												</fo:block>
 											</fo:table-cell>
-											<!-- Nikisha : added hyphenate -->
+
 											<fo:table-cell hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget:OtherPersonnel">
@@ -3197,7 +3190,7 @@
 													</xsl:for-each>
 												</fo:block>
 											</fo:table-cell>
-											<!-- Nikisha : added hyphenate -->
+
 											<fo:table-cell hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget:OtherPersonnel">
@@ -3211,7 +3204,7 @@
 													</xsl:for-each>
 												</fo:block>
 											</fo:table-cell>
-											<!-- Nikisha : added hyphenate -->
+
 											<fo:table-cell hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget:OtherPersonnel">
@@ -3434,7 +3427,7 @@
 														<fo:block>
 															<xsl:for-each select="RR_FedNonFedBudget:FundsRequested/RR_FedNonFedBudget:Federal">
 																<fo:inline font-size="8pt">
-																	<!-- Nikisha: removed apply templates and added format-number -->
+
 																	<xsl:value-of select="format-number(., '#,##0.00')"/>
 																</fo:inline>
 															</xsl:for-each>
@@ -3485,7 +3478,7 @@
 													<fo:inline font-size="8pt" font-weight="bold">11. Total funds requested for all equipment listed in the attached file</fo:inline>
 												</fo:block>
 											</fo:table-cell>
-											<!-- Nikisha : removed 'Summary from the xpath names for the following set -->
+
 											<fo:table-cell hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget:Equipment">
@@ -4539,7 +4532,6 @@
 			</fo:block>
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column column-width="proportional-column-width(31)"/>
-				<!-- Nikisha : changed widths -->
 				<fo:table-column column-width="proportional-column-width(17)"/>
 				<fo:table-column column-width="proportional-column-width(17)"/>
 				<fo:table-column column-width="proportional-column-width(12)"/>
@@ -4626,7 +4618,6 @@
 										</xsl:for-each>
 									</fo:block>
 								</fo:table-cell>
-								<!-- Nikisha: added hyphenate to following 6 sets -->
 								<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
 									<fo:block>
 										<xsl:for-each select="RR_FedNonFedBudget:FundRequested/RR_FedNonFedBudget:Federal">
@@ -4855,50 +4846,10 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-			<!--
-         <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-            <fo:table-column/>
-            <fo:table-body>
-               <fo:table-row>
-                  <fo:table-cell display-align="before" height="36pt" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt">
-                     <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">K. Subprojects/Subaward Budgets Attachment(s)</fo:inline>
-                        <xsl:for-each select="RR_FedNonFedBudget:SubawardSubprojectBudgetAttachment/att:AttachedFile">
-                           <fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-                              <fo:table-column column-width="proportional-column-width(1)"/>
-                              <fo:table-column column-width="proportional-column-width(1)"/>
-                              <fo:table-body>
-                                 <fo:table-row>
-                                    <fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                                       <fo:block font-size="8pt">File Name: <xsl:for-each select="att:FileName">
-                                             <xsl:apply-templates/>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                                       <fo:block font-size="8pt">Mime Type: <xsl:for-each select="att:MimeType">
-                                             <xsl:apply-templates/>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                 </fo:table-row>
-                              </fo:table-body>
-                           </fo:table>
-                        </xsl:for-each>
-                     </fo:block>
-                  </fo:table-cell>
-               </fo:table-row>
-            </fo:table-body>
-         </fo:table>
-         <fo:block>
-            <fo:leader leader-pattern="space"/>
-         </fo:block>
--->
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
 				<fo:table-column/>
 				<fo:table-column/>
-				<!-- Nikisha: added table-column -->
 				<fo:table-column/>
 				<fo:table-body>
 					<fo:table-row>
@@ -4927,7 +4878,6 @@
 								</xsl:for-each>
 							</fo:block>
 						</fo:table-cell>
-						<!-- Nikisha or Matt ? added this cell -->
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
 								<fo:inline font-size="8pt" font-weight="bold">(Only attach one file.)</fo:inline>

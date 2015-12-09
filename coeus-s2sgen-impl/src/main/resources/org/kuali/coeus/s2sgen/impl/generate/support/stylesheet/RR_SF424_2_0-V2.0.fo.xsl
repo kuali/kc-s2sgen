@@ -945,7 +945,7 @@
                            </fo:table>
                         </fo:table-cell>
                         </fo:table-row>
-                        <!-- JIRA COEUS QA 2351 - START-->
+
                         <fo:table-row>
                             <fo:table-cell hyphenate="true" language="en" number-columns-spanned="4"
                                            padding-start="3pt"
@@ -1020,7 +1020,7 @@
 
                             </fo:table-cell>
                         </fo:table-row>
-                        <!-- JIRA COEUS QA 2351 -  END-->
+
                      <fo:table-row>
                         <!-- ============================ -->
                         <!-- Federal Agency Name          -->

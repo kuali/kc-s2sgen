@@ -36,22 +36,7 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
             </fo:simple-page-master>
          </fo:layout-master-set>
          <fo:page-sequence master-reference="default-page" format="1" initial-page-number="1">
-            <!--fo:static-content flow-name="xsl-region-after">
-               <fo:block>
-                  <fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                  </fo:inline>
-               </fo:block>
-            </fo:static-content-->
             <fo:flow flow-name="xsl-region-body">
-               <!--fo:block-container background-color="black" border-style="none" position="absolute" left="23.03030303030303px" top="83.03030303030303px" width="546.6666666666667px" height="1.2121212121212122px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="21.81818181818182px" top="724.2424242424242px" width="546.6666666666667px" height="1.2121212121212122px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="21.212121212121215px" top="83.03030303030303px" width="1.2121212121212122px" height="642.4242424242425px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="567.8787878787879px" top="83.63636363636364px" width="1.2121212121212122px" height="642.4242424242425px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="22.424242424242426px" top="203.63636363636365px" width="546.6666666666667px" height="0.6060606060606061px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="21.81818181818182px" top="556.3636363636364px" width="546.6666666666667px" height="0.6060606060606061px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="21.81818181818182px" top="280.6060606060606px" width="546.6666666666667px" height="1.2121212121212122px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="22.424242424242426px" top="373.33333333333337px" width="546.6666666666667px" height="1.2121212121212122px"/-->
-
 
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="60.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">OMB Number: 0925-0001</fo:block>
@@ -93,9 +78,6 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="30.90909090909091px" top="216.36363636363637px" height="13.333333333333334px" width="71.51515151515152px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal"/-->
-               <!--/fo:block-container-->
 
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="277.57575757575756px" top="441.21212121212125px" height="13.333333333333334px" width="284.8484848484849px">
                   <fo:block padding-left="2px" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
@@ -393,9 +375,7 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="242.42424242424244px" top="216.36363636363637px" height="12.121212121212121px" width="13.333333333333334px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/-->
-               <!--/fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="207.8787878787879px" top="316.3636363636364px" height="12.121212121212121px" width="18.181818181818183px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal">
                      <xsl:choose>
@@ -432,9 +412,7 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="293.93939393939394px" top="316.3636363636364px" height="12.121212121212121px" width="13.333333333333334px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/-->
-               <!--/fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="207.8787878787879px" top="343.6363636363637px" height="12.121212121212121px" width="18.181818181818183px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal">
                      <xsl:choose>
@@ -471,9 +449,7 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="293.93939393939394px" top="343.6363636363637px" height="12.121212121212121px" width="18.181818181818183px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/-->
-               <!--/fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="83.03030303030303px" top="125.45454545454547px" height="13.333333333333334px" width="81.21212121212122px">
                   <fo:block padding-left="2px" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
                      <xsl:choose>
@@ -546,17 +522,6 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               
-            <!-- </fo:flow>
-         </fo:page-sequence>
-         <fo:page-sequence master-reference="default-page" format="1" initial-page-number="2">
-            <fo:static-content flow-name="xsl-region-after">
-               <fo:block>
-                  <fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                  </fo:inline>
-               </fo:block>
-            </fo:static-content>
-            <fo:flow flow-name="xsl-region-body"> -->
             
                <fo:block break-after="page">
                                <xsl:text>&#xA;</xsl:text>
@@ -565,25 +530,7 @@ xmlns:header="http://apply.grants.gov/system/Header-V1.0" xmlns:xs="http://www.w
   <fo:block-container background-color="transparent" border-style="none" position="absolute" left="169.69696969696972px" hyphenate="true" language="en" keep-together="always" top="27.272727272727273px" height="20.606060606060606px" width="237.5757575757576px">
   <fo:block background-color="transparent" color="#000000" text-align="center" font-size="14pt" font-style="normal" font-family="Helvetica" font-weight="bold">PHS 398 Cover Page Supplement</fo:block> 
   </fo:block-container>
-  
-                 <!--fo:block-container background-color="black" border-style="none" position="absolute" left="18.181818181818183px" top="76.42424242424243px" width="546.6666666666667px" height="1.2121212121212122px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="19.393939393939394px" top="525.4545454545455px" width="546.6666666666667px" height="1.2121212121212122px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="18.78787878787879px" top="76.42424242424243px" width="1.2121212121212122px" height="450.8484848484849px"/>
-               <fo:block-container background-color="black" border-style="none" position="absolute" left="564.8484848484849px" top="76.42424242424243px" width="1.2121212121212122px" height="450.8484848484849px"/-->
 
-
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="54.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">OMB Number: 0925-0001</fo:block>
-               </fo:block-container>
-               
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="64.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 9/30/2007</fo:block>
-               </fo:block-container-->
-               
-               
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="46.66666666666667px" top="40.45454545454545px" height="13.333333333333334px" width="233.93939393939397px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal"/-->
-               <!--/fo:block-container-->
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="45.45454545454546px" top="211px" height="12.121212121212121px"  width="60.60606060606061px" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">
                      <xsl:choose>
@@ -887,9 +834,6 @@ registry will be used:</fo:block>
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="421.8181818181818px" top="106.06060606060606px" height="12.121212121212121px" width="13.333333333333334px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/-->
-               <!--/fo:block-container-->
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="123.63636363636364px" top="192px" height="12.121212121212121px" width="18.181818181818183px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal">

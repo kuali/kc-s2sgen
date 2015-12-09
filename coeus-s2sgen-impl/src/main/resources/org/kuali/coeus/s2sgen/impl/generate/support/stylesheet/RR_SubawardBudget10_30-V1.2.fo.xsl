@@ -412,39 +412,6 @@
 						</xsl:for-each>
 					</fo:flow>
 				</fo:page-sequence>
-				<!--fo:page-sequence master-reference="primary" format="1">
-					<fo:static-content flow-name="xsl-region-after">
-						<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
-							<fo:table-column column-width="proportional-column-width(1)"/>
-							<fo:table-column column-width="proportional-column-width(1)"/>
-							<fo:table-body>
-								<fo:table-row>
-									<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-											</fo:inline>
-										</fo:block>
-									</fo:table-cell>
-									<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right" border-style="solid" border-width="0pt" border-color="white">
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
-										</fo:block>
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 04/30/2008</fo:inline>
-										</fo:block>
-									</fo:table-cell>
-								</fo:table-row>
-							</fo:table-body>
-						</fo:table>
-					</fo:static-content>
-					<fo:flow flow-name="xsl-region-body">
-						<xsl:for-each select="RR_Budget10:BudgetYear">
-							<xsl:call-template name="SingleYearPart2">
-								<xsl:with-param name="year"><xsl:value-of select="position()"/></xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-					</fo:flow>
-				</fo:page-sequence-->
 		
 				<!-- ====================================== new section SUMMARY ===============================-->
 				<fo:page-sequence master-reference="summary" format="1">
@@ -473,7 +440,7 @@
 						</fo:table>
 					</fo:static-content>
 					<fo:flow flow-name="xsl-region-body">
-						<!--<xsl:for-each select="XXX">-->
+
 						<fo:table width="100%" space-before.optimum="3pt" space-after.optimum="2pt">
 							<fo:table-column/>
 							<fo:table-body>
@@ -498,9 +465,7 @@
 								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-body>
-                                                                <!--<fo:table-row>
-                                                                   <fo:table-cell>
-                                                                     <fo:block>-->
+
 									<!--============= ROWS Begin ======================-->
 									<xsl:for-each select="RR_Budget10:BudgetSummary">
 										<fo:table-row>
@@ -527,7 +492,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedSeniorKeyPerson[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedSeniorKeyPerson">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -575,7 +540,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedPersonnel[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedPersonnel">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -963,7 +928,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedDirectCosts[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedDirectCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -998,7 +963,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedDirectIndirectCosts[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget10:CumulativeTotalFundsRequestedDirectIndirectCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -1026,13 +991,9 @@
 										</fo:table-row>
 										<!--============ ROWS End ================================-->
 									</xsl:for-each>
-<!--                                                                          </fo:block>
-                                                                    </fo:table-cell>
-                                                                </fo:table-row>
--->								</fo:table-body>
+								</fo:table-body>
 							</fo:table>
 						</fo:block>
-						<!--</xsl:for-each>-->
 						<!--================== end new section summary ======================= -->
 					</fo:flow>
 				</fo:page-sequence>
@@ -1537,9 +1498,7 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-			<!--
-      
-          -->
+
 			<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
 				<fo:table-column/>
 				<fo:table-body>
@@ -2287,10 +2246,7 @@
 										</fo:table-row>
 									</fo:table-header>
 									<fo:table-body>
-<!--                                                                              <fo:table-row>
-                                                                                 <fo:table-cell>
-                                                                                  <fo:block>
--->									
+
 										<xsl:if test="string-length(RR_Budget10:Equipment)=0">
 											<fo:table-row>
 												<fo:table-cell >
@@ -2324,10 +2280,7 @@
 												</fo:table-row>
 											</xsl:for-each>
 										</xsl:for-each>
-<!--                                                                      </fo:block>
-                                                                   </fo:table-cell>
-                                                               </fo:table-row>
--->                            </fo:table-body>
+                           </fo:table-body>
 							</fo:table>
 								<fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 									<fo:table-column column-width="proportional-column-width(85)"/>
@@ -2959,10 +2912,7 @@
 					</fo:table-row>
 				</fo:table-header>
 				<fo:table-body>
-<!--                                      <fo:table-row>
-                                          <fo:table-cell>
-                                              <fo:block>
--->					<xsl:for-each select="RR_Budget10:IndirectCosts">
+					<xsl:for-each select="RR_Budget10:IndirectCosts">
 						<xsl:for-each select="RR_Budget10:IndirectCost">
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
@@ -3006,10 +2956,7 @@
 							</fo:table-row>
 						</xsl:for-each>
 					</xsl:for-each>
-<!--                                        </fo:block>
-                                      </fo:table-cell>
-                                    </fo:table-row>
--->					<fo:table-row>
+					<fo:table-row>
 						<fo:table-cell number-columns-spanned="3" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 							<fo:block>
 								<fo:inline font-size="8pt" font-weight="bold">Total Indirect Costs</fo:inline>
@@ -3022,7 +2969,7 @@
 										<xsl:when test="RR_Budget10:IndirectCosts/RR_Budget10:TotalIndirectCosts">
 											<xsl:value-of select="format-number(RR_Budget10:IndirectCosts/RR_Budget10:TotalIndirectCosts, '#,##0.00')"/>
 										</xsl:when>
-										<!--<xsl:otherwise>0.00</xsl:otherwise>-->
+
 									</xsl:choose>
 								</fo:inline>
 							</fo:block>
@@ -3141,45 +3088,7 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-			<!--
-         <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-            <fo:table-column/>
-            <fo:table-body>
-               <fo:table-row>
-                  <fo:table-cell display-align="before" height="36pt" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt">
-                     <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">K. Subprojects/Subaward Budgets Attachment(s)</fo:inline>
-                        <xsl:for-each select="RR_Budget10:SubawardSubprojectBudgetAttachment/att:AttachedFile">
-                           <fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-                              <fo:table-column column-width="proportional-column-width(1)"/>
-                              <fo:table-column column-width="proportional-column-width(1)"/>
-                              <fo:table-body>
-                                 <fo:table-row>
-                                    <fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                                       <fo:block font-size="8pt">File Name: <xsl:for-each select="att:FileName">
-                                             <xsl:apply-templates/>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                                       <fo:block font-size="8pt">Mime Type: <xsl:for-each select="att:MimeType">
-                                             <xsl:apply-templates/>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                 </fo:table-row>
-                              </fo:table-body>
-                           </fo:table>
-                        </xsl:for-each>
-                     </fo:block>
-                  </fo:table-cell>
-               </fo:table-row>
-            </fo:table-body>
-         </fo:table>
-         <fo:block>
-            <fo:leader leader-pattern="space"/>
-         </fo:block>
--->
+
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
 				<fo:table-column/>

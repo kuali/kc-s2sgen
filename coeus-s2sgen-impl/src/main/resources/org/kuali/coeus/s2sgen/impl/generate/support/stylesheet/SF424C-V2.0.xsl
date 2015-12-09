@@ -131,7 +131,6 @@ xmlns:SF424C_2_0="http://apply.grants.gov/forms/SF424C_2_0-V2.0" xmlns:codes="ht
 
 							<fo:table-row>
 									<fo:table-cell font-size="9px" padding-after="3pt" text-align="left" width="100%" padding-start="3pt" padding-end="3pt" padding-before="3pt" display-align="center" border-style="solid" border-width="1pt" border-color="black">
-								<!--	-->		
 											<xsl:apply-templates  select="." />
                                 	</fo:table-cell>
 																	
@@ -898,15 +897,15 @@ xmlns:SF424C_2_0="http://apply.grants.gov/forms/SF424C_2_0-V2.0" xmlns:codes="ht
   </fo:block>
 </xsl:template>
 
-<!-- -->
+
  <xsl:template match="SF424C_2_0:BudgetEstimatedCostAmount|SF424C_2_0:BudgetNonAllowableCostAmount|SF424C_2_0:BudgetTotalAllowableCostAmount">
 	 <fo:table-cell font-size="9px" padding-after="0pt" text-align="right" width="100%" padding-start="3pt" padding-end="3pt" padding-before="3pt" display-align="center" border-style="solid" border-width="1pt" border-color="black">
-	<!--	-->																
+
 		<fo:block font-size="9px" font-family="Helvetica">
 			$ <xsl:value-of select="."/>
 		</fo:block>
-  </fo:table-cell>  <!-- -->
+  </fo:table-cell>
 </xsl:template>
-<!-- -->
+
 </xsl:stylesheet> 
 

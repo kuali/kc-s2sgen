@@ -1001,32 +1001,6 @@
                   </fo:block>
                </fo:block-container>
 
-               <!-- Proprietary or Privileged Information Statement 572.5714285714286px -->
-              <!-- <fo:block-container background-color="transparent" border-style="none" position="absolute" left="42px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="20px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica">
-                     <xsl:call-template name="radioButton">
-                        <xsl:with-param name="value" select="//NSF_ApplicationChecklist:NSF_ApplicationChecklist/NSF_ApplicationChecklist:NSFCover/NSF_ApplicationChecklist:CheckNSFProprietary"/>
-                        <xsl:with-param name="schemaChoice">Y: Yes</xsl:with-param>
-                     </xsl:call-template>
-                  </fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="60px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="20px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica">
-                     <xsl:call-template name="radioButton">
-                        <xsl:with-param name="value" select="//NSF_ApplicationChecklist:NSF_ApplicationChecklist/NSF_ApplicationChecklist:NSFCover/NSF_ApplicationChecklist:CheckNSFProprietary"/>
-                        <xsl:with-param name="schemaChoice">N: No</xsl:with-param>
-                     </xsl:call-template>
-                  </fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="78px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="20px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica">
-                     <xsl:call-template name="radioButton">
-                        <xsl:with-param name="value" select="//NSF_ApplicationChecklist:NSF_ApplicationChecklist/NSF_ApplicationChecklist:NSFCover/NSF_ApplicationChecklist:CheckNSFProprietary"/>
-                        <xsl:with-param name="schemaChoice">NA: Not Applicable</xsl:with-param>
-                     </xsl:call-template>
-                  </fo:block>
-               </fo:block-container> -->
-
                <!-- SF LLL, Disclosure of Lobbying Activities 572.5714285714286px -->
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="42px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="20px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica">
@@ -1148,12 +1122,6 @@
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal"/>
                </fo:block-container>
                
-               <!--
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="182.28571428571428px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal"/>
-               </fo:block-container>
-               -->
-               
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96.57142857142857px" hyphenate="true" language="en" top="552.5714285714286px" height="12.571428571428571px" width="73.14285714285714px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal"/>
                </fo:block-container>
@@ -1245,7 +1213,6 @@
                
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96px" hyphenate="true" language="en" top="258px" height="26.285714285714285px" width="460px">
-                 <!-- <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">prepared in accordance with the order and format specifications identified in GPG Chapter II.C.2.f, Biographical Sketch(es).  Note limitation of 2-pages for each biographical sketch.  Attach, as a single file, to the Research &amp; Related Senior/Key Person Profile.</fo:block>-->
 			 <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">prepared in accordance with the order and format specifications identified in GPG Chapter II.C.2.f, Biographical Sketch(es).  Note limitation of 2-pages for each biographical sketch.</fo:block>
 
                </fo:block-container>
@@ -1267,14 +1234,12 @@
                
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="213px" hyphenate="true" language="en" top="292.57142857142856px" height="12.571428571428571px" width="340px">
-                  <!--<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">This section is required for all senior project personnel.  Attach, as a single file, to the Research</fo:block>-->
 			   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">This section is required for all senior project personnel.  See GPG Chapter II.C.2.h, Current and </fo:block>
                </fo:block-container>
                
                
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96px" hyphenate="true" language="en" top="302.85714285714283px" height="12.571428571428571px" width="429.7142857142857px">
-                  <!--<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">&amp; Related Senior/Key Person Profile.  See GPG Chapter II.C.2.h, Current and Pending Support, for more information.</fo:block>-->
 			   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Pending Support, for more information.</fo:block>
                </fo:block-container>
                
@@ -1355,24 +1320,12 @@
                   <fo:block background-color="transparent" color="#000000" text-align="center" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="bold">NA</fo:block>
                </fo:block-container>
                
-              <!-- 
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="210px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="bold">Proprietary or Privileged Information Statement: </fo:block>
-               </fo:block-container>
-               -->
-               
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96.57142857142857px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="165px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="bold">SF LLL, Disclosure of Lobbying Activities:</fo:block>
                </fo:block-container>
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96.57142857142857px" hyphenate="true" language="en" top="582.8571428571429px" height="12.571428571428571px" width="270px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Application Cover Sheet. See GPG Chapter II.C.1.e, Proposal Certifications.</fo:block>
                </fo:block-container>
-               
-               <!--
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="282px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="268px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">If applicable.  Attach in Block 6 of the NSF Grant Application Cover Sheet.</fo:block>
-               </fo:block-container>
-               -->
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="260px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="280px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">If applicable.  Attach a scanned copy of the SF LLL in Block 6 of the NSF Grant</fo:block>
@@ -1410,13 +1363,7 @@
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="97.14285714285714px" hyphenate="true" language="en" top="721.1428571428571px" height="24.571428571428573px" width="470px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Reviewers Not to Include (optional).  GPG Appendix B, Potentially Disqualifying Conflicts of Interest, contains information on conflicts of interest that may be useful in preparation of this list. </fo:block>
                </fo:block-container>
-               
-               <!--
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="96px" hyphenate="true" language="en" top="582.8571428571429px" height="12.571428571428571px" width="225px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">See GPG Chapter I.D.3, Proprietary or Privileged Information.</fo:block>
-               </fo:block-container>
-               -->
-               
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="32.57142857142857px" hyphenate="true" language="en" top="523px" height="13.714285714285714px" width="8px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">*</fo:block>
                </fo:block-container>
@@ -1428,13 +1375,6 @@
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="32.57142857142857px" hyphenate="true" language="en" top="573.7142857142857px" height="13.714285714285714px" width="8px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">*</fo:block>
                </fo:block-container>
-              
-               <!--
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="32.57142857142857px" hyphenate="true" language="en" top="604.5714285714286px" height="13.714285714285714px" width="8px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">*</fo:block>
-               </fo:block-container>
-                -->
-                
                 
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="33.714285714285715px" hyphenate="true" language="en" top="646.2857142857143px" height="13.714285714285714px" width="8px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">*</fo:block>
@@ -1610,21 +1550,6 @@
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="13.142857142857142px" hyphenate="true" language="en" top="601.7142857142857px" height="12.571428571428571px" width="8px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/>
                </fo:block-container>
-               
-               
-               <!--
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="43.42857142857143px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="8px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="60.57142857142857px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="8px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="78.85714285714286px" hyphenate="true" language="en" top="572.5714285714286px" height="12.571428571428571px" width="8px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/>
-               </fo:block-container>
-               -->
-               
-               
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="13.142857142857142px" hyphenate="true" language="en" top="574.2857142857143px" height="12.571428571428571px" width="8px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="ZapfDingbats" font-weight="normal"/>

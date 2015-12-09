@@ -30,8 +30,6 @@
          <fo:page-sequence master-reference="default-page" format="1" initial-page-number="1">
             <fo:static-content flow-name="xsl-region-after">
                <fo:block>
-                  <!--fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                  </fo:inline-->
                </fo:block>
             </fo:static-content>
             <fo:flow flow-name="xsl-region-body">
@@ -56,18 +54,11 @@
                <fo:block-container background-color="black" border-style="none" position="absolute" left="21.81818181818182px" top="300.6060606060606px" width="546.6666666666667px" height="0.6060606060606061px">
                    <fo:block/>
                </fo:block-container>
-               <!--fo:block-container background-color="black" border-style="none" position="absolute" left="22.424242424242426px" top="373.33333333333337px" width="546.6666666666667px" height="1.2121212121212122px">
-                   <fo:block/>
-               </fo:block-container-->
 
 
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="60.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">OMB Number: 0925-0001</fo:block>
                </fo:block-container>
-               
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="70.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 9/30/2007</fo:block>
-               </fo:block-container-->
                
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="276.969696969697px" top="125.45454545454547px" height="13.333333333333334px" width="284.8484848484849px">
@@ -109,42 +100,7 @@
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="30.90909090909091px" top="216.36363636363637px" height="13.333333333333334px" width="71.51515151515152px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal"/>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="82.42424242424242px" top="243.63636363636365px" height="13.333333333333334px" width="126.06060606060606px">
-                  <fo:block padding-left="2px" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
-                     <xsl:choose>
-                        <xsl:when test="not(//PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[1]) or //PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[1] = ''">
-                           <fo:inline color="#FFFFFF">&#160;</fo:inline>
-                        </xsl:when>
-                        <xsl:otherwise>
-                           <xsl:value-of select="//PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[1]"/>
-                        </xsl:otherwise>
-                     </xsl:choose>
-                  </fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="241.21212121212122px" top="243.63636363636365px" height="13.333333333333334px" width="126.06060606060606px">
-                  <fo:block padding-left="2px" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
-                     <xsl:choose>
-                        <xsl:when test="not(//PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[2]) or //PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[2] = ''">
-                           <fo:inline color="#FFFFFF">&#160;</fo:inline>
-                        </xsl:when>
-                        <xsl:otherwise>
-                           <xsl:value-of select="//PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[2]"/>
-                        </xsl:otherwise>
-                     </xsl:choose>
-                  </fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="418.7878787878788px" top="243.63636363636365px" height="13.333333333333334px" width="126.06060606060606px">
-                  <fo:block padding-left="2px" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
-                     <xsl:choose>
-                        <xsl:when test="not(//PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[3]) or //PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[3] = ''">
-                           <fo:inline color="#FFFFFF">&#160;</fo:inline>
-                        </xsl:when>
-                        <xsl:otherwise>
-                           <xsl:value-of select="//PHS398_CoverPageSupplement_1_4:PHS398_CoverPageSupplement_1_4/PHS398_CoverPageSupplement_1_4:PDPI/PHS398_CoverPageSupplement_1_4:Degrees[3]"/>
-                        </xsl:otherwise>
-                     </xsl:choose>
-                  </fo:block>
-               </fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="277.57575757575756px" top="375.21212121212125px" height="13.333333333333334px" width="284.8484848484849px">
                   <fo:block padding-left="2px" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
                      <xsl:choose>
@@ -354,18 +310,7 @@
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="26.060606060606062px" top="216.8787878787879px" height="12.121212121212121px" width="120.06060606060606px">
                   <fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">2. Human Subjects</fo:block>
                </fo:block-container>
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="31.515151515151516px" top="216.36363636363637px" height="13.333333333333334px" width="71.51515151515152px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">* New Investigator?</fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="155.75757575757578px" top="216.36363636363637px" height="12.121212121212121px" width="25.333333333333334px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">No</fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="31.515151515151516px" top="243.63636363636365px" height="12.121212121212121px" width="42.42424242424243px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Degrees:</fo:block>
-               </fo:block-container>
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="203.63636363636365px" top="216.36363636363637px" height="12.121212121212121px" width="25.181818181818183px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Yes</fo:block>
-               </fo:block-container-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="31.515151515151516px" top="250.3636363636364px" height="12.121212121212121px" width="76.36363636363637px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Clinical Trial?</fo:block>
                </fo:block-container>
@@ -597,17 +542,7 @@
                      </xsl:choose>
                   </fo:block>
                </fo:block-container>
-               
-            <!-- </fo:flow>
-         </fo:page-sequence>
-         <fo:page-sequence master-reference="default-page" format="1" initial-page-number="2">
-            <fo:static-content flow-name="xsl-region-after">
-               <fo:block>
-                  <fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                  </fo:inline>
-               </fo:block>
-            </fo:static-content>
-            <fo:flow flow-name="xsl-region-body"> -->
+
             
                <fo:block break-after="page">
                                <xsl:text>&#xA;</xsl:text>
@@ -630,14 +565,6 @@
                    <fo:block/>
                </fo:block-container>
 
-
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="54.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">OMB Number: 0925-0001</fo:block>
-               </fo:block-container-->
-               
-               <!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="470.1212121212121px" top="64.6060606060606px" height="12.121212121212121px" width="100.121212121212125px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 9/30/2007</fo:block>
-               </fo:block-container-->
                
                
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="46.66666666666667px" top="40.45454545454545px" height="13.333333333333334px" width="233.93939393939397px">
@@ -902,10 +829,7 @@
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="45.45454545454546px" top="150.9090909090909px" height="13.333333333333334px" >
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">specific cell line(s) from the following list: http://grants.nih.gov/stem_cells/registry/current.htm.  Or, if a specific </fo:block>
                </fo:block-container>
-               <!--
-               <fo:block-container background-color="transparent" border-style="none" position="absolute" left="350.6060606060606px" top="150.9090909090909px" height="12.121212121212121px" width="105.45454545454545px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">.  Or, if a specific </fo:block>
-               </fo:block-container>-->
+
                <fo:block-container background-color="transparent" border-style="none" position="absolute" left="45.45454545454546px" top="161.21212121212122px" height="12.121212121212121px" width="602.03030303030306px">
                   <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">stem cell line cannot be referenced at this time, please check the box indicating that one from the &#xD;
 registry will be used:</fo:block>
