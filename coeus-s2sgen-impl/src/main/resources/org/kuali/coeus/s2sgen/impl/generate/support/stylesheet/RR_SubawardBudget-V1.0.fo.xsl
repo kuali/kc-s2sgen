@@ -19,7 +19,7 @@
  -->
 <!-- $Revision:   1.4  $ -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:RR_SubawardBudget="http://apply.grants.gov/forms/RR_SubawardBudget-V1.0" xmlns:RR_Budget="http://apply.grants.gov/forms/RR_Budget-V1.0" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<!--    -->
+
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="AB" page-height="8.5in" page-width="11in" margin-left="0.3in" margin-right="0.3in">
@@ -44,7 +44,7 @@
 	</xsl:variable>
 	<xsl:template match="RR_SubawardBudget:RR_SubawardBudget">
 		<fo:root>
-			<!-- -->
+
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 				<fo:static-content flow-name="xsl-region-after">
@@ -71,8 +71,7 @@
 						</fo:table-body>
 					</fo:table>
 				</fo:static-content>
-				<!-- -->
-				<!-- -->
+
 				<fo:flow flow-name="xsl-region-body">
 					<fo:table width="100%">
 						<fo:table-column column-width="0.2in"/>
@@ -570,7 +569,7 @@
 						</fo:table>
 					</fo:static-content>
 					<fo:flow flow-name="xsl-region-body">
-						<!--<xsl:for-each select="XXX">-->
+
 						<fo:table width="100%" space-before.optimum="3pt" space-after.optimum="2pt">
 							<fo:table-column/>
 							<fo:table-body>
@@ -1126,7 +1125,7 @@
 								</fo:table-body>
 							</fo:table>
 						</fo:block>
-						<!--</xsl:for-each>-->
+
 						<!--================== end new section summary ======================= -->
 					</fo:flow>
 				</fo:page-sequence>
@@ -1635,9 +1634,7 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-			<!--
-      
-          -->
+
 			<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
 				<fo:table-column/>
 				<fo:table-body>
@@ -3238,45 +3235,6 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-			<!--
-         <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-            <fo:table-column/>
-            <fo:table-body>
-               <fo:table-row>
-                  <fo:table-cell display-align="before" height="36pt" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt">
-                     <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">K. Subprojects/Subaward Budgets Attachment(s)</fo:inline>
-                        <xsl:for-each select="RR_Budget:SubawardSubprojectBudgetAttachment/att:AttachedFile">
-                           <fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-                              <fo:table-column column-width="proportional-column-width(1)"/>
-                              <fo:table-column column-width="proportional-column-width(1)"/>
-                              <fo:table-body>
-                                 <fo:table-row>
-                                    <fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                                       <fo:block font-size="8pt">File Name: <xsl:for-each select="att:FileName">
-                                             <xsl:apply-templates/>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                                       <fo:block font-size="8pt">Mime Type: <xsl:for-each select="att:MimeType">
-                                             <xsl:apply-templates/>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                 </fo:table-row>
-                              </fo:table-body>
-                           </fo:table>
-                        </xsl:for-each>
-                     </fo:block>
-                  </fo:table-cell>
-               </fo:table-row>
-            </fo:table-body>
-         </fo:table>
-         <fo:block>
-            <fo:leader leader-pattern="space"/>
-         </fo:block>
--->
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
 				<fo:table-column/>

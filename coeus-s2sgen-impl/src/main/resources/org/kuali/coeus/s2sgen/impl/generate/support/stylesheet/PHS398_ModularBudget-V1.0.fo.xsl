@@ -114,18 +114,7 @@
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="104.24242424242425px" hyphenate="true" language="en" top="50.63636363636364px" height="15.757575757575758px" width="16.363636363636363px">
-						<fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">
-							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods[1]/PHS398_ModularBudget:BudgetPeriod[1]) or //PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods[1]/PHS398_ModularBudget:BudgetPeriod[1] = ''">
-									<fo:inline color="#FFFFFF">&#160;</fo:inline>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods[1]/PHS398_ModularBudget:BudgetPeriod[1]"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</fo:block>
-					</fo:block-container>-->
+
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="464.24242424242425px" hyphenate="true" language="en" top="112.12121212121212px" height="13.333333333333334px" width="89.0909090909091px">
 						<fo:block line-height="normal" background-color="transparent" color="#000000" font-style="normal" font-size="8pt" font-family="Helvetica" font-weight="normal"/>
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
@@ -444,18 +433,7 @@
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="108.48484848484848px" hyphenate="true" language="en" top="387.2727272727273px" height="15.757575757575758px" width="13.333333333333334px">
-						<fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">
-							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods2[1]/PHS398_ModularBudget:BudgetPeriod2[1]) or //PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods2[1]/PHS398_ModularBudget:BudgetPeriod2[1] = ''">
-									<fo:inline color="#FFFFFF">&#160;</fo:inline>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods2[1]/PHS398_ModularBudget:BudgetPeriod2[1]"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</fo:block>
-					</fo:block-container>-->
+
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="463.03030303030306px" hyphenate="true" language="en" top="453.93939393939394px" height="13.333333333333334px" width="89.0909090909091px">
 						<fo:block line-height="normal" background-color="transparent" color="#000000" font-style="normal" font-size="8pt" font-family="Helvetica" font-weight="normal"/>
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
@@ -1003,18 +981,7 @@ Base ($)</fo:block>
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="103.63636363636364px" hyphenate="true" language="en" top="48.21212121212121px" height="15.757575757575758px" width="16.363636363636363px">
-						<fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">
-							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods3[1]/PHS398_ModularBudget:BudgetPeriod3[1]) or //PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods3[1]/PHS398_ModularBudget:BudgetPeriod3[1] = ''">
-									<fo:inline color="#FFFFFF">&#160;</fo:inline>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods3[1]/PHS398_ModularBudget:BudgetPeriod3[1]"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</fo:block>
-					</fo:block-container>-->
+
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="464.8484848484849px" hyphenate="true" language="en" top="107.87878787878789px" height="13.333333333333334px" width="89.0909090909091px">
 						<fo:block line-height="normal" background-color="transparent" color="#000000" font-style="normal" font-size="8pt" font-family="Helvetica" font-weight="normal"/>
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
@@ -1333,18 +1300,7 @@ Base ($)</fo:block>
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="111.51515151515152px" hyphenate="true" language="en" top="382.42424242424244px" height="15.757575757575758px" width="15.757575757575758px">
-						<fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">
-							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods4[1]/PHS398_ModularBudget:BudgetPeriod4[1]) or //PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods4[1]/PHS398_ModularBudget:BudgetPeriod4[1] = ''">
-									<fo:inline color="#FFFFFF">&#160;</fo:inline>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods4[1]/PHS398_ModularBudget:BudgetPeriod4[1]"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</fo:block>
-					</fo:block-container>-->
+
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="465.4545454545455px" hyphenate="true" language="en" top="447.8787878787879px" height="13.333333333333334px" width="89.0909090909091px">
 						<fo:block line-height="normal" background-color="transparent" color="#000000" font-style="normal" font-size="8pt" font-family="Helvetica" font-weight="normal"/>
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
@@ -1950,18 +1906,7 @@ Base ($)</fo:block>
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="114.54545454545455px" hyphenate="true" language="en" top="53.06060606060606px" height="15.757575757575758px" width="13.333333333333334px">
-						<fo:block background-color="transparent" color="#000000" font-size="10pt" font-style="normal" font-family="Helvetica" font-weight="bold">
-							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods5[1]/PHS398_ModularBudget:BudgetPeriod5[1]) or //PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods5[1]/PHS398_ModularBudget:BudgetPeriod5[1] = ''">
-									<fo:inline color="#FFFFFF">&#160;</fo:inline>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="//PHS398_ModularBudget:PHS398_ModularBudget[1]/PHS398_ModularBudget:Periods5[1]/PHS398_ModularBudget:BudgetPeriod5[1]"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</fo:block>
-					</fo:block-container>-->
+
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="467.2727272727273px" hyphenate="true" language="en" top="116.36363636363637px" height="13.333333333333334px" width="89.0909090909091px">
 						<fo:block line-height="normal" background-color="transparent" color="#000000" font-style="normal" font-size="8pt" font-family="Helvetica" font-weight="normal"/>
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">

@@ -19,7 +19,7 @@
  -->
 <!-- $Revision:   1.3  $ -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:RR_OtherProjectInfo_1_3="http://apply.grants.gov/forms/RR_OtherProjectInfo_1_3-V1.3" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:header="http://devapply.row.com/system/Header-V1.0">
-	<!--    -->
+
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="default-page" page-height="11in" page-width="8.5in" margin-left="0.34in" margin-right="0.34in">
@@ -31,7 +31,7 @@
 	</xsl:variable>
 	<xsl:template match="RR_OtherProjectInfo_1_3:RR_OtherProjectInfo_1_3">
 		<fo:root>
-			<!-- -->
+
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 			<!-- ===================================== -->

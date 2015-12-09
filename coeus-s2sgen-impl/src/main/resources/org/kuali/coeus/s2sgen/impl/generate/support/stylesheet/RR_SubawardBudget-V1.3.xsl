@@ -83,7 +83,7 @@
 									<fo:block>&#160;</fo:block>
 									<fo:block font-size="8pt" hyphenate="true" language="en" wrap-option="wrap">
 										<fo:inline font-weight="bold" font-size="8pt">Instructions:</fo:inline>
-										<!-- COEUSDEV-762 -->
+
                                      Instructions: On this form, you will attach the R&amp;R Subaward Budget files for your grant application. Complete the subawardee budget(s) in accordance with the R&amp;R budget instructions. Please remember that any files you attach must be a PDF document.
                            </fo:block>
 									<fo:block line-height="4pt">&#160;</fo:block>
@@ -233,39 +233,6 @@
 						</xsl:for-each>
 					</fo:flow>
 				</fo:page-sequence>
-				<!--fo:page-sequence master-reference="primary" format="1">
-					<fo:static-content flow-name="xsl-region-after">
-						<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
-							<fo:table-column column-width="proportional-column-width(1)"/>
-							<fo:table-column column-width="proportional-column-width(1)"/>
-							<fo:table-body>
-								<fo:table-row>
-									<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-											</fo:inline>
-										</fo:block>
-									</fo:table-cell>
-									<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right" border-style="solid" border-width="0pt" border-color="white">
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
-										</fo:block>
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 04/30/2008</fo:inline>
-										</fo:block>
-									</fo:table-cell>
-								</fo:table-row>
-							</fo:table-body>
-						</fo:table>
-					</fo:static-content>
-					<fo:flow flow-name="xsl-region-body">
-						<xsl:for-each select="RR_Budget_1_3:BudgetYear">
-							<xsl:call-template name="SingleYearPart2">
-								<xsl:with-param name="year"><xsl:value-of select="position()"/></xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-					</fo:flow>
-				</fo:page-sequence-->
 		
 				<!-- ====================================== new section SUMMARY ===============================-->
 				<fo:page-sequence master-reference="summary" format="1">
@@ -294,7 +261,7 @@
 						</fo:table>
 					</fo:static-content>
 					<fo:flow flow-name="xsl-region-body">
-						<!--<xsl:for-each select="XXX">-->
+
 						<fo:table width="100%" space-before.optimum="3pt" space-after.optimum="2pt">
 							<fo:table-column/>
 							<fo:table-body>
@@ -319,9 +286,6 @@
 								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-body>
-                                                                <!--<fo:table-row>
-                                                                   <fo:table-cell>
-                                                                     <fo:block>-->
 									<!--============= ROWS Begin ======================-->
 									<xsl:for-each select="RR_Budget_1_3:BudgetSummary">
 										<fo:table-row>
@@ -348,7 +312,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedSeniorKeyPerson[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedSeniorKeyPerson">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -396,7 +360,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedPersonnel[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedPersonnel">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -784,7 +748,6 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedDirectCosts[. != '0.00']">-->
 													<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedDirectCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -819,7 +782,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<!--<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedDirectIndirectCosts[. != '0.00']">-->
+
 													<xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedDirectIndirectCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -847,13 +810,9 @@
 										</fo:table-row>
 										<!--============ ROWS End ================================-->
 									</xsl:for-each>
-<!--                                                                          </fo:block>
-                                                                    </fo:table-cell>
-                                                                </fo:table-row>
--->								</fo:table-body>
+								</fo:table-body>
 							</fo:table>
 						</fo:block>
-						<!--</xsl:for-each>-->
 						<!--================== end new section summary ======================= -->
 					</fo:flow>
 				</fo:page-sequence>
@@ -1418,9 +1377,7 @@
          <fo:block>
             <fo:leader leader-pattern="space"/>
          </fo:block>
-         <!--
-      
-          -->
+
          <fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
             <fo:table-column/>
             <fo:table-body>
@@ -2413,12 +2370,11 @@
                               <xsl:apply-templates/>
                            </fo:inline>
                         </xsl:for-each>
-                        <!--fo:inline font-size="8pt" font-weight="bold">&#160;&#160;&#160;Number of Participants/Trainees&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Total Participant/Trainee Support Costs</fo:inline>-->
+
                          <fo:inline font-size="8pt" font-weight="bold">&#160;&#160;&#160;Number of Participants/Trainees</fo:inline>       
                      </fo:block>
                   </fo:table-cell>
-                  
-                     <!--i am adding this new column -->
+
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="8pt" font-weight="bold">&#160;&#160;&#160;&#160;&#160;&#160;Total Participant Trainee Support Costs</fo:inline>                
@@ -2842,7 +2798,6 @@
                               <xsl:when test="RR_Budget_1_3:IndirectCosts/RR_Budget_1_3:TotalIndirectCosts">
                                  <xsl:value-of select="format-number(RR_Budget_1_3:IndirectCosts/RR_Budget_1_3:TotalIndirectCosts, '#,##0.00')"/>
                               </xsl:when>
-                              <!--<xsl:otherwise>0.00</xsl:otherwise>-->
                            </xsl:choose>
                         </fo:inline>
                      </fo:block>

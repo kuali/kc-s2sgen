@@ -91,7 +91,7 @@
 						<fo:table-column column-width="proportional-column-width(1)" />
 						<fo:table-column column-width="proportional-column-width(1)" />
 						<fo:table-body> 
-						<!--  -->
+
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en"
 									padding-start="0pt" padding-end="0pt" padding-before="1pt"
@@ -223,74 +223,7 @@
 										<fo:table-column column-width="proportional-column-width(1)" /> 
 										<fo:table-column column-width="proportional-column-width(1)" /> 
 										<fo:table-column column-width="proportional-column-width(1)" /> 
-										<fo:table-body> 
-										<!--
-											<fo:table-row> 
-												<fo:table-cell hyphenate="true" language="en" 
-													padding-start="0pt" padding-end="0pt" padding-before="0pt" 
-													padding-after="0pt" display-align="before" text-align="start" 
-													border-style="solid" border-width="0pt" border-color="white"> 
-													<fo:block font-size="9px"> 
-														<xsl:choose> 
-															<xsl:when 
-																test="RR_SF424_2_0:SubmissionTypeCode = 'Preapplication'"> 
-																<xsl:call-template name="checkbox"> 
-																	<xsl:with-param name="value">Y: Yes</xsl:with-param> 
-																</xsl:call-template> 
-															</xsl:when> 
-															<xsl:otherwise> 
-																<xsl:call-template name="checkbox"> 
-																	<xsl:with-param name="value">N: No</xsl:with-param> 
-																</xsl:call-template> 
-															</xsl:otherwise> 
-														</xsl:choose> 
-														<fo:inline> Pre-application</fo:inline> 
-													</fo:block> 
-												</fo:table-cell> 
-												<fo:table-cell hyphenate="true" language="en" 
-													padding-start="0pt" padding-end="0pt" padding-before="0pt" 
-													padding-after="0pt" display-align="before" text-align="start" 
-													border-style="solid" border-width="0pt" border-color="white"> 
-													<fo:block font-size="9px"> 
-														<xsl:choose> 
-															<xsl:when 
-																test="RR_SF424_2_0:SubmissionTypeCode = 'Application'"> 
-																<xsl:call-template name="checkbox"> 
-																	<xsl:with-param name="value">Y: Yes</xsl:with-param>
-																</xsl:call-template> 
-															</xsl:when> 
-															<xsl:otherwise> 
-																<xsl:call-template name="checkbox"> 
-																	<xsl:with-param name="value">N: No</xsl:with-param> 
-																</xsl:call-template> 
-															</xsl:otherwise> 
-														</xsl:choose> 
-														<fo:inline> Application</fo:inline> 
-													</fo:block> 
-												</fo:table-cell> 
-												<fo:table-cell hyphenate="false" language="en" 
-													padding-start="0pt" padding-end="0pt" padding-before="0pt" 
-													padding-after="0pt" display-align="before" text-align="start" 
-													border-style="solid" border-width="0pt" border-color="white"> 
-													<fo:block font-size="9px"> 
-														<xsl:choose> 
-															<xsl:when 
-																test="RR_SF424_2_0:SubmissionTypeCode = 'Change/Corrected Application'"> 
-																<xsl:call-template name="checkbox"> 
-																	<xsl:with-param name="value">Y: Yes</xsl:with-param> 
-																</xsl:call-template> 
-															</xsl:when> 
-															<xsl:otherwise> 
-																<xsl:call-template name="checkbox"> 
-																	<xsl:with-param name="value">N: No</xsl:with-param> 
-																</xsl:call-template> 
-															</xsl:otherwise> 
-														</xsl:choose> 
-														<fo:inline> Changed/Corrected Application</fo:inline> 
-													</fo:block> 
-												</fo:table-cell> 
-											</fo:table-row> 
-											-->
+										<fo:table-body>
 											                                 <fo:table-row>
                                     <fo:table-cell hyphenate="true" language="en"
                                      padding-start="0pt"
@@ -1049,7 +982,7 @@
 										</fo:table-row>
 									
 		
-							<!-- JIRA COEUS QA 2351 - START -->
+
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en"
 									number-columns-spanned="4" padding-start="3pt" padding-end="3pt"
@@ -1128,7 +1061,7 @@
 
 								</fo:table-cell>
 							</fo:table-row>
-							<!-- JIRA COEUS QA 2351 - END -->
+
 							<fo:table-row> 
                         <!-- ============================ --> 
 								<!-- Federal Agency Name --> 

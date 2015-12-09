@@ -60,8 +60,6 @@
                          border-width="0pt"
                          border-color="white">
                            <fo:block>
-                              <!--<fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                              </fo:inline> -->
                            </fo:block>
                         </fo:table-cell>
                         <fo:table-cell hyphenate="true" language="en" line-height="9pt"
@@ -108,8 +106,6 @@
                          border-width="0pt"
                          border-color="white">
                            <fo:block>
-                              <!-- <fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                              </fo:inline> -->
                            </fo:block>
                         </fo:table-cell>
                         <fo:table-cell hyphenate="true" language="en" line-height="9pt"
@@ -158,8 +154,6 @@
                          border-width="0pt"
                          border-color="white">
                            <fo:block>
-                              <!-- <fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-                              </fo:inline> -->
                            </fo:block>
                         </fo:table-cell>
                         <fo:table-cell hyphenate="true" language="en" line-height="9pt"
@@ -180,7 +174,6 @@
                </fo:table>
             </fo:static-content>
             <fo:flow flow-name="xsl-region-body">
-               <!--<xsl:for-each select="XXX">-->
                <fo:table width="100%" space-before.optimum="3pt" space-after.optimum="2pt">
                   <fo:table-column/>
                   <fo:table-body>
@@ -210,7 +203,6 @@
                <fo:table-row>
                <fo:table-cell border-before-color="white" text-align="start" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" number-columns-spanned="2" display-align="before">
                                     <fo:block>
-                                       <!--<fo:inline font-weight="bold" font-size="8pt">F. Other Direct Costs</fo:inline> -->
                                     </fo:block>
                 </fo:table-cell>
                 <fo:table-cell border-before-color="white" border-end-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
@@ -1882,7 +1874,6 @@
                                           </xsl:for-each>
                                        </fo:block>
                                     </fo:table-cell>
-                                    <!--added columns here -->
                                     <fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
                                           <xsl:for-each select="RR_FedNonFedBudget10:PostDocAssociates">
@@ -2426,7 +2417,6 @@
                                        <fo:inline font-size="8pt" font-weight="bold">Total Other Personnel</fo:inline>
                                     </fo:block>
                                  </fo:table-cell>
-                                 <!--<fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before"> -->
                                  <fo:table-cell hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                     <fo:block>
                                        <xsl:for-each select="RR_FedNonFedBudget10:OtherPersonnel">
@@ -2440,7 +2430,7 @@
                                        </xsl:for-each>
                                     </fo:block>
                                  </fo:table-cell>
-                                 <!--add 1 s-->
+
 											<fo:table-cell hyphenate="true" language="en"  text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget10:OtherPersonnel">
@@ -2454,7 +2444,7 @@
 													</xsl:for-each>
 												</fo:block>
 											</fo:table-cell>
-											<!-- Nikisha : added hyphenate -->
+
 											<fo:table-cell  hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget10:OtherPersonnel">
@@ -2468,7 +2458,7 @@
 													</xsl:for-each>
 												</fo:block>
 											</fo:table-cell>
-                                 <!--add 1 e-->
+
                               </fo:table-row>
                               <fo:table-row>
                                  <fo:table-cell number-columns-spanned="7" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
@@ -2511,7 +2501,7 @@
                </fo:table-row>
             </fo:table-body>
          </fo:table>
-         <!--<fo:block font-size="8pt">RESEARCH &amp; RELATED Budget {A-B} (Funds Requested)</fo:block>-->
+
       </fo:block>
    </xsl:template>
    <xsl:template name="SingleYearPart2">
@@ -3706,7 +3696,7 @@
                               <xsl:when test="RR_FedNonFedBudget10:IndirectCosts/RR_FedNonFedBudget10:TotalIndirectCosts">
                                  <xsl:value-of select="format-number(RR_FedNonFedBudget10:IndirectCosts/RR_FedNonFedBudget10:TotalIndirectCosts/RR_FedNonFedBudget10:FederalSummary, '#,##0.00')"/>
                               </xsl:when>
-                              <!--<xsl:otherwise>0.00</xsl:otherwise>-->
+
                            </xsl:choose>
                         </fo:inline>
                      </fo:block>
@@ -3718,7 +3708,7 @@
                               <xsl:when test="RR_FedNonFedBudget10:IndirectCosts/RR_FedNonFedBudget10:TotalIndirectCosts">
                                  <xsl:value-of select="format-number(RR_FedNonFedBudget10:IndirectCosts/RR_FedNonFedBudget10:TotalIndirectCosts/RR_FedNonFedBudget10:NonFederalSummary, '#,##0.00')"/>
                               </xsl:when>
-                              <!--<xsl:otherwise>0.00</xsl:otherwise>-->
+
                            </xsl:choose>
                         </fo:inline>
                      </fo:block>
@@ -3730,7 +3720,7 @@
                               <xsl:when test="RR_FedNonFedBudget10:IndirectCosts/RR_FedNonFedBudget10:TotalIndirectCosts">
                                  <xsl:value-of select="format-number(RR_FedNonFedBudget10:IndirectCosts/RR_FedNonFedBudget10:TotalIndirectCosts/RR_FedNonFedBudget10:TotalFedNonFedSummary, '#,##0.00')"/>
                               </xsl:when>
-                              <!--<xsl:otherwise>0.00</xsl:otherwise>-->
+
                            </xsl:choose>
                         </fo:inline>
                      </fo:block>
@@ -3865,12 +3855,12 @@
                 </fo:table-cell>
                  <fo:table-cell border-before-color="white" border-end-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
-												<!--	<fo:inline font-weight="bold" font-size="8pt">*Non-Federal (&#36;)</fo:inline> -->
+
 												</fo:block>
 				</fo:table-cell>
 				<fo:table-cell border-before-color="white" border-end-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
-													<!--<fo:inline font-weight="bold" font-size="8pt">*Total (Fed + Non-Fed) (&#36;)</fo:inline> -->
+
 												</fo:block>
 				</fo:table-cell>              
                </fo:table-row>     
@@ -3914,17 +3904,17 @@
                 </fo:table-cell>
                 <fo:table-cell border-before-color="white" border-end-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                     <fo:block>
-                                       <!--<fo:inline font-weight="bold" font-size="8pt">* Federal (&#36;)</fo:inline>-->
+
                                     </fo:block>
                 </fo:table-cell>
                  <fo:table-cell border-before-color="white" border-end-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
-												<!--	<fo:inline font-weight="bold" font-size="8pt">*Non-Federal (&#36;)</fo:inline> -->
+
 												</fo:block>
 				</fo:table-cell>
 				<fo:table-cell border-before-color="white" border-end-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
-													<!--<fo:inline font-weight="bold" font-size="8pt">*Total (Fed + Non-Fed) (&#36;)</fo:inline> -->
+
 												</fo:block>
 				</fo:table-cell>              
                </fo:table-row>     

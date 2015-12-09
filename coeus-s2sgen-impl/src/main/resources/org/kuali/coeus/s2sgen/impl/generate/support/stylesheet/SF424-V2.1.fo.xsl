@@ -1024,9 +1024,7 @@
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
-					
-					
-					<!-- ELE CHANGE deleted stuff - areas affected is now just an attachment -->
+
 					
 					<!--Block below is for the field named ProjectTitle with FieldID 15-0-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="16.363636363636363px" hyphenate="true" language="en" keep-together="always" top="621.2121212121212px" height="42.42424242424243px" width="488.4848484848485px">
@@ -1095,10 +1093,6 @@
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="16.363636363636363px" hyphenate="true" language="en" keep-together="always" top="529.0909090909091px" height="13.333333333333334px" width="234.54545454545456px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="bold">14. Areas Affected by Project (Cities, Counties, States, etc.):  See Attachments.</fo:block>
 					</fo:block-container>
-					<!--Block below is for the label named Areas affected- not showing up in right place-->
-					<!--fo:block-container background-color="transparent" border-style="none" position="absolute" left="16.363636363636363px" hyphenate="true" language="en" keep-together="always" top="670.909090909091px" height="13.333333333333334px" width="240.60606060606062px">
-						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Attach additional areas affected.</fo:block>
-					</fo:block-container-->
 
 					<!--Block below is for the label named ProjectTitle_LBL-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="16.363636363636363px" hyphenate="true" language="en" keep-together="always" top="604.8484848484849px" height="13.333333333333334px" width="195.75757575757578px">
@@ -1941,7 +1935,7 @@
 								</fo:table-cell>
 							</fo:table-row>
 							
-							<!-- ELE CHANGES - added this -->
+
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white" number-columns-spanned="2">
 									<xsl:call-template name="addBlankLines">
@@ -1971,7 +1965,6 @@
 										</fo:block>
 									</fo:table-cell>
 								</fo:table-row>
-							<!-- ele added -->
 							
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white" number-columns-spanned="2">
@@ -2003,8 +1996,7 @@
 									</fo:table-cell>
 								</fo:table-row>
 								</xsl:for-each>
-								
-								<!-- ele added -->
+
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white" number-columns-spanned="2">
 									<xsl:call-template name="addBlankLines">

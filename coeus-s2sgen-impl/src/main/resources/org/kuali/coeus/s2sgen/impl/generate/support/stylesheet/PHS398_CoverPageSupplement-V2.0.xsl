@@ -693,10 +693,6 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 					following list: http://grants.nih.gov/stem_cells/registry/current.htm.  Or, if a specific stem cell line cannot be referenced at this time,
 					please check the box indicating that one from the registry will be used:</fo:block>
                </fo:block-container>
-               <!--
-               <fo:block-container position="absolute" left="350.6060606060606px" top="150.9090909090909px" height="12px" width="105.45454545454545px">
-                  <fo:block font-size="9px" font-family="Helvetica">.  Or, if a specific </fo:block>
-               </fo:block-container>-->
               
                <fo:block-container position="absolute" left="0.2in" top="2.3in" height="12px" keep-together="always">
                   <fo:block font-size="9px" font-family="Helvetica" font-weight="bold">Cell Line(s):</fo:block>

@@ -321,23 +321,7 @@
                                           <fo:inline> Application</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
-                                    <!-- JIRA COEUSDEV-248 START-->
-                                    <!--fo:table-cell hyphenate="true" language="en"
-                                     number-rows-spanned="2"
-                                     padding-start="0pt"
-                                     padding-end="0pt"
-                                     padding-before="0pt"
-                                     padding-after="0pt"
-                                     display-align="before"
-                                     text-align="start"
-                                     border-style="solid"
-                                     border-width="0pt"
-                                     border-color="white">
-                                       <fo:block>
-                                          <fo:leader leader-pattern="space"/>
-                                       </fo:block>
-                                    </fo:table-cell-->
-                                    <!-- JIRA COEUSDEV-248 END-->
+
                                  </fo:table-row>
                                  <fo:table-row>
                                     <fo:table-cell hyphenate="true" language="en"

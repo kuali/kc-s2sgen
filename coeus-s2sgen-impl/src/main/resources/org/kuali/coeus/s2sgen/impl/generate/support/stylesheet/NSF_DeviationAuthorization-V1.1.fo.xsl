@@ -18,9 +18,9 @@
    - along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:NSF_DeviationAuthorization="http://apply.grants.gov/forms/NSF_DeviationAuthorization-V1.1" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<!--    -->
+
 	<xsl:param name="l10n.gentext.default.language" select="'en'"/>
-	<!--   -->
+
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="default-page" page-height="11in" page-width="8.5in" margin-left="0.34in" margin-right="0.34in">
@@ -32,7 +32,7 @@
 	
 	<xsl:template match="NSF_DeviationAuthorization:NSF_DeviationAuthorization">
 		<fo:root>
-			<!-- -->
+
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 				<fo:static-content flow-name="xsl-region-after">
@@ -57,8 +57,7 @@
 						</fo:table-body>
 					</fo:table>
 				</fo:static-content>
-				<!-- -->
-				<!-- -->
+
 				<fo:flow flow-name="xsl-region-body">
 					<fo:block text-align="center" font-family="Helvetica,Times,Courier" font-size="11pt" font-weight="bold">Deviation Authorization (If Applicable)</fo:block>
 					<fo:table width="100%">
@@ -69,7 +68,7 @@
 									<fo:block>&#160;</fo:block>
 								</fo:table-cell>
 							</fo:table-row>
-							<!-- -->
+
 							<fo:table-row font-size="8pt">
 								<fo:table-cell font-weight="bold">
 									<fo:block>Enter text for the Deviation Authorization information in the box below (if applicable):</fo:block>

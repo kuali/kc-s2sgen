@@ -30,7 +30,7 @@ xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="ht
 	</xsl:variable>
 	<xsl:template match="Attachments:Attachments">
 		<fo:root>
-			<!-- -->
+
 			<xsl:copy-of select="$fo:layout-master-set"/>
 			<fo:page-sequence master-reference="default-page" initial-page-number="1" format="1">
 				<fo:static-content flow-name="xsl-region-after">
@@ -39,8 +39,7 @@ xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="ht
 						</fo:inline>
 					</fo:block>
 				</fo:static-content>
-				<!-- -->
-				<!-- -->
+
 				<fo:flow flow-name="xsl-region-body">
 				
 					<fo:table width="100%">	
@@ -263,5 +262,5 @@ xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="ht
 		</xsl:element>
 	</xsl:template>
 	<!-- Block 7 End -->
-	<!--                                     NEW NEW NEW NENW -->
+
 </xsl:stylesheet>

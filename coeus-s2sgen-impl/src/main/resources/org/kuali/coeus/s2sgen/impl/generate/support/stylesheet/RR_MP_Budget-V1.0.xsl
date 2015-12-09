@@ -234,7 +234,6 @@
                </fo:table>
             </fo:static-content>
             <fo:flow flow-name="xsl-region-body">
-               <!--<xsl:for-each select="XXX">-->
                <fo:table width="100%" space-before.optimum="3pt" space-after.optimum="2pt">
                   <fo:table-column/>
                   <fo:table-body>
@@ -290,7 +289,6 @@
                               </fo:table-cell>
                               <fo:table-cell text-align="right">
                                  <fo:block>
-                                  <!-- <xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedSeniorKeyPerson[. != '0.00']">-->
                                        <xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedSeniorKeyPerson">
                                               <fo:inline font-family="Helvetica, Arial, sans-serif" font-size="9px" font-weight="bold">
                                           <xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -338,7 +336,6 @@
                               </fo:table-cell>
                               <fo:table-cell text-align="right">
                                  <fo:block>
-                                    <!--<xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedPersonnel[. != '0.00']">-->
                                     <xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedPersonnel">
                                        <fo:inline font-family="Helvetica, Arial, sans-serif" font-size="9px" font-weight="bold">
                                           <xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -729,7 +726,6 @@
                               </fo:table-cell>
                               <fo:table-cell text-align="right">
                                  <fo:block font-family="Helvetica, Arial, sans-serif" font-size="9px">
-                                    <!--<xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedDirectCosts[. != '0.00']">-->
                                     <xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedDirectCosts">
                                        <fo:inline font-weight="bold">
                                           <xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -764,7 +760,6 @@
                               </fo:table-cell>
                               <fo:table-cell text-align="right">
                                  <fo:block font-family="Helvetica, Arial, sans-serif" font-size="9px">
-                                   <!-- <xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedDirectIndirectCosts[. != '0.00']">-->
                                    <xsl:for-each select="RR_MP_Budget:CumulativeTotalFundsRequestedDirectIndirectCosts">
                                        <fo:inline font-weight="bold">
                                           <xsl:value-of select="format-number(., '#,##0.00')"/>
@@ -795,7 +790,6 @@
                      </fo:table-body>
                   </fo:table>
                </fo:block>
-               <!--</xsl:for-each>-->
                <!--================== end new section summary ======================= -->
             </fo:flow>
          </fo:page-sequence>
@@ -1238,9 +1232,7 @@
          <fo:block>
             <fo:leader leader-pattern="space"/>
          </fo:block>
-         <!--
 
-          -->
          <fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
             <fo:table-column/>
             <fo:table-body>
@@ -2235,12 +2227,10 @@
                               <xsl:apply-templates/>
                            </fo:inline>
                         </xsl:for-each>
-                        <!--fo:inline font-size="9px" font-weight="bold">&#160;&#160;&#160;Number of Participants/Trainees&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Total Participant/Trainee Support Costs</fo:inline>-->
                          <fo:inline font-size="9px" font-weight="bold">&#160;&#160;&#160;Number of Participants/Trainees</fo:inline>
                      </fo:block>
                   </fo:table-cell>
 
-                     <!--i am adding this new column -->
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="2pt" padding-after="2pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="9px" font-weight="bold">Total Participant Trainee Support Costs</fo:inline>
@@ -2665,7 +2655,6 @@
                               <xsl:when test="RR_MP_Budget:IndirectCosts/RR_MP_Budget:TotalIndirectCosts">
                                  <xsl:value-of select="format-number(RR_MP_Budget:IndirectCosts/RR_MP_Budget:TotalIndirectCosts, '#,##0.00')"/>
                               </xsl:when>
-                              <!--<xsl:otherwise>0.00</xsl:otherwise>-->
                            </xsl:choose>
                         </fo:inline>
                      </fo:block>

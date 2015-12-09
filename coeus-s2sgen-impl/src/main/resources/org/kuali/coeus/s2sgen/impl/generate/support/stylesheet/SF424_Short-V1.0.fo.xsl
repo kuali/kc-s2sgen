@@ -504,9 +504,6 @@
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="90.30303030303031px" hyphenate="true" language="en" keep-together="always" top="735.7575757575758px" height="13.333333333333334px" width="52.121212121212125px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">* Start Date:</fo:block>
 					</fo:block-container>
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="92.72727272727273px" hyphenate="true" language="en" keep-together="always" top="129.69696969696972px" height="13.333333333333334px" width="126.06060606060606px">
-                  <fo:block background-color="transparent" color="#000000" font-size="6pt" font-style="normal" font-family="Helvetica" font-weight="normal">Completed Upon Submission to Grants.gov</fo:block>
-               </fo:block-container>-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="92.72727272727273px" hyphenate="true" language="en" keep-together="always" top="129.69696969696972px" height="13.333333333333334px" width="126.06060606060606px">
 						<fo:block background-color="transparent" color="#000000" font-size="6pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid">
 							<xsl:choose>
@@ -1646,11 +1643,6 @@
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="495.72727272727275px" hyphenate="true" language="en" keep-together="always" top="40.636363636363637px" height="13.333333333333334px" width="76.36363636363637px">
 						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Version 01</fo:block>
 					</fo:block-container>
-					<!--Block below is for the label named -->
-					<!--Block below is for the label named LABEL1-->
-					<!--<fo:block-container background-color="transparent" border-style="none" position="absolute" left="3.6363636363636367px" hyphenate="true" language="en" keep-together="always" top="319.5757575757576px" height="12.121212121212121px" width="115.15151515151516px">
-                  <fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Previous Edition Usable</fo:block>
-               </fo:block-container> -->
 					<!--Block below is for the label named LABEL2-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="3.6363636363636367px" hyphenate="true" language="en" keep-together="always" top="319.5757575757576px" height="12.121212121212121px" width="132.12121212121212px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Authorized for Local Reproduction</fo:block>

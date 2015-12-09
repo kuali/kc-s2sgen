@@ -397,15 +397,6 @@
                         </fo:table-row>
                      </fo:table-body>
                   </fo:table>
-                  <!--fo:block>
-                     <fo:leader leader-pattern="space"/>
-                  </fo:block>
-                  <fo:block>
-                     <fo:leader leader-pattern="space"/>
-                  </fo:block>
-                  <fo:block>
-                     <xsl:text>&#xA;</xsl:text>
-                  </fo:block-->
                </fo:block>
             </fo:flow>
          </fo:page-sequence>
