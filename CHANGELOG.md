@@ -1,6 +1,25 @@
 
 
 ##CURRENT
+*  PD: Grants.gov: RR_SubawardBudget10_30_1_3 From PDF Preview does NOT Generate (only the attached Budget Justification appears)
+
+  * Users are not able to generate a PDF preview of the RR_SubawardBudget10_30_1_3 From in the Opportunity Search screen -> Forms tab (or from the Print link).
+  * When users checks the select checkbox for RR_SubawardBudget10_30_1_3 Form and then clicks the [Create PDF] button, the file that opens/downloads only includes the Budget Justification file that was attached to the Subawawrd Budget pdf that was uploaded in the Subaward Section of the PD Budget. See Proposal Number 29411 (Budget version 2) in MIT QA Weekly.
+  * (From our experience of this in MIT KC Production, It appears that the XML that was generated of the form - does include the information as uploaded in the form - so this might be a display issue.)
+  * (I am including in this Jira the Sub RR Budget form uploaded in the Subaward Section of the Budget)
+  * Steps to Reproduce:
+  * Create a new proposal with basic info to save (With start and end dates that include period 7/1/2015-6/30/2016)
+  * Create a new, detailed budget
+  * Enter a single non-personnel line item for M&S
+  * Go to Subaward section. Enter subaward uploading attached RR_Budget10_1_3_A30-V1.3-Display.pdf file
+  * Save
+  * Naviagte to Basics -> S2S Opportunity Search -> Forms Tab
+  * Check the Select checkbox for RR_SubawardBudget10_30_1_3 From
+  * Click the [Create PDF] button
+  * You will see that only the Budget Justification generates as the Preview. The actual 10 YEAR R&R SUBAWARD BUDGET ATTACHMENT(S) FORM and the attached RR Budget pages do NOT generate.
+  * Travis Schneeberger on Wed, 9 Dec 2015 15:27:57 -0500 [View Commit](../../commit/1202ca815db2c3062b1029fecc74afa6ed38840b)
+
+##coeus-s2sgen-1512.0008
 * No Changes
 
 
