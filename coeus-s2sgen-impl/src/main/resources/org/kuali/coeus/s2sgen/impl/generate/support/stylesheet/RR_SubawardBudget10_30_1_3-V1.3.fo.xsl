@@ -2242,6 +2242,15 @@
 											</fo:table-row>
 										</xsl:if>
 										<xsl:for-each select="RR_Budget10_1_3:Equipment">
+
+											<xsl:if test="string-length(RR_Budget10_1_3:EquipmentList)=0">
+												<fo:table-row>
+													<fo:table-cell >
+														<fo:block/>
+													</fo:table-cell>
+												</fo:table-row>
+											</xsl:if>
+
 											<xsl:for-each select="RR_Budget10_1_3:EquipmentList">
 												<fo:table-row>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
