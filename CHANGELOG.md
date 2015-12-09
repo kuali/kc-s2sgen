@@ -1,6 +1,38 @@
 
 
 ##CURRENT
+* PD Printing: Approved&Submitted does not support Create PDF
+  * for PHS398_CoverPageSupplement_2_0-V2.0 > Create PDF -no data provided
+  * in form.
+  * Approved and Submitted Proposals are not populating data in the PHS398
+  * Cover Page Supplement 2-0 FORM when users attempt to create the PDF.
+  * (Create PDF) is printing a blank form and populates with no transmitted
+  * data. 
+  * S2S Opportunity Search > Forms > Select > Create PDF for the PHS Cover
+  * Page Supplement form.
+  * The system will generate the FORM, but none of the proposal or
+  * questionnaire data appear in the PDF post-submission.
+  * To reproduce:
+  * Kuali Demo 1: 
+  * Search and open proposal number 72 (approved submitted PA-C-R01)
+  * Go to S2S Opportunity Search screen > Forms tabl
+  * Click "select" PHS398 Cover Page Supplement 2-0
+  * Click "Create PDF"
+  * Results:
+  * Generates a PDF form stylesheet, but NO DATA answers appear.
+  * Desired Results:
+  * KC needs to print the PHS398_CoverPageSupplement_2_0-V2.0 form for user
+  * on Approved and Submitted proposals with transmitted data populated.
+  * MIT KC Production PD 29529 - 
+  * Change/Corrected proposal, Created from copy of KC Native (not Migrated
+  * from Coeus) proposals.
+  * Approved and Submitted status, submitted S2S 10/14/2018
+  * Confirmed in eRA Commons that the Grant Image included correct data for
+  * PHS398_CoverPageSupplement_2_0-V2.0
+  * This is happening in multiple proposals in MIT KC Production: see also
+  * as examples 29465, 29528, 29417, 29216, 29332  * vineeth on Tue, 8 Dec 2015 18:41:58 -0500 [View Commit](../../commit/bb8313d5b9b821285e4034c326dc11a8f4fcf50c)
+
+##coeus-s2sgen-1512.0006
 *  fixing the stylesheet so that it will print without Apache FOP throwing an exception.
   * Travis Schneeberger on Tue, 8 Dec 2015 20:06:05 -0500 [View Commit](../../commit/e9e2f5ae05e5c38c4809d241a7c508a0948c0c84)
 
