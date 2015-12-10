@@ -20,7 +20,7 @@
 <!-- $Revision:   1.0  $ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:PHS398_ModularBudget_1_2="http://apply.grants.gov/forms/PHS398_ModularBudget_1_2-V1.2">
 	<xsl:output method="xml" indent="yes"/>
-	<xsl:template match="/">
+	<xsl:template match="PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2">
 		<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0">
 			<fo:layout-master-set>
 				<fo:simple-page-master master-name="default-page" page-height="11in" page-width="8.5in" margin-left="0.2in" margin-right="0.2in">
@@ -33,7 +33,7 @@
 				<fo:flow flow-name="xsl-region-body">
 
 					
-					<xsl:for-each select="PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:Periods">
+					<xsl:for-each select="PHS398_ModularBudget_1_2:Periods">
 					
 					<fo:block-container left="10" top="10" width="550" height="400">
 					
@@ -510,11 +510,11 @@ Base ($)</fo:block>
 						<fo:block line-height="normal" background-color="transparent" color="#000000" font-style="normal" font-size="8pt" font-family="Helvetica" font-weight="normal"/>
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
 							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeDirectCostLessConsortiumFandA) or //PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeDirectCostLessConsortiumFandA = ''">
+								<xsl:when test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeDirectCostLessConsortiumFandA) or PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeDirectCostLessConsortiumFandA = ''">
 									<fo:inline color="#FFFFFF">&#160;</fo:inline>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:value-of select="format-number(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeDirectCostLessConsortiumFandA, '#,##0.00')"/>
+									<xsl:value-of select="format-number(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeDirectCostLessConsortiumFandA, '#,##0.00')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</fo:block>
@@ -522,11 +522,11 @@ Base ($)</fo:block>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="344.8484848484849px" hyphenate="true" language="en" top="135.1515151515151px" height="13.333333333333334px" width="124.84848484848486px">
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
 							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeConsortiumFandA) or //PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeConsortiumFandA = ''">
+								<xsl:when test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeConsortiumFandA) or PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeConsortiumFandA = ''">
 									<fo:inline color="#FFFFFF">&#160;</fo:inline>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:value-of select="format-number(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeConsortiumFandA, '#,##0.00')"/>
+									<xsl:value-of select="format-number(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeConsortiumFandA, '#,##0.00')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</fo:block>
@@ -534,11 +534,11 @@ Base ($)</fo:block>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="344.8484848484849px" hyphenate="true" language="en" top="153.939393939394px" height="13.333333333333334px" width="124.84848484848486px">
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
 							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectCosts) or //PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectCosts = ''">
+								<xsl:when test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectCosts) or PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectCosts = ''">
 									<fo:inline color="#FFFFFF">&#160;</fo:inline>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:value-of select="format-number(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectCosts, '#,##0.00')"/>
+									<xsl:value-of select="format-number(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectCosts, '#,##0.00')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</fo:block>
@@ -546,11 +546,11 @@ Base ($)</fo:block>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="344.8484848484849px" hyphenate="true" language="en" top="171.5151515151515px" height="13.333333333333334px" width="124.84848484848486px">
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
 							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedIndirectCost) or //PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedIndirectCost = ''">
+								<xsl:when test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedIndirectCost) or PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedIndirectCost = ''">
 									<fo:inline color="#FFFFFF">&#160;</fo:inline>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:value-of select="format-number(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedIndirectCost, '#,##0.00')"/>
+									<xsl:value-of select="format-number(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedIndirectCost, '#,##0.00')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</fo:block>
@@ -558,37 +558,37 @@ Base ($)</fo:block>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="344.8484848484849px" hyphenate="true" language="en" top="187.8787878787879px" height="13.333333333333334px" width="124.84848484848486px">
 						<fo:block text-align="right" background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
 							<xsl:choose>
-								<xsl:when test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectIndirectCosts) or //PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectIndirectCosts = ''">
+								<xsl:when test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectIndirectCosts) or PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectIndirectCosts = ''">
 									<fo:inline color="#FFFFFF">&#160;</fo:inline>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:value-of select="format-number(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectIndirectCosts, '#,##0.00')"/>
+									<xsl:value-of select="format-number(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:EntirePeriodTotalCost/PHS398_ModularBudget_1_2:CumulativeTotalFundsRequestedDirectIndirectCosts, '#,##0.00')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</fo:block>
 					</fo:block-container>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="174.54545454545456px" hyphenate="true" language="en" top="266.0606060606061px" height="13.333333333333334px" width="150.9090909090909px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
-							<xsl:if test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:PersonnelJustification/PHS398_ModularBudget_1_2:attFile/att:FileName) or /PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:PersonnelJustification/PHS398_ModularBudget_1_2:attFile/att:FileName = ''">
+							<xsl:if test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:PersonnelJustification/PHS398_ModularBudget_1_2:attFile/att:FileName) or /PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:PersonnelJustification/PHS398_ModularBudget_1_2:attFile/att:FileName = ''">
 								<fo:inline color="#FFFFFF">&#160;</fo:inline>
 							</xsl:if>
-							<xsl:value-of select="//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:PersonnelJustification/PHS398_ModularBudget_1_2:attFile/att:FileName"/>
+							<xsl:value-of select="PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:PersonnelJustification/PHS398_ModularBudget_1_2:attFile/att:FileName"/>
 						</fo:block>
 					</fo:block-container>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="174.54545454545456px" hyphenate="true" language="en" top="281.2121212121212px" height="13.333333333333334px" width="150.9090909090909px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
-							<xsl:if test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:ConsortiumJustification/PHS398_ModularBudget_1_2:attFile/att:FileName) or /PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:ConsortiumJustification/PHS398_ModularBudget_1_2:attFile/att:FileName = ''">
+							<xsl:if test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:ConsortiumJustification/PHS398_ModularBudget_1_2:attFile/att:FileName) or /PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:ConsortiumJustification/PHS398_ModularBudget_1_2:attFile/att:FileName = ''">
 								<fo:inline color="#FFFFFF">&#160;</fo:inline>
 							</xsl:if>
-							<xsl:value-of select="//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:ConsortiumJustification/PHS398_ModularBudget_1_2:attFile/att:FileName"/>
+							<xsl:value-of select="PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:ConsortiumJustification/PHS398_ModularBudget_1_2:attFile/att:FileName"/>
 						</fo:block>
 					</fo:block-container>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="175.15151515151516px" hyphenate="true" language="en" top="298.1818181818182px" height="13.333333333333334px" width="149.69696969696972px">
 						<fo:block background-color="transparent" color="#000000" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal" border-top-style="solid" border-bottom-style="solid" border-start-style="solid" border-end-style="solid" border-width="0.5px">
-							<xsl:if test="not(//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:AdditionalNarrativeJustification/PHS398_ModularBudget_1_2:attFile/att:FileName) or /PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:AdditionalNarrativeJustification/PHS398_ModularBudget_1_2:attFile/att:FileName = ''">
+							<xsl:if test="not(PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:AdditionalNarrativeJustification/PHS398_ModularBudget_1_2:attFile/att:FileName) or PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:AdditionalNarrativeJustification/PHS398_ModularBudget_1_2:attFile/att:FileName = ''">
 								<fo:inline color="#FFFFFF">&#160;</fo:inline>
 							</xsl:if>
-							<xsl:value-of select="//PHS398_ModularBudget_1_2:PHS398_ModularBudget_1_2/PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:AdditionalNarrativeJustification/PHS398_ModularBudget_1_2:attFile/att:FileName"/>
+							<xsl:value-of select="PHS398_ModularBudget_1_2:CummulativeBudgetInfo/PHS398_ModularBudget_1_2:BudgetJustifications/PHS398_ModularBudget_1_2:AdditionalNarrativeJustification/PHS398_ModularBudget_1_2:attFile/att:FileName"/>
 						</fo:block>
 					</fo:block-container>
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="55.75757575757576px" hyphenate="true" language="en" top="116.3636363636364px" height="13.333333333333334px" width="273.93939393939394px">
