@@ -63,7 +63,7 @@
 										<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
 									</fo:block>
 									<fo:block>
-										<fo:inline font-size="6px" font-weight="bold">Expiration Date: 04/30/2008</fo:inline>
+										<fo:inline font-size="6px" font-weight="bold">Expiration Date: 06/30/2016</fo:inline>
 									</fo:block>
 								</fo:table-cell>
 							</fo:table-row>
@@ -395,7 +395,7 @@
 											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
 										</fo:block>
 										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 04/30/2008</fo:inline>
+											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 06/30/2016</fo:inline>
 										</fo:block>
 									</fo:table-cell>
 								</fo:table-row>
@@ -433,7 +433,7 @@
 											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
 										</fo:block>
 										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 04/30/2008</fo:inline>
+											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 06/30/2016</fo:inline>
 										</fo:block>
 									</fo:table-cell>
 								</fo:table-row>
@@ -466,6 +466,7 @@
 								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-body>
+
 									<!--============= ROWS Begin ======================-->
 									<xsl:for-each select="RR_Budget10_1_3:BudgetSummary">
 										<fo:table-row>
@@ -556,7 +557,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeEquipments/RR_Budget10_1_3:CumulativeTotalFundsRequestedEquipment">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTotalFundsRequestedEquipment">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -573,7 +574,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTravels/RR_Budget10_1_3:CumulativeTotalFundsRequestedTravel">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTotalFundsRequestedTravel">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -587,7 +588,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTravels/RR_Budget10_1_3:CumulativeDomesticTravelCosts">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeDomesticTravelCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -604,7 +605,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTravels/RR_Budget10_1_3:CumulativeForeignTravelCosts">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeForeignTravelCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -624,7 +625,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeTotalFundsRequestedTraineeCosts">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTotalFundsRequestedTraineeCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -638,7 +639,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeTraineeTuitionFeesHealthInsurance">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTraineeTuitionFeesHealthInsurance">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -655,7 +656,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeTraineeStipends">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTraineeStipends">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -672,7 +673,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeTraineeTravel">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTraineeTravel">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -689,7 +690,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeTraineeSubsistence">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTraineeSubsistence">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -706,7 +707,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeOtherTraineeCost">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherTraineeCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -723,7 +724,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:value-of select="RR_Budget10_1_3:CumulativeTrainee/RR_Budget10_1_3:CumulativeNoofTrainees"/>
+													<xsl:value-of select="RR_Budget10_1_3:CumulativeNoofTrainees"/>
 												</fo:block>
 											</fo:table-cell>
 											<fo:table-cell>
@@ -739,7 +740,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeTotalFundsRequestedOtherDirectCosts">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeTotalFundsRequestedOtherDirectCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -753,7 +754,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeMaterialAndSupplies">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeMaterialAndSupplies">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -770,7 +771,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativePublicationCosts">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativePublicationCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -787,7 +788,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeConsultantServices">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeConsultantServices">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -804,7 +805,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeADPComputerServices">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeADPComputerServices">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -821,7 +822,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeSubawardConsortiumContractualCosts">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeSubawardConsortiumContractualCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -838,7 +839,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeEquipmentFacilityRentalFees">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeEquipmentFacilityRentalFees">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -855,7 +856,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeAlterationsAndRenovations">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeAlterationsAndRenovations">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -872,7 +873,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeOther1DirectCost">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeOther1DirectCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -889,7 +890,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeOther2DirectCost">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeOther2DirectCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -906,7 +907,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget10_1_3:CumulativeOtherDirect/RR_Budget10_1_3:CumulativeOther3DirectCost">
+													<xsl:for-each select="RR_Budget10_1_3:CumulativeOther3DirectCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -1321,79 +1322,65 @@
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:BaseSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:BaseSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:SummerMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:SummerMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="3pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FundsRequested">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FundsRequested">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 												</fo:table-row>
@@ -1486,6 +1473,7 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
+
 			<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
 				<fo:table-column/>
 				<fo:table-body>
@@ -1569,78 +1557,66 @@
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:PostDocAssociates">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:PostDocAssociates">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:PostDocAssociates">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:SummerMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:SummerMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:PostDocAssociates">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="3pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:PostDocAssociates">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:PostDocAssociates">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FundsRequested">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FundsRequested">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
@@ -1665,78 +1641,66 @@
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:GraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:GraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:GraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:SummerMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:SummerMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:GraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="3pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:GraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:GraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FundsRequested">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FundsRequested">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
@@ -1761,78 +1725,66 @@
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:UndergraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:UndergraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:UndergraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:SummerMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:SummerMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:UndergraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="3pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:UndergraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:UndergraduateStudents">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FundsRequested">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FundsRequested">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
@@ -1857,78 +1809,66 @@
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:SecretarialClerical">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:SecretarialClerical">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:SecretarialClerical">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:SummerMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:SummerMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:SecretarialClerical">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="3pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:SecretarialClerical">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
 												<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 													<fo:block>
 														<xsl:for-each select="RR_Budget10_1_3:SecretarialClerical">
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FundsRequested">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FundsRequested">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</xsl:for-each>
 													</fo:block>
 												</fo:table-cell>
@@ -1969,68 +1909,56 @@
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:CalendarMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:AcademicMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:SummerMonths">
-																	<fo:inline font-size="8pt">
-																		<xsl:apply-templates/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:SummerMonths">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:apply-templates/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:RequestedSalary">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="3pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FringeBenefits">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 													<fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 														<fo:block>
-															<xsl:for-each select="RR_Budget10_1_3:Compensation">
-																<xsl:for-each select="RR_Budget10_1_3:FundsRequested">
-																	<fo:inline font-size="8pt">
-																		<xsl:value-of select="format-number(., '#,##0.00')"/>
-																	</fo:inline>
-																</xsl:for-each>
-															</xsl:for-each>
+                                                            <xsl:for-each select="RR_Budget10_1_3:FundsRequested">
+                                                                <fo:inline font-size="8pt">
+                                                                    <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                                                </fo:inline>
+                                                            </xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
 												</fo:table-row>
@@ -2777,33 +2705,31 @@
 								</fo:block>
 							</fo:table-cell>
 						</fo:table-row>
-						<xsl:for-each select="RR_Budget10_1_3:Others">
-							<xsl:for-each select="RR_Budget10_1_3:Other">
-								<fo:table-row>
-									<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-										<fo:block>
-											<fo:inline font-size="8pt">
-												<xsl:value-of select="position()+7"/>.&#160;</fo:inline>
-											<xsl:for-each select="RR_Budget10_1_3:Description">
-												<fo:inline font-size="8pt">
-													<xsl:apply-templates/>
-												</fo:inline>
-											</xsl:for-each>
-										</fo:block>
-									</fo:table-cell>
-									<fo:table-cell line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-										<fo:block>
-											<xsl:for-each select="RR_Budget10_1_3:Cost">
-												<fo:inline font-size="8pt">
-													<xsl:value-of select="format-number(., '#,##0.00')"/>
-												</fo:inline>
-											</xsl:for-each>
-										</fo:block>
-									</fo:table-cell>
-								</fo:table-row>
-							</xsl:for-each>
-						</xsl:for-each>
-					</xsl:for-each>
+                        <xsl:for-each select="RR_Budget10_1_3:Other">
+                            <fo:table-row>
+                                <fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
+                                    <fo:block>
+                                        <fo:inline font-size="8pt">
+                                            <xsl:value-of select="position()+7"/>.&#160;</fo:inline>
+                                        <xsl:for-each select="RR_Budget10_1_3:Description">
+                                            <fo:inline font-size="8pt">
+                                                <xsl:apply-templates/>
+                                            </fo:inline>
+                                        </xsl:for-each>
+                                    </fo:block>
+                                </fo:table-cell>
+                                <fo:table-cell line-height="9pt" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                                    <fo:block>
+                                        <xsl:for-each select="RR_Budget10_1_3:Cost">
+                                            <fo:inline font-size="8pt">
+                                                <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                            </fo:inline>
+                                        </xsl:for-each>
+                                    </fo:block>
+                                </fo:table-cell>
+                            </fo:table-row>
+                        </xsl:for-each>
+                    </xsl:for-each>
 					<fo:table-row>
 						<fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 							<fo:block>
@@ -3075,7 +3001,6 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
-
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
 				<fo:table-column/>
@@ -3090,7 +3015,7 @@
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
 								<fo:inline font-size="8pt">File Name: </fo:inline>
-								<xsl:for-each select="../RR_Budget10_1_3:BudgetYear1/RR_Budget10_1_3:BudgetJustificationAttachment/att:FileName">
+								<xsl:for-each select="../RR_Budget10_1_3:BudgetJustificationAttachment/att:FileName">
 									<fo:inline font-size="8pt">
 										<xsl:apply-templates/>
 									</fo:inline>
@@ -3100,7 +3025,7 @@
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
 								<fo:inline font-size="8pt">Mime Type: </fo:inline>
-								<xsl:for-each select="../RR_Budget10_1_3:BudgetYear1/RR_Budget10_1_3:BudgetJustificationAttachment/att:MimeType">
+								<xsl:for-each select="../RR_Budget10_1_3:BudgetJustificationAttachment/att:MimeType">
 									<fo:inline font-size="8pt">
 										<xsl:apply-templates/>
 									</fo:inline>
