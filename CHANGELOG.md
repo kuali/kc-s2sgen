@@ -1,6 +1,41 @@
 
 
 ##CURRENT
+* PD Printing: Approved&Submitted does not support Create PDF
+  * for PHS398_ModularBudget_1_2-V1.2.
+  * Approved and Submitted Proposals are not generating the Modular Budget
+  * FORM when users attempt to create the PDF.
+  * S2S Opportunity Search > Forms > Select > Create PDF for the PHS 398
+  * Modular Budget form.
+  * The system will generate the Attachments (justifications), but NOT the
+  * actual FORM with the budget data post-submission.
+  * To reproduce:
+  * Kuali Demo 1: 
+  * Search and open proposal number 72 (approved submitted PA-C-R01)
+  * Go to S2S Opportunity Search screen > Forms tabl
+  * Click "select" PHS398_ModularBudget_1_2-V1.2
+  * Click "Create PDF"
+  * Results:
+  * Generates a PDF file, but the Attachment only, NOT the Modular Budget
+  * form sheet & data.
+  * Desired Results:
+  * KC needs to print the Modular Budget FORM with DATA for Approved and
+  * Submitted proposals.
+  * MIT KC Production PD 29529 - 
+  * Change/Corrected proposal, Created from copy of KC Native (not Migrated
+  * from Coeus) proposals.
+  * Approved and Submitted status, submitted S2S 10/14/2018
+  * Confirmed that in PD Budget Settings, Modular Budget was selected.
+  * Confirmed in PD Budget > Modular Budget, data was synced and populated
+  * from detailed budget.
+  * Confirmed in eRA Commons that the Grant Image included correct data for
+  * Modular Budget.
+  * This is happening in multiple proposals in MIT KC Production: see also
+  * 29465, 29528, 29417, 29216
+  * KC needs to print the Modular Budget form for user on Approved and
+  * Submitted proposals.  * vineeth on Wed, 9 Dec 2015 19:32:23 -0500 [View Commit](../../commit/ddf0c9da7a485721b6247c5bd852e62f906e0f5d)
+
+##coeus-s2sgen-1512.0010
 *  PD: Grants.gov: RR_SubawardBudget10_30_1_3 From PDF Preview does NOT Generate (only the attached Budget Justification appears)
 
   * Users are not able to generate a PDF preview of the RR_SubawardBudget10_30_1_3 From in the Opportunity Search screen -> Forms tab (or from the Print link).
