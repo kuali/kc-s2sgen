@@ -1,6 +1,36 @@
 
 
 ##CURRENT
+*  The RR_SubawardBudget10_10_1_3 Form PDF Preview from KC does not display all the details even-though this information is entered in the uploaded RR_Budget10_1_3_A-V1.3 Form.
+
+            The following information is not populating the KC Generated form:
+
+                 - Section A. Senior/Key Person - following fields: Base Salary, Cal. Months, Acad. Months, Sum. Months, Requested Salary ($), Fringe Benefits ($), Funds Requested ($) for each individual listed
+                 - Section B. Other Personnel - following fields: Cal. Months, Acad. Months, Sum. Months, Requested Salary ($), Fringe Benefits ($), Funds Requested ($) for each individual listed
+                 - Section F. Other Direct Costs - anything that is added under Other (i.e. lines 8-10) on the uploaded Subaward Budget forms also does not appear on the KC generated form
+                 - Section K. Budget Justification - The file name and mime type for the Budget Justification does not populate the form even though the Budget Justification is uploaded and attached to the form
+                 - The Cumulative Budget Form is missing the detailed breakdown as well along with the Subtotals for Sections C, D, E, and F
+                 - The form Expiration Date in incorrect. It should be 06/30/2016
+
+            Attached is the RR_Budget10_1_3_A-V1.3 Form uploaded in the Subaward Budget Section.
+
+            (I'm not sure if this is helpful, but there were Jiras: KRACOEUS-8003 and COEUSQA-4087 with this same problem but for the RR_SubawardBudget10_30_1_3 Form).
+
+            Steps to Reproduce:
+
+            # Create a new proposal with basic info to save (With start and end dates that include period 7/1/2015-6/30/2016)
+            # Create a new, detailed budget
+            # Enter a single non-personnel line item for M&S
+            # Go to Subaward section. Enter subaward uploading attached RR_Budget10_1_3_A-V1.3 file
+            # Save
+            #  Naviagte to Basics -> S2S Opportunity Search -> Forms Tab
+            # Check the Select checkbox for RR_SubawardBudget10_10_1_3 From
+            # Click the [Create PDF] button
+
+            You will see the fields listed above are unpopulated
+  * Travis Schneeberger on Thu, 10 Dec 2015 11:46:12 -0500 [View Commit](../../commit/d48e900b57a42553d6e5534267a614b5da240894)
+
+##coeus-s2sgen-1512.0011
 * PD Printing: Approved&Submitted does not support Create PDF
   * for PHS398_ModularBudget_1_2-V1.2.
   * Approved and Submitted Proposals are not generating the Modular Budget
