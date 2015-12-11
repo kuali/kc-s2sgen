@@ -59,8 +59,8 @@ import org.springframework.core.io.Resource;
  * 
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
-@FormGenerator("PHS398ResearchPlan_2_0_V2Generator")
-public class PHS398ResearchPlan_2_0_V2Generator extends
+@FormGenerator("PHS398ResearchPlan_2_0V2_0Generator")
+public class PHS398ResearchPlan_2_0V2_0Generator extends
 		PHS398ResearchPlanBaseGenerator {
 
     @Value("http://apply.grants.gov/forms/PHS398_ResearchPlan_2_0-V2.0")

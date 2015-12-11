@@ -76,8 +76,8 @@ import java.util.*;
  *
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
-@FormGenerator("RRSF424_2_0_V2Generator")
-public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
+@FormGenerator("RRSF424_2_0V2_0Generator")
+public class RRSF424_2_0V2_0Generator extends RRSF424BaseGenerator {
 	private static final int CFDA_TITLE_MAX_LENGTH = 119;
 	private static final int PROJECT_TITLE_MAX_LENGTH = 200;
 
