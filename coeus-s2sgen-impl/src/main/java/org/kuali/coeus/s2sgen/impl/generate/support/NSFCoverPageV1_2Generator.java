@@ -27,6 +27,7 @@ import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin1Max100DataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
 import org.apache.xmlbeans.XmlObject;
+import org.kuali.coeus.common.api.type.ProposalTypeContract;
 import org.kuali.coeus.common.api.ynq.YnqConstant;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonYnqContract;
@@ -157,11 +158,11 @@ public class NSFCoverPageV1_2Generator extends NSFCoverPageBaseGenerator {
 		if (yesNoDataType != null) {
 			otherInfo.setIsExploratoryResearch(yesNoDataType);
 		}
-		String proposalTypeCode = pdDoc.getDevelopmentProposal()
-				.getProposalType().getCode();
-		if (proposalTypeCode != null) {
+		ProposalTypeContract proposalType = pdDoc.getDevelopmentProposal()
+				.getProposalType();
+		if (proposalType != null && proposalType.getCode() != null) {
 			otherInfo
-					.setIsAccomplishmentRenewal(proposalTypeCode
+					.setIsAccomplishmentRenewal(proposalType.getCode()
 							.equals(QUESTION_ID_ACCOMPLISHMENT_RENEWAL) ? YesNoDataType.Y_YES
 							: YesNoDataType.N_NO);
 		}

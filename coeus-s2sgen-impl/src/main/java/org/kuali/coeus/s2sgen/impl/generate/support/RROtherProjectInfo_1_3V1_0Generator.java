@@ -55,8 +55,8 @@ import java.util.List;
  * 
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
-@FormGenerator("RROtherProjectInfo_1_3_V1Generator")
-public class RROtherProjectInfo_1_3_V1Generator extends
+@FormGenerator("RROtherProjectInfo_1_3V1_0Generator")
+public class RROtherProjectInfo_1_3V1_0Generator extends
 		RROtherProjectInfoBaseGenerator {
 	private static final Integer HISTORIC_DESTIONATION_YNQ = 125;
 	private static final int NSF_DATAMGMNT_ATTAACHMENT = 200;

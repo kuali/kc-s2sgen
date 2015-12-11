@@ -63,8 +63,8 @@ import java.util.TreeMap;
  * 
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
-@FormGenerator("PHS398CoverPageSupplement_2_0_V2Generator")
-public class PHS398CoverPageSupplement_2_0_V2Generator extends
+@FormGenerator("PHS398CoverPageSupplement_2_0V2_0Generator")
+public class PHS398CoverPageSupplement_2_0V2_0Generator extends
 		PHS398CoverPageSupplementBaseGenerator {
     
     private static final Integer YNQANSWER_121 = 121;
@@ -78,7 +78,7 @@ public class PHS398CoverPageSupplement_2_0_V2Generator extends
     protected static final int PROJECT_INCOME_DESCRIPTION_MAX_LENGTH = 150;
 
     List<? extends AnswerHeaderContract> answerHeaders;
-    private static final Logger LOG = LoggerFactory.getLogger(PHS398CoverPageSupplement_2_0_V2Generator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PHS398CoverPageSupplement_2_0V2_0Generator.class);
     Enum ynqAnswer;
 
     @Value("http://apply.grants.gov/forms/PHS398_CoverPageSupplement_2_0-V2.0")
