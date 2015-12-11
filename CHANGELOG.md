@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* minor fixes and renames for consistency.
+  * Travis Schneeberger on Fri, 11 Dec 2015 17:18:40 -0500 [View Commit](../../commit/52d4afbd0a6a1e018636e904c0f7884c80bf497b)
+
+##coeus-s2sgen-1512.0012
 *  The RR_SubawardBudget10_10_1_3 Form PDF Preview from KC does not display all the details even-though this information is entered in the uploaded RR_Budget10_1_3_A-V1.3 Form.
 
             The following information is not populating the KC Generated form:
