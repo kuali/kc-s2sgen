@@ -71,7 +71,12 @@ import java.util.zip.ZipOutputStream;
 public class FormPrintServiceImpl implements FormPrintService {
 	private static final Logger LOG = LoggerFactory.getLogger(FormPrintServiceImpl.class);
     private static final String PDF_FILE_EXTENSION = ".pdf";
-
+    private static final String NARRATIVE_CONTENT_ID_PREFIX = "N";
+    private static final String BIOGRAPHY_CONTENT_ID_PREFIX = "B";
+    private static final String NARRATIVE_LEGACY_DATA_CONTENT_ID_PREFIX = "M";
+    private static final String BIOGRAPHY_LEGACY_DATA_CONTENT_ID_PREFIX = "ID";
+    private static final String BIOGRAPHY_LEGACY_DATA_CONTENT_ID_ELEMENT = "BN";
+    
     @Autowired
     @Qualifier("s2sApplicationService")
 	private S2sApplicationService s2sApplicationService;
@@ -461,24 +466,31 @@ public class FormPrintServiceImpl implements FormPrintService {
 			String contentId) {
 		String[] contentIds = contentId.split("-");
 		String[] contentDesc = contentIds[1].split("_");
-		if (StringUtils.equals(contentIds[0], "N")) {
-    		for (NarrativeContract narrative : pdDoc.getDevelopmentProposal()
-    				.getNarratives()) {
-				if (narrative.getModuleNumber().equals(Integer.valueOf(contentDesc[0]))) {
-				    return narrative.getNarrativeAttachment().getData();
-				}
-    		}
-		} else if (StringUtils.equals(contentIds[0], "B")){
-		    for (ProposalPersonBiographyContract biography : pdDoc.getDevelopmentProposal().getPropPersonBios()) {
-		        if (biography.getProposalPersonNumber().equals(Integer.valueOf(contentDesc[0]))
-		                && biography.getBiographyNumber().equals(Integer.valueOf(contentDesc[1]))) {
-		            return biography.getPersonnelAttachment().getData();
-		        }
-		    }
-    	}
+		if (StringUtils.equals(contentIds[0], NARRATIVE_CONTENT_ID_PREFIX)) {
+			return pdDoc.getDevelopmentProposal().getNarratives().stream().filter(narrative -> 
+			(narrative.getModuleNumber().equals(Integer.valueOf(contentDesc[0])))).findAny().get().getNarrativeAttachment().getData();
+		} else if (StringUtils.equals(contentIds[0], BIOGRAPHY_CONTENT_ID_PREFIX)) {
+			return pdDoc.getDevelopmentProposal().getPropPersonBios().stream().filter(biography -> 
+			(biography.getProposalPersonNumber().equals(Integer.valueOf(contentDesc[0])) && 
+					biography.getBiographyNumber().equals(Integer.valueOf(contentDesc[1])))).findAny().get().getPersonnelAttachment().getData();
+		} else {
+			return getLegacyCoeusAttachmentContent(pdDoc, contentIds, contentDesc);
+		}
+	}
+	
+
+	protected byte[] getLegacyCoeusAttachmentContent(ProposalDevelopmentDocumentContract pdDoc, String[] contentIds, String[] contentDesc) {
+		if (StringUtils.equals(contentIds[0], NARRATIVE_LEGACY_DATA_CONTENT_ID_PREFIX )) {
+			return pdDoc.getDevelopmentProposal().getNarratives().stream().filter(narrative -> 
+			(narrative.getModuleNumber().equals(Integer.valueOf(contentDesc[0])))).findAny().get().getNarrativeAttachment().getData();
+		} else if (StringUtils.equals(contentIds[0], BIOGRAPHY_LEGACY_DATA_CONTENT_ID_PREFIX) && StringUtils.equals(contentDesc[1], BIOGRAPHY_LEGACY_DATA_CONTENT_ID_ELEMENT)) {
+			String[] biographyDescrption = contentIds[2].split("_");
+			return pdDoc.getDevelopmentProposal().getPropPersonBios().stream().filter(biography -> 
+			(biography.getPersonId().equals(contentDesc[0]) && biography.getBiographyNumber().equals(Integer.valueOf(biographyDescrption[0])))).findAny().get().getPersonnelAttachment().getData();
+		}
 		return null;
 	}
-
+	
 	protected KcFile getAttributeContent(ProposalDevelopmentDocumentContract pdDoc,
             String contentId) {
         String[] contentIds = contentId.split("-");
