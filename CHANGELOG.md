@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  Adding NPE check for all the s2s forms which uses Citizenship enum
+  * Geo Thomas on Tue, 12 Jan 2016 17:22:43 -0500 [View Commit](../../commit/f39770af38d3345ba10f58e223a4a36188fa6826)
+
+##coeus-s2sgen-1601.0001
 *  STE when printing G.gov RR Budget v1-3 form on Migrated, Approved and Submitted/Approval Granted Proposal.
   * org.kuali.coeus.s2sgen.api.core.S2SException: Rebuild failed: trailer not found.; Original message: PDF startxref not found. at org.kuali.coeus.s2sgen.impl.print.S2SPrintingServiceImpl.isPdfGoodToMerge(S2SPrintingServiceImpl.java:220) at org.kuali.coeus.s2sgen.impl.print.S2SPrintingServiceImpl.print(S2SPrintingServiceImpl.java:189) at org.kuali.coeus.s2sgen.impl.print.S2SPrintingServiceImpl.print(S2SPrintingServiceImpl.java:178) at org.kuali.coeus.s2sgen.impl.print.FormPrintServiceImpl.printForm(FormPrintServiceImpl.java:143) at org.kuali.coeus.propdev.impl.s2s.ProposalDevelopmentS2SController.printForms(ProposalDevelopmentS2SController.java:195) at org.kuali.coeus.propdev.impl.s2s.ProposalDevelopmentS2SController$$FastClassBySpringCGLIB$$5f5dd18.invoke(<generated>) at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:700) at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150) at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:96) at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:260) at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:94) at org.springframework.aop.framework.
   * Travis Schneeberger on Mon, 11 Jan 2016 17:25:43 -0500 [View Commit](../../commit/466772f976974ffc8bf6b05cb5e0e92fbbbbe975)
