@@ -40,6 +40,8 @@ import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,6 +100,10 @@ public class PHS398CareerDevelopmentAwardSupV1_1Generator extends
 			if (proposalPerson.isInvestigator()) {
 					
 				CitizenshipType citizenShip=s2SProposalPersonService.getCitizenship(proposalPerson);
+				if(citizenShip==null || StringUtils.isEmpty(citizenShip.getCitizenShip())) {
+					return null;
+				}
+
 				if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())){
 					return CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA;
 				}
