@@ -64,6 +64,8 @@ import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -823,7 +825,7 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
             if (proposalPerson.isInvestigator()) {
                 hasInvestigator = true;
                 CitizenshipType citizenShip = s2SProposalPersonService.getCitizenship(proposalPerson);
-                if(citizenShip!=null){
+                if(citizenShip!=null && StringUtils.isEmpty(citizenShip.getCitizenShip())){
 	                if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())) {
 	                    additionalInformation.setCitizenship(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA);
 	                }

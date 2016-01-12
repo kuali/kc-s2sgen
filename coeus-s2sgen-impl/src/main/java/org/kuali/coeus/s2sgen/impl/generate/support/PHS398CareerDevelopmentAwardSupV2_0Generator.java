@@ -50,6 +50,8 @@ import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.person.attr.CitizenshipType;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
@@ -109,18 +111,18 @@ public class PHS398CareerDevelopmentAwardSupV2_0Generator extends
 	    for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
 			if (proposalPerson.isInvestigator()) {
 				CitizenshipType citizenShip=getS2SProposalPersonService().getCitizenship(proposalPerson);
-				if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())){
+				if(citizenShip==null || StringUtils.isEmpty(citizenShip.getCitizenShip())) {
+					return null;
+				}
+				if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())) {
 					return CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA;
-				}
-				else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())){
+				} else if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())) {
 					return CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S;
-				}
-				else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL.toString())){
+				} else if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL.toString())) {
 					return CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL;
+				} else if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())) {
+					return CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING;
 				}
-				else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())){
-				    return CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING;
-                }
 			}
 	    }
 		return null;

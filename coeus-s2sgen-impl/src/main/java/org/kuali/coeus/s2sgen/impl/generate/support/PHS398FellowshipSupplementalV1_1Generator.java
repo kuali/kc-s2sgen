@@ -64,6 +64,8 @@ import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -634,28 +636,28 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
         stemCells.setStemCellsIndicator(YesNoDataType.N_NO);
         GraduateDegreeSought graduateDegreeSought = GraduateDegreeSought.Factory.newInstance();
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
-        ArrayList<String> cellLinesList = new ArrayList<String>(Arrays.asList(stemCells.getCellLinesArray())); 
-        for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
-        	if (proposalPerson.isInvestigator()) {
-        		CitizenshipType citizenShip=s2SProposalPersonService.getCitizenship(proposalPerson);
-        		if(citizenShip!=null){
-        			if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())){
-        				additionalInformation.setCitizenship(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA);
-        			}
-        			else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())){
-        				additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S);
-        			}
-        			else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL.toString())){
-        				additionalInformation.setCitizenship(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL);
-        			}
-        			else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())){
-        				additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING);
-        			}
-        		}else{
-        			additionalInformation.setCitizenship(null);
-        		}
-        	}
-        }
+        ArrayList<String> cellLinesList = new ArrayList<String>(Arrays.asList(stemCells.getCellLinesArray()));
+		for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
+			if (proposalPerson.isInvestigator()) {
+				CitizenshipType citizenShip=s2SProposalPersonService.getCitizenship(proposalPerson);
+				if(citizenShip!=null && StringUtils.isEmpty(citizenShip.getCitizenShip())){
+					if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())){
+						additionalInformation.setCitizenship(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA);
+					}
+					else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())){
+						additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S);
+					}
+					else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL.toString())){
+						additionalInformation.setCitizenship(CitizenshipDataType.U_S_CITIZEN_OR_NONCITIZEN_NATIONAL);
+					}
+					else if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())){
+						additionalInformation.setCitizenship(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING);
+					}
+				}else{
+					additionalInformation.setCitizenship(null);
+				}
+			}
+		}
 		if (principalInvestigator != null && principalInvestigator.getMobilePhoneNumber() != null) {
 			additionalInformation.setAlernatePhoneNumber(principalInvestigator.getMobilePhoneNumber());
 		}
