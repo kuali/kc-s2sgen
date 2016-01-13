@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  reverted the NPE check from isEmpty to isNotBlank
+  * Geo Thomas on Wed, 13 Jan 2016 15:23:26 -0500 [View Commit](../../commit/f7da46fd6c1b3ec4f68c82ff65afccdfcfb4bd0e)
+
+##coeus-s2sgen-1601.0002
 *  Adding NPE check for all the s2s forms which uses Citizenship enum
   * Geo Thomas on Tue, 12 Jan 2016 17:22:43 -0500 [View Commit](../../commit/f39770af38d3345ba10f58e223a4a36188fa6826)
 
