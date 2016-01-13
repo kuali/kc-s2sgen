@@ -640,7 +640,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 		for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
 			if (proposalPerson.isInvestigator()) {
 				CitizenshipType citizenShip=s2SProposalPersonService.getCitizenship(proposalPerson);
-				if(citizenShip!=null && StringUtils.isEmpty(citizenShip.getCitizenShip())){
+				if(citizenShip!=null && StringUtils.isNotBlank(citizenShip.getCitizenShip())){
 					if(citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())){
 						additionalInformation.setCitizenship(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA);
 					}
