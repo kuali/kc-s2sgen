@@ -97,10 +97,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
     @Autowired
     @Qualifier("s2SConfigurationService")
 	private S2SConfigurationService s2SConfigurationService;
-    
-    @Autowired
-    @Qualifier("unitRepositoryService")
-	private UnitRepositoryService unitRepositoryService;
+
 
 	/*
 	 * This method gives details of Principal Investigator,KeyPersons and the
@@ -284,7 +281,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
         String heirarchyLevelDivisionName= null;       
         int hierarchyLevel = Integer.parseInt(s2SConfigurationService.getValueAsString(ConfigurationConstants.HIERARCHY_LEVEL));
         int levelCount =1;
-        List<UnitContract> heirarchyUnits = unitRepositoryService.getUnitHierarchyForUnit(departmentId);
+        List<UnitContract> heirarchyUnits = getUnitRepositoryService().getUnitHierarchyForUnit(departmentId);
         for(UnitContract heirarchyUnit:heirarchyUnits) {
             if(levelCount < hierarchyLevel && heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
                  divisionName=heirarchyUnit.getUnitName();
@@ -304,7 +301,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
     }
 	
 	private String getUnitName(String departmentCode) {
-		 UnitContract unit = unitRepositoryService.findUnitByUnitNumber(departmentCode);
+		 UnitContract unit = getUnitRepositoryService().findUnitByUnitNumber(departmentCode);
 	        return unit==null?null:unit.getUnitName();
 	}
 
@@ -593,14 +590,6 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	public void setS2SConfigurationService(
 			S2SConfigurationService s2sConfigurationService) {
 		s2SConfigurationService = s2sConfigurationService;
-	}
-
-	public UnitRepositoryService getUnitRepositoryService() {
-		return unitRepositoryService;
-	}
-
-	public void setUnitRepositoryService(UnitRepositoryService unitRepositoryService) {
-		this.unitRepositoryService = unitRepositoryService;
 	}
 
 	@Override
