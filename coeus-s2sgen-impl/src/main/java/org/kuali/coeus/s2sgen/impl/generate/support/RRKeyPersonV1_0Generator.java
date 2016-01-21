@@ -53,7 +53,7 @@ import java.util.List;
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
 @FormGenerator("RRKeyPersonV1_0Generator")
-public class RRKeyPersonV1_0Generator extends RRKeyPersonBaseGenerator {
+public class RRKeyPersonV1_0Generator extends RRKeyPersonBase {
 
     @Value("http://apply.grants.gov/forms/RR_KeyPerson-V1.0")
     private String namespace;

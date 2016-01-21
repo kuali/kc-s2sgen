@@ -590,7 +590,11 @@
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/NSF_IOB-V1.0" uri="NSF_IOB-V1.0.xsd"/>
 	    </group>
-		
+
+		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/NSF_KeyPersonExpanded-V1.0" uri="NSF_KeyPersonExpanded-V1.0.xsd"/>
+		</group>
+
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/NSF_Project_Data-V1.0" uri="NSF_Project_Data-V1.0.xsd"/>
 	    </group>

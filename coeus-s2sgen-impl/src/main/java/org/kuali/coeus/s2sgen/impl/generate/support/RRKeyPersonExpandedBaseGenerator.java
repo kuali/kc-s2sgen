@@ -27,12 +27,5 @@ package org.kuali.coeus.s2sgen.impl.generate.support;
 public abstract class RRKeyPersonExpandedBaseGenerator extends
 		RRKeyPersonBase {
 
-
-	protected static final int PROFILE_TYPE = 18;
 	protected static final int MAX_KEY_PERSON_COUNT = 40;
-	protected static final int DIRECTORY_TITLE_MAX_LENGTH = 45;
-	protected static final int ROLE_DESCRIPTION_MAX_LENGTH = 40;
-
-    protected String pIPersonOrRolodexId = null;
-
 }

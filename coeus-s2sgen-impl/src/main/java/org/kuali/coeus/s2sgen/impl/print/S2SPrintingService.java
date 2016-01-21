@@ -47,4 +47,6 @@ public interface S2SPrintingService {
 	 * Printable XML-FO as a PDF OutputStream.
 	 */
 	S2SFile print(List<S2SPrintable> printableArtifactList);
+
+	byte[] mergePdfBytes(List<byte[]> pdfBytesList, List<String> bookmarksList, boolean headerFooterRequired);
 }

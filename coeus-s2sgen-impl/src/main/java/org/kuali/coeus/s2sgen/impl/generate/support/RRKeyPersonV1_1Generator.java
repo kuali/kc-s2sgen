@@ -57,7 +57,7 @@ import java.util.List;
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
 @FormGenerator("RRKeyPersonV1_1Generator")
-public class RRKeyPersonV1_1Generator extends RRKeyPersonBaseGenerator {
+public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
 
 	RolodexContract rolodex;
 

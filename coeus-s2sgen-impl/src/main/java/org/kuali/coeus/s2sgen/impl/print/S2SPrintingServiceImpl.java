@@ -35,7 +35,7 @@ import org.springframework.stereotype.Component;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
-import java.awt.*;
+import java.awt.Color;
 import java.io.*;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -230,7 +230,8 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
      * @param pdfBytesList List containing the PDF data bytes
      * @param bookmarksList List of bookmarks corresponding to the PDF bytes.
      */
-    protected byte[] mergePdfBytes(List<byte[]> pdfBytesList, List<String> bookmarksList, boolean headerFooterRequired) {
+    @Override
+    public byte[] mergePdfBytes(List<byte[]> pdfBytesList, List<String> bookmarksList, boolean headerFooterRequired) {
         Document document = null;
         PdfWriter writer = null;
         ByteArrayOutputStream mergedPdfReport = new ByteArrayOutputStream();

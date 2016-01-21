@@ -18,9 +18,6 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
-import com.lowagie.text.*;
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.*;
 import gov.grants.apply.coeus.personProfile.PersonProfileListDocument;
 import gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProfileList;
 import gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProfileList.ExtraKeyPerson;
@@ -50,15 +47,11 @@ import org.springframework.core.io.Resource;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-import java.awt.*;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 
-public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
+public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(RRKeyPersonBase.class);
 	protected List<ProposalPersonContract> extraPersons = null;
@@ -67,8 +60,6 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 	protected static final int CURRENTPENDING_DOC_TYPE = 17;
 	protected static final String BIOSKETCH_TYPE = "1";
 	protected static final String CURRENT_PENDING_TYPE = "2";
-	private static final int WHITESPACE_LENGTH_76 = 76;
-	private static final int WHITESPACE_LENGTH_60 = 60;
 	private static final String COMMENT = "Auto generated document for ";
 	private static final String BIOSKETCH_COMMENT = "BIOSKETCH";
 	private static final String CURRENT_PENDING_COMMENT = "CURRENTPENDING";
@@ -78,6 +69,11 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 	protected static final String NIH_CO_INVESTIGATOR = "Co-Investigator";
     protected static final String ERROR_ERA_COMMON_USER_NAME="eRA Commons User Name is missing for ";
     protected static final int DEPARTMENT_NAME_MAX_LENGTH = 30;
+	protected static final int MAX_KEY_PERSON_COUNT = 8;
+	protected static final int DIRECTORY_TITLE_MAX_LENGTH = 45;
+	protected static final int ROLE_DESCRIPTION_MAX_LENGTH = 40;
+
+	protected String pIPersonOrRolodexId = null;
 
     @Autowired
     @Qualifier("unitRepositoryService")
@@ -117,8 +113,8 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 		byte[] bioSketchData = null;
 		byte[] curPendData = null;
 		try {
-			bioSketchData = mergePdfBytes(bioSketchDataList, bioSketchBookMarks);
-			curPendData = mergePdfBytes(curPendDataList, curPendBookMarks);
+			bioSketchData = s2SPrintingService.mergePdfBytes(bioSketchDataList, bioSketchBookMarks, true);
+			curPendData = s2SPrintingService.mergePdfBytes(curPendDataList, curPendBookMarks, true);
 			String fileName = null;
 			if (bioSketchData != null && bioSketchData.length > 0) {
 				fileName = pdDoc.getDevelopmentProposal().getProposalNumber()
@@ -157,110 +153,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 			}
 		}
 	}
-	/**
-	 * @param pdfBytesList
-	 *            List containing the PDF data bytes
-	 * @param bookmarksList
-	 *            List of bookmarks corresponding to the PDF bytes.
-	 * @return
-	 * @throws org.kuali.coeus.s2sgen.api.core.S2SException
-	 */
-	private byte[] mergePdfBytes(List<byte[]> pdfBytesList,
-			List<String> bookmarksList) throws S2SException {
-		Document document = null;
-		PdfWriter writer = null;
-		ByteArrayOutputStream mergedPdfReport = new ByteArrayOutputStream();
-		int totalNumOfPages = 0;
-		PdfReader[] pdfReaderArr = new PdfReader[pdfBytesList.size()];
-		int pdfReaderCount = 0;
-		for (byte[] fileBytes : pdfBytesList) {
-			LOG.debug("File Size " + fileBytes.length + " For "
-					+ bookmarksList.get(pdfReaderCount));
-			PdfReader reader = null;
-			try {
-				reader = new PdfReader(fileBytes);
-				pdfReaderArr[pdfReaderCount] = reader;
-				pdfReaderCount = pdfReaderCount + 1;
-				totalNumOfPages += reader.getNumberOfPages();
-			} catch (IOException e) {
-				LOG.error(e.getMessage(), e);
-				throw new S2SException(e.getMessage(), e);
-			}
-		}
 
-		Calendar calendar = Calendar.getInstance();
-		DateFormat dateFormat = new SimpleDateFormat("M/d/yy h:mm a");
-		String dateString = dateFormat.format(calendar.getTime());
-		StringBuilder footerPhStr = new StringBuilder();
-		footerPhStr.append(" of ");
-		footerPhStr.append(totalNumOfPages);
-		footerPhStr.append(getWhitespaceString(WHITESPACE_LENGTH_76));
-		footerPhStr.append(getWhitespaceString(WHITESPACE_LENGTH_76));
-		footerPhStr.append(getWhitespaceString(WHITESPACE_LENGTH_60));
-		footerPhStr.append(dateString);
-		Font font = FontFactory.getFont(FontFactory.TIMES, 8, Font.NORMAL,
-				Color.BLACK);
-		Phrase beforePhrase = new Phrase("Page ", font);
-		Phrase afterPhrase = new Phrase(footerPhStr.toString(), font);
-		HeaderFooter footer = new HeaderFooter(beforePhrase, afterPhrase);
-		footer.setAlignment(Element.ALIGN_BASELINE);
-		footer.setBorderWidth(0f);
-		for (int count = 0; count < pdfReaderArr.length; count++) {
-			PdfReader reader = pdfReaderArr[count];
-			int nop;
-			if (reader == null) {
-				LOG.debug("Empty PDF byetes found for "
-						+ bookmarksList.get(count));
-				continue;
-			} else {
-				nop = reader.getNumberOfPages();
-			}
-
-			if (count == 0) {
-				document = nop > 0 ? new com.lowagie.text.Document(reader
-						.getPageSizeWithRotation(1))
-						: new com.lowagie.text.Document();
-				try {
-					writer = PdfWriter.getInstance(document, mergedPdfReport);
-				} catch (DocumentException e) {
-					LOG.error(e.getMessage(), e);
-					throw new S2SException(e.getMessage(), e);
-				}
-				document.setFooter(footer);
-				document.open();
-			}
-			PdfContentByte cb = writer.getDirectContent();
-			int pageCount = 0;
-			while (pageCount < nop) {
-				document.setPageSize(reader.getPageSize(++pageCount));
-				document.newPage();
-				document.setFooter(footer);
-				PdfImportedPage page = writer
-						.getImportedPage(reader, pageCount);
-
-				cb.addTemplate(page, 1, 0, 0, 1, 0, 0);
-
-				PdfOutline root = cb.getRootOutline();
-				if (pageCount == 1) {
-					String pageName = bookmarksList.get(count);
-					cb.addOutline(new PdfOutline(root, new PdfDestination(
-							PdfDestination.FITH), pageName), pageName);
-				}
-			}
-		}
-		if (document != null) {
-			try {
-				document.close();
-				return mergedPdfReport.toByteArray();
-			} catch (Exception e) {
-				LOG
-						.error(
-								"Exception occured because the generated PDF document has no pages",
-								e);
-			}
-		}
-		return null;
-	}
 	private List<ProposalPersonBiographyContract> getPernonnelAttachments(
 			ProposalDevelopmentDocumentContract pdDoc, ProposalPersonContract proposalPerson,
 			String documentType) {
@@ -371,7 +264,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 			}
 			AttachedFileDataType bioSketchAttachment = getPernonnelAttachments(
 					pdDoc, proposalPerson.getPersonId(), proposalPerson
-							.getRolodexId(), "16");
+							.getRolodexId(), BIOSKETCH_TYPE);
 			if (bioSketchAttachment != null) {
 				extraPerson
 						.setBioSketchAttached(gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProfileList.ExtraKeyPerson.BioSketchAttached.YES);
@@ -379,7 +272,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator{
 
 			AttachedFileDataType curPendingAttachment = getPernonnelAttachments(
 					pdDoc, proposalPerson.getPersonId(), proposalPerson
-							.getRolodexId(), "16");
+							.getRolodexId(), CURRENT_PENDING_TYPE);
 			if (curPendingAttachment != null) {
 				extraPerson
 						.setSupportsAttached(gov.grants.apply.coeus.personProfile.PersonProfileListDocument.PersonProfileList.ExtraKeyPerson.SupportsAttached.YES);
