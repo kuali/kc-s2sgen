@@ -57,10 +57,16 @@ import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.io.StringWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -260,7 +266,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 			ProposalDevelopmentDocumentContract pdDoc) throws S2SException {
 		GrantApplicationDocument submittedDocument;
 		String frmXpath;
-        String frmAttXpath;
 		try {
 		    S2sAppSubmissionContract s2sAppSubmission = getLatestS2SAppSubmission(pdDoc);
 		    String submittedApplicationXml = findSubmittedXml(s2sAppSubmission);
@@ -282,7 +287,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 			if(StringUtils.isNotBlank(info.getStyleSheet())){
 				formFragment = getFormObject(submittedDocument);
 				frmXpath = "//*[namespace-uri(.) = '"+namespace+"']";               
-				frmAttXpath = "//*[namespace-uri(.) = '"+namespace+"']//*[local-name(.) = 'FileLocation' and namespace-uri(.) = 'http://apply.grants.gov/system/Attachments-V1.0']";           
 
 				byte[] formXmlBytes = formFragment.xmlText().getBytes();
 				GenericPrintable formPrintable = new GenericPrintable();
@@ -300,10 +304,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 				templates.add(xsltSource);
 				formPrintable.setXSLTemplates(templates);
 
-				// Linkedhashmap is used to preserve the order of entry.
-				Map<String, byte[]> formXmlDataMap = new LinkedHashMap<>();
-				formXmlDataMap.put(info.getFormName(), formXmlBytes);
-				formPrintable.setStreamMap(formXmlDataMap);
 				S2sApplicationContract s2sApplciation = s2sApplicationService.findS2sApplicationByProposalNumber(pdDoc.getDevelopmentProposal().getProposalNumber());
 				List<? extends S2sAppAttachmentsContract> attachmentList = s2sApplciation.getS2sAppAttachmentList();
 
@@ -312,7 +312,16 @@ public class FormPrintServiceImpl implements FormPrintService {
 				try{
 					XPathExecutor executer = new XPathExecutor(formFragment.toString());
 					org.w3c.dom.Node d = executer.getNode(frmXpath);
-					org.w3c.dom.NodeList attList = XPathAPI.selectNodeList(d, frmAttXpath);
+					Element el = (Element)d;
+					// Linkedhashmap is used to preserve the order of entry.
+					Map<String, byte[]> formXmlDataMap = new LinkedHashMap<>();
+					byte[] formNodeBytes = convertNodeToBytes(d);
+					if(formNodeBytes!=null) {
+						formXmlDataMap.put(info.getFormName(), convertNodeToBytes(d));
+					}
+					formPrintable.setStreamMap(formXmlDataMap);
+
+					org.w3c.dom.NodeList attList = el.getElementsByTagNameNS("http://apply.grants.gov/system/Attachments-V1.0","FileLocation");
 					int attLen = attList.getLength();
 
 					for(int i=0;i<attLen;i++){
@@ -361,6 +370,20 @@ public class FormPrintServiceImpl implements FormPrintService {
 		return result;
 	}
 
+	private byte[] convertNodeToBytes(Node node){
+		try {
+			DOMSource domSource = new DOMSource(node);
+			StringWriter writer = new StringWriter();
+			StreamResult result = new StreamResult(writer);
+			TransformerFactory tf = TransformerFactory.newInstance();
+			Transformer transformer = tf.newTransformer();
+			transformer.transform(domSource, result);
+			return writer.toString().getBytes();
+		}catch (Exception ex){
+			LOG.warn("Not able convert form node to byte array "+ex.getMessage(),ex);
+		}
+		return null;
+	}
 	protected String findSubmittedXml(S2sAppSubmissionContract appSubmission) {
 	    S2sApplicationContract s2sApplication = s2sApplicationService.findS2sApplicationByProposalNumber(appSubmission.getProposalNumber());
 	    return s2sApplication.getApplication();
