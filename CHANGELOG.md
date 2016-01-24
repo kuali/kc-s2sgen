@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+*  there were couple of issues with printing submitted applications. For getting attachent list, it should search within Form DOM object instead of using global xpath search. It should apply stylesheet on the selected Form DOM objects byte array instead of the GrantApplication xml bytes
+  * Geo Thomas on Sun, 24 Jan 2016 03:01:35 -0500 [View Commit](../../commit/381ff174b53abc7d7a58229b83b7f6dbd855b5e0)
+
+##coeus-s2sgen-1601.0004
 *  supporting a new form
   * Travis Schneeberger on Thu, 14 Jan 2016 14:00:15 -0500 [View Commit](../../commit/704db2bdf3509545ceff342f7f06e50937ead7b3)
 
