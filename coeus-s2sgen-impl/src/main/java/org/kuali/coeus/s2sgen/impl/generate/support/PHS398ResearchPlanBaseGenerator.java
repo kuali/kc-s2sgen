@@ -18,7 +18,10 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
+import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import org.kuali.coeus.s2sgen.impl.generate.S2SBaseFormGenerator;
+
+import java.util.Objects;
 
 /**
  * This abstract class has methods that are common to all the versions of PHS398ResearchPlan form.
@@ -50,4 +53,19 @@ public abstract class PHS398ResearchPlanBaseGenerator extends S2SBaseFormGenerat
     public static final int RESEARCH_STRATEGY = 111;
     
     protected static final int PROPOSAL_TYPE_CODE_6 = 6;
+
+    /**
+     * This method is used to get List of appendix attachments from
+     * NarrativeAttachment
+     *
+     * @return AttachedFileDataType[] array of attachments for the corresponding
+     * narrative type code APPENDIX.
+     */
+    protected AttachedFileDataType[] getAppendixAttachedFileDataTypes() {
+        return pdDoc.getDevelopmentProposal().getNarratives().stream()
+                .filter(narrative -> narrative.getNarrativeType().getCode() != null && Integer.parseInt(narrative.getNarrativeType().getCode()) == APPENDIX)
+                .map(this::getAttachedFileType)
+                .filter(Objects::nonNull)
+                .toArray(AttachedFileDataType[]::new);
+    }
 }

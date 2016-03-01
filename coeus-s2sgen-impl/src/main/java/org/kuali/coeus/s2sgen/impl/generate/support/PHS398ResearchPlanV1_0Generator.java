@@ -29,15 +29,10 @@ import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
-import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class for generating the XML object for grants.gov PHS398ResearchPlanV1_0. Form is generated using XMLBean classes and is based
@@ -77,145 +72,77 @@ public class PHS398ResearchPlanV1_0Generator extends PHS398ResearchPlanBaseGener
         phsResearchPlan.setApplicationType(getApplicationType());
         ResearchPlanAttachments researchPlanAttachments = ResearchPlanAttachments.Factory.newInstance();
         HumanSubjectSection humanSubjectSection = HumanSubjectSection.Factory.newInstance();
-        AttachedFileDataType attachedFileDataType = null;
-        for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
-            if (narrative.getNarrativeType().getCode() != null) {
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == INTRODUCTION_TO_APPLICATION) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
+
+
+        pdDoc.getDevelopmentProposal().getNarratives().stream().forEach(narrative -> {
+            final AttachedFileDataType attachedFileDataType = getAttachedFileType(narrative);
+            if (attachedFileDataType != null) {
+                if (narrative.getNarrativeType().getCode() != null) {
+                    final int narrativeCode = Integer.parseInt(narrative.getNarrativeType().getCode());
+                    if (narrativeCode == INTRODUCTION_TO_APPLICATION) {
+                        IntroductionToApplication introductionToApplication = IntroductionToApplication.Factory.newInstance();
+                        introductionToApplication.setAttFile(attachedFileDataType);
+                        researchPlanAttachments.setIntroductionToApplication(introductionToApplication);
+                    } else if (narrativeCode == SPECIFIC_AIMS) {
+                        SpecificAims specificAims = SpecificAims.Factory.newInstance();
+                        specificAims.setAttFile(attachedFileDataType);
+                        researchPlanAttachments.setSpecificAims(specificAims);
+                    } else if (narrativeCode == BACKGROUND_SIGNIFICANCE) {
+                        BackgroundSignificance backgroundSignificance = BackgroundSignificance.Factory.newInstance();
+                        backgroundSignificance.setAttFile(attachedFileDataType);
+                        researchPlanAttachments.setBackgroundSignificance(backgroundSignificance);
+                    } else if (narrativeCode == PROGRESS_REPORT) {
+                        ProgressReport progressReport = ProgressReport.Factory.newInstance();
+                        progressReport.setAttFile(attachedFileDataType);
+                        researchPlanAttachments.setProgressReport(progressReport);
+                    } else if (narrativeCode == RESEARCH_DESIGN_METHODS) {
+                        ResearchDesignMethods researchDesignMethods = ResearchDesignMethods.Factory.newInstance();
+                        researchDesignMethods.setAttFile(attachedFileDataType);
+                        researchPlanAttachments.setResearchDesignMethods(researchDesignMethods);
+                    } else if (narrativeCode == PROTECTION_OF_HUMAN_SUBJECTS) {
+                        ProtectionOfHumanSubjects protectionOfHumanSubjects = ProtectionOfHumanSubjects.Factory.newInstance();
+                        protectionOfHumanSubjects.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setProtectionOfHumanSubjects(protectionOfHumanSubjects);
+                    } else if (narrativeCode == INCLUSION_OF_WOMEN_AND_MINORITIES) {
+                        InclusionOfWomenAndMinorities inclusionOfWomenAndMinorities = InclusionOfWomenAndMinorities.Factory.newInstance();
+                        inclusionOfWomenAndMinorities.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setInclusionOfWomenAndMinorities(inclusionOfWomenAndMinorities);
+                    } else if (narrativeCode == TARGETED_PLANNED_ENROLLMENT_TABLE) {
+                        TargetedPlannedEnrollmentTable targetedPlannedEnrollmentTable = TargetedPlannedEnrollmentTable.Factory.newInstance();
+                        targetedPlannedEnrollmentTable.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setTargetedPlannedEnrollmentTable(targetedPlannedEnrollmentTable);
+                    } else if (narrativeCode == INCLUSION_OF_CHILDREN) {
+                        InclusionOfChildren inclusionOfChildren = InclusionOfChildren.Factory.newInstance();
+                        inclusionOfChildren.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setInclusionOfChildren(inclusionOfChildren);
+                    } else if (narrativeCode == DATA_AND_SAFETY_MONITORING_PLAN) {
+                        DataAndSafetyMonitoringPlan dataAndSafetyMonitoringPlan = DataAndSafetyMonitoringPlan.Factory.newInstance();
+                        dataAndSafetyMonitoringPlan.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setDataAndSafetyMonitoringPlan(dataAndSafetyMonitoringPlan);
+                    } else if (narrativeCode == VERTEBRATE_ANIMALS) {
+                        VertebrateAnimals vertebrateAnimals = VertebrateAnimals.Factory.newInstance();
+                        vertebrateAnimals.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setVertebrateAnimals(vertebrateAnimals);
+                    } else if (narrativeCode == CONSORTIUM_CONTRACTUAL_ARRANGEMENTS) {
+                        ConsortiumContractualArrangements consortiumContractualArrangements = ConsortiumContractualArrangements.Factory.newInstance();
+                        consortiumContractualArrangements.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setConsortiumContractualArrangements(consortiumContractualArrangements);
+                    } else if (narrativeCode == LETTERS_OF_SUPPORT) {
+                        LettersOfSupport lettersOfSupport = LettersOfSupport.Factory.newInstance();
+                        lettersOfSupport.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setLettersOfSupport(lettersOfSupport);
+                    } else if (narrativeCode == RESOURCE_SHARING_PLANS) {
+                        ResourceSharingPlans resourceSharingPlans = ResourceSharingPlans.Factory.newInstance();
+                        resourceSharingPlans.setAttFile(attachedFileDataType);
+                        humanSubjectSection.setResourceSharingPlans(resourceSharingPlans);
                     }
-                    IntroductionToApplication introductionToApplication = IntroductionToApplication.Factory.newInstance();
-                    introductionToApplication.setAttFile(attachedFileDataType);
-                    researchPlanAttachments.setIntroductionToApplication(introductionToApplication);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == SPECIFIC_AIMS) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    SpecificAims specificAims = SpecificAims.Factory.newInstance();
-                    specificAims.setAttFile(attachedFileDataType);
-                    researchPlanAttachments.setSpecificAims(specificAims);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == BACKGROUND_SIGNIFICANCE) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    BackgroundSignificance backgroundSignificance = BackgroundSignificance.Factory.newInstance();
-                    backgroundSignificance.setAttFile(attachedFileDataType);
-                    researchPlanAttachments.setBackgroundSignificance(backgroundSignificance);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == PROGRESS_REPORT) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    ProgressReport progressReport = ProgressReport.Factory.newInstance();
-                    progressReport.setAttFile(attachedFileDataType);
-                    researchPlanAttachments.setProgressReport(progressReport);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == RESEARCH_DESIGN_METHODS) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    ResearchDesignMethods researchDesignMethods = ResearchDesignMethods.Factory.newInstance();
-                    researchDesignMethods.setAttFile(attachedFileDataType);
-                    researchPlanAttachments.setResearchDesignMethods(researchDesignMethods);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == PROTECTION_OF_HUMAN_SUBJECTS) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    ProtectionOfHumanSubjects protectionOfHumanSubjects = ProtectionOfHumanSubjects.Factory.newInstance();
-                    protectionOfHumanSubjects.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setProtectionOfHumanSubjects(protectionOfHumanSubjects);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == INCLUSION_OF_WOMEN_AND_MINORITIES) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    InclusionOfWomenAndMinorities inclusionOfWomenAndMinorities = InclusionOfWomenAndMinorities.Factory
-                            .newInstance();
-                    inclusionOfWomenAndMinorities.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setInclusionOfWomenAndMinorities(inclusionOfWomenAndMinorities);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == TARGETED_PLANNED_ENROLLMENT_TABLE) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    TargetedPlannedEnrollmentTable targetedPlannedEnrollmentTable = TargetedPlannedEnrollmentTable.Factory
-                            .newInstance();
-                    targetedPlannedEnrollmentTable.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setTargetedPlannedEnrollmentTable(targetedPlannedEnrollmentTable);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == INCLUSION_OF_CHILDREN) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    InclusionOfChildren inclusionOfChildren = InclusionOfChildren.Factory.newInstance();
-                    inclusionOfChildren.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setInclusionOfChildren(inclusionOfChildren);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == DATA_AND_SAFETY_MONITORING_PLAN) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    DataAndSafetyMonitoringPlan dataAndSafetyMonitoringPlan = DataAndSafetyMonitoringPlan.Factory.newInstance();
-                    dataAndSafetyMonitoringPlan.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setDataAndSafetyMonitoringPlan(dataAndSafetyMonitoringPlan);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == VERTEBRATE_ANIMALS) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    VertebrateAnimals vertebrateAnimals = VertebrateAnimals.Factory.newInstance();
-                    vertebrateAnimals.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setVertebrateAnimals(vertebrateAnimals);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == CONSORTIUM_CONTRACTUAL_ARRANGEMENTS) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    ConsortiumContractualArrangements consortiumContractualArrangements = ConsortiumContractualArrangements.Factory
-                            .newInstance();
-                    consortiumContractualArrangements.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setConsortiumContractualArrangements(consortiumContractualArrangements);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == LETTERS_OF_SUPPORT) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    LettersOfSupport lettersOfSupport = LettersOfSupport.Factory.newInstance();
-                    lettersOfSupport.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setLettersOfSupport(lettersOfSupport);
-                }
-                if (Integer.parseInt(narrative.getNarrativeType().getCode()) == RESOURCE_SHARING_PLANS) {
-                    attachedFileDataType = getAttachedFileType(narrative);
-                    if(attachedFileDataType == null){
-                        continue;
-                    }
-                    ResourceSharingPlans resourceSharingPlans = ResourceSharingPlans.Factory.newInstance();
-                    resourceSharingPlans.setAttFile(attachedFileDataType);
-                    humanSubjectSection.setResourceSharingPlans(resourceSharingPlans);
                 }
             }
-        }
+        });
         researchPlanAttachments.setHumanSubjectSection(humanSubjectSection);
 
-        AttachmentGroupMin0Max100DataType attachmentGroupMin0Max100DataType = AttachmentGroupMin0Max100DataType.Factory
-                .newInstance();
-        attachmentGroupMin0Max100DataType.setAttachedFileArray(getAttachedFileDataTypes());
+        AttachmentGroupMin0Max100DataType attachmentGroupMin0Max100DataType = AttachmentGroupMin0Max100DataType.Factory.newInstance();
+        attachmentGroupMin0Max100DataType.setAttachedFileArray(getAppendixAttachedFileDataTypes());
         researchPlanAttachments.setAppendix(attachmentGroupMin0Max100DataType);
         phsResearchPlan.setResearchPlanAttachments(researchPlanAttachments);
         phsResearchPlanDocument.setPHS398ResearchPlan(phsResearchPlan);
@@ -239,25 +166,6 @@ public class PHS398ResearchPlanV1_0Generator extends PHS398ResearchPlanBaseGener
         return applicationType;
     }
 
-    /**
-     * 
-     * This method is used to get List of appendix attachments from NarrativeAttachment
-     * 
-     * @return AttachedFileDataType[]  array of attachments for the corresponding narrative type code APPENDIX.
-     */
-    private AttachedFileDataType[] getAttachedFileDataTypes() {
-        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
-        AttachedFileDataType attachedFileDataType = null;
-        for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
-            if (narrative.getNarrativeType().getCode() != null && Integer.parseInt(narrative.getNarrativeType().getCode()) == APPENDIX) {
-            	attachedFileDataType = getAttachedFileType(narrative);
-            	if(attachedFileDataType != null){
-            		attachedFileDataTypeList.add(attachedFileDataType);
-            	}
-            }
-        }
-        return attachedFileDataTypeList.toArray(new AttachedFileDataType[0]);
-    }
 
     /**
      * This method creates {@link XmlObject} of type {@link PHS398ResearchPlanDocument} by populating data from the given
