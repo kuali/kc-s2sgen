@@ -1,11 +1,15 @@
 
 
 ##CURRENT
-*  updating existing copyright header
+* RESKC-936: Supporting new form: PHS398_ResearchPlan_3_0-V3.0
+  * Travis Schneeberger on Tue, 1 Mar 2016 15:41:34 -0500 [View Commit](../../commit/75ced04e84a5f79780f267a9e301ff5f795b889a)
+
+##coeus-s2sgen-1602.0002
+* RESKC-1180: updating existing copyright header
   * Travis Schneeberger on Wed, 24 Feb 2016 10:17:09 -0500 [View Commit](../../commit/d39e2e78cefd8bf549f9796952d8405bfac442d4)
 
 ##coeus-s2sgen-1602.0001
-*  RR_SubawardBudget10_30_1_3 print form missing personnel details (base salary, months, costs) from subaward file.
+* RESKC-1161: RR_SubawardBudget10_30_1_3 print form missing personnel details (base salary, months, costs) from subaward file.
 
   * Steps to Reproduce:
   * Create a new proposal with basic info to save (With start and end dates that include period 2016-07-01-2026-06-30)
@@ -20,23 +24,23 @@
   * Travis Schneeberger on Mon, 8 Feb 2016 13:21:56 -0500 [View Commit](../../commit/9585b74f7a2c06142cc576a667e991cbd2e5e85b)
 
 ##coeus-s2sgen-1601.0007
-*  there were couple of issues with printing submitted applications. For getting attachent list, it should search within Form DOM object instead of using global xpath search. It should apply stylesheet on the selected Form DOM objects byte array instead of the GrantApplication xml bytes
+* there were couple of issues with printing submitted applications. For getting attachent list, it should search within Form DOM object instead of using global xpath search. It should apply stylesheet on the selected Form DOM objects byte array instead of the GrantApplication xml bytes
   * Geo Thomas on Sun, 24 Jan 2016 03:01:35 -0500 [View Commit](../../commit/381ff174b53abc7d7a58229b83b7f6dbd855b5e0)
 
 ##coeus-s2sgen-1601.0004
-*  supporting a new form
+* RESKC-1025: supporting a new form
   * Travis Schneeberger on Thu, 14 Jan 2016 14:00:15 -0500 [View Commit](../../commit/704db2bdf3509545ceff342f7f06e50937ead7b3)
 
 ##coeus-s2sgen-1601.0003
-*  reverted the NPE check from isEmpty to isNotBlank
+* reverted the NPE check from isEmpty to isNotBlank
   * Geo Thomas on Wed, 13 Jan 2016 15:23:26 -0500 [View Commit](../../commit/f7da46fd6c1b3ec4f68c82ff65afccdfcfb4bd0e)
 
 ##coeus-s2sgen-1601.0002
-*  Adding NPE check for all the s2s forms which uses Citizenship enum
+* Adding NPE check for all the s2s forms which uses Citizenship enum
   * Geo Thomas on Tue, 12 Jan 2016 17:22:43 -0500 [View Commit](../../commit/f39770af38d3345ba10f58e223a4a36188fa6826)
 
 ##coeus-s2sgen-1601.0001
-*  STE when printing G.gov RR Budget v1-3 form on Migrated, Approved and Submitted/Approval Granted Proposal.
+* STE when printing G.gov RR Budget v1-3 form on Migrated, Approved and Submitted/Approval Granted Proposal.
   * org.kuali.coeus.s2sgen.api.core.S2SException: Rebuild failed: trailer not found.; Original message: PDF startxref not found. at org.kuali.coeus.s2sgen.impl.print.S2SPrintingServiceImpl.isPdfGoodToMerge(S2SPrintingServiceImpl.java:220) at org.kuali.coeus.s2sgen.impl.print.S2SPrintingServiceImpl.print(S2SPrintingServiceImpl.java:189) at org.kuali.coeus.s2sgen.impl.print.S2SPrintingServiceImpl.print(S2SPrintingServiceImpl.java:178) at org.kuali.coeus.s2sgen.impl.print.FormPrintServiceImpl.printForm(FormPrintServiceImpl.java:143) at org.kuali.coeus.propdev.impl.s2s.ProposalDevelopmentS2SController.printForms(ProposalDevelopmentS2SController.java:195) at org.kuali.coeus.propdev.impl.s2s.ProposalDevelopmentS2SController$$FastClassBySpringCGLIB$$5f5dd18.invoke(<generated>) at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:700) at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150) at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:96) at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:260) at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:94) at org.springframework.aop.framework.
   * Travis Schneeberger on Mon, 11 Jan 2016 17:25:43 -0500 [View Commit](../../commit/466772f976974ffc8bf6b05cb5e0e92fbbbbe975)
 
@@ -68,7 +72,7 @@ system of record for this.
   * Travis Schneeberger on Fri, 11 Dec 2015 17:18:40 -0500 [View Commit](../../commit/52d4afbd0a6a1e018636e904c0f7884c80bf497b)
 
 ##coeus-s2sgen-1512.0012
-*  The RR_SubawardBudget10_10_1_3 Form PDF Preview from KC does not display all the details even-though this information is entered in the uploaded RR_Budget10_1_3_A-V1.3 Form.
+* The RR_SubawardBudget10_10_1_3 Form PDF Preview from KC does not display all the details even-though this information is entered in the uploaded RR_Budget10_1_3_A-V1.3 Form.
 
             The following information is not populating the KC Generated form:
 
@@ -98,7 +102,7 @@ system of record for this.
   * Travis Schneeberger on Thu, 10 Dec 2015 11:46:12 -0500 [View Commit](../../commit/d48e900b57a42553d6e5534267a614b5da240894)
 
 ##coeus-s2sgen-1512.0011
-* PD Printing: Approved&Submitted does not support Create PDF
+* RESKC-951:PD Printing: Approved&Submitted does not support Create PDF
   * for PHS398_ModularBudget_1_2-V1.2.
   * Approved and Submitted Proposals are not generating the Modular Budget
   * FORM when users attempt to create the PDF.
@@ -133,7 +137,7 @@ system of record for this.
   * Submitted proposals.  * vineeth on Wed, 9 Dec 2015 19:32:23 -0500 [View Commit](../../commit/ddf0c9da7a485721b6247c5bd852e62f906e0f5d)
 
 ##coeus-s2sgen-1512.0010
-*  PD: Grants.gov: RR_SubawardBudget10_30_1_3 From PDF Preview does NOT Generate (only the attached Budget Justification appears)
+* PD: Grants.gov: RR_SubawardBudget10_30_1_3 From PDF Preview does NOT Generate (only the attached Budget Justification appears)
 
   * Users are not able to generate a PDF preview of the RR_SubawardBudget10_30_1_3 From in the Opportunity Search screen -> Forms tab (or from the Print link).
   * When users checks the select checkbox for RR_SubawardBudget10_30_1_3 Form and then clicks the [Create PDF] button, the file that opens/downloads only includes the Budget Justification file that was attached to the Subawawrd Budget pdf that was uploaded in the Subaward Section of the PD Budget. See Proposal Number 29411 (Budget version 2) in MIT QA Weekly.
@@ -152,7 +156,7 @@ system of record for this.
   * Travis Schneeberger on Wed, 9 Dec 2015 17:14:33 -0500 [View Commit](../../commit/103a22d62b771d09d110e2428f6caf8246a028db)
 
 ##coeus-s2sgen-1512.0009
-*  PD: Grants.gov: RR_SubawardBudget10_30_1_3 From PDF Preview does NOT Generate (only the attached Budget Justification appears)
+* PD: Grants.gov: RR_SubawardBudget10_30_1_3 From PDF Preview does NOT Generate (only the attached Budget Justification appears)
 
   * Users are not able to generate a PDF preview of the RR_SubawardBudget10_30_1_3 From in the Opportunity Search screen -> Forms tab (or from the Print link).
   * When users checks the select checkbox for RR_SubawardBudget10_30_1_3 Form and then clicks the [Create PDF] button, the file that opens/downloads only includes the Budget Justification file that was attached to the Subawawrd Budget pdf that was uploaded in the Subaward Section of the PD Budget. See Proposal Number 29411 (Budget version 2) in MIT QA Weekly.
@@ -175,7 +179,7 @@ system of record for this.
 
 
 ##coeus-s2sgen-1512.0007
-* PD Printing: Approved&Submitted does not support Create PDF
+* RESKC-950:PD Printing: Approved&Submitted does not support Create PDF
   * for PHS398_CoverPageSupplement_2_0-V2.0 > Create PDF -no data provided
   * in form.
   * Approved and Submitted Proposals are not populating data in the PHS398
@@ -207,21 +211,21 @@ system of record for this.
   * as examples 29465, 29528, 29417, 29216, 29332  * vineeth on Tue, 8 Dec 2015 18:41:58 -0500 [View Commit](../../commit/bb8313d5b9b821285e4034c326dc11a8f4fcf50c)
 
 ##coeus-s2sgen-1512.0006
-*  fixing the stylesheet so that it will print without Apache FOP throwing an exception.
+* fixing the stylesheet so that it will print without Apache FOP throwing an exception.
   * Travis Schneeberger on Tue, 8 Dec 2015 20:06:05 -0500 [View Commit](../../commit/e9e2f5ae05e5c38c4809d241a7c508a0948c0c84)
 
 ##coeus-s2sgen-1512.0005
-*  When printing s2s forms and validation errors exist those validation errors are never displayed to the end user.  Instead s2s pdf generation will be unable to create a pdf due to incomplete xml being input into the print process.
+* When printing s2s forms and validation errors exist those validation errors are never displayed to the end user.  Instead s2s pdf generation will be unable to create a pdf due to incomplete xml being input into the print process.
   * Travis Schneeberger on Tue, 8 Dec 2015 15:28:28 -0500 [View Commit](../../commit/82b9eabb7b0781be58e30bf83d081a8cf2215d6e)
 
 ##coeus-s2sgen-1512.0004
-* Fix issue due to recent change that caused exception when validating s2s forms
+* RESKC-801:Fix issue due to recent change that caused exception when validating s2s forms
 
   * Due to ProposalAdminDetails being created on routing, an assumption in S2S was incorrect and would cause the generators to lookup a blank user for the AOR. This corrects this and instead only uses the proposaladmindetails signedBy when it exists.
   * blackcathacker on Thu, 3 Dec 2015 11:03:57 -0800 [View Commit](../../commit/9c069a9d91c0095d2a6d49460036440bd8bfeac4)
 
 ##coeus-s2sgen-1512.0003
-*  Fix application type.
+* RESKC-982: Fix application type.
   * Regardless of proposal type selected, the Data Validation and/or the Opportunity Search > Forms screen return error based on S2S Application Type.
   * With form SF424-V2.1:
   * /GrantApplication/Forms/SF424_2_1/ApplicationType is not valid in SF424-V2.1
@@ -245,11 +249,11 @@ system of record for this.
   * Gayathri Athreya on Wed, 2 Dec 2015 17:29:17 -0700 [View Commit](../../commit/2bbd144823d898a54b75f92c13bd6d4ba16d317d)
 
 ##coeus-s2sgen-1512.0002
-*  PD - Grants.gov RR SF424 v1-2, RR SF424 v1-1, RR SF424 v1-0 forms populate PD/PI "Department" field with unit code - should be Unit Name
+* RESKC-1031: PD - Grants.gov RR SF424 v1-2, RR SF424 v1-1, RR SF424 v1-0 forms populate PD/PI "Department" field with unit code - should be Unit Name
   * Travis Schneeberger on Wed, 2 Dec 2015 11:25:41 -0500 [View Commit](../../commit/89188b4f161edaa0aaa56c8a42f4621bf9854039)
 
 ##coeus-s2sgen-1512.0001
-*  Fix key person role.
+* RESKC-993: Fix key person role.
   * PD Budget - G.gov form RR Budget v1-3, system generated attachment "Additional Senior Key Persons" not not populating project role
   * On the system generated attachment "Additional Senior Key Persons," KC should populate the "Project Role" field as it does for Senior/Key persons listed on the budget form.
   * Currently, if a key person, has "Project Role: Other (Specify)
@@ -281,17 +285,17 @@ system of record for this.
 
 
 ##coeus-s2sgen-1511.0004
-*  preventing the federalId from being set to blank
+* RESKC-858: preventing the federalId from being set to blank
   * Travis Schneeberger on Thu, 5 Nov 2015 17:00:18 -0500 [View Commit](../../commit/1e761aa5f01fcfc5afa506ad32284697f18428a0)
 
 ##coeus-s2sgen-1511.0003
-*  The SF 424 R&R version 1-2 must be updated to allow field 4.a to be populated no matter what the proposal type (new/renewal/revision/etc.)
+* RESKC-858: The SF 424 R&R version 1-2 must be updated to allow field 4.a to be populated no matter what the proposal type (new/renewal/revision/etc.)
 *This logic was already updated for the 2-0 form version and needs to be applied to the 1-2 because this version of the form was not retire*d.
   * The field mapping from KC is “Sponsor Proposal ID” on the Sponsor and Program Info screen.
   * Travis Schneeberger on Wed, 4 Nov 2015 14:56:42 -0500 [View Commit](../../commit/8ae8bd8ff2eb4a7144bf52b1a3f27e5092358e34)
 
 ##coeus-s2sgen-1511.0002
-*  Remove activity title from forms
+* RESKC-919: Remove activity title from forms
   * KC needs to populate the "ActivityTitle" with the CFDA Description data from the S2S opportunity if available; and ALWAYS trim the length to stay under the 120 character limit.
   * IF the CFDA is blank in the opportunity, this field should remain blank in the SF424 RR forms.*
   * With the CFDA *blank *in the sponsor opportunity package, the RR SF424 form CFDA Title/Description field continues to be populated with the "Opportunity Title" rather than being left blank.
@@ -307,15 +311,15 @@ system of record for this.
 
 
 ##coeus-s2sgen-1510.0002
-*  fixing proposal type check for NSFApplicationCheckList form. It will use comma separated param list for populating question answers on the form
+* fixing proposal type check for NSFApplicationCheckList form. It will use comma separated param list for populating question answers on the form
   * Geo Thomas on Thu, 1 Oct 2015 17:19:06 -0400 [View Commit](../../commit/681de377f5414c866e17124b0fa3c1acbee3cc0e)
 
 ##coeus-s2sgen-1510.0001
-*  Application Types are populating on RRSF424 with comma separated proposal types and new proposal type constants have been added for setting proper submission type on RRSF424
+* Application Types are populating on RRSF424 with comma separated proposal types and new proposal type constants have been added for setting proper submission type on RRSF424
   * Geo Thomas on Wed, 30 Sep 2015 19:41:32 -0400 [View Commit](../../commit/77a556fc7bd95aac37766de8553aaff0f4ba9ea4)
 
 ##coeus-s2sgen-1509.0014
-*  Fixed populating correct Proposal Types on Grants.gov PHS_Fellowship_Supplemental_X_X and PHS398ResTrainProgPlanV1_0 forms by setting comma separated parameter values
+* RESKC-838: Fixed populating correct Proposal Types on Grants.gov PHS_Fellowship_Supplemental_X_X and PHS398ResTrainProgPlanV1_0 forms by setting comma separated parameter values
   * vineeth on Fri, 7 Aug 2015 13:21:04 -0400 [View Commit](../../commit/cdb97747f985b17208495bb6d21b5b42e46ff95b)
 
 ##coeus-s2sgen-1509.0013
@@ -323,15 +327,15 @@ system of record for this.
 
 
 ##coeus-s2sgen-1509.0012
-*  Fix NPE on PHS Fellowship Supplicamental Forms
+* RESKC-865: Fix NPE on PHS Fellowship Supplicamental Forms
   * Geo Thomas on Tue, 22 Sep 2015 15:23:04 -0400 [View Commit](../../commit/912fe490a29ea8a095cd78dc0fd54b3fa607290a)
 
 ##coeus-s2sgen-1509.0011
-*  Fix populating months effort for costshare on personal line items
+* RESKC-867: Fix populating months effort for costshare on personal line items
   * Geo Thomas on Tue, 22 Sep 2015 16:09:32 -0400 [View Commit](../../commit/3e7373cf083fef6a8eaef6d7e457a991d1c5869e)
 
 ##coeus-s2sgen-1509.0010
-*  Fix stylesheet for PHS_fellowship_supplemental-V2
+* RESKC-866: Fix stylesheet for PHS_fellowship_supplemental-V2
   * Geo Thomas on Tue, 22 Sep 2015 17:01:18 -0400 [View Commit](../../commit/4a49c0cdb9554a0f4046e50765d0d7429e1370ce)
 
 ##coeus-s2sgen-1509.0009
@@ -339,11 +343,11 @@ system of record for this.
 
 
 ##coeus-s2sgen-1509.0008
-*  Add missing LA amounts
+* RESKC-836: Add missing LA amounts
   * Gayathri Athreya on Thu, 17 Sep 2015 12:55:26 -0700 [View Commit](../../commit/5816bde6a12cd8f9d5090d5f76ecd318e9740554)
 
 ##coeus-s2sgen-1509.0007
-*  Fixing sf424A
+* RESKC-836: Fixing sf424A
 
   * Section B > Budget Categories >a. Personnel is not populating with data. reads as $0.
   * See res-demo 1 example proposal 854 and 852 (lab allocated).
@@ -374,7 +378,7 @@ system of record for this.
   * vineeth on Sat, 18 Jul 2015 18:00:48 -0400 [View Commit](../../commit/7aa2cca7043b5bb988a2ae8534ece0b09db3e8b2)
 
 ##coeus-s2sgen-1509.0005
-*  PD - S2S Forms screen Create PDF of Grants.gov Form CD-511 poorly formatted and illegible
+* RESKC-839: PD - S2S Forms screen Create PDF of Grants.gov Form CD-511 poorly formatted and illegible
 
   * MITKC-2100
   * vineeth on Thu, 23 Jul 2015 12:03:13 -0400 [View Commit](../../commit/7d884dea3af6fee5db7ec7517a68df95c5395c36)
@@ -420,15 +424,15 @@ system of record for this.
 
 
 ##coeus-s2sgen-1507.1
-*  Fixing print when apply rate flag is checked.
+* RESKC-593: Fixing print when apply rate flag is checked.
   * Gayathri Athreya on Wed, 8 Jul 2015 18:50:42 -0700 [View Commit](../../commit/600558cde27e3e456db1d8e0fb33192d205ae4f5)
 
 ##coeus-s2sgen-1506.2
-*  If CFDA is null, do not add it to the element to the XML.
+* RESKC-552: If CFDA is null, do not add it to the element to the XML.
   * Gayathri Athreya on Wed, 17 Jun 2015 10:28:44 -0700 [View Commit](../../commit/22eb3c18ca2cf86f1595a9d339cee403d17ea67a)
 
 ##coeus-s2sgen-1506.1
-* only pi/contact is required on s2s budget form, other roles are only displayed if they are on the budget
+* RESKC-506:only pi/contact is required on s2s budget form, other roles are only displayed if they are on the budget
 
   * Fix required for RR budgets 1-2, 1-3
   * As a proposal creator, I need to add an external address book person to my proposal as Multi PI. The person is the Subcontract PI, and thus will not be assigned to personnel expense in my proposal budget; instead, they will appear in the uploaded subaward budget. But for purposes of other forms (Sr/Key Person); the external Multi PI must be listed in key personnel.
@@ -462,7 +466,7 @@ system of record for this.
   * Travis Schneberger on Thu, 14 May 2015 08:36:40 -0400 [View Commit](../../commit/7273285941470c58d0d68fd2032af53e9a9d7bfa)
 * Move to Java 8
   * Travis Schneberger on Thu, 23 Apr 2015 16:13:24 -0400 [View Commit](../../commit/3fa101a52d43aa6a25c452f59e2f99a0b24dd085)
-* Fixed STE on S2S form SF424
+* RESKC-360:Fixed STE on S2S form SF424
 
   * Continued testing of s2s forms
   * Located SF424 2.1 in opportunity: 03162012-TEST
@@ -474,7 +478,7 @@ system of record for this.
 
   * java.lang.NullPointerException at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getSF42421(SF424V2_1Generator.java:157) at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getSF42421Doc(SF424V2_1Generator.java:115) at org.kuali.coeus.s2sgen.impl.generate.support.SF424V2_1Generator.getFormObject(SF424V2_1Generator.java:576) at org.kuali.coeus.s2sgen.impl.print.FormPrintServiceImpl.getPDFStream(FormPrintServiceImpl.java:374) at
   * Joe Williams on Mon, 11 May 2015 14:27:40 -0500 [View Commit](../../commit/688abc6ec2aff6c628d16b7b7cacac269d362be4)
-*  Fixing STE related to user attached forms.
+* RESKC-359: Fixing STE related to user attached forms.
   * If a user needs to attach particular files to be able to connect to an S2S opportunity, the system is not seeing the forms correctly and throws STE
   * For opportunity ID USDA-NIFA-SRGP-001930, user needs to add three forms to allow connection to S2S.
   * Prior to adding if user tries to connect to S2S, a good error message appears to show user which files are needed.
@@ -507,7 +511,7 @@ system of record for this.
   * Travis Schneberger on Fri, 27 Mar 2015 08:43:32 -0400 [View Commit](../../commit/b80b64f8142a63ab1409b9855f04396d63c321e3)
 * review comments
   * Gayathri on Wed, 25 Mar 2015 15:54:24 -0700 [View Commit](../../commit/1391d63186844fdcaded6455caf73ee559c5a9e0)
-*  new nsf cover page 1-6
+* RESKC-204: new nsf cover page 1-6
   * Gayathri on Wed, 25 Mar 2015 09:52:41 -0700 [View Commit](../../commit/877fca3fc11fee1b89d5cea443d1fc4afb04955c)
 * next iteration
   * Travis Schneberger on Mon, 16 Mar 2015 14:30:59 -0400 [View Commit](../../commit/a86e6cb460629dd588427b079ecadf0dbf69d94f)
@@ -515,7 +519,7 @@ system of record for this.
   * Travis Schneberger on Thu, 16 Apr 2015 15:36:24 -0400 [View Commit](../../commit/991700ddcd735bacc56adfcc5f653a0b840718ca)
 * review comments
   * Gayathri on Wed, 25 Mar 2015 15:54:24 -0700 [View Commit](../../commit/869aef0e46070e19314710588e119ec5d80fb0b2)
-*  new nsf cover page 1-6
+* RESKC-204: new nsf cover page 1-6
   * Gayathri on Wed, 25 Mar 2015 09:52:41 -0700 [View Commit](../../commit/4b2e14076d2e2298c92d607c8164d2fb30744411)
 * Update pom.xml
   * Travis Schneeberger on Sat, 4 Apr 2015 00:32:55 -0400 [View Commit](../../commit/81c335c147c094f1f6f8d040e0aba85dea594da6)
@@ -549,13 +553,13 @@ system of record for this.
   * Travis Schneberger on Fri, 27 Mar 2015 08:51:32 -0400 [View Commit](../../commit/77b354e0e369e2cf95079830fb3d948be964f516)
 * move to kualico build
   * Travis Schneberger on Fri, 27 Mar 2015 08:43:32 -0400 [View Commit](../../commit/c00bddff261350d16ee9b4dd4098aa4cc3627be1)
-* creates s2s error instead of throw exception for missing citizenship
+* RESKC-229:creates s2s error instead of throw exception for missing citizenship
   * Joe Williams on Mon, 23 Mar 2015 12:46:32 -0500 [View Commit](../../commit/bbc0eceae80cfb5d078c749f219755274b6a8713)
 * next iteration
   * Travis Schneberger on Mon, 16 Mar 2015 14:30:59 -0400 [View Commit](../../commit/56cc9651350bde2d8df383dc7a7568b3267345b1)
-*  fix training budget generator STE
+* RESKC-203: fix training budget generator STE
   * Joe Williams on Fri, 13 Mar 2015 16:01:14 -0500 [View Commit](../../commit/8e73357f874f7a7e0e7b6379298d68a29e6e69f4)
-*  fix material budget type mapping
+* RESKC-9: fix material budget type mapping
   * Joe Williams on Thu, 12 Mar 2015 14:38:36 -0500 [View Commit](../../commit/a6bcab7b431336b34a0bca34685e555c52df07f7)
 
 ##coeus-s2sgen-1505.5
@@ -571,7 +575,7 @@ system of record for this.
   * Travis Schneberger on Thu, 23 Apr 2015 16:13:24 -0400 [View Commit](../../commit/d9146ad961aaa91782660e83a1270c2970bd8bdd)
 
 ##coeus-s2sgen-1505.2
-* Fixed STE on S2S form SF424
+* RESKC-360:Fixed STE on S2S form SF424
 
   * Continued testing of s2s forms
   * Located SF424 2.1 in opportunity: 03162012-TEST
@@ -589,7 +593,7 @@ system of record for this.
 
 
 ##coeus-s2sgen-1504.7
-*  Fixing STE related to user attached forms.
+* RESKC-359: Fixing STE related to user attached forms.
   * If a user needs to attach particular files to be able to connect to an S2S opportunity, the system is not seeing the forms correctly and throws STE
   * For opportunity ID USDA-NIFA-SRGP-001930, user needs to add three forms to allow connection to S2S.
   * Prior to adding if user tries to connect to S2S, a good error message appears to show user which files are needed.
@@ -629,7 +633,7 @@ system of record for this.
 ##coeus-s2sgen-6.0.3
 * review comments
   * Gayathri on Wed, 25 Mar 2015 15:54:24 -0700 [View Commit](../../commit/bb93a01ccf4633c2cabe956f333704a0e49e3f03)
-*  new nsf cover page 1-6
+* RESKC-204: new nsf cover page 1-6
   * Gayathri on Wed, 25 Mar 2015 09:52:41 -0700 [View Commit](../../commit/f193cb68f705d5493d39c2ef774410b2247542ff)
 
 ##coeus-s2sgen-6.0.2
@@ -656,13 +660,13 @@ system of record for this.
   * Travis Schneberger on Fri, 27 Mar 2015 08:51:32 -0400 [View Commit](../../commit/78b7888bebcbe6282048336aceb7fba2d0ce4943)
 * move to kualico build
   * Travis Schneberger on Fri, 27 Mar 2015 08:43:32 -0400 [View Commit](../../commit/1dc72658e52d216283f66058b256cb74a30c5d8a)
-* creates s2s error instead of throw exception for missing citizenship
+* RESKC-229:creates s2s error instead of throw exception for missing citizenship
   * Joe Williams on Mon, 23 Mar 2015 12:46:32 -0500 [View Commit](../../commit/1626bfda664f611d35246b89a0cccfed727f958b)
 * next iteration
   * Travis Schneberger on Mon, 16 Mar 2015 14:30:59 -0400 [View Commit](../../commit/a87e56db1ab6247a6602f6b1a297347bc8f214a9)
-*  fix training budget generator STE
+* RESKC-203: fix training budget generator STE
   * Joe Williams on Fri, 13 Mar 2015 16:01:14 -0500 [View Commit](../../commit/fdea55383a3f74d31f75783c21d3dfcaa3a9a18d)
-*  fix material budget type mapping
+* RESKC-9: fix material budget type mapping
   * Joe Williams on Thu, 12 Mar 2015 14:38:36 -0500 [View Commit](../../commit/7027867253b55a22d39efa7387b072acd248548b)
 
 ##coeus-s2sgen-6.0.1
