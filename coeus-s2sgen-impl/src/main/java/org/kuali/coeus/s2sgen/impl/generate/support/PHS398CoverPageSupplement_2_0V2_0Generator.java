@@ -28,8 +28,6 @@ import gov.grants.apply.forms.phs398CoverPageSupplement20V20.PHS398CoverPageSupp
 import gov.grants.apply.system.globalLibraryV20.HumanNameDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType;
 import gov.grants.apply.system.globalLibraryV20.YesNoDataType.Enum;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.ynq.YnqConstant;
 import org.kuali.coeus.common.questionnaire.api.answer.AnswerHeaderContract;
@@ -77,9 +75,7 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
     protected static final Integer PROPOSAL_YNQ_QUESTION_120 = 120;
     protected static final int PROJECT_INCOME_DESCRIPTION_MAX_LENGTH = 150;
 
-    List<? extends AnswerHeaderContract> answerHeaders;
-    private static final Logger LOG = LoggerFactory.getLogger(PHS398CoverPageSupplement_2_0V2_0Generator.class);
-    Enum ynqAnswer;
+    private List<? extends AnswerHeaderContract> answerHeaders;
 
     @Value("http://apply.grants.gov/forms/PHS398_CoverPageSupplement_2_0-V2.0")
     private String namespace;
@@ -126,13 +122,12 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
         ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
 
         if (budget != null) {
-            int numPeriods = budget.getBudgetPeriods().size();
             setIncomeBudgetPeriods(coverPageSupplement, budget
-                    .getBudgetProjectIncomes(),numPeriods);
+                    .getBudgetProjectIncomes());
         } else {
             coverPageSupplement.setProgramIncome(YesNoDataType.N_NO);
         }
-        ynqAnswer = getYNQAnswer(YNQANSWER_121);
+        Enum ynqAnswer = getYNQAnswer(YNQANSWER_121);
         coverPageSupplement.setDisclosurePermission(ynqAnswer);
 		StemCells stemCells = getStemCells();
 		coverPageSupplement.setStemCells(stemCells);
@@ -164,14 +159,12 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
 	private ClinicalTrial getClinicalTrial() {
 
         ClinicalTrial clinicalTrial = ClinicalTrial.Factory.newInstance();
-        String answer = null;
-        String subAnswer = null;
-          answer = getAnswer(IS_CLINICAL_TRIAL,answerHeaders);
+        String answer = getAnswer(IS_CLINICAL_TRIAL,answerHeaders);
         if (answer != null) {
             if (!answer.equals(NOT_ANSWERED)) {
                 if (YnqConstant.YES.code().equals(answer)) {
                     clinicalTrial.setIsClinicalTrial(YesNoDataType.Y_YES);
-                    subAnswer = getAnswer(PHASE_III_CLINICAL_TRIAL,answerHeaders);
+                    String subAnswer = getAnswer(PHASE_III_CLINICAL_TRIAL,answerHeaders);
                         if (subAnswer != null && !subAnswer.equals(NOT_ANSWERED)) {
                             if (YnqConstant.YES.code().equals(subAnswer)) {
                                 clinicalTrial.setIsPhaseIIIClinicalTrial(YesNoDataType.Y_YES);   
@@ -275,7 +268,7 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
      * This method will set values to income budget periods
      */
     private static void setIncomeBudgetPeriods(PHS398CoverPageSupplement20 coverPageSupplement,
-            List<? extends BudgetProjectIncomeContract> projectIncomes, int numPeriods) {
+            List<? extends BudgetProjectIncomeContract> projectIncomes) {
         if (projectIncomes.isEmpty()) {
             coverPageSupplement.setProgramIncome(YesNoDataType.N_NO);
         } else {
@@ -290,7 +283,7 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
     private static IncomeBudgetPeriod[] getIncomeBudgetPeriod(
             final List<? extends BudgetProjectIncomeContract> projectIncomes) {
         //TreeMap Used to maintain the order of the Budget periods.
-        Map<Integer, IncomeBudgetPeriod> incomeBudgetPeriodMap = new TreeMap<Integer, IncomeBudgetPeriod>();
+        Map<Integer, IncomeBudgetPeriod> incomeBudgetPeriodMap = new TreeMap<>();
         BigDecimal anticipatedAmount;
         for (BudgetProjectIncomeContract projectIncome : projectIncomes) {
 
@@ -299,7 +292,7 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
                     .get(budgetPeriodNumber);
             if (incomeBudgPeriod == null) {
                 incomeBudgPeriod = IncomeBudgetPeriod.Factory.newInstance();
-                incomeBudgPeriod.setBudgetPeriod(budgetPeriodNumber.intValue());
+                incomeBudgPeriod.setBudgetPeriod(budgetPeriodNumber);
                 anticipatedAmount = BigDecimal.ZERO;
             } else {
                 anticipatedAmount = incomeBudgPeriod.getAnticipatedAmount();
@@ -348,13 +341,12 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
 	 */
 	private StemCells getStemCells() {
 
-	    StemCells stemCells = StemCells.Factory.newInstance();  
-	    Enum answers = YesNoDataType.N_NO;
+	    StemCells stemCells = StemCells.Factory.newInstance();
 	    String childAnswer = null;  
 	    String answer = getAnswer(IS_HUMAN_STEM_CELLS_INVOLVED,answerHeaders);
 	    if (answer != null) {
 	        if (!answer.equals(NOT_ANSWERED)) {
-	            answers = YnqConstant.YES.code().equals(getAnswer(IS_HUMAN_STEM_CELLS_INVOLVED, answerHeaders)) ? YesNoDataType.Y_YES : YesNoDataType.N_NO;
+                Enum answers = YnqConstant.YES.code().equals(getAnswer(IS_HUMAN_STEM_CELLS_INVOLVED, answerHeaders)) ? YesNoDataType.Y_YES : YesNoDataType.N_NO;
 	            if (YnqConstant.YES.code().equals(answer)) {
 	                stemCells.setIsHumanStemCellsInvolved(YesNoDataType.Y_YES);
 	                String subAnswer = getAnswer(SPECIFIC_STEM_CELL_LINE,answerHeaders);
@@ -391,12 +383,10 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
      * This method will get the YNQ Answer for question id
      */
     private YesNoDataType.Enum getYNQAnswer(Integer questionID) {
-        YesNoDataType.Enum answerType = null;
         String answer = getAnswer(questionID,answerHeaders);
         if (answer != null && !answer.equals(NOT_ANSWERED)) {
-            answerType = "Y".equals(answer) ? YesNoDataType.Y_YES
+            return "Y".equals(answer) ? YesNoDataType.Y_YES
                 : YesNoDataType.N_NO;
-            return answerType;
         } else {
             return null;
         }

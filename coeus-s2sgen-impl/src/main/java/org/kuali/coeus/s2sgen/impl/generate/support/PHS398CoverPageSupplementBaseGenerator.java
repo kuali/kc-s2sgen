@@ -84,7 +84,7 @@ public abstract class PHS398CoverPageSupplementBaseGenerator extends
 	 */
 	protected List<String> getCellLines(String explanation) {
 		int startPos = 0;
-		List<String> cellLines = new ArrayList<String>();
+		List<String> cellLines = new ArrayList<>();
 		for (int commaPos = 0; commaPos > -1;) {
 			commaPos = explanation.indexOf(",", startPos);
 			if (commaPos >= 0) {
