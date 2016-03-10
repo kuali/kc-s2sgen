@@ -71,7 +71,7 @@ public class PHS398CoverPageSupplementV1_0Generator extends
     @Value("185")
     private int sortIndex;
 
-    List<? extends AnswerHeaderContract> answerHeaders;
+    private List<? extends AnswerHeaderContract> answerHeaders;
 	/**
 	 * 
 	 * This method gives information of Cover Page Supplement such as PDPI
@@ -115,9 +115,8 @@ public class PHS398CoverPageSupplementV1_0Generator extends
 		if (PI != null) {
 			ProposalYnqContract proposalYnq = getProposalYnQ(IS_NEW_INVESTIGATOR);
 			if (proposalYnq != null) {
-				YesNoDataType.Enum answer = null;
 				if (proposalYnq.getAnswer() != null) {
-					answer = (proposalYnq.getAnswer().equals(
+					YesNoDataType.Enum answer = (proposalYnq.getAnswer().equals(
 							YnqConstant.YES.code()) ? YesNoDataType.YES
 							: YesNoDataType.NO);
 					pdpi.setIsNewInvestigator(answer);
@@ -158,14 +157,12 @@ public class PHS398CoverPageSupplementV1_0Generator extends
 	private ClinicalTrial getClinicalTrial() {
 
         ClinicalTrial clinicalTrial = ClinicalTrial.Factory.newInstance();
-        String answer = null;
-        String subAnswer = null;
-        answer = getAnswer(IS_CLINICAL_TRIAL,answerHeaders);
+		String answer = getAnswer(IS_CLINICAL_TRIAL,answerHeaders);
         if (answer != null) {
             if (!answer.equals(NOT_ANSWERED)) {
                 if (YnqConstant.YES.code().equals(answer)) {
                     clinicalTrial.setIsClinicalTrial(YesNoDataType.YES);
-                    subAnswer = getAnswer(PHASE_III_CLINICAL_TRIAL,answerHeaders);
+					String subAnswer = getAnswer(PHASE_III_CLINICAL_TRIAL,answerHeaders);
                     if (subAnswer != null) {
                         if (!subAnswer.equals(NOT_ANSWERED)) {
                             if (YnqConstant.YES.code().equals(subAnswer)) {
@@ -224,13 +221,12 @@ public class PHS398CoverPageSupplementV1_0Generator extends
 	 */
 	private StemCells getStemCells() {
 
-	    StemCells stemCells = StemCells.Factory.newInstance();	
-	    Enum answers = YesNoDataType.NO;
+	    StemCells stemCells = StemCells.Factory.newInstance();
 	    String childAnswer = null;  
 	    String answer = getAnswer(IS_HUMAN_STEM_CELLS_INVOLVED,answerHeaders);
 	    if (answer != null) {
 	        if (!answer.equals(NOT_ANSWERED)) {
-	            answers = YnqConstant.YES.code().equals(getAnswer(IS_HUMAN_STEM_CELLS_INVOLVED, answerHeaders)) ? YesNoDataType.YES : YesNoDataType.NO;
+				Enum answers = YnqConstant.YES.code().equals(getAnswer(IS_HUMAN_STEM_CELLS_INVOLVED, answerHeaders)) ? YesNoDataType.YES : YesNoDataType.NO;
 	            if (YnqConstant.YES.code().equals(answer)) {
 	                stemCells.setIsHumanStemCellsInvolved(YesNoDataType.YES);
 	                String subAnswer = getAnswer(SPECIFIC_STEM_CELL_LINE,answerHeaders);
