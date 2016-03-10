@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-935: Supporting new form: PHS398_CoverPageSupplement_3_0-V3.0
+  * Travis Schneeberger on Wed, 9 Mar 2016 17:38:44 -0500 [View Commit](../../commit/e3cdb664a82b4a52bb3fb213b4af70adf2047abb)
+
+##coeus-s2sgen-1603.0001
 * RESKC-936: Supporting new form: PHS398_ResearchPlan_3_0-V3.0
   * Travis Schneeberger on Tue, 1 Mar 2016 15:41:34 -0500 [View Commit](../../commit/75ced04e84a5f79780f267a9e301ff5f795b889a)
 
