@@ -74,7 +74,7 @@ PHS398ModularBudgetBaseGenerator{
     @Value("PHS398_ModularBudget_1_2-V1.2")
     private String formName;
 
-    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/PHS398_ModularBudget-V1.2.fo.xsl")
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/PHS398_ModularBudget-V1.2.xsl")
     private Resource stylesheet;
 
     @Value("gov.grants.apply.forms.phs398ModularBudget12V12")
