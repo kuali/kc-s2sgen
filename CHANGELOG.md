@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-934: PHS398_ModularBudget-V1.2 update for 2016
+  * Travis Schneeberger on Mon, 14 Mar 2016 11:20:46 -0400 [View Commit](../../commit/cf091ec40d577fba4f21be9bce74ce2d79e567a8)
+
+##coeus-s2sgen-1603.0002
 * RESKC-935: Supporting new form: PHS398_CoverPageSupplement_3_0-V3.0
   * Travis Schneeberger on Wed, 9 Mar 2016 17:38:44 -0500 [View Commit](../../commit/e3cdb664a82b4a52bb3fb213b4af70adf2047abb)
 
