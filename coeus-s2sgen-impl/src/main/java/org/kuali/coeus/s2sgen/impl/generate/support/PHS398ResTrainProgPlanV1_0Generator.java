@@ -23,7 +23,6 @@ import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398Researc
 import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ApplicationType;
 import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ResearchTrainingProgramPlanAttachments;
 import gov.grants.apply.forms.phs398ResearchTrainingProgramPlanV10.PHS398ResearchTrainingProgramPlanDocument.PHS398ResearchTrainingProgramPlan.ResearchTrainingProgramPlanAttachments.*;
-import gov.grants.apply.forms.phsFellowshipSupplemental11V11.PHSFellowshipSupplemental11Document.PHSFellowshipSupplemental11.ApplicationType.TypeOfApplication;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import org.apache.xmlbeans.XmlObject;
@@ -44,12 +43,8 @@ import org.springframework.core.io.Resource;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * 
- * This class is the xml generator for PHS398ResTrainProgPlanV1_0 form
- *  ref namespace://apply.grants.gov/forms/PHS398_ResearchTrainingProgramPlan-V1.0
- */
 @FormGenerator("PHS398ResTrainProgPlanV1_0Generator")
 public class PHS398ResTrainProgPlanV1_0Generator extends S2SBaseFormGenerator{
     private static final int PHS_RES_TRAINING_PLAN_INTRODUCTION_112 = 112;
@@ -96,7 +91,7 @@ public class PHS398ResTrainProgPlanV1_0Generator extends S2SBaseFormGenerator{
         phs398ResTrainProgPlan.setFormVersion(FormVersion.v1_0.getVersion());
         ApplicationType appType = phs398ResTrainProgPlan.addNewApplicationType();
         appType.setTypeOfApplication(getTypeOfApplication(developmentProposal.getProposalType().getCode()));
-        ArrayList<AttachedFileDataType> attachedFileDataTypes = new ArrayList<AttachedFileDataType>();
+        List<AttachedFileDataType> attachedFileDataTypes = new ArrayList<>();
 
         AttachedFileDataType attachedFileDataType;
         for (NarrativeContract narrative : developmentProposal.getNarratives()) {

@@ -744,6 +744,10 @@
 	    </group>
 
 		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/PHS398_ResearchTrainingProgramPlan_3_0-V3.0" uri="PHS398_ResearchTrainingProgramPlan_3_0-V3.0.xsd"/>
+		</group>
+
+		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/PHS398_TrainingBudget-V1.0" uri="PHS398_Training_FIF-V1.0.xsd"/>
 	    </group>
 
