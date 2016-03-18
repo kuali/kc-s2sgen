@@ -18,34 +18,33 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
-import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan20V20.PHS398ResearchTrainingProgramPlan20Document;
-import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan20V20.PHS398ResearchTrainingProgramPlan20Document.PHS398ResearchTrainingProgramPlan20;
-import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan20V20.PHS398ResearchTrainingProgramPlan20Document.PHS398ResearchTrainingProgramPlan20.ResearchTrainingProgramPlanAttachments;
-import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan20V20.PHS398ResearchTrainingProgramPlan20Document.PHS398ResearchTrainingProgramPlan20.ResearchTrainingProgramPlanAttachments.*;
+import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan30V30.PHS398ResearchTrainingProgramPlan30Document;
+import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan30V30.PHS398ResearchTrainingProgramPlan30Document.PHS398ResearchTrainingProgramPlan30;
+import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan30V30.PHS398ResearchTrainingProgramPlan30Document.PHS398ResearchTrainingProgramPlan30.ResearchTrainingProgramPlanAttachments;
+import gov.grants.apply.forms.phs398ResearchTrainingProgramPlan30V30.PHS398ResearchTrainingProgramPlan30Document.PHS398ResearchTrainingProgramPlan30.ResearchTrainingProgramPlanAttachments.*;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import gov.grants.apply.system.attachmentsV10.AttachmentGroupMin0Max100DataType;
 import org.apache.xmlbeans.XmlObject;
-import org.kuali.coeus.s2sgen.api.core.S2SException;
+import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
-import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
+import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 import org.kuali.coeus.s2sgen.impl.generate.S2SBaseFormGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
-
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-@FormGenerator("PHS398ResTrainProgPlanV2_0Generator")
-public class PHS398ResTrainProgPlanV2_0Generator extends S2SBaseFormGenerator{
+@FormGenerator("PHS398ResTrainProgPlanV3_0Generator")
+public class PHS398ResTrainProgPlanV3_0Generator extends S2SBaseFormGenerator{
     private static final int PHS_RES_TRAINING_PLAN_INTRODUCTION_112 = 112;
-    private static final int PHS_RES_TRAINING_PLAN_BACKGROUND_113 = 113;
+    private static final int PHS_RES_TRAINING_PLAN_METHODS_ENHANCE_REPRO_151 = 151;
     private static final int PHS_RES_TRAINING_PLAN_PROGRAM_PLAN_114 = 114;
-    private static final int PHS_RES_TRAINING_PLAN_RECRUITMENT_PLAN_115 = 115;
+    private static final int PHS_RES_TRAINING_PLAN_DATA_SAFTEY_MONITOR_152 = 152;
     private static final int PHS_RES_TRAINING_PLAN_RESP_CONDUCT_SEARCH_116 = 116;
     private static final int PHS_RES_TRAINING_PLAN_PROGRESS_REPORT_117 = 117;
     private static final int PHS_RES_TRAINING_PLAN_HUMAN_SUBJECTS_118 = 118;
@@ -58,28 +57,28 @@ public class PHS398ResTrainProgPlanV2_0Generator extends S2SBaseFormGenerator{
     private static final int PHS_RES_TRAINING_PLAN_SUPPORT_LETTERS_125 = 125;
     private static final int PHS_RES_TRAINING_PLAN_APPENDIX_126 = 126;
 
-    @Value("http://apply.grants.gov/forms/PHS398_ResearchTrainingProgramPlan_2_0-V2.0")
+    @Value("http://apply.grants.gov/forms/PHS398_ResearchTrainingProgramPlan_3_0-V3.0")
     private String namespace;
 
-    @Value("PHS398_ResearchTrainingProgramPlan_2_0")
+    @Value("PHS398_ResearchTrainingProgramPlan_3_0")
     private String formName;
 
-    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/PHS398_ResearchTrainProPlan_V2.0.xsl")
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/PHS398_ResearchTrainProPlan-V3.0.xsl")
     private Resource stylesheet;
 
-    @Value("gov.grants.apply.forms.phs398ResearchTrainingProgramPlan20V20")
+    @Value("gov.grants.apply.forms.phs398ResearchTrainingProgramPlan30V30")
     private String packageName;
 
     @Value("220")
     private int sortIndex;
 
-    private PHS398ResearchTrainingProgramPlan20 getPHS398ResearchTrainingProgramPlan(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
+    private PHS398ResearchTrainingProgramPlan30 getPHS398ResearchTrainingProgramPlan(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
         DevelopmentProposalContract developmentProposal = proposalDevelopmentDocument.getDevelopmentProposal();
-        PHS398ResearchTrainingProgramPlan20 phs398ResTrainProgPlan = PHS398ResearchTrainingProgramPlan20.Factory.newInstance();
-        
-        ResearchTrainingProgramPlanAttachments researchTrainingProgramPlanAttachments = ResearchTrainingProgramPlanAttachments.Factory.newInstance();
+        PHS398ResearchTrainingProgramPlan30 phs398ResTrainProgPlan = PHS398ResearchTrainingProgramPlan30.Factory.newInstance();
+
+        ResearchTrainingProgramPlanAttachments researchTrainingProgramPlanAttachments = Factory.newInstance();
   
-        phs398ResTrainProgPlan.setFormVersion(FormVersion.v2_0.getVersion());
+        phs398ResTrainProgPlan.setFormVersion(FormVersion.v3_0.getVersion());
         List<AttachedFileDataType> attachedFileDataTypes = new ArrayList<>();
 
         AttachedFileDataType attachedFileDataType;
@@ -94,13 +93,13 @@ public class PHS398ResTrainProgPlanV2_0Generator extends S2SBaseFormGenerator{
                          }
                          introductionToApplication.setAttFile(attachedFileDataType);
                          break;
-                     case(PHS_RES_TRAINING_PLAN_BACKGROUND_113):
+                     case(PHS_RES_TRAINING_PLAN_METHODS_ENHANCE_REPRO_151):
                          attachedFileDataType = getAttachedFileType(narrative);
-                         Background backGround = researchTrainingProgramPlanAttachments.addNewBackground();
+                         MethodsForEnhancingReproducibility reproducibility = researchTrainingProgramPlanAttachments.addNewMethodsForEnhancingReproducibility();
                          if(attachedFileDataType == null){
                              continue;
                          }
-                         backGround.setAttFile(attachedFileDataType);
+                         reproducibility.setAttFile(attachedFileDataType);
                          break;
                      case(PHS_RES_TRAINING_PLAN_PROGRAM_PLAN_114):
                          attachedFileDataType = getAttachedFileType(narrative);
@@ -110,13 +109,13 @@ public class PHS398ResTrainProgPlanV2_0Generator extends S2SBaseFormGenerator{
                          }
                          programPlan.setAttFile(attachedFileDataType);
                          break;
-                     case(PHS_RES_TRAINING_PLAN_RECRUITMENT_PLAN_115):
+                     case(PHS_RES_TRAINING_PLAN_DATA_SAFTEY_MONITOR_152):
                          attachedFileDataType = getAttachedFileType(narrative);
-                         RecruitmentAndRetentionPlanToEnhanceDiversity recruitmentAndRetentionPlanToEnhanceDiversity = researchTrainingProgramPlanAttachments.addNewRecruitmentAndRetentionPlanToEnhanceDiversity();
+                         DataSafetyMonitoringPlan dataSafetyMonitoringPlan = researchTrainingProgramPlanAttachments.addNewDataSafetyMonitoringPlan();
                          if(attachedFileDataType == null){
                              continue;
                          }
-                         recruitmentAndRetentionPlanToEnhanceDiversity.setAttFile(attachedFileDataType);
+                         dataSafetyMonitoringPlan.setAttFile(attachedFileDataType);
                          break;
                      case(PHS_RES_TRAINING_PLAN_RESP_CONDUCT_SEARCH_116):
                          attachedFileDataType = getAttachedFileType(narrative);
@@ -221,9 +220,9 @@ public class PHS398ResTrainProgPlanV2_0Generator extends S2SBaseFormGenerator{
     }
 
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
-        PHS398ResearchTrainingProgramPlan20 phs398ResearchTrainingProgramPlan = getPHS398ResearchTrainingProgramPlan(proposalDevelopmentDocument);
-        PHS398ResearchTrainingProgramPlan20Document pHS398ResearchTrainingProgramPlan20Document = PHS398ResearchTrainingProgramPlan20Document.Factory.newInstance();
-        pHS398ResearchTrainingProgramPlan20Document.setPHS398ResearchTrainingProgramPlan20(phs398ResearchTrainingProgramPlan);
+        PHS398ResearchTrainingProgramPlan30 phs398ResearchTrainingProgramPlan = getPHS398ResearchTrainingProgramPlan(proposalDevelopmentDocument);
+        PHS398ResearchTrainingProgramPlan30Document pHS398ResearchTrainingProgramPlan20Document = PHS398ResearchTrainingProgramPlan30Document.Factory.newInstance();
+        pHS398ResearchTrainingProgramPlan20Document.setPHS398ResearchTrainingProgramPlan30(phs398ResearchTrainingProgramPlan);
         return pHS398ResearchTrainingProgramPlan20Document;
     }
 
