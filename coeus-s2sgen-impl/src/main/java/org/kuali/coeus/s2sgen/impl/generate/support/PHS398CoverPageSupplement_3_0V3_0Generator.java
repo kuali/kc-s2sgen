@@ -64,7 +64,7 @@ public class PHS398CoverPageSupplement_3_0V3_0Generator extends PHS398CoverPageS
     protected static final Integer PROPOSAL_YNQ_QUESTION_146 = 146;
     protected static final Integer PROPOSAL_YNQ_QUESTION_147 = 147;
     protected static final Integer PROPOSAL_YNQ_QUESTION_148 = 148;
-    public static final Integer INCREASED_REGISTRATION_NUMBER = 142;
+    public static final Integer INCREASED_REGISTRATION_NUMBER = 149;
     protected static final int PROJECT_INCOME_DESCRIPTION_MAX_LENGTH = 150;
     private static final int MAX_EUTHANASIA_METHOD_DESC = 1000;
 
