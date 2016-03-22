@@ -1,6 +1,15 @@
 
 
 ##CURRENT
+* RESKC-1226: Fixing validation errors related to narratives.
+
+  * 1. The system has an error validation requiring Data Management Plan attachment (narrative id 146). This attachment is NOT mandatory.
+  * 2. The system has an error validation requiring the Mentoring Plan attachment (narrative ID 147) This attachment is NOT mandatory and will cause submission to ERROR at the sponsor.
+
+  * These errors are related to adding null for the narratives in the generator where null is not valid.
+  * Travis Schneeberger on Tue, 22 Mar 2016 14:15:44 -0400 [View Commit](../../commit/366640f457a8eb005bd3fbe11167d95200ce628d)
+
+##coeus-s2sgen-1603.0007
 * RESKC-1227: Multiple fixes for PHS398CoverPageSupplement 3.0.
 
   * 3. Multiple issues to correct with the Stem Cell question branch:
