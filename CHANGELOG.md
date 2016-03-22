@@ -1,6 +1,19 @@
 
 
 ##CURRENT
+* RESKC-1227: Multiple fixes for PHS398CoverPageSupplement 3.0.
+
+  * 3. Multiple issues to correct with the Stem Cell question branch:
+  * a. Question ID 5 are stem cells used, is a parent ALWAYS ask question, but is currently still a child of Question ID 3 (phase 3 clinical trial) and thus only renders if the user answers Y to ID 5. Please correct this so it Always presents.
+  * b. Question ID 142 needs to be reverted to it's prior state (text and 20 answer limit) so it continues to support its appearance in the S2S Questionnaire. Kuali prior stem cell answer q is ID7; 142 was used by Legacy Coeus.
+  * c. New Question ID 149 should assigned to manage the 200 answer response for listing the registration numbers of stem cell lines. ALSO; this question should only present if the answer to QID 6 = Y.
+  * Stem Cell Question branch revised as follows:
+  * ALWAYS ASK	5	Does the proposed project involve human embryonic stem cells?
+  * IF YES	6	Can a specific stem cell line be referenced at this time? If stem cells will be used, but a specific line cannot be referenced at the time of application submission, include a statement that one from the registry will be used.
+  * IF YES	*149	*List the registration number of the specific cell line(s) from the stem cell registry found at: http://stemcells.nih.gov/research/registry/
+  * Travis Schneeberger on Tue, 22 Mar 2016 11:15:36 -0400 [View Commit](../../commit/243febfb6accf7bcc743688e0058ddbbebd15494)
+
+##coeus-s2sgen-1603.0006
 * RESKC-937: S2S Form D: PHS 398 Research Training program Plan 3.0 update for 2016
   * Travis Schneeberger on Fri, 18 Mar 2016 11:32:10 -0400 [View Commit](../../commit/7f7918c7548232b9a8abdba97c24ec6e8d5b1f32)
 
