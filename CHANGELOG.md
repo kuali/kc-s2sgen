@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-938, RESKC-939: update PHS398 TrainingBudget stylesheet
+  * Travis Schneeberger on Wed, 23 Mar 2016 11:11:09 -0400 [View Commit](../../commit/ae3b01db21950c61f66e3c21c13abf37b5a52ffc)
+
+##coeus-s2sgen-1603.0008
 * RESKC-1226: Fixing validation errors related to narratives.
 
   * 1. The system has an error validation requiring Data Management Plan attachment (narrative id 146). This attachment is NOT mandatory.
