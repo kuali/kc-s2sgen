@@ -95,12 +95,6 @@ public final class ConfigurationConstants {
     public static final String S2SBUDGET_APPOINTMENT_TYPE_SUM_EMPLOYEE = "s2sBudgetAppointmentTypeSumEmployee";
     public static final String S2SBUDGET_APPOINTMENT_TYPE_TMP_EMPLOYEE = "s2sBudgetAppointmentTypeTmpEmployee";
     public static final String BUDGET_CATEGORY_TYPE_PARTICIPANT_SUPPORT = "budgetCategoryType.participantSupport";
-    public static final String PI_CUSTOM_DATA = "PI_CITIZENSHIP_FROM_CUSTOM_DATA";
-    public static final String PERMANENT_RESIDENT_OF_US_TYPE_CODE = "PERMANENT_RESIDENT_OF_US_TYPE_CODE";
-    public static final String ALLOW_PROPOSAL_PERSON_TO_OVERRIDE_KC_PERSON_EXTENDED_ATTRIBUTES = "ALLOW_PROPOSAL_PERSON_TO_OVERRIDE_KC_PERSON_EXTENDED_ATTRIBUTES";
-    public static final String NON_US_CITIZEN_WITH_TEMPORARY_VISA_TYPE_CODE = "NON_US_CITIZEN_WITH_TEMPORARY_VISA_TYPE_CODE";
-    public static final String US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE = "US_CITIZEN_OR_NONCITIZEN_NATIONAL_TYPE_CODE";
-    public static final String PERMANENT_RESIDENT_OF_US_PENDING = "PERMANENT_RESIDENT_OF_US_PENDING";
     public static final String HIERARCHY_LEVEL = "HIERARCHY_LEVEL";
 
 
