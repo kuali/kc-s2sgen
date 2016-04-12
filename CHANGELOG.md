@@ -1,6 +1,13 @@
 
 
 ##CURRENT
+* RESKC-1254: Adding support for new user attached forms.
+  * The user attached form tool is not recognizing or translating newly issued user attached forms (UAF)
+  * To be specific: NIH issued the Inclusion Enrollment Report 1.0 and the Assignment Request 1.0, among other forms that are best supported in the UAF process in Kuali. The Inclusion Enrollment Report is mandatory when human participants (compliance/special review) is part of the proposal.
+  * When I upload either of these 2 new unstitched forms, they are not translated. I am returned to the upload screen with an error message "Please add a budget to the proposal".
+  * Gayathri Athreya on Tue, 12 Apr 2016 09:16:24 -0700 [View Commit](../../commit/7d508ee5ae460913a34cc09536e0cbd8485ec888)
+
+##coeus-s2sgen-1604.0001
 * RESKC-933: add support for: S2S Form D: PHS 398 Career Development Award Supplemental Form 3.0 update for 2016
   * Travis Schneeberger on Tue, 12 Apr 2016 12:24:11 -0400 [View Commit](../../commit/1903e91a2ff444cfe0b0322e7a83840788e52331)
 
