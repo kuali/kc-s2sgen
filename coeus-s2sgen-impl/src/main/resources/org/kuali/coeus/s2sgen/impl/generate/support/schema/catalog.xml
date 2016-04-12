@@ -666,7 +666,11 @@
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/PHS398_CareerDevelopmentAwardSup_2_0-V2.0" uri="PHS398_CareerDevelopmentAwardSup_2_0-V2.0.xsd"/>
 	    </group>
-		
+
+		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/PHS398_CareerDevelopmentAwardSup_3_0-V3.0" uri="PHS398_CareerDevelopmentAwardSup_3_0-V3.0.xsd"/>
+		</group>
+
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/PHS398_Checklist-V1.1" uri="PHS398_Checklist-V1.1.xsd"/>
 	    </group>
