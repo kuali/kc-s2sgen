@@ -71,7 +71,8 @@ public class S2SException extends RuntimeException {
     }
 
     /**
-     * This method returns message as first element followed by all params
+     * This method returns the message as the first element followed by all params.
+     * @return message and parameters in an array.
      */
     public String[] getMessageWithParams() {
         String[] messageWithParams = new String[getParams().length+1];
