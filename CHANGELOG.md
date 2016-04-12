@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* No Changes
+
+
+##coeus-s2sgen-1604.0002
 * RESKC-1254: Adding support for new user attached forms.
   * The user attached form tool is not recognizing or translating newly issued user attached forms (UAF)
   * To be specific: NIH issued the Inclusion Enrollment Report 1.0 and the Assignment Request 1.0, among other forms that are best supported in the UAF process in Kuali. The Inclusion Enrollment Report is mandatory when human participants (compliance/special review) is part of the proposal.
