@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.kuali.coeus</groupId>
         <artifactId>coeus-s2sgen</artifactId>
-        <version>1603.0010-SNAPSHOT</version>
+        <version>1604.0001</version>
     </parent>
     <artifactId>coeus-s2sgen-impl</artifactId>
     
