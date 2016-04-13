@@ -1,6 +1,23 @@
 
 
 ##CURRENT
+* RESKC-942: Support for printing some PHS forms. (#89)
+
+  * Style Sheet is available from PHS to support print/preview. https://grants.nih.gov/grants/ElectronicReceipt/Forms_D_development.htm
+  * PHS Inclusion Enrollment Report has been managed as a user attached form for Kuali.
+  * This case is to support QA testing to confirm we can still manage this form with the sponsor's changes:
+  * •    Combines Planned Enrollment Report and Cumulative Inclusion Enrollment Report forms into a single form
+  * o    Questions used to identify type of report:
+  *     Delayed onset study? Yes/No
+  *     Enrollment Type? Planned/Cumulative (Actual)
+  *     Using an Existing Dataset or Resource? Yes/No
+  *     Participants Location? Domestic/Foreign
+  *     Clinical Trial? Yes/No
+  * •    NIH-Defined Phase II Clinical Trial? Yes/No
+  * •    Added/updated burden statement and form expiration date
+  * •    Updated form instructions  * Gayathri Athreya on Wed, 13 Apr 2016 10:25:47 -0700 [View Commit](../../commit/d51259d5c9c81437fc55f8e040844f6680174bb4)
+
+##coeus-s2sgen-1604.0003
 * No Changes
 
 
