@@ -1,6 +1,11 @@
 
 
 ##CURRENT
+* RESKC-1260: System was throwing exception while printing RRFedNonFedBudgetV1.1 form.
+  * Fixed stylesheet to render the elements properly even if there are equipment line items in the budget
+  * Geo Thomas on Wed, 13 Apr 2016 13:49:21 -0400 [View Commit](../../commit/2a53bfebf5449e9256282c3c4274c384fafa3671)
+
+##coeus-s2sgen-1604.0004
 * RESKC-942: Support for printing some PHS forms. (#89)
 
   * Style Sheet is available from PHS to support print/preview. https://grants.nih.gov/grants/ElectronicReceipt/Forms_D_development.htm
