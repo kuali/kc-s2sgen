@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
    - Kuali Coeus, a comprehensive research administration system for higher education.
-   - 
+   -
    - Copyright 2005-2016 Kuali, Inc.
-   - 
+   -
    - This program is free software: you can redistribute it and/or modify
    - it under the terms of the GNU Affero General Public License as
    - published by the Free Software Foundation, either version 3 of the
    - License, or (at your option) any later version.
-   - 
+   -
    - This program is distributed in the hope that it will be useful,
    - but WITHOUT ANY WARRANTY; without even the implied warranty of
    - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    - GNU Affero General Public License for more details.
-   - 
+   -
    - You should have received a copy of the GNU Affero General Public License
    - along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
@@ -1761,14 +1761,14 @@
 			</xsl:for-each>
 			<fo:inline font-size="8pt"> Subaward/Consortium</fo:inline>
 			<fo:block>
-                        
+
                      </fo:block>
 			<fo:inline font-size="8pt" hyphenate="true" language="en" font-weight="bold">Enter name of Organization: </fo:inline>
 			<fo:inline font-size="8pt">
 				<xsl:value-of select="../RR_FedNonFedBudget:OrganizationName"/>
 			</fo:inline>
 			<fo:block>
-                        
+
                      </fo:block>
 			<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
 				<fo:table-column/>
@@ -3088,7 +3088,7 @@
 			</xsl:for-each>
 			<fo:inline font-size="8pt"> Subaward/Consortium</fo:inline>
 			<fo:block>
-                        
+
                      </fo:block>
 			<fo:inline font-size="8pt" font-weight="bold">Enter name of Organization: </fo:inline>
 			<xsl:for-each select="../RR_FedNonFedBudget:OrganizationName">
@@ -3097,7 +3097,7 @@
 				</fo:inline>
 			</xsl:for-each>
 			<fo:block>
-                        
+
                      </fo:block>
 			<fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
@@ -3132,10 +3132,10 @@
 							<fo:block>
 								<fo:inline font-size="8pt" font-weight="bold">C. Equipment Description</fo:inline>
 								<fo:block>
-                                          
+
                                        </fo:block>
 								<fo:inline font-size="8pt" font-weight="bold">List items and dollar amount for each item exceeding $5,000</fo:inline>
-								
+
 						<xsl:for-each select="RR_FedNonFedBudget:Equipment">
 							<xsl:for-each select="RR_FedNonFedBudget:EquipmentList">
 								<fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
@@ -3211,16 +3211,7 @@
 														</fo:inline>
 													</xsl:for-each>
 												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
-												<fo:block>
-													<xsl:for-each select="RR_FedNonFedBudget:FundsRequested/RR_FedNonFedBudget:TotalFedNonFed">
-														<fo:inline font-size="8pt">
-															<xsl:value-of select="format-number(., '#,##0.00')"/>
-														</fo:inline>
-													</xsl:for-each>
-												</fo:block>
-											</fo:table-cell>
+											</fo:table-cell>											
 										</fo:table-row>
 									</fo:table-body>
 								</fo:table>
@@ -3249,7 +3240,7 @@
 													</xsl:for-each>
 												</fo:block>
 											</fo:table-cell>
-											
+
 											<fo:table-cell hyphenate="true" language="en" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<xsl:for-each select="RR_FedNonFedBudget:Equipment">
@@ -3836,7 +3827,7 @@
 			</xsl:for-each>
 			<fo:inline font-size="8pt"> Subaward/Consortium</fo:inline>
 			<fo:block>
-                        
+
                      </fo:block>
 			<fo:inline font-size="8pt" font-weight="bold">Enter name of Organization: </fo:inline>
 			<xsl:for-each select="../RR_FedNonFedBudget:OrganizationName">
@@ -3845,7 +3836,7 @@
 				</fo:inline>
 			</xsl:for-each>
 			<fo:block>
-                        
+
                      </fo:block>
 			<fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
