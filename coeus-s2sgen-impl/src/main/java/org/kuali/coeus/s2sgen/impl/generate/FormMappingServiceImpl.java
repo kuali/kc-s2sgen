@@ -112,14 +112,10 @@ public class FormMappingServiceImpl implements FormMappingService {
         String pathUrl = BASE_PACKAGE_PATH + "/support/stylesheet/" + formname + ".xsl";
         Resource resource = new ClassPathResource(pathUrl);
         String path;
-        if (resource.exists()) {
-            try {
-                path = resource.getURL().toString();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            LOG.warn("No resource found at " + pathUrl);
+        try {
+            path = resource.getURL().toString();
+        } catch (Exception e) {
+            LOG.error("No resource found at " + pathUrl);
             path = "";
         }
        return path;
