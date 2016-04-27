@@ -1,6 +1,18 @@
 
 
 ##CURRENT
+* RESKC-1288: Fix state validation when DC is used as the state. (#91)
+
+  * When adding an organization with a Washington DC address to an S2S proposal, KC flags the state field as an error. DC is an active entry in KC's State table, and it also exists in the XML schema here that's used by the PerformanceSite form here:
+  * http://apply07.grants.gov/apply/system/schemas/UniversalCodes-V2.0.xsd
+  * So I'm not sure why KC is flagging this as an error. Changing the state to a "standard" one like FL resolves the error.
+  * Reproduced this issue on res-demo2 with proposal 399; screenshots are attached.
+  * Also in Demo 1 Proposal 1322
+  * Errors re state occur identified so far:
+  * SF 424 R&R 2.0
+  * Senior/Key Person Expanded 2.0  * Gayathri Athreya on Wed, 27 Apr 2016 11:22:01 -0700 [View Commit](../../commit/9a62f124384021cc6090b815e5969acde5ee8885)
+
+##coeus-s2sgen-1604.0005
 * RESKC-1260: System was throwing exception while printing RRFedNonFedBudgetV1.1 form.
   * Fixed stylesheet to render the elements properly even if there are equipment line items in the budget
   * Geo Thomas on Wed, 13 Apr 2016 13:49:21 -0400 [View Commit](../../commit/2a53bfebf5449e9256282c3c4274c384fafa3671)
