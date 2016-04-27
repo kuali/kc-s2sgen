@@ -87,7 +87,11 @@ public class GlobalLibraryV2_0Generator {
 			StringBuilder stateDetail = new StringBuilder();
 			stateDetail.append(state.getCode());
 			stateDetail.append(": ");
-			stateDetail.append(WordUtils.capitalizeFully(state.getName()));
+            String stateNameCapital = WordUtils.capitalizeFully(state.getName());
+            stateNameCapital = stateNameCapital.replace(" Of ", " of ");
+            stateNameCapital = stateNameCapital.replace(" The ", " the ");
+            stateNameCapital = stateNameCapital.replace(" And ", " and ");
+            stateDetail.append(stateNameCapital);
 			stateCodeDataType = StateCodeDataType.Enum.forString(stateDetail
 					.toString());
 		}
