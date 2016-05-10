@@ -49,6 +49,7 @@ import org.springframework.core.io.Resource;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class for generating the XML object for grants.gov RRKeyPersonV1.1. Form is generated using XMLBean classes and is based on
@@ -230,8 +231,10 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
         List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<PersonProfileDataType>();
         List<? extends ProposalPersonContract> keyPersons = pdDoc.getDevelopmentProposal().getProposalPersons();
         Collections.sort(keyPersons, new ProposalPersonComparator());
-        List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, true, MAX_KEY_PERSON_COUNT);
-        extraPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, false, MAX_KEY_PERSON_COUNT);
+        List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, MAX_KEY_PERSON_COUNT);
+        extraPersons = keyPersons.stream()
+                .filter(kp -> !nKeyPersons.contains(kp))
+                .collect(Collectors.toList());
 
         if (nKeyPersons.size() > 0) {
             for (ProposalPersonContract keyPerson : nKeyPersons) {

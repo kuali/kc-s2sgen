@@ -46,6 +46,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -206,9 +207,11 @@ public class NASASeniorKeyPersonSupplementalDataSheetV1_0Generator extends
 		}
 		
 		List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(
-				keyPersons, true, MAX_KEY_PERSON_COUNT);
-		extraPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, false,
-				MAX_KEY_PERSON_COUNT);
+				keyPersons, MAX_KEY_PERSON_COUNT);
+
+		extraPersons = keyPersons.stream()
+				.filter(kp -> !nKeyPersons.contains(kp))
+				.collect(Collectors.toList());
 		List<gov.grants.apply.forms.nasaSeniorKeyPersonSupplementalDataSheetV10.NASASeniorKeyPersonSupplementalDataSheetDocument.NASASeniorKeyPersonSupplementalDataSheet.SeniorKeyPerson> seniorKeyPersonList = new LinkedList<gov.grants.apply.forms.nasaSeniorKeyPersonSupplementalDataSheetV10.NASASeniorKeyPersonSupplementalDataSheetDocument.NASASeniorKeyPersonSupplementalDataSheet.SeniorKeyPerson>();
 		for (ProposalPersonContract proposalPerson : nKeyPersons) {
 			seniorKeyPersonList.add(getPerson(proposalPerson));

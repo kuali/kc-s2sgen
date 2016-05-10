@@ -51,6 +51,8 @@ import org.springframework.core.io.Resource;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * This class generates RRKeyPersonExpanded xml object. It uses xmlbeans for
  * generation of the form. Form is generated based on RRKeyPersonExpanded
@@ -343,9 +345,10 @@ public class RRKeyPersonExpandedV1_2Generator extends
 			Collections.sort(keyPersons, new ProposalPersonComparator());
 		}
 		List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(
-				keyPersons, true, MAX_KEY_PERSON_COUNT);
-		extraPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, false,
-				MAX_KEY_PERSON_COUNT);
+				keyPersons, MAX_KEY_PERSON_COUNT);
+		extraPersons = keyPersons != null ? keyPersons.stream()
+				.filter(kp -> !nKeyPersons.contains(kp))
+				.collect(Collectors.toList()) : Collections.emptyList();
 		if (nKeyPersons.size() > 0) {
 			setKeyPersonToPersonProfileDataType(personProfileDataTypeList,
 					nKeyPersons);

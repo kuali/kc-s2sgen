@@ -65,6 +65,7 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @FormGenerator("NSFKeyPersonExpandedV1_0Generator")
 public class NSFKeyPersonExpandedV1_0Generator extends S2SBaseFormGenerator {
@@ -607,8 +608,12 @@ public class NSFKeyPersonExpandedV1_0Generator extends S2SBaseFormGenerator {
         if (keyPersons != null) {
             Collections.sort(keyPersons, new ProposalPersonComparator());
         }
-        List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, true, MAX_KEY_PERSON_COUNT);
-        extraPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, false, MAX_KEY_PERSON_COUNT);
+        List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, MAX_KEY_PERSON_COUNT);
+
+        extraPersons = keyPersons != null ? keyPersons.stream()
+                .filter(kp -> !nKeyPersons.contains(kp))
+                .collect(Collectors.toList()) : Collections.emptyList();
+
         if (nKeyPersons.size() > 0) {
             setKeyPersonToPersonProfileDataType(personProfileDataTypeList, nKeyPersons);
         }

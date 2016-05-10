@@ -28,21 +28,15 @@ public interface S2SProposalPersonService {
 
     /**
      *
-     * This method limits the number of key persons to n, returns list of key
-     * persons, first n in case firstN is true, or all other than first n, in
-     * case of firstN being false
+     * This method limits the number of key persons to n, returns list of key persons.
      *
      * @param keyPersons
      *            list of {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract}
-     * @param firstN
-     *            value that determines whether the returned list should contain
-     *            first n persons or the rest of persons
      * @param n
      *            number of key persons that are considered as not extra persons
      * @return list of {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract}
      */
-    List<ProposalPersonContract> getNKeyPersons(List<? extends ProposalPersonContract> keyPersons,
-                                                       boolean firstN, int n);
+    List<ProposalPersonContract> getNKeyPersons(List<? extends ProposalPersonContract> keyPersons, int n);
 
     /**
      *

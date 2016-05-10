@@ -1768,8 +1768,10 @@ public class S2SBudgetCalculatorServiceImpl implements
         final List<KeyPersonDto> seniorPersons = keyPersons.stream()
 			.filter(person -> hasPersonnelBudget(budgetPeriod,person))
 			.collect(Collectors.toList());
-        List<KeyPersonDto> nKeyPersons = getNKeyPersons(keyPersons, true, numKeyPersons);
-        List<KeyPersonDto> extraPersons = getNKeyPersons(seniorPersons, false, numKeyPersons);
+        final List<KeyPersonDto> nKeyPersons = getNKeyPersons(keyPersons, numKeyPersons);
+        final List<KeyPersonDto> extraPersons = seniorPersons.stream()
+                .filter(seniorKp -> !nKeyPersons.contains(seniorKp))
+                .collect(Collectors.toList());
         CompensationDto compensationInfo;
         for (KeyPersonDto keyPersonInfo : nKeyPersons) {
             keyPerson = keyPersonInfo;
@@ -2009,21 +2011,19 @@ public class S2SBudgetCalculatorServiceImpl implements
 
     /**
      * 
-     * This method limits the number of key persons to n, returns list of key persons, first n in case firstN is true, or all other
-     * than first n, in case of firstN being false
+     * This method limits the number of key persons to n, returns list of key persons.
      * 
      * @param keyPersons list of {@link KeyPersonDto}
-     * @param firstN value that determines whether the returned list should contain first n persons or the rest of persons
      * @param n number of key persons that are considered as not extra persons
      * @return list of {@link KeyPersonDto}
      */
-    protected List<KeyPersonDto> getNKeyPersons(List<KeyPersonDto> keyPersons, boolean firstN, int n) {
+    protected List<KeyPersonDto> getNKeyPersons(List<KeyPersonDto> keyPersons, int n) {
         KeyPersonDto keyPersonInfo, previousKeyPersonInfo;
         int size = keyPersons.size();
 
         for (int i = size - 1; i > 0; i--) {
-            keyPersonInfo = (KeyPersonDto) (keyPersons.get(i));
-            previousKeyPersonInfo = (KeyPersonDto) (keyPersons.get(i - 1));
+            keyPersonInfo = (keyPersons.get(i));
+            previousKeyPersonInfo = (keyPersons.get(i - 1));
             if (keyPersonInfo.getPersonId() != null && previousKeyPersonInfo.getPersonId() != null
                     && keyPersonInfo.getPersonId().equals(previousKeyPersonInfo.getPersonId())) {
                 keyPersons.remove(i);
@@ -2035,27 +2035,18 @@ public class S2SBudgetCalculatorServiceImpl implements
         }
 
         size = keyPersons.size();
-        if (firstN) {
-            List<KeyPersonDto> firstNPersons = new ArrayList<KeyPersonDto>();
+        List<KeyPersonDto> firstNPersons = new ArrayList<>();
 
-            // Make sure we don't exceed the size of the list.
-            if (size > n) {
-                size = n;
-            }
-            // remove extras
-            for (int i = 0; i < size; i++) {
-                firstNPersons.add(keyPersons.get(i));
-            }
-            return firstNPersons;
+        // Make sure we don't exceed the size of the list.
+        if (size > n) {
+            size = n;
         }
-        else {
-            // return extra people
-            List<KeyPersonDto> extraPersons = new ArrayList<KeyPersonDto>();
-            for (int i = n; i < size; i++) {
-                extraPersons.add(keyPersons.get(i));
-            }
-            return extraPersons;
+        // remove extras
+        for (int i = 0; i < size; i++) {
+            firstNPersons.add(keyPersons.get(i));
         }
+        return firstNPersons;
+
     }
 
     @Override
