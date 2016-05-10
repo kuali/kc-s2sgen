@@ -51,7 +51,6 @@ public interface S2SProposalPersonService {
 
     /**
      * Finds all the co-investigators associated with the provided pdDoc.
-     * @param pdDoc
      * @return List of Co-Investigators {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract}.
      */
 
@@ -59,7 +58,6 @@ public interface S2SProposalPersonService {
 
     /**
      * Finds all the key Person associated with the provided pdDoc.
-     * @param pdDoc
      * @return List of Key Persons {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract}.
      */
 
@@ -68,8 +66,6 @@ public interface S2SProposalPersonService {
     /**
      *
      * This method is used to get the citizenship from either warehouse or from person custom element
-     * @param proposalPerson
-     * @return
      */
     CitizenshipType getCitizenship(ProposalPersonContract proposalPerson);
 }

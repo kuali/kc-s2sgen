@@ -42,7 +42,6 @@ import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.s2sgen.impl.datetime.S2SDateTimeService;
 import org.kuali.coeus.s2sgen.impl.person.S2SProposalPersonService;
 import org.kuali.coeus.s2sgen.impl.util.FieldValueConstants;
-import org.kuali.coeus.s2sgen.impl.validate.S2SErrorHandlerService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
 import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
@@ -62,11 +61,6 @@ import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * This class contains the implementation for common budget calculations required for S2S Form generators
- * 
- * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
- */
 @Component("s2SBudgetCalculatorService")
 public class S2SBudgetCalculatorServiceImpl implements
                 S2SBudgetCalculatorService {
@@ -97,7 +91,7 @@ public class S2SBudgetCalculatorServiceImpl implements
     private static final String NID_PD_PI = "PD/PI";
     private static final String NID_CO_PD_PI = "CO-INVESTIGATOR"; 
     private static final String KEYPERSON_OTHER = "Other (Specify)";
-    public static final String SPONSOR = "S2S";
+    private static final String SPONSOR = "S2S";
     private static final String PRINCIPAL_INVESTIGATOR_ROLE = "PD/PI";
     private static final BigDecimal POINT_ZERO_ONE = new ScaleTwoDecimal(0.01).bigDecimalValue();
 
@@ -142,10 +136,6 @@ public class S2SBudgetCalculatorServiceImpl implements
     private S2SProposalPersonService s2SProposalPersonService;
 
     @Autowired
-    @Qualifier("s2SErrorHandlerService")
-    private S2SErrorHandlerService s2SErrorHandlerService;
-
-    @Autowired
     @Qualifier("s2SCommonBudgetService")
     private S2SCommonBudgetService s2SCommonBudgetService;
 
@@ -156,7 +146,7 @@ public class S2SBudgetCalculatorServiceImpl implements
 
     @Override
     public List<? extends BudgetLineItemContract> getMatchingLineItems(List<? extends BudgetLineItemContract> lineItems, List<String> budgetCategoryType) {
-        List<BudgetLineItemContract> result = new ArrayList<BudgetLineItemContract>();
+        List<BudgetLineItemContract> result = new ArrayList<>();
         for (BudgetLineItemContract lineItem : lineItems) {
             if (budgetCategoryType.contains(lineItem.getBudgetCategory().getBudgetCategoryType().getCode())) {
                 result.add(lineItem);
@@ -165,15 +155,6 @@ public class S2SBudgetCalculatorServiceImpl implements
         return result;
     }
 
-    /**
-     * 
-     * This method does the budget related calculations for a given ProposalDevelopmentDocumentContract and returns them in
-     * BudgetSummaryInfo
-     * 
-     * @param pdDoc ProposalDevelopmentDocumentContract.
-     * @return BudgetSummaryInfo corresponding to the ProposalDevelopmentDocumentContract object.
-     * @throws S2SException
-     */
     @Override
     public BudgetSummaryDto getBudgetInfo(ProposalDevelopmentDocumentContract pdDoc, List<BudgetPeriodDto> budgetPeriodInfos)
             throws S2SException {
@@ -296,9 +277,9 @@ public class S2SBudgetCalculatorServiceImpl implements
         budgetSummaryInfo.setCumTotalNonFundsForPersonnel(totPersNonFunds);
         budgetSummaryInfo.setCumTotalFundsForPersonnel(totPersFunds);
 
-        OtherDirectCostInfoDto otherDirectCostInfo = new OtherDirectCostInfoDto();
-        List<OtherDirectCostInfoDto> cvOtherDirectCost = new ArrayList<OtherDirectCostInfoDto>();
-        List<Map<String, String>> cvOtherCosts = new ArrayList<Map<String, String>>();
+        OtherDirectCostInfoDto otherDirectCostInfo;
+        List<OtherDirectCostInfoDto> cvOtherDirectCost;
+        List<Map<String, String>> cvOtherCosts;
 
         ScaleTwoDecimal cumAlterations = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal cumConsultants = ScaleTwoDecimal.ZERO;
@@ -417,10 +398,10 @@ public class S2SBudgetCalculatorServiceImpl implements
                     cumTotalEquipNonFund = cumTotalEquipNonFund.add(equipmentInfo.getTotalNonFund());
                 }
 
-                Map<String, String> hmOthers = new HashMap<String, String>();
+                Map<String, String> hmOthers;
                 cvOtherCosts = otherDirectCostInfo.getOtherCosts();
-                for (int l = 0; l < cvOtherCosts.size(); l++) {
-                    hmOthers = cvOtherCosts.get(l);
+                for (Map<String, String> cvOtherCost : cvOtherCosts) {
+                    hmOthers = cvOtherCost;
                     cumOtherType1 = cumOtherType1.add(new ScaleTwoDecimal(hmOthers.get(CostConstants.KEY_COST)));
                     cumOtherType1CostSharing = cumOtherType1CostSharing.add(new ScaleTwoDecimal(hmOthers
                             .get(CostConstants.KEY_COSTSHARING)));
@@ -491,14 +472,14 @@ public class S2SBudgetCalculatorServiceImpl implements
         participantTotalCostSharing = participantTotalCostSharing.add(cumPartSubsistenceCostSharing);
         summaryOtherDirectCostInfo.setParticipantTotalCostSharing(participantTotalCostSharing);
 
-        List<Map<String, String>> cvAllOthers = new ArrayList<Map<String, String>>();
-        HashMap<String, String> hmAllOthers = new HashMap<String, String>();
+        List<Map<String, String>> cvAllOthers = new ArrayList<>();
+        HashMap<String, String> hmAllOthers = new HashMap<>();
         hmAllOthers.put(CostConstants.KEY_COST, cumOtherType1.toString());
         hmAllOthers.put(CostConstants.KEY_COSTSHARING, cumOtherType1CostSharing.toString());
         cvAllOthers.add(hmAllOthers);
         summaryOtherDirectCostInfo.setOtherCosts(cvAllOthers);
 
-        List<OtherDirectCostInfoDto> cvCumOtherDirectCost = new ArrayList<OtherDirectCostInfoDto>(); // all
+        List<OtherDirectCostInfoDto> cvCumOtherDirectCost = new ArrayList<>(); // all
         // periods
         cvCumOtherDirectCost.add(summaryOtherDirectCostInfo);
         budgetSummaryInfo.setOtherDirectCosts(cvCumOtherDirectCost);
@@ -529,16 +510,9 @@ public class S2SBudgetCalculatorServiceImpl implements
         return budgetSummaryInfo;
     }
 
-    /**
-     * This method gets the list of BudgetPeriodInfo for the latest BudgetDocument of the given ProposalDevelopmentDocumentContract
-     * 
-     * @param pdDoc ProposalDevelopmentDocumentContract
-     * @return a List of BudgetPeriodInfo corresponding to the ProposalDevelopmentDocumentContract object.
-     * @throws S2SException
-     */
     @Override
     public List<BudgetPeriodDto> getBudgetPeriods(ProposalDevelopmentDocumentContract pdDoc) throws S2SException {
-        List<BudgetPeriodDto> budgetPeriods = new ArrayList<BudgetPeriodDto>();
+        List<BudgetPeriodDto> budgetPeriods = new ArrayList<>();
         ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
         if (budget == null) {
             return budgetPeriods;
@@ -622,8 +596,8 @@ public class S2SBudgetCalculatorServiceImpl implements
             }
             List<List<KeyPersonDto>> keyPersonList = getKeyPersons(
                     budgetPeriod,pdDoc,MAX_KEY_PERSON_COUNT, budget);
-            List<KeyPersonDto> keyPersons = new ArrayList<KeyPersonDto>();
-            List<KeyPersonDto> extraPersons = new ArrayList<KeyPersonDto>();
+            List<KeyPersonDto> keyPersons = new ArrayList<>();
+            List<KeyPersonDto> extraPersons = new ArrayList<>();
             if (keyPersonList.size() > 0) {
                 keyPersons = keyPersonList.get(0);
             }
@@ -698,17 +672,8 @@ public class S2SBudgetCalculatorServiceImpl implements
         return fedAgency.toString();
     }
 
-    /**
-     * 
-     * This method populates the {@link OtherPersonnelDto} business objects for the given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract} and
-     * {@link ProposalDevelopmentDocumentContract}
-     * 
-     * @param budgetPeriod given budget period.
-     * @param pdDoc Proposal Development Document.
-     * @return {@link List} of {@link OtherPersonnelDto}
-     */
     protected List<OtherPersonnelDto> getOtherPersonnel(BudgetPeriodContract budgetPeriod, ProposalDevelopmentDocumentContract pdDoc) {
-        List<OtherPersonnelDto> cvOtherPersonnel = new ArrayList<OtherPersonnelDto>();
+        List<OtherPersonnelDto> cvOtherPersonnel = new ArrayList<>();
         cvOtherPersonnel.add(getOtherPersonnelDetails(
                 budgetPeriod,pdDoc,
                 s2SConfigurationService.getValueAsString(
@@ -746,18 +711,6 @@ public class S2SBudgetCalculatorServiceImpl implements
         return cvOtherPersonnel;
     }
 
-    /**
-     * 
-     * This method populates the details for {@link OtherPersonnelDto} business object for the given
-     * {@link ProposalDevelopmentDocumentContract}
-     * 
-     * @param budgetPeriod given budget period.
-     * @param pdDoc Proposal Development Document.
-     * @param category budget category
-     * @param personnelType proposal personnel type.
-     * @param role role of the proposal person.
-     * @return OtherPersonnelInfo information about the other personnel.
-     */
     protected OtherPersonnelDto getOtherPersonnelDetails(BudgetPeriodContract budgetPeriod, ProposalDevelopmentDocumentContract pdDoc,
             String category, String personnelType, String role) {
         OtherPersonnelDto otherPersonnelInfo = new OtherPersonnelDto();
@@ -779,17 +732,17 @@ public class S2SBudgetCalculatorServiceImpl implements
 
         ScaleTwoDecimal bdSalary = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal bdFringe = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal bdFunds = ScaleTwoDecimal.ZERO;
+        ScaleTwoDecimal bdFunds;
         ScaleTwoDecimal bdSalaryCostSharing = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal bdFringeCostSharing = ScaleTwoDecimal.ZERO;
-        ScaleTwoDecimal bdNonFunds = ScaleTwoDecimal.ZERO;
+        ScaleTwoDecimal bdNonFunds;
 
         BigDecimal academicMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
         BigDecimal summerMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
         BigDecimal calendarMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
         BigDecimal cycleMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
 
-        BigDecimal numberOfMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
+        BigDecimal numberOfMonths;
         String rateTypeSupportStaffSalaries = s2SConfigurationService.getValueAsString(
                 ConfigurationConstants.S2SBUDGET_RATE_TYPE_SUPPORT_STAFF_SALARIES);
         String rateClassCodeEmployeeBenefits = s2SConfigurationService.getValueAsString(
@@ -798,8 +751,8 @@ public class S2SBudgetCalculatorServiceImpl implements
                 ConfigurationConstants.S2SBUDGET_RATE_CLASS_CODE_VACATION);
         String rateTypeAdministrativeSalaries = s2SConfigurationService.getValueAsString(
                 ConfigurationConstants.S2SBUDGET_RATE_TYPE_ADMINISTRATIVE_SALARIES);
-        Map<String, String> personJobCodes = new HashMap<String, String>();
-        boolean personExistsAsProposalPerson = false;
+        Map<String, String> personJobCodes = new HashMap<>();
+        boolean personExistsAsProposalPerson;
         
         // Calculate the salary and fringe for category
         // LASALARIES
@@ -877,18 +830,18 @@ public class S2SBudgetCalculatorServiceImpl implements
                                         if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
                                                         ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_ACADEMIC_MONTHS))) {
-                                        	academicMonths = getPersonEffortMonths(academicMonths,numberOfMonths, lineItem,personDetails);                                            
+                                        	academicMonths = getPersonEffortMonths(academicMonths,numberOfMonths,personDetails);
                                         }
                                         else if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
                                                         ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_SUMMER_MONTHS))) {
-                                        	summerMonths = getPersonEffortMonths(summerMonths,numberOfMonths, lineItem,personDetails);
+                                        	summerMonths = getPersonEffortMonths(summerMonths,numberOfMonths,personDetails);
                                             
                                         }
                                         else if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
                                                         ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_CALENDAR_MONTHS))) {
-                                        	calendarMonths = getPersonEffortMonths(calendarMonths,numberOfMonths, lineItem,personDetails);
+                                        	calendarMonths = getPersonEffortMonths(calendarMonths,numberOfMonths,personDetails);
                                         }
                                         else if (personDetails.getPeriodTypeCode().equals(
                                                 s2SConfigurationService.getValueAsString(
@@ -998,23 +951,16 @@ public class S2SBudgetCalculatorServiceImpl implements
     }
 
 	private BigDecimal getPersonEffortMonths(BigDecimal effortMonths,
-			BigDecimal numberOfMonths, BudgetLineItemContract lineItem,
+			BigDecimal numberOfMonths,
 			BudgetPersonnelDetailsContract personDetails) {
 		effortMonths = effortMonths.add(personDetails.getPercentEffort().bigDecimalValue()
 		            .multiply(numberOfMonths).multiply(POINT_ZERO_ONE));
 		return effortMonths;
 	}
 
-    /**
-     * 
-     * This method computes the indirect costs for a given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract}
-     * 
-     * @param budgetPeriod given BudgetPeriod.
-     * @return IndirectCostInfo for the corresponding BudgetPeriod object.
-     */
     @Override
     public IndirectCostDto getIndirectCosts(BudgetContract budget, BudgetPeriodContract budgetPeriod) {
-        List<IndirectCostDetailsDto> indirectCostDetailList = new ArrayList<IndirectCostDetailsDto>();
+        List<IndirectCostDetailsDto> indirectCostDetailList = new ArrayList<>();
         IndirectCostDetailsDto indirectCostDetails;
         ScaleTwoDecimal baseCost = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal baseCostSharing = ScaleTwoDecimal.ZERO;
@@ -1049,7 +995,7 @@ public class S2SBudgetCalculatorServiceImpl implements
             totalIndirectCostSharing = totalIndirectCostSharing.add(calculatedCostSharing);
         }
         else {
-            Map<String, IndirectCostDetailsDto> costDetailsMap = new HashMap<String, IndirectCostDetailsDto>();
+            Map<String, IndirectCostDetailsDto> costDetailsMap = new HashMap<>();
             for (BudgetLineItemContract lineItem : budgetPeriod.getBudgetLineItems()) {
                 for (BudgetRateAndBaseContract rateBase : lineItem.getBudgetRateAndBaseList()) {
                     RateClassContract rateClass = rateBase.getRateClass();
@@ -1103,7 +1049,7 @@ public class S2SBudgetCalculatorServiceImpl implements
                         }
                         costDetailsMap.put(key, indirectCostDetails);
 
-                        indirectCostDetailList = new ArrayList<IndirectCostDetailsDto>(costDetailsMap.values());
+                        indirectCostDetailList = new ArrayList<>(costDetailsMap.values());
                         totalIndirectCosts = totalIndirectCosts.add(rateBase.getCalculatedCost() == null ? ScaleTwoDecimal.ZERO
                                 : rateBase.getCalculatedCost());
                         if (canBudgetLineItemCostSharingInclude(budget, lineItem)) {
@@ -1131,21 +1077,14 @@ public class S2SBudgetCalculatorServiceImpl implements
         return true;
     }
 
-    /**
-     * 
-     * This method computes Other Dirtect Costs for the given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract} and Sponsor
-     * 
-     * @param budgetPeriod given BudgetPeriod.
-     * @return List&lt;OtherDirectCostInfo&gt; list of OtherDirectCostInfo corresponding to the BudgetPeriod object.
-     */
     protected List<OtherDirectCostInfoDto> getOtherDirectCosts(BudgetPeriodContract budgetPeriod, BudgetContract budget) {
         OtherDirectCostInfoDto otherDirectCostInfo = new OtherDirectCostInfoDto();
 
-        List<CostDto> costInfoList = new ArrayList<CostDto>();
-        List<String> filterTargetCategoryCodes = new ArrayList<String>();
+        List<CostDto> costInfoList = new ArrayList<>();
+        List<String> filterTargetCategoryCodes = new ArrayList<>();
         filterTargetCategoryCodes.add(s2SConfigurationService.getValueAsString(
                 ConfigurationConstants.S2SBUDGET_TARGET_CATEGORY_CODE_EQUIPMENT_COST));
-        List<String> filterCategoryTypes = new ArrayList<String>();
+        List<String> filterCategoryTypes = new ArrayList<>();
         filterCategoryTypes.add(s2SConfigurationService.getValueAsString(
                 ConfigurationConstants.S2SBUDGET_FILTER_CATEGORY_TYPE_PERSONNEL));
         List<? extends BudgetCategoryMapContract> budgetCategoryMapList = getBudgetCategoryMapList(filterTargetCategoryCodes, filterCategoryTypes);
@@ -1157,7 +1096,7 @@ public class S2SBudgetCalculatorServiceImpl implements
                 for (BudgetCategoryMappingContract budgetCategoryMapping : budgetCategoryMap.getBudgetCategoryMappings()) {
                     if (lineItem.getBudgetCategory().getCode().equals(budgetCategoryMapping.getBudgetCategoryCode())) {
                         CostDto costInfo = new CostDto();
-                        costInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod().intValue());
+                        costInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod());
                         costInfo.setCost(lineItem.getLineItemCost());
                         if (canBudgetLineItemCostSharingInclude(budget, lineItem)) {
                             costInfo.setCostSharing(lineItem.getCostSharingAmount());
@@ -1178,7 +1117,7 @@ public class S2SBudgetCalculatorServiceImpl implements
             }
 
             CostDto lineItemcostInfo = new CostDto();
-            lineItemcostInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod().intValue());
+            lineItemcostInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod());
             lineItemcostInfo.setCategory(OTHER_DIRECT_COSTS);
             lineItemcostInfo.setCategoryType(CATEGORY_TYPE_OTHER_DIRECT_COST);
             lineItemcostInfo.setQuantity(1);
@@ -1437,15 +1376,15 @@ public class S2SBudgetCalculatorServiceImpl implements
         otherDirectCostInfo.setTotTravel(totalTravelCost);
         otherDirectCostInfo.setTotTravelCostSharing(totalTravelCostSharing);
 
-        List<Map<String, String>> otherCostDetails = new ArrayList<Map<String, String>>();
-        Map<String, String> hmOtherDirectCostDetails = new HashMap<String, String>();
+        List<Map<String, String>> otherCostDetails = new ArrayList<>();
+        Map<String, String> hmOtherDirectCostDetails = new HashMap<>();
         hmOtherDirectCostDetails.put(CostConstants.KEY_COST, otherDirectCost.toString());
         hmOtherDirectCostDetails
                 .put(DESCRIPTION,OTHER_DIRECT_COSTS);
         hmOtherDirectCostDetails.put(CostConstants.KEY_COSTSHARING, otherDirectCostSharing.toString());
         otherCostDetails.add(hmOtherDirectCostDetails);
 
-        Map<String, String> hmOtherCostDetails = new HashMap<String, String>();
+        Map<String, String> hmOtherCostDetails = new HashMap<>();
         hmOtherCostDetails.put(CostConstants.KEY_COST, otherCost.toString());
         hmOtherCostDetails
                 .put(DESCRIPTION,ALL_OTHER_COSTS);
@@ -1453,7 +1392,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         otherCostDetails.add(hmOtherCostDetails);
 
         otherDirectCostInfo.setOtherCosts(otherCostDetails);
-        List<OtherDirectCostInfoDto> otherDirectCosts = new ArrayList<OtherDirectCostInfoDto>();
+        List<OtherDirectCostInfoDto> otherDirectCosts = new ArrayList<>();
         otherDirectCosts.add(otherDirectCostInfo);
         return otherDirectCosts;
     }
@@ -1462,20 +1401,10 @@ public class S2SBudgetCalculatorServiceImpl implements
         return budget.getSubmitCostSharingFlag() && lineItem.getSubmitCostSharingFlag();
     }
 
-    /**
-     * This method returns a list of BudgetCategoryMap based on the input. The list returned will not contain the categories that
-     * the codes passed as a list of String and also will not contain those that match the types passed as list of String. In case 2
-     * empty lists are passed as parameters, the method will return entire list without applying any filters.
-     * 
-     * @param filterTargetCategoryCodes Category Codes that must be filtered
-     * @param filterCategoryTypes Category types that must be filtered
-     * @return a List of BudgetCategoryMap.
-     * @see org.kuali.coeus.s2sgen.impl.budget.S2SBudgetCalculatorService#getBudgetCategoryMapList(java.util.List, java.util.List)
-     */
     @Override
     public List<? extends BudgetCategoryMapContract> getBudgetCategoryMapList(List<String> filterTargetCategoryCodes, List<String> filterCategoryTypes) {
         List<? extends BudgetCategoryMappingContract> budgetCategoryMappingList;
-        List<BudgetCategoryMapContract> budgetCategoryMapList = new ArrayList<BudgetCategoryMapContract>();
+        List<BudgetCategoryMapContract> budgetCategoryMapList = new ArrayList<>();
         budgetCategoryMappingList = budgetCategoryMapService.findCatMappingByMappingName(SPONSOR);
 
         boolean targetMatched;
@@ -1493,11 +1422,9 @@ public class S2SBudgetCalculatorServiceImpl implements
             }
 
             if (targetMatched) {
-                Iterator<? extends BudgetCategoryMapContract> filterList = budgetCategoryMapService.findCatMapByTargetAndMappingName(
-                        categoryMapping.getTargetCategoryCode(), categoryMapping.getMappingName()).iterator();
 
-                while (filterList.hasNext()) {
-                    BudgetCategoryMapContract filterMap = filterList.next();
+                for (BudgetCategoryMapContract filterMap : budgetCategoryMapService.findCatMapByTargetAndMappingName(
+                        categoryMapping.getTargetCategoryCode(), categoryMapping.getMappingName())) {
                     targetMatched = true;
                     if (filterCategoryTypes.size() > 0) {
                         for (String categoryType : filterCategoryTypes) {
@@ -1527,24 +1454,17 @@ public class S2SBudgetCalculatorServiceImpl implements
         return budgetCategoryMapList;
     }
 
-    /**
-     * 
-     * This method computes the Equipment Costs for a given {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract}
-     * 
-     * @param budgetPeriod given BudgetPeriod.
-     * @return List&lt;EquipmentInfo&gt; list of equipment cost corresponding to the BudgetPeriod object.
-     */
     protected List<EquipmentDto> getEquipment(BudgetPeriodContract budgetPeriod, BudgetContract budget) {
-        List<CostDto> cvExtraEquipment = new ArrayList<CostDto>();
+        List<CostDto> cvExtraEquipment = new ArrayList<>();
         CostDto equipCostInfo;
-        List<? extends BudgetCategoryMapContract> budgetCategoryMapList = getBudgetCategoryMapList(new ArrayList<String>(), new ArrayList<String>());
+        List<? extends BudgetCategoryMapContract> budgetCategoryMapList = getBudgetCategoryMapList(new ArrayList<>(), new ArrayList<>());
 
         ScaleTwoDecimal totalEquipFund = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal totalExtraEquipFund = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal totalEquipNonFund = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal totalExtraEquipNonFund = ScaleTwoDecimal.ZERO;
-        Map<String, CostDto> costInfoMap = new HashMap<String, CostDto>();
-        List<CostDto> costInfos = new ArrayList<CostDto>();
+        Map<String, CostDto> costInfoMap = new HashMap<>();
+        List<CostDto> costInfos = new ArrayList<>();
         for (BudgetLineItemContract lineItem : budgetPeriod.getBudgetLineItems()) {
             for (BudgetCategoryMapContract budgetCategoryMap : budgetCategoryMapList) {
                 equipCostInfo = new CostDto();
@@ -1553,7 +1473,7 @@ public class S2SBudgetCalculatorServiceImpl implements
                             && (budgetCategoryMapping.getTargetCategoryCode().equals( s2SConfigurationService.getValueAsString(
                             ConfigurationConstants.S2SBUDGET_TARGET_CATEGORY_CODE_EQUIPMENT_COST)))
                             && (budgetCategoryMapping.getMappingName().equals(SPONSOR))) {
-                        equipCostInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod().intValue());
+                        equipCostInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod());
                         equipCostInfo.setCategory(budgetCategoryMap.getDescription());
                         equipCostInfo.setCategoryType(budgetCategoryMap.getCategoryType());
                         if (lineItem.getLineItemDescription() != null)
@@ -1572,7 +1492,7 @@ public class S2SBudgetCalculatorServiceImpl implements
                         String key = keyBuilder.toString();
                         if (costInfoMap.get(key) == null) {
                             equipCostInfo = new CostDto();
-                            equipCostInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod().intValue());
+                            equipCostInfo.setBudgetPeriod(budgetPeriod.getBudgetPeriod());
                             equipCostInfo.setCategory(budgetCategoryMap.getDescription());
                             equipCostInfo.setCategoryType(budgetCategoryMap.getCategoryType());
                             if (lineItem.getLineItemDescription() != null)
@@ -1604,7 +1524,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         if (costInfos.size() > 10) {
             for (int j = costInfos.size() - 1; j > 9; j--) {
                 cvExtraEquipment.add(costInfos.get(j));
-                CostDto extraCostInfo = (CostDto) costInfos.get(j);
+                CostDto extraCostInfo = costInfos.get(j);
                 totalExtraEquipFund = totalExtraEquipFund.add(extraCostInfo.getCost());
                 totalExtraEquipNonFund = totalExtraEquipNonFund.add(extraCostInfo.getCostSharing());
                 costInfos.remove(j);
@@ -1619,29 +1539,19 @@ public class S2SBudgetCalculatorServiceImpl implements
         equipmentInfo.setTotalFund(totalEquipFund);
         equipmentInfo.setTotalNonFund(totalEquipNonFund);
 
-        List<EquipmentDto> equipmentInfos = new ArrayList<EquipmentDto>();
+        List<EquipmentDto> equipmentInfos = new ArrayList<>();
         equipmentInfos.add(equipmentInfo);
         return equipmentInfos;
     }
 
-    /**
-     * This method gets the {@link List} of Key Persons for a given {@link ProposalDevelopmentDocumentContract}
-     * 
-     * @param budgetPeriod given BudgetPeriod.
-     * @param pdDoc Proposal Development Document.
-     * @param numKeyPersons number of key persons.
-     * @return List&lt;List&lt;KeyPersonInfo&gt;&gt; list of KeyPersonInfo list.
-     */
     protected List<List<KeyPersonDto>> getKeyPersons(BudgetPeriodContract budgetPeriod, ProposalDevelopmentDocumentContract pdDoc,
             int numKeyPersons, BudgetContract budget) {
-        List<KeyPersonDto> keyPersons = new ArrayList<KeyPersonDto>();
+        List<KeyPersonDto> keyPersons = new ArrayList<>();
         KeyPersonDto keyPerson = new KeyPersonDto();
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
 
-        // Create master list of contacts
-        List<ProposalPersonContract> propPersons = new ArrayList<ProposalPersonContract>();
         if (principalInvestigator != null) {
-            propPersons.add(principalInvestigator);
+
             keyPerson.setPersonId(principalInvestigator.getPersonId());
             keyPerson.setRolodexId(principalInvestigator.getRolodexId());
             keyPerson.setFirstName(principalInvestigator.getFirstName() == null ? FieldValueConstants.VALUE_UNKNOWN
@@ -1655,7 +1565,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         }
 
         for (ProposalPersonContract coInvestigator : s2SProposalPersonService.getCoInvestigators(pdDoc)) {
-            propPersons.add(coInvestigator);
+
             keyPerson = new KeyPersonDto();
             keyPerson.setPersonId(coInvestigator.getPersonId());
             keyPerson.setRolodexId(coInvestigator.getRolodexId());
@@ -1680,7 +1590,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         }
 
         for (ProposalPersonContract propPerson : s2SProposalPersonService.getKeyPersons(pdDoc)) {
-            propPersons.add(propPerson);
+
             keyPerson = new KeyPersonDto();
             keyPerson.setPersonId(propPerson.getPersonId());
             keyPerson.setRolodexId(propPerson.getRolodexId());
@@ -1696,7 +1606,7 @@ public class S2SBudgetCalculatorServiceImpl implements
            }
         }
 
-        boolean personAlreadyAdded = false;
+        boolean personAlreadyAdded;
         List<? extends BudgetCategoryMappingContract> budgetCategoryList = budgetCategoryMapService.findCatMappingByTargetAndMappingName(TARGET_CATEGORY_CODE_01, SPONSOR);
         for (BudgetLineItemContract lineItem : budgetPeriod.getBudgetLineItems()) {
             for (BudgetPersonnelDetailsContract budgetPersonnelDetails : lineItem.getBudgetPersonnelDetailsList()) {
@@ -1775,7 +1685,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         CompensationDto compensationInfo;
         for (KeyPersonDto keyPersonInfo : nKeyPersons) {
             keyPerson = keyPersonInfo;
-            compensationInfo = getCompensation(keyPerson, budgetPeriod, pdDoc.getDevelopmentProposal().getProposalNumber(), budget);
+            compensationInfo = getCompensation(keyPerson, budgetPeriod, budget);
             keyPerson.setAcademicMonths(compensationInfo.getAcademicMonths());
             keyPerson.setCalendarMonths(compensationInfo.getCalendarMonths());
             keyPerson.setSummerMonths(compensationInfo.getSummerMonths());
@@ -1793,7 +1703,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         if (extraPersons != null) {
             for (KeyPersonDto keyPersonInfo : extraPersons) {
                 keyPerson = keyPersonInfo;
-                compensationInfo = getCompensation(keyPerson, budgetPeriod, pdDoc.getDevelopmentProposal().getProposalNumber(), budget);
+                compensationInfo = getCompensation(keyPerson, budgetPeriod, budget);
 
                 keyPerson.setAcademicMonths(compensationInfo.getAcademicMonths());
                 keyPerson.setCalendarMonths(compensationInfo.getCalendarMonths());
@@ -1810,7 +1720,7 @@ public class S2SBudgetCalculatorServiceImpl implements
             }
         }
 
-        List<List<KeyPersonDto>> listKeyPersons = new ArrayList<List<KeyPersonDto>>();
+        List<List<KeyPersonDto>> listKeyPersons = new ArrayList<>();
         listKeyPersons.add(nKeyPersons);
         listKeyPersons.add(extraPersons);
         return listKeyPersons;
@@ -1856,29 +1766,12 @@ public class S2SBudgetCalculatorServiceImpl implements
         return equal;
     }
 
-    /**
-     * This method determines whether a {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract} is a Non MIT person
-     * 
-     * @param proposalPerson ProposalPerson.
-     * @return boolean true if Non MIT Person false otherwise.
-     * @see org.kuali.coeus.s2sgen.impl.budget.S2SBudgetCalculatorService#isPersonNonMITPerson(ProposalPersonContract)
-     */
     @Override
     public boolean isPersonNonMITPerson(ProposalPersonContract proposalPerson) {
         return proposalPerson.getPersonId() == null;
     }
 
-    /**
-     * 
-     * This method computes the CompensationInfo for given person, {@link org.kuali.coeus.common.budget.api.period.BudgetPeriodContract} and Proposal Numnber
-     * 
-     * @param keyPerson id of the proposal person.
-     * @param budgetPeriod given BudgetPeriod.
-     * @param proposalNumber propsal number.
-     * 
-     * @return {@link CompensationDto} corresponding to the personId,budgetPeriod and proposalNumber.
-     */
-    protected CompensationDto getCompensation(KeyPersonDto keyPerson, BudgetPeriodContract budgetPeriod, String proposalNumber, BudgetContract budget) {
+    protected CompensationDto getCompensation(KeyPersonDto keyPerson, BudgetPeriodContract budgetPeriod, BudgetContract budget) {
         CompensationDto compensationInfo = new CompensationDto();
         BigDecimal summerMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
         BigDecimal academicMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
@@ -1888,7 +1781,7 @@ public class S2SBudgetCalculatorServiceImpl implements
         ScaleTwoDecimal baseAmount = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal totalSalCostSharing = ScaleTwoDecimal.ZERO;
         ScaleTwoDecimal fringeCostSharing = ScaleTwoDecimal.ZERO;
-        BigDecimal numberOfMonths = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
+        BigDecimal numberOfMonths;
         String budgetCatagoryCodePersonnel = s2SConfigurationService.getValueAsString(
                 ConfigurationConstants.S2SBUDGET_BUDGET_CATEGORY_CODE_PERSONNEL);
         
@@ -1900,21 +1793,21 @@ public class S2SBudgetCalculatorServiceImpl implements
                     if (personDetails.getPeriodTypeCode().equals(
                             s2SConfigurationService.getValueAsString(
                                     ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_ACADEMIC_MONTHS))) {
-                        academicMonths = getPersonEffortMonths(academicMonths,numberOfMonths, lineItem, personDetails);
+                        academicMonths = getPersonEffortMonths(academicMonths,numberOfMonths, personDetails);
                     }
                     else if (personDetails.getPeriodTypeCode().equals(
                             s2SConfigurationService.getValueAsString(
                                     ConfigurationConstants.S2SBUDGET_PERIOD_TYPE_SUMMER_MONTHS))) {
-                        summerMonths = getPersonEffortMonths(summerMonths,numberOfMonths, lineItem, personDetails);
+                        summerMonths = getPersonEffortMonths(summerMonths,numberOfMonths, personDetails);
                     }
                     else {
                         if (StringUtils.isNotBlank(personDetails.getBudgetPerson().getTbnId())) {
                             if (lineItem.getBudgetCategory()
                                     .getCode().equals(budgetCatagoryCodePersonnel)) {
-                                calendarMonths = getPersonEffortMonths(calendarMonths, numberOfMonths, lineItem, personDetails);
+                                calendarMonths = getPersonEffortMonths(calendarMonths, numberOfMonths, personDetails);
                             } 
                         }else {
-                            calendarMonths = getPersonEffortMonths(calendarMonths, numberOfMonths, lineItem, personDetails);
+                            calendarMonths = getPersonEffortMonths(calendarMonths, numberOfMonths, personDetails);
                         }
                     }
                     if (StringUtils.isNotBlank(personDetails.getBudgetPerson().getTbnId() ) ){
@@ -2008,15 +1901,6 @@ public class S2SBudgetCalculatorServiceImpl implements
         return compensationInfo;
     }
 
-
-    /**
-     * 
-     * This method limits the number of key persons to n, returns list of key persons.
-     * 
-     * @param keyPersons list of {@link KeyPersonDto}
-     * @param n number of key persons that are considered as not extra persons
-     * @return list of {@link KeyPersonDto}
-     */
     protected List<KeyPersonDto> getNKeyPersons(List<KeyPersonDto> keyPersons, int n) {
         KeyPersonDto keyPersonInfo, previousKeyPersonInfo;
         int size = keyPersons.size();
@@ -2054,14 +1938,6 @@ public class S2SBudgetCalculatorServiceImpl implements
         return budgetPersonSalaryService.findBaseSalaryForFirstPeriod(budgetId, person.getPersonId() != null ? person.getPersonId() : person.getRolodexId().toString(), budgetPeriod);
     }
 
-    /**
-     * This method compares a key person with budget person. It checks whether the key person is from PERSON or ROLODEX and matches
-     * the respective person ID with the person in {@link org.kuali.coeus.common.budget.api.personnel.BudgetPersonnelDetailsContract}
-     *
-     * @param keyPersonInfo - key person to compare
-     * @param budgetPersonnelDetails person from BudgetPersonnelDetails
-     * @return true if persons match, false otherwise
-     */
     @Override
     public boolean keyPersonEqualsBudgetPerson(KeyPersonDto keyPersonInfo, BudgetPersonnelDetailsContract budgetPersonnelDetails) {
         boolean equal = false;
@@ -2153,14 +2029,6 @@ public class S2SBudgetCalculatorServiceImpl implements
 
     public void setS2SProposalPersonService(S2SProposalPersonService s2SProposalPersonService) {
         this.s2SProposalPersonService = s2SProposalPersonService;
-    }
-
-    public S2SErrorHandlerService getS2SErrorHandlerService() {
-        return s2SErrorHandlerService;
-    }
-
-    public void setS2SErrorHandlerService(S2SErrorHandlerService s2SErrorHandlerService) {
-        this.s2SErrorHandlerService = s2SErrorHandlerService;
     }
 
     public S2SCommonBudgetService getS2SCommonBudgetService() {

@@ -23,8 +23,6 @@ import org.kuali.coeus.common.api.person.attr.CitizenshipType;
 import org.kuali.coeus.common.api.person.attr.CitizenshipTypeService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
-import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -34,10 +32,6 @@ import java.util.List;
 
 @Component("s2SProposalPersonService")
 public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
-
-    @Autowired
-    @Qualifier("s2SConfigurationService")
-    private S2SConfigurationService s2SConfigurationService;
 
     @Autowired
     @Qualifier("citizenshipTypeService")
@@ -106,7 +100,7 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
      */
     @Override
     public List<ProposalPersonContract> getCoInvestigators(ProposalDevelopmentDocumentContract pdDoc) {
-        List<ProposalPersonContract> investigators = new ArrayList<ProposalPersonContract>();
+        List<ProposalPersonContract> investigators = new ArrayList<>();
         if (pdDoc != null) {
             for (ProposalPersonContract person : pdDoc.getDevelopmentProposal().getProposalPersons()) {
                 //multi-pis are still considered co-i within S2S.
@@ -123,7 +117,7 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
      */
     @Override
     public List<ProposalPersonContract> getKeyPersons(ProposalDevelopmentDocumentContract pdDoc) {
-        List<ProposalPersonContract> keyPersons = new ArrayList<ProposalPersonContract>();
+        List<ProposalPersonContract> keyPersons = new ArrayList<>();
         if (pdDoc != null) {
             for (ProposalPersonContract person : pdDoc.getDevelopmentProposal().getProposalPersons()) {
                 if (person.isKeyPerson()) {

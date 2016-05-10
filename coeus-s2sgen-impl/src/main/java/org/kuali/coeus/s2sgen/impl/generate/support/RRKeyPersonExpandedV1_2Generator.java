@@ -30,7 +30,6 @@ import gov.grants.apply.forms.rrKeyPersonExpanded12V12.RRKeyPersonExpanded12Docu
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlObject;
-import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.common.api.rolodex.RolodexService;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
@@ -53,18 +52,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * This class generates RRKeyPersonExpanded xml object. It uses xmlbeans for
- * generation of the form. Form is generated based on RRKeyPersonExpanded
- * version 1.2 schema.
- * 
- * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
- */
 @FormGenerator("RRKeyPersonExpandedV1_2Generator")
 public class RRKeyPersonExpandedV1_2Generator extends
 		RRKeyPersonExpandedBaseGenerator {
 
-	RolodexContract rolodex;
+	private RolodexContract rolodex;
 
     @Value("http://apply.grants.gov/forms/RR_KeyPersonExpanded_1_2-V1.2")
     private String namespace;
@@ -85,11 +77,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
     @Qualifier("rolodexService")
     private RolodexService rolodexService;
 
-	/*
-	 * This method gives details of Principal Investigator,KeyPersons and the
-	 * corresponding attachments for RRKeyPersons
-	 * 
-	 */
 	private RRKeyPersonExpanded12Document getRRKeyPersonExpanded() {
 		RRKeyPersonExpanded12Document rrKeyPersonExpandedDocument = RRKeyPersonExpanded12Document.Factory
 				.newInstance();
@@ -101,10 +88,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		return rrKeyPersonExpandedDocument;
 	}
 
-	/*
-	 * This method is used to set all attributes of
-	 * RRkeyPersonExpandedAttributes object
-	 */
 	private void setRRKeyPersonExpandedAttributes(
 			RRKeyPersonExpanded12 rrKeyPersonExpanded) {
 		rrKeyPersonExpanded.setFormVersion(FormVersion.v1_2.getVersion());
@@ -131,9 +114,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to add profile type attachment to rrKeyPersonExpanded
-	 */
 	private void setProfileTypeAttachment(
 			RRKeyPersonExpanded12 rrKeyPersonExpanded, NarrativeContract narrative) {
 		AttachedFileDataType attachedFileDataType = getAttachedFileType(narrative);
@@ -147,10 +127,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to add current type pending attachment to
-	 * rrKeyPersonExpanded
-	 */
 	private void setCurrentPendingTypeAttachment(
 			RRKeyPersonExpanded12 rrKeyPersonExpanded,
 			ProposalPersonContract extraPerson) {
@@ -165,10 +141,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to add biosketch type attachment to
-	 * rrKeyPersonExpanded
-	 */
 	private void setBioSketchAttchment(
 			RRKeyPersonExpanded12 rrKeyPersonExpanded,
 			ProposalPersonContract extraPerson) {
@@ -181,12 +153,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		rrKeyPersonExpanded.setBioSketchsAttached(personBioSketch);
 	}
 
-	/*
-	 * This method is used to get PersonProfile details of Principal
-	 * Investigator.It also gives the information about the attachments related
-	 * to the principal investigator.
-	 * 
-	 */
 	private PersonProfileDataType getPersonProfilePI() {
 		PersonProfileDataType profileDataType = PersonProfileDataType.Factory
 				.newInstance();
@@ -198,10 +164,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		return profileDataType;
 	}
 
-	/*
-	 * This method is used to add Person Profile details of Principal
-	 * Investigator and attachments to profile
-	 */
 	private void setPersonalProfileDetailsToProfile(
 			PersonProfileDataType profileDataType, Profile profile,
 			ProposalPersonContract PI) {
@@ -252,9 +214,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		profileDataType.setProfile(profile);
 	}
 
-	/*
-	 * This method is used to add department name to profile
-	 */
 	private void setDepartmentNameToProfile(Profile profile, ProposalPersonContract PI) {
 		if(PI.getHomeUnit() != null && PI.getPerson() != null) {
             final String departmentName =  PI.getPerson().getOrganizationIdentifier();
@@ -267,9 +226,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
         }
 	}
 
-	/*
-	 * This method is used to add directory title to profile
-	 */
 	private void setDirectoryTitleToProfile(Profile profile, ProposalPersonContract PI) {
 		if (PI.getDirectoryTitle() != null) {
 			if (PI.getDirectoryTitle().length() > DIRECTORY_TITLE_MAX_LENGTH) {
@@ -281,9 +237,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to assign rolodex id
-	 */
 	private void assignRolodexId(ProposalPersonContract PI) {
 	    if (PI.getPersonId() != null) {
             pIPersonOrRolodexId = PI.getPersonId();
@@ -294,17 +247,11 @@ public class RRKeyPersonExpandedV1_2Generator extends
         }
 	}
 
-	/*
-	 * This method is used to add attachments related to principle indicator
-	 */
 	private void setAttachments(Profile profile, ProposalPersonContract PI) {
 		setBioSketchAttachment(profile, PI);
 		setCurrentPendingAttachment(profile, PI);
 	}
 
-	/*
-	 * This method is used to add the current pending type attachment to profile
-	 */
 	private void setCurrentPendingAttachment(Profile profile, ProposalPersonContract PI) {
 		AttachedFileDataType supportAttachment = getPernonnelAttachments(pdDoc,
 				PI.getPersonId(), PI.getRolodexId(), CURRENT_PENDING_TYPE);
@@ -316,9 +263,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to add the bioskectch attachment to profile
-	 */
 	private void setBioSketchAttachment(Profile profile, ProposalPersonContract PI) {
 		PersonProfileDataType.Profile.BioSketchsAttached personBioSketch = PersonProfileDataType.Profile.BioSketchsAttached.Factory
 				.newInstance();
@@ -328,15 +272,8 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		profile.setBioSketchsAttached(personBioSketch);
 	}
 
-	/*
-	 * This method returns an array of PersonProfileDataType which contains the
-	 * PersonProfile details and corresponding attachments for a particular Key
-	 * person. The PersonProfileDataType array will have maximum of 39 key
-	 * persons.
-	 * 
-	 */
 	private PersonProfileDataType[] getpersonProfileKeyPerson() {
-		List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<PersonProfileDataType>();
+		List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<>();
 		DevelopmentProposalContract developmentProposal = pdDoc
 				.getDevelopmentProposal();
 		List<? extends ProposalPersonContract> keyPersons = developmentProposal
@@ -359,9 +296,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		return personProfileDataArray;
 	}
 
-	/*
-	 * This method is used to add key person to person profile data type
-	 */
 	private void setKeyPersonToPersonProfileDataType(
 			List<PersonProfileDataType> personProfileDataTypeList,
 			List<ProposalPersonContract> nKeyPersons) {
@@ -387,9 +321,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to add all key person details to key person
-	 */
 	private void setAllkeyPersonDetailsToKeyPerson(ProposalPersonContract keyPerson,
             Profile profileKeyPerson) {
         assignRolodexId(keyPerson);
@@ -468,9 +399,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		}
 	}
 
-	/*
-	 * This method is used to add project role category to profile
-	 */
 	private void setProjectRoleCategoryToProfile(ProposalPersonContract keyPerson,
 			Profile profileKeyPerson) {
 		profileKeyPerson.setProjectRole(ProjectRoleDataType.OTHER_SPECIFY);
@@ -491,16 +419,6 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		profileKeyPerson.setOtherProjectRoleCategory(otherProjectRole);
 	}
 
-	/**
-	 * This method creates {@link XmlObject} of type
-	 * {@link RRKeyPersonExpanded12Document} by populating data from the given
-	 * {@link ProposalDevelopmentDocumentContract}
-	 * 
-	 * @param proposalDevelopmentDocument
-	 *            for which the {@link XmlObject} needs to be created
-	 * @return {@link XmlObject} which is generated using the given
-	 *         {@link ProposalDevelopmentDocumentContract}
-	 */
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
