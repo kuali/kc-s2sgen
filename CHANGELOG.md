@@ -1,6 +1,27 @@
 
 
 ##CURRENT
+* RESKC-1312: not all extra key persons are included on the period when the PI is not listed on the budget period.
+
+  * To reproduce:
+
+  * Create a proposal and add some PI and some Key Personnel to the proposal.
+  * Add an S2S opportunity with the RR Budget 1-3 form. (PA-DD-000)
+  * Add a budget justification attachment
+  * Create a budget
+  * Add enough additional Budget Persons to exceed the 8 row detailed in the RR Budget form.
+  * Assign Personnel:
+  * DO NOT Add the PI to the budget.
+  * Add all but the PI and one other Key person to Period 1, making sure they are all in the Senior Personnel budget category.
+  * Generate periods
+  * Add the remaining Key Person (NOT THE PI) to P2 and assign to later periods.
+  * From Budget Versions: Print the Salary Report to use for comparison
+  * Return to proposal: S2S – Print the RR budget form.
+  * Compare the Salary Report to the Budget and Additional Budget Persons print out.
+  * Notice that the ‘9th’ person on the salary report for each period is missing from the Senior person section of the Budget form, and is not included in the Additional Budget Person’s sheet.
+  * Travis Schneeberger on Tue, 10 May 2016 12:25:45 -0400 [View Commit](../../commit/ac5ade7ded6487c81c501965ac7e845e6d2c48f5)
+
+##coeus-s2sgen-1604.0006
 * RESKC-1288: Fix state validation when DC is used as the state. (#91)
 
   * When adding an organization with a Washington DC address to an S2S proposal, KC flags the state field as an error. DC is an active entry in KC's State table, and it also exists in the XML schema here that's used by the PerformanceSite form here:
