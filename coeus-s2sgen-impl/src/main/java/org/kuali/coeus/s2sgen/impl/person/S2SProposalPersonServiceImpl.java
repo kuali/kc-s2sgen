@@ -23,8 +23,6 @@ import org.kuali.coeus.common.api.person.attr.CitizenshipType;
 import org.kuali.coeus.common.api.person.attr.CitizenshipTypeService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
-import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -36,24 +34,18 @@ import java.util.List;
 public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
 
     @Autowired
-    @Qualifier("s2SConfigurationService")
-    private S2SConfigurationService s2SConfigurationService;
-
-    @Autowired
     @Qualifier("citizenshipTypeService")
     private CitizenshipTypeService citizenshipTypeService;
 
     /**
-     * This method limits the number of key persons to n, returns list of key persons, first n in case firstN is true, or all other
-     * than first n, in case of firstN being false
+     * This method limits the number of key persons to n, returns list of key persons.
      *
      * @param proposalPersons list of {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract}
-     * @param firstN value that determines whether the returned list should contain first n persons or the rest of persons
      * @param n number of key persons that are considered as not extra persons
      * @return list of {@link org.kuali.coeus.propdev.api.person.ProposalPersonContract}
      */
     @Override
-    public List<ProposalPersonContract> getNKeyPersons(List<? extends ProposalPersonContract> proposalPersons, boolean firstN, int n) {
+    public List<ProposalPersonContract> getNKeyPersons(List<? extends ProposalPersonContract> proposalPersons, int n) {
         ProposalPersonContract proposalPerson, previousProposalPerson;
         int size = proposalPersons.size();
 
@@ -71,27 +63,17 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
         }
 
         size = proposalPersons.size();
-        if (firstN) {
-            List<ProposalPersonContract> firstNPersons = new ArrayList<ProposalPersonContract>();
+        List<ProposalPersonContract> firstNPersons = new ArrayList<>();
 
-            // Make sure we don't exceed the size of the list.
-            if (size > n) {
-                size = n;
-            }
-            // remove extras
-            for (int i = 0; i < size; i++) {
-                firstNPersons.add(proposalPersons.get(i));
-            }
-            return firstNPersons;
+        // Make sure we don't exceed the size of the list.
+        if (size > n) {
+            size = n;
         }
-        else {
-            // return extra people
-            List<ProposalPersonContract> extraPersons = new ArrayList<ProposalPersonContract>();
-            for (int i = n; i < size; i++) {
-                extraPersons.add(proposalPersons.get(i));
-            }
-            return extraPersons;
+        // remove extras
+        for (int i = 0; i < size; i++) {
+            firstNPersons.add(proposalPersons.get(i));
         }
+        return firstNPersons;
     }
 
     /**
@@ -118,7 +100,7 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
      */
     @Override
     public List<ProposalPersonContract> getCoInvestigators(ProposalDevelopmentDocumentContract pdDoc) {
-        List<ProposalPersonContract> investigators = new ArrayList<ProposalPersonContract>();
+        List<ProposalPersonContract> investigators = new ArrayList<>();
         if (pdDoc != null) {
             for (ProposalPersonContract person : pdDoc.getDevelopmentProposal().getProposalPersons()) {
                 //multi-pis are still considered co-i within S2S.
@@ -135,7 +117,7 @@ public class S2SProposalPersonServiceImpl implements S2SProposalPersonService {
      */
     @Override
     public List<ProposalPersonContract> getKeyPersons(ProposalDevelopmentDocumentContract pdDoc) {
-        List<ProposalPersonContract> keyPersons = new ArrayList<ProposalPersonContract>();
+        List<ProposalPersonContract> keyPersons = new ArrayList<>();
         if (pdDoc != null) {
             for (ProposalPersonContract person : pdDoc.getDevelopmentProposal().getProposalPersons()) {
                 if (person.isKeyPerson()) {

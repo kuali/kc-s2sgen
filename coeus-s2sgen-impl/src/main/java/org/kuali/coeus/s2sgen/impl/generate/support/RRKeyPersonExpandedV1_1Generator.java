@@ -46,14 +46,8 @@ import org.springframework.core.io.Resource;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
-/**
- * This class generates RRKeyPersonExpanded xml object. It uses xmlbeans for
- * generation of the form. Form is generated based on RRKeyPersonExpanded
- * schema.
- * 
- * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
- */
 @FormGenerator("RRKeyPersonExpandedV1_1Generator")
 public class RRKeyPersonExpandedV1_1Generator extends
 		RRKeyPersonExpandedBaseGenerator {
@@ -73,14 +67,6 @@ public class RRKeyPersonExpandedV1_1Generator extends
     @Value("155")
     private int sortIndex;
 
-	/**
-	 * 
-	 * This method gives details of Principal Investigator,KeyPersons and the
-	 * corresponding attachments for RRKeyPersons
-	 * 
-	 * @return rrKeyPersonExpandedDocument {@link XmlObject} of type
-	 *         RRKeyPersonExpandedDocument.
-	 */
 	private RRKeyPersonExpandedDocument getRRKeyPersonExpanded() {
 
 		RRKeyPersonExpandedDocument rrKeyPersonExpandedDocument = RRKeyPersonExpandedDocument.Factory
@@ -92,13 +78,12 @@ public class RRKeyPersonExpandedV1_1Generator extends
 		rrKeyPersonExpanded.setKeyPersonArray(getpersonProfileKeyPerson());
 		saveKeyPersonAttachmentsToProposal();
 
-		AttachedFileDataType attachedFileDataType = null;
         BioSketchsAttached bioSketchAttached = BioSketchsAttached.Factory.newInstance();
 		for (NarrativeContract narrative : pdDoc.getDevelopmentProposal()
 				.getNarratives()) {
 			if (narrative.getNarrativeType().getCode() != null) {
 				if (Integer.parseInt(narrative.getNarrativeType().getCode()) == BIOSKETCH_DOC_TYPE) {
-					attachedFileDataType = getAttachedFileType(narrative);
+					AttachedFileDataType attachedFileDataType = getAttachedFileType(narrative);
 					if (attachedFileDataType != null) {
 						bioSketchAttached.setBioSketchAttached(attachedFileDataType);
 						rrKeyPersonExpanded.setBioSketchsAttached(bioSketchAttached);
@@ -112,7 +97,7 @@ public class RRKeyPersonExpandedV1_1Generator extends
 				.getNarratives()) {
 			if (narrative.getNarrativeType().getCode() != null) {
 				if (Integer.parseInt(narrative.getNarrativeType().getCode()) == CURRENTPENDING_DOC_TYPE) {
-					attachedFileDataType = getAttachedFileType(narrative);
+					AttachedFileDataType attachedFileDataType = getAttachedFileType(narrative);
 					if (attachedFileDataType != null) {
 						SupportsAttached supportsAttached = SupportsAttached.Factory
 								.newInstance();
@@ -129,7 +114,7 @@ public class RRKeyPersonExpandedV1_1Generator extends
 				.getNarratives()) {
 			if (narrative.getNarrativeType().getCode() != null) {
 				if (Integer.parseInt(narrative.getNarrativeType().getCode()) == PROFILE_TYPE) {
-					attachedFileDataType = getAttachedFileType(narrative);
+					AttachedFileDataType attachedFileDataType = getAttachedFileType(narrative);
 					if (attachedFileDataType != null) {
 						AdditionalProfilesAttached additionalProfilesAttached = AdditionalProfilesAttached.Factory
 								.newInstance();
@@ -146,14 +131,6 @@ public class RRKeyPersonExpandedV1_1Generator extends
 		return rrKeyPersonExpandedDocument;
 	}
 
-	/**
-	 * 
-	 * This method is used to get PersonProfile details of Principal
-	 * Investigator.It also gives the information about the attachments related
-	 * to the principal investigator.
-	 * 
-	 * @return profileDataType(PersonProfileDataType) profile of PI
-	 */
 	private PersonProfileDataType getPersonProfilePI() {
 
 		PersonProfileDataType profileDataType = PersonProfileDataType.Factory
@@ -231,16 +208,6 @@ public class RRKeyPersonExpandedV1_1Generator extends
 		return profileDataType;
 	}
 
-	/**
-	 * 
-	 * This method returns an array of PersonProfileDataType which contains the
-	 * PersonProfile details and corresponding attachments for a particular Key
-	 * person. The PersonProfileDataType array will have maximum of 39 key
-	 * persons.
-	 * 
-	 * @return personProfileDataTypeArray(PersonProfileDataType[]) array of
-	 *         person profiles
-	 */
 	private PersonProfileDataType[] getpersonProfileKeyPerson() {
 
 		List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<PersonProfileDataType>();
@@ -248,9 +215,10 @@ public class RRKeyPersonExpandedV1_1Generator extends
 				.getProposalPersons();
 		Collections.sort(keyPersons, new ProposalPersonComparator());
 		List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(
-				keyPersons, true, MAX_KEY_PERSON_COUNT);
-		extraPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, false,
-				MAX_KEY_PERSON_COUNT);
+				keyPersons, MAX_KEY_PERSON_COUNT);
+		extraPersons = keyPersons.stream()
+				.filter(kp -> !nKeyPersons.contains(kp))
+				.collect(Collectors.toList());
 		if (nKeyPersons.size() > 0) {
 			for (ProposalPersonContract keyPerson : nKeyPersons) {
 				if (pIPersonOrRolodexId != null) {
@@ -376,16 +344,6 @@ public class RRKeyPersonExpandedV1_1Generator extends
 		return personProfileDataArray;
 	}
 
-	/**
-	 * This method creates {@link XmlObject} of type
-	 * {@link RRKeyPersonExpandedDocument} by populating data from the given
-	 * {@link ProposalDevelopmentDocumentContract}
-	 * 
-	 * @param proposalDevelopmentDocument
-	 *            for which the {@link XmlObject} needs to be created
-	 * @return {@link XmlObject} which is generated using the given
-	 *         {@link ProposalDevelopmentDocumentContract}
-	 */
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

@@ -49,13 +49,8 @@ import org.springframework.core.io.Resource;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
-/**
- * Class for generating the XML object for grants.gov RRKeyPersonV1.1. Form is generated using XMLBean classes and is based on
- * RRKeyPerson schema.
- * 
- * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
- */
 @FormGenerator("RRKeyPersonV1_1Generator")
 public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
 
@@ -80,12 +75,6 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
     @Qualifier("rolodexService")
     private RolodexService rolodexService;
 
-    /**
-     * 
-     * This method gives details of Principal Investigator,KeyPersons and the corresponding attachments for RRKeyPerson
-     * 
-     * @return rrKeyPersonDocument {@link XmlObject} of type RRKeyPersonDocument.
-     */
     private RRKeyPersonDocument getRRKeyPerson() {
         RRKeyPersonDocument rrKeyPersonDocument = RRKeyPersonDocument.Factory.newInstance();
         RRKeyPerson rrKeyPerson = RRKeyPerson.Factory.newInstance();
@@ -94,7 +83,7 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
         rrKeyPerson.setKeyPersonArray(getPersonProfileKeyPerson());
         saveKeyPersonAttachmentsToProposal();
         if (extraPersons.size() > 0) {
-    		AttachedFileDataType attachedFileDataType = null;
+    		AttachedFileDataType attachedFileDataType;
             BioSketchsAttached bioSketchAttached = BioSketchsAttached.Factory.newInstance();
             for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
                 if (narrative.getNarrativeType().getCode() != null) {
@@ -131,14 +120,6 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
         return rrKeyPersonDocument;
     }
 
-
-    /**
-     * 
-     * This method is used to get PersonProfile details of Principal Investigator.It also gives the information about the
-     * attachments related to the principal investigator.
-     * 
-     * @return profileDataType(PersonProfileDataType) profile of PI
-     */
     private PersonProfileDataType getPersonProfilePI() {
 
         PersonProfileDataType personProfileDataType = PersonProfileDataType.Factory.newInstance();
@@ -217,21 +198,15 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
         return personProfileDataType;
     }
 
-
-    /**
-     * 
-     * This method returns an array of PersonProfileDataType which contains the PersonProfile details and corresponding attachments
-     * for a particular Key person. The PersonProfileDataType array will have maximum of 7 key persons.
-     * 
-     * @return personProfileDataTypeArray(PersonProfileDataType[]) array of person profiles
-     */
     private PersonProfileDataType[] getPersonProfileKeyPerson() {
 
-        List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<PersonProfileDataType>();
+        List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<>();
         List<? extends ProposalPersonContract> keyPersons = pdDoc.getDevelopmentProposal().getProposalPersons();
         Collections.sort(keyPersons, new ProposalPersonComparator());
-        List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, true, MAX_KEY_PERSON_COUNT);
-        extraPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, false, MAX_KEY_PERSON_COUNT);
+        List<ProposalPersonContract> nKeyPersons = s2SProposalPersonService.getNKeyPersons(keyPersons, MAX_KEY_PERSON_COUNT);
+        extraPersons = keyPersons.stream()
+                .filter(kp -> !nKeyPersons.contains(kp))
+                .collect(Collectors.toList());
 
         if (nKeyPersons.size() > 0) {
             for (ProposalPersonContract keyPerson : nKeyPersons) {
@@ -348,14 +323,6 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
         return personProfileDataTypeArray;
     }
 
-
-    /**
-     * This method creates {@link XmlObject} of type {@link RRKeyPersonDocument} by populating data from the given
-     * {@link ProposalDevelopmentDocumentContract}
-     * 
-     * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
-     * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
-     */
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRKeyPerson();
