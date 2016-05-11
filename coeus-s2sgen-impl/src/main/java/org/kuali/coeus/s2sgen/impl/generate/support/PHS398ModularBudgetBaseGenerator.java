@@ -59,8 +59,6 @@ public abstract class PHS398ModularBudgetBaseGenerator extends
 	/**
 	 * This method is used to get total cost as sum of totalDirectCost and total
 	 * sum of fundRequested.
-	 * 
-	 * @param budgetModular
 	 * @return totalCost
 	 */
 	protected ScaleTwoDecimal getTotalCost(BudgetModularContract budgetModular) {
@@ -80,8 +78,6 @@ public abstract class PHS398ModularBudgetBaseGenerator extends
 	/**
 	 * This method is used to get rolodex Organization FirstName, LastName and
 	 * PhoneNumber as a single string
-	 * 
-	 * @param rolodex
 	 * @return String
 	 */
 	protected String getCognizantFederalAgency(RolodexContract rolodex) {

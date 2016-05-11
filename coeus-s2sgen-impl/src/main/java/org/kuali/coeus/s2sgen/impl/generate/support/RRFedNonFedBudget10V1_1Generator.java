@@ -160,7 +160,6 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
      * DirectCosts,IndirectCosts,CognizantFederalAgency,TotalCosts based on BudgetPeriodInfo for the RRFedNonFedBudget.
      * 
      * @param periodInfo (BudgetPeriodInfo) budget period entry.
-     * @return BudgetYearDataType corresponding to the BudgetSummaryInfo object.
      */
     private void setBudgetYearDataType(RRFedNonFedBudget10 rrFedNonFedBudget,BudgetPeriodDto periodInfo) {
 

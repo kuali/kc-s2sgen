@@ -110,7 +110,6 @@ public class KeyContactsV1_0Generator extends S2SBaseFormGenerator {
      * This method sets Authorized Representative information.
      *  
      * @param roleOnProjectList (RoleOnProject).
-     * @return RoleOnProject.
      */
     private void setAuthorizedRepresentative(List<RoleOnProject> roleOnProjectList) {
         RoleOnProject roleOnProject = null;

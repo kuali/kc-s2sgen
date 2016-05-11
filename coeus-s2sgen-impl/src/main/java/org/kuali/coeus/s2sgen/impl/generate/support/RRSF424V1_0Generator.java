@@ -218,7 +218,6 @@ public class RRSF424V1_0Generator extends RRSF424BaseGenerator {
 	 * This method is to get estimated project funds for RRSF424
 	 *
 	 * @return EstimatedProjectFunding estimated total cost for the project.
-	 * @throws S2SException
 	 */
 	private EstimatedProjectFunding getProjectFunding() throws S2SException {
         ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());

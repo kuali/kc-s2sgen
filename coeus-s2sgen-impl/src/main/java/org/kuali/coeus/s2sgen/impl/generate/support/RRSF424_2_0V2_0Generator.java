@@ -58,7 +58,6 @@ import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 
 import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
 import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
-import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.person.DepartmentalPersonDto;
@@ -168,7 +167,6 @@ public class RRSF424_2_0V2_0Generator extends RRSF424BaseGenerator {
 	 * This method is to get estimated project funds for RRSF424
 	 *
 	 * @return EstimatedProjectFunding estimated total cost for the project.
-	 * @throws S2SException
 	 */
 	private EstimatedProjectFunding getProjectFunding() {
 		EstimatedProjectFunding funding = EstimatedProjectFunding.Factory

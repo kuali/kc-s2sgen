@@ -26,7 +26,6 @@ import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupple
 import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.*;
 import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.AdditionalInformation.*;
 import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.ApplicationType.TypeOfApplication;
-import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.Budget;
 import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.Budget.FederalStipendRequested;
 import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.Budget.InstitutionalBaseSalary;
 import gov.grants.apply.forms.phsFellowshipSupplemental20V20.PHSFellowshipSupplemental20Document.PHSFellowshipSupplemental20.Budget.InstitutionalBaseSalary.AcademicPeriod;
@@ -481,10 +480,7 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
 
 
     /**
-     * This method is to return YesNoDataType enum
-     * 
-     * @param answer
-     * @return
+     * This method is to return YesNoDataType enum.
      */
     private Enum getYesNoEnum(String answer) {
         return answer.equals("Y") ? YesNoDataType.Y_YES : YesNoDataType.N_NO;
@@ -623,8 +619,6 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
 
     /**
      * This method is used to set Narrative Data to ResearchTrainingPlan XMLObject based on NarrativeTypeCode.
-     * 
-     * @param researchTrainingPlan
      */
     private void setNarrativeDataForResearchTrainingPlan(PHSFellowshipSupplemental20 phsFellowshipSupplemental,
             ResearchTrainingPlan researchTrainingPlan) {
@@ -776,8 +770,6 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
 
     /**
      * This method is used to set HumanSubjectInvoved and VertebrateAnimalUsed XMLObject Data.
-     * 
-     * @param researchTrainingPlan
      */
     private void setHumanSubjectInvolvedAndVertebrateAnimalUsed(ResearchTrainingPlan researchTrainingPlan) {
         researchTrainingPlan.setHumanSubjectsInvolved(YesNoDataType.N_NO);       

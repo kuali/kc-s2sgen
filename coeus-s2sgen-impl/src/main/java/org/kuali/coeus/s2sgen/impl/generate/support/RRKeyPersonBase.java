@@ -49,7 +49,6 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.util.*;
-import java.util.List;
 
 public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 	

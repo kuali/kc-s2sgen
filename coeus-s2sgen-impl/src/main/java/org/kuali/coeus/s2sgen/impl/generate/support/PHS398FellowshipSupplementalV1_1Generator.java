@@ -372,8 +372,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	/**
 	 * This method is used to set Narrative Data to ResearchTrainingPlan
 	 * XMLObject based on NarrativeTypeCode.
-	 * 
-	 * @param researchTrainingPlan
+	 *
 	 */
 	private void setNarrativeDataForResearchTrainingPlan(
 			ResearchTrainingPlan researchTrainingPlan) {
@@ -552,8 +551,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	/**
 	 * This method is used to set QuestionnareAnswer data to
 	 * ResearchTrainingPlan XMLObject
-	 * 
-	 * @param researchTrainingPlan
+	 *
 	 */
 	private void setQuestionnareAnswerForResearchTrainingPlan(
 			ResearchTrainingPlan researchTrainingPlan) {
@@ -601,7 +599,6 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	 * This method is used to set HumanSubjectInvoved and VertebrateAnimalUsed
 	 * XMLObject Data.
 	 *
-	 * @param researchTrainingPlan
 	 */
 	private void setHumanSubjectInvolvedAndVertebrateAnimalUsed(
 			ResearchTrainingPlan researchTrainingPlan) {

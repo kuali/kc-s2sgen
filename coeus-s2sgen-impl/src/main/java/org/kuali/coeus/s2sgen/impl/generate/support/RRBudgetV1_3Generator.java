@@ -141,8 +141,6 @@ public class RRBudgetV1_3Generator extends RRBudgetBaseGenerator {
      * 
      * @param periodInfo
      *            (BudgetPeriodInfo) budget period entry.
-     * @return BudgetYear1DataType corresponding to the BudgetSummaryInfo
-     *         object.
      */
     private void setBudgetYearDataType(RRBudget13 rrBudget,BudgetPeriodDto periodInfo) {
 

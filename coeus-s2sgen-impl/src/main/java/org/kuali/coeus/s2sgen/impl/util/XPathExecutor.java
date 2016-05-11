@@ -42,9 +42,8 @@ public class XPathExecutor {
 	/**
 	 * Method evaulates the XPath expression against the xml string.
 	 * Currently utilizing a DOM implementation.
-	 * @param xPath
 	 * @return first node value returned
-	 * @throws Exception
+	 *
 	 */
 	public String execute( String xPath ) throws Exception {
 
@@ -62,7 +61,6 @@ public class XPathExecutor {
 	 * For a given XPath, a DOM Node that the XPath resolve to is returned.
 	 * @param xpath A valid XPath referring to the Node that is to be returned
 	 * @return The Node referred to by the xpath argument.
-	 * @throws TransformerException
 	 */
 	public Node getNode(String xpath)
 		throws TransformerException
