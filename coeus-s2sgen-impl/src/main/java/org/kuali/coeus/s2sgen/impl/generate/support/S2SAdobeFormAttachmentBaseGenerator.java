@@ -68,9 +68,9 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
     //Exclude everything but numbers, alphabets, dots, hyphens and underscores
     private static final String REGEX_TITLE_FILENAME_PATTERN = "([^0-9a-zA-Z\\.\\-_])";
 
-    public ArrayList <String> attachmentList = new ArrayList<String> ();
-    public ArrayList <String> budgetIdList = new ArrayList<String> ();
-    public ArrayList <String> budgetSubawardNumberList = new ArrayList<String> ();
+    public ArrayList <String> attachmentList = new ArrayList<>();
+    public ArrayList <String> budgetIdList = new ArrayList<>();
+    public ArrayList <String> budgetSubawardNumberList = new ArrayList<>();
 
     @Autowired
     @Qualifier("s2SErrorHandlerService")
@@ -194,7 +194,7 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
         attachmentName.append(cleanSubAwardOrganizationName);
         BudgetContract budget = findBudgetFromProposal(pdDoc);
         List<? extends BudgetSubAwardsContract> budgetSubAwardsList = budget.getBudgetSubAwards();
-        ArrayList<String> attachments = new ArrayList<String> ();
+        ArrayList<String> attachments = new ArrayList<>();
         for (BudgetSubAwardsContract budgetSubAward: budgetSubAwardsList) {
             StringBuilder existingAttachmentName = new StringBuilder();
             String subAward_OrganizationName = checkAndReplaceInvalidCharacters(budgetSubAward.getOrganizationName());
@@ -270,7 +270,7 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
      */
     protected List<BudgetSubAwardsContract> getBudgetSubAwards(ProposalDevelopmentDocumentContract proposalDevelopmentDocument,
             String namespace,boolean checkNull) {
-        List<BudgetSubAwardsContract> budgetSubAwardsList = new ArrayList<BudgetSubAwardsContract>();
+        List<BudgetSubAwardsContract> budgetSubAwardsList = new ArrayList<>();
         BudgetContract budget = findBudgetFromProposal(proposalDevelopmentDocument);
         if(budget==null){
             getAuditErrors().add(s2SErrorHandlerService.getError(SUB_AWARD_BUDGET_NOT_FOUND, getFormName()));

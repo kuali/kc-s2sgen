@@ -165,7 +165,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	 */
 	private Budget getBudget() {
 		Budget budget = Budget.Factory.newInstance();
-		Map<Integer, String> budgetMap = new HashMap<Integer, String>();
+		Map<Integer, String> budgetMap = new HashMap<>();
 
 		for (AnswerContract questionnaireAnswer : getPropDevQuestionAnswerService().getQuestionnaireAnswers(pdDoc.getDevelopmentProposal().getProposalNumber(), getNamespace(), getFormName())) {
 			String answer = questionnaireAnswer.getAnswer();
@@ -636,7 +636,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
         stemCells.setStemCellsIndicator(YesNoDataType.N_NO);
         GraduateDegreeSought graduateDegreeSought = GraduateDegreeSought.Factory.newInstance();
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
-        ArrayList<String> cellLinesList = new ArrayList<String>(Arrays.asList(stemCells.getCellLinesArray()));
+        ArrayList<String> cellLinesList = new ArrayList<>(Arrays.asList(stemCells.getCellLinesArray()));
 		for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
 			if (proposalPerson.isInvestigator()) {
 				CitizenshipType citizenShip=s2SProposalPersonService.getCitizenship(proposalPerson);
@@ -821,8 +821,8 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	 * and set data to it from List of ProposalYnq
 	 */
 	private CurrentPriorNRSASupport[] getCurrentPriorNRSASupportArray() {
-        List<CurrentPriorNRSASupport> currentPriorNRSASupportList = new ArrayList<CurrentPriorNRSASupport>();
-        List<AnswerContract> answerList = new ArrayList<AnswerContract>();
+        List<CurrentPriorNRSASupport> currentPriorNRSASupportList = new ArrayList<>();
+        List<AnswerContract> answerList = new ArrayList<>();
         String nsrSupport = null;
         
         List<? extends AnswerHeaderContract> answers = findQuestionnaireWithAnswers(pdDoc.getDevelopmentProposal());
@@ -886,18 +886,13 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
             }
         }
     }
-        Collections.sort(answerList, new Comparator<AnswerContract>() {
-            public int compare(AnswerContract answer1, AnswerContract answer2) {
-                return answer1.getQuestionSeqId().compareTo(
-                        answer2.getQuestionSeqId());
-            }
-
-        });
-        List<CurrentPriorNRSASupport.Level.Enum> levelList = new ArrayList<CurrentPriorNRSASupport.Level.Enum>();
-        List<CurrentPriorNRSASupport.Type.Enum> typeList = new ArrayList<CurrentPriorNRSASupport.Type.Enum>();
-        List<Calendar> startDateList = new ArrayList<Calendar>();
-        List<Calendar> endDateList = new ArrayList<Calendar>();
-        List<String> grantNumberList = new ArrayList<String>();
+        Collections.sort(answerList, (answer1, answer2) -> answer1.getQuestionSeqId().compareTo(
+                answer2.getQuestionSeqId()));
+        List<CurrentPriorNRSASupport.Level.Enum> levelList = new ArrayList<>();
+        List<CurrentPriorNRSASupport.Type.Enum> typeList = new ArrayList<>();
+        List<Calendar> startDateList = new ArrayList<>();
+        List<Calendar> endDateList = new ArrayList<>();
+        List<String> grantNumberList = new ArrayList<>();
         for (AnswerContract questionnaireAnswer : answerList) {
             if (nsrSupport != null && nsrSupport.equals(NSR_SUPPORT_YES)) {
                 if (questionnaireAnswer.getQuestionSeqId() == PRE_OR_POST) {
@@ -956,7 +951,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	private AttachmentGroupMin0Max100DataType getAppendix() {
 		AttachmentGroupMin0Max100DataType attachmentGroupType = AttachmentGroupMin0Max100DataType.Factory
 				.newInstance();
-		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
 		AttachedFileDataType attachedFileDataType = null;
 		for (NarrativeContract narrative : pdDoc.getDevelopmentProposal()
 				.getNarratives()) {
@@ -1078,6 +1073,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
@@ -1090,7 +1086,7 @@ public class PHS398FellowshipSupplementalV1_1Generator extends
 	}
 
     private List<AnswerContract> getAnswers(Long questonnaireQuestionId, AnswerHeaderContract answerHeader) {
-        List<AnswerContract> returnAnswers = new ArrayList<AnswerContract>();
+        List<AnswerContract> returnAnswers = new ArrayList<>();
         if (answerHeader != null) {
             List<? extends AnswerContract> answers = answerHeader.getAnswers();
             for (AnswerContract answer : answers) {

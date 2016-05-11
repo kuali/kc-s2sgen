@@ -310,7 +310,7 @@ public class PHS398ModularBudgetV1_1Generator extends
 						.add(totalDirectCosts);
 			}
 
-			List<IndirectCostItems> indirectCostItemsList = new ArrayList<IndirectCostItems>();
+			List<IndirectCostItems> indirectCostItemsList = new ArrayList<>();
 			for (BudgetModularIdcContract budgetModularIdc : budgetModular
 					.getBudgetModularIdcs()) {
 				IndirectCostItems indirectCostItems = IndirectCostItems.Factory
@@ -980,6 +980,7 @@ public class PHS398ModularBudgetV1_1Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

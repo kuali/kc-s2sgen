@@ -39,7 +39,7 @@ public class BudgetSummaryDto {
     private ScaleTwoDecimal cumDomesticTravel = ScaleTwoDecimal.ZERO;
     private ScaleTwoDecimal cumForeignTravel = ScaleTwoDecimal.ZERO;
 
-    private List<OtherDirectCostInfoDto> otherDirect=new ArrayList<OtherDirectCostInfoDto>();
+    private List<OtherDirectCostInfoDto> otherDirect= new ArrayList<>();
 
     private ScaleTwoDecimal partStipendCost = ScaleTwoDecimal.ZERO;
     private ScaleTwoDecimal partTravelCost = ScaleTwoDecimal.ZERO;

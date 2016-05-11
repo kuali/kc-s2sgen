@@ -169,6 +169,7 @@ public class PHS398ResearchPlan_3_0V3_0Generator extends
      * @return {@link XmlObject} which is generated using the given
      * {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(
             ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;

@@ -840,7 +840,7 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
     private OtherPersonnel getOtherPersonnel(BudgetPeriodDto periodInfo) {
         OtherPersonnel otherPersonnel = OtherPersonnel.Factory.newInstance();
         int OtherpersonalCount = 0;
-        List<OtherPersonnelDataType> otherPersonnelList = new ArrayList<OtherPersonnelDataType>();
+        List<OtherPersonnelDataType> otherPersonnelList = new ArrayList<>();
         OtherPersonnelDataType otherPersonnelDataTypeArray[] = new OtherPersonnelDataType[1];
         if (periodInfo != null) {
             for (OtherPersonnelDto otherPersonnelInfo : periodInfo.getOtherPersonnel()) {
@@ -1059,7 +1059,7 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
     private Equipment getEquipment(BudgetPeriodDto periodInfo) {
         Equipment equipment = Equipment.Factory.newInstance();
         EquipmentList[] equipmentArray = new EquipmentList[0];
-        List<EquipmentList> equipmentArrayList = new ArrayList<EquipmentList>();
+        List<EquipmentList> equipmentArrayList = new ArrayList<>();
         if (periodInfo != null) {
             if (periodInfo.getEquipment() != null && periodInfo.getEquipment() != null && periodInfo.getEquipment().size() > 0) {
                 SummaryDataType totalFund = SummaryDataType.Factory.newInstance();
@@ -1527,7 +1527,7 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
                 && periodInfo.getIndirectCosts().getIndirectCostDetails() != null) {
 
             int IndirectCostCount = 0;
-            List<IndirectCosts.IndirectCost> indirectCostList = new ArrayList<IndirectCosts.IndirectCost>();
+            List<IndirectCosts.IndirectCost> indirectCostList = new ArrayList<>();
             for (IndirectCostDetailsDto indirectCostDetails : periodInfo.getIndirectCosts().getIndirectCostDetails()) {
                 IndirectCosts.IndirectCost indirectCost = IndirectCosts.IndirectCost.Factory.newInstance();
                 indirectCost.setCostType(indirectCostDetails.getCostType());
@@ -1591,6 +1591,7 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRFedNonFedBudget();

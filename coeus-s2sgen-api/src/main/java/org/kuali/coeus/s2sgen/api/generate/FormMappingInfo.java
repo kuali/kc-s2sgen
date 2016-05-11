@@ -100,8 +100,9 @@ public class FormMappingInfo{
         this.userAttachedForm = userAttachedForm;
     }
 
+    @Override
     public String toString() {
-        Map<String, Object> hashMap = new LinkedHashMap<String, Object>();
+        Map<String, Object> hashMap = new LinkedHashMap<>();
         hashMap.put(KEY_NAMESPACE, getNameSpace());
         hashMap.put(KEY_MAIN_CLASS, getGeneratorName());
         hashMap.put(KEY_FORM_NAME, getFormName());

@@ -66,6 +66,7 @@ public class S2SException extends RuntimeException {
         this.messageType = messageType;
     }
 
+    @Override
     public String getMessage() {
         return errorMessage;
     }

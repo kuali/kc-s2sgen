@@ -79,11 +79,11 @@ public class BudgetPeriodDto {
     private ScaleTwoDecimal totalIndirectCostSharing;
 
     public BudgetPeriodDto() {
-        keyPersons = new ArrayList<KeyPersonDto>();
-        extraKeyPersons = new ArrayList<KeyPersonDto>();
-        equipment = new ArrayList<EquipmentDto>();
-        extraEquipment = new ArrayList<EquipmentDto>();
-        otherDirectCosts = new ArrayList<OtherDirectCostInfoDto>();
+        keyPersons = new ArrayList<>();
+        extraKeyPersons = new ArrayList<>();
+        equipment = new ArrayList<>();
+        extraEquipment = new ArrayList<>();
+        otherDirectCosts = new ArrayList<>();
     }
 
     /**

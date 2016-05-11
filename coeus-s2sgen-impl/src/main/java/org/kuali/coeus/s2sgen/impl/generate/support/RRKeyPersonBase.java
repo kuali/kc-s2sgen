@@ -98,10 +98,10 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 	}
 
 	private NarrativeContract[] saveKeyPersonAttachments() {
-		List<String> bioSketchBookMarks = new ArrayList<String>();
-		List<String> curPendBookMarks = new ArrayList<String>();
-		List<byte[]> bioSketchDataList = new ArrayList<byte[]>();
-		List<byte[]> curPendDataList = new ArrayList<byte[]>();
+		List<String> bioSketchBookMarks = new ArrayList<>();
+		List<String> curPendBookMarks = new ArrayList<>();
+		List<byte[]> bioSketchDataList = new ArrayList<>();
+		List<byte[]> curPendDataList = new ArrayList<>();
 
         NarrativeContract[] extraKeyPersonAttachments = new NarrativeContract[2];
 		for (ProposalPersonContract proposalPerson : extraPersons) {
@@ -157,7 +157,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 	private List<ProposalPersonBiographyContract> getPernonnelAttachments(
 			ProposalDevelopmentDocumentContract pdDoc, ProposalPersonContract proposalPerson,
 			String documentType) {
-		List<ProposalPersonBiographyContract> result = new ArrayList<ProposalPersonBiographyContract>();
+		List<ProposalPersonBiographyContract> result = new ArrayList<>();
 		for (ProposalPersonBiographyContract proposalPersonBiography : pdDoc
 				.getDevelopmentProposal().getPropPersonBios()) {
 			String personId = proposalPerson.getPersonId();
@@ -188,7 +188,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 	}
 	
 	protected PersonProfileList.ExtraKeyPerson[] getExtraKeyPersons() {
-		List<PersonProfileList.ExtraKeyPerson> extraPersonList = new ArrayList<PersonProfileList.ExtraKeyPerson>();
+		List<PersonProfileList.ExtraKeyPerson> extraPersonList = new ArrayList<>();
 
 		for (ProposalPersonContract proposalPerson : extraPersons) {
 
@@ -352,7 +352,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 			PersonProfileListDocument  extraPersonDoc = PersonProfileListDocument.Factory.newInstance();
 			extraPersonDoc.setPersonProfileList(extraPersonProfileList);
 			String xmlData = extraPersonDoc.xmlText();
-			Map<String, byte[]> streamMap = new HashMap<String, byte[]>();
+			Map<String, byte[]> streamMap = new HashMap<>();
 			streamMap.put("", xmlData.getBytes());
 
             Source xsltSource = null;
@@ -361,7 +361,7 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
             } catch(IOException e) {
                 throw new RuntimeException("the stream could not be opened",e);
             }
-			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<String, Source>();
+			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<>();
 			xSLTemplateWithBookmarks.put("", xsltSource);
 			
 			

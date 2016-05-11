@@ -117,7 +117,7 @@ public abstract class RRFedNonFedBudgetBaseGenerator extends S2SBaseFormGenerato
         ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
         if(budget != null) {
             for (BudgetPeriodContract period : budget.getBudgetPeriods()) {
-                List<String> participantSupportCode = new ArrayList<String>();
+                List<String> participantSupportCode = new ArrayList<>();
                 participantSupportCode.add(s2sBudgetCalculatorService.getParticipantSupportCategoryCode());
                 List<? extends BudgetLineItemContract> participantSupportLineItems =
                         s2sBudgetCalculatorService.getMatchingLineItems(period.getBudgetLineItems(), participantSupportCode);

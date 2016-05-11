@@ -149,7 +149,7 @@ public class EDSF424SupplementV1_1Generator extends
 							.setIsHumanResearchExempt(YesNoDataType.Y_YES);
 					if (specialReview.getSpecialReviewExemptions() != null
 							&& specialReview.getSpecialReviewExemptions().size() > 0) {
-					    List<String> exemptionTypeCodes = new ArrayList<String>();
+					    List<String> exemptionTypeCodes = new ArrayList<>();
 					    for (ProposalSpecialReviewExemptionContract exemption : specialReview.getSpecialReviewExemptions()) {
 					        exemptionTypeCodes.add(exemption.getExemptionType().getCode());
 					    }
@@ -182,7 +182,7 @@ public class EDSF424SupplementV1_1Generator extends
 						.setIsHumanResearchExempt(YesNoDataType.Y_YES);
 			    		exemptionsNumber
 						.setIsHumanResearchExempt(YesNoDataType.Y_YES);	
-			    		List<String> exemptionTypeCodes = new ArrayList<String>();
+			    		List<String> exemptionTypeCodes = new ArrayList<>();
 					    for (ProposalSpecialReviewExemptionContract exemption : specialReview.getSpecialReviewExemptions()) {
 					        exemptionTypeCodes.add(exemption.getExemptionType().getCode());
 					    }
@@ -235,6 +235,7 @@ public class EDSF424SupplementV1_1Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 

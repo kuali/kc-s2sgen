@@ -57,9 +57,10 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
      * @param errors List list of XPaths of the error nodes.
      * @return validation result true if valid false otherwise.
      */
-    public boolean validate(XmlObject formObject, List<AuditError> errors,String formName) {
+    @Override
+    public boolean validate(XmlObject formObject, List<AuditError> errors, String formName) {
 
-        List<String> formErrors = new ArrayList<String>();
+        List<String> formErrors = new ArrayList<>();
         boolean result = false;
         result = validateXml(formObject, formErrors);
 
@@ -81,7 +82,7 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
      */
     protected boolean validateXml(XmlObject formObject, List<String> errors) {
         XmlOptions validationOptions = new XmlOptions();
-        ArrayList<XmlValidationError> validationErrors = new ArrayList<XmlValidationError>();
+        ArrayList<XmlValidationError> validationErrors = new ArrayList<>();
         validationOptions.setErrorListener(validationErrors);
 
         boolean isValid = formObject.validate(validationOptions);

@@ -225,7 +225,7 @@ PHS398ModularBudgetBaseGenerator{
 	 *         corresponding budget period.
 	 */
 	private Periods[] getPeriods(BudgetContract budget) {
-	    List <Periods> periods =new ArrayList<Periods>();
+	    List <Periods> periods = new ArrayList<>();
 	    for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()){
 	        if (budgetPeriod.getBudgetPeriod() <= BudgetPeriodNum.P5.getNum()) {
 	            Periods period = Periods.Factory.newInstance();
@@ -290,7 +290,7 @@ PHS398ModularBudgetBaseGenerator{
 	                    .add(totalDirectCosts);
 	                }
 
-	                List<IndirectCostItems> indirectCostItemsList = new ArrayList<IndirectCostItems>();
+	                List<IndirectCostItems> indirectCostItemsList = new ArrayList<>();
 	                for (BudgetModularIdcContract budgetModularIdc : budgetModular
 	                        .getBudgetModularIdcs()) {
 	                    IndirectCostItems indirectCostItems = IndirectCostItems.Factory
@@ -369,6 +369,7 @@ PHS398ModularBudgetBaseGenerator{
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

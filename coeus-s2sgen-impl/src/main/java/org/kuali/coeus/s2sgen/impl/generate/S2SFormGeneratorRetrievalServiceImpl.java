@@ -61,7 +61,8 @@ public class S2SFormGeneratorRetrievalServiceImpl implements S2SFormGeneratorRet
      * @throws S2SException if generator could not be loaded
      * @throws org.kuali.coeus.s2sgen.api.core.S2SException if form generator for given namespace is not available
      */
-    public final S2SFormGenerator getS2SGenerator(String proposalNumber,String namespace) throws S2SException {
+    @Override
+    public final S2SFormGenerator getS2SGenerator(String proposalNumber, String namespace) throws S2SException {
         FormMappingInfo formInfo = formMappingService.getFormInfo(namespace,proposalNumber);
         S2SFormGenerator formGenerator = (S2SFormGenerator) applicationContext.getBean(formInfo.getGeneratorName());
 
@@ -77,9 +78,10 @@ public class S2SFormGeneratorRetrievalServiceImpl implements S2SFormGeneratorRet
     }
 
 
+    @Override
     public XmlOptions getXmlOptionsPrefixes() {
         XmlOptions xmlOptions = new XmlOptions();
-        Map<String, String> prefixMap = new HashMap<String, String>();
+        Map<String, String> prefixMap = new HashMap<>();
         prefixMap.put(
                 "http://apply.grants.gov/system/MetaGrantApplication", "");
         prefixMap.put(

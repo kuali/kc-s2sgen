@@ -305,7 +305,7 @@ public class NSFCoverPageV1_1Generator extends NSFCoverPageBaseGenerator {
      * @return AttachedFileDataType[] array of attachments based on the narrative type code.
      */
 	private AttachedFileDataType[] getAttachedFileDataTypes() {
-		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
 		for (NarrativeContract narrative : pdDoc.getDevelopmentProposal()
 				.getNarratives()) {
 			if (narrative.getNarrativeType().getCode() != null) {
@@ -332,6 +332,7 @@ public class NSFCoverPageV1_1Generator extends NSFCoverPageBaseGenerator {
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getNSFCoverPage();

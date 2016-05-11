@@ -131,6 +131,7 @@ public class PHS398TrainingBudgetV1_0Generator extends S2SBaseFormGenerator {
     @Qualifier("s2SCommonBudgetService")
     private S2SCommonBudgetService s2SCommonBudgetService;
 
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
         PHS398TrainingBudgetDocument trainingBudgetTypeDocument = PHS398TrainingBudgetDocument.Factory.newInstance();
         trainingBudgetTypeDocument.setPHS398TrainingBudget(getPHS398TrainingBudget(proposalDevelopmentDocument));
@@ -281,8 +282,8 @@ public class PHS398TrainingBudgetV1_0Generator extends S2SBaseFormGenerator {
             int numPostDocLevel0, numPostDocLevel1, numPostDocLevel2, numPostDocLevel3, numPostDocLevel4 = 0;
             int numPostDocLevel5, numPostDocLevel6, numPostDocLevel7 = 0;
 
-            Map<String,String> hmNonDegree = new HashMap<String,String>();
-            Map<String,String> hmDegree = new HashMap<String,String>();
+            Map<String,String> hmNonDegree = new HashMap<>();
+            Map<String,String> hmDegree = new HashMap<>();
 
             hmNonDegree.put("fulllevel0", "0");
             hmNonDegree.put("fulllevel1", "0");

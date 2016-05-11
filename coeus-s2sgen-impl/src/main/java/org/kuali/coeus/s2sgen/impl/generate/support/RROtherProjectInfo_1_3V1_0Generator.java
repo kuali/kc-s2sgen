@@ -353,7 +353,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		 if(paramValue){
 			if (proposalSpecialReview.getSpecialReviewExemptions() != null && !proposalSpecialReview.getSpecialReviewExemptions().isEmpty()) {
 				humanSubjectsSupplement.setExemptFedReg(YesNoDataType.Y_YES);				
-				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum>();
+				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<>();
 				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum = null;
 				for (ProposalSpecialReviewExemptionContract exemption : proposalSpecialReview.getSpecialReviewExemptions()) {
 					exemptionNumberEnum = HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum
@@ -423,7 +423,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 	
 		if (Integer.parseInt(proposalSpecialReview.getApprovalType().getCode()) == APPROVAL_TYPE_EXCEMPT) {
 			if (proposalSpecialReview.getSpecialReviewExemptions() != null) {
-				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum>();
+				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<>();
 				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum = null;
 				for (ProposalSpecialReviewExemptionContract exemption : proposalSpecialReview.getSpecialReviewExemptions()) {
 					exemptionNumberEnum = HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum
@@ -546,7 +546,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 	 */
 	private AttachedFileDataType[] getAttachedFileDataTypes() {
 		AttachedFileDataType attachedFileDataType = null;
-		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
 		DevelopmentProposalContract developmentProposal = pdDoc
 				.getDevelopmentProposal();
 		for (NarrativeContract narrative : developmentProposal.getNarratives()) {
@@ -571,6 +571,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

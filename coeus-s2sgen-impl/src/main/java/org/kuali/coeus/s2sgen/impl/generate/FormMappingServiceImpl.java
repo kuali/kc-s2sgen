@@ -123,12 +123,12 @@ public class FormMappingServiceImpl implements FormMappingService {
 
     @Override
     public Map<String, FormMappingInfo> getBindings() {
-        return bindings == null ? Collections.<String, FormMappingInfo>emptyMap() : new HashMap<>(bindings);
+        return bindings == null ? Collections.emptyMap() : new HashMap<>(bindings);
     }
 
     @Override
     public Map<Integer, Set<String>> getSortedNameSpaces() {
-        return sortedNameSpaces == null ? Collections.<Integer, Set<String>>emptyMap() : new HashMap<>(sortedNameSpaces);
+        return sortedNameSpaces == null ? Collections.emptyMap() : new HashMap<>(sortedNameSpaces);
     }
 
     @Override

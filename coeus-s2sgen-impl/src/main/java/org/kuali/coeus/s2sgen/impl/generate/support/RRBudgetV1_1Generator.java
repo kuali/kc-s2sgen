@@ -672,7 +672,7 @@ public class RRBudgetV1_1Generator extends RRBudgetBaseGenerator {
 				&& periodInfo.getIndirectCosts() != null
 				&& periodInfo.getIndirectCosts().getIndirectCostDetails() != null) {
 
-			List<IndirectCosts.IndirectCost> indirectCostList = new ArrayList<IndirectCosts.IndirectCost>();
+			List<IndirectCosts.IndirectCost> indirectCostList = new ArrayList<>();
 			int IndirectCostCount = 0;
 			for (IndirectCostDetailsDto indirectCostDetails : periodInfo
 					.getIndirectCosts().getIndirectCostDetails()) {
@@ -790,7 +790,7 @@ public class RRBudgetV1_1Generator extends RRBudgetBaseGenerator {
 		if (periodInfo != null && periodInfo.getEquipment() != null
 				&& periodInfo.getEquipment().size() > 0) {
 			// Evaluating Equipments.
-			List<EquipmentList> equipmentArrayList = new ArrayList<EquipmentList>();
+			List<EquipmentList> equipmentArrayList = new ArrayList<>();
 			ScaleTwoDecimal totalFund = ScaleTwoDecimal.ZERO;
 			for (CostDto costInfo : periodInfo.getEquipment().get(0)
 					.getEquipmentList()) {
@@ -804,7 +804,7 @@ public class RRBudgetV1_1Generator extends RRBudgetBaseGenerator {
 			}
 
 			// Evaluating Extra Equipments.
-			List<CostDto> extraEquipmentArrayList = new ArrayList<CostDto>();
+			List<CostDto> extraEquipmentArrayList = new ArrayList<>();
 			ScaleTwoDecimal totalExtraEquipFund = ScaleTwoDecimal.ZERO;
 			for(CostDto costInfo:periodInfo.getEquipment().get(0).getExtraEquipmentList()){
 				extraEquipmentArrayList.add(costInfo);
@@ -870,7 +870,7 @@ public class RRBudgetV1_1Generator extends RRBudgetBaseGenerator {
 	private OtherPersonnel getOtherPersonnel(BudgetPeriodDto periodInfo) {
 		OtherPersonnel otherPersonnel = OtherPersonnel.Factory.newInstance();
 		int OtherpersonalCount = 0;
-		List<OtherPersonnelDataType> otherPersonnelList = new ArrayList<OtherPersonnelDataType>();
+		List<OtherPersonnelDataType> otherPersonnelList = new ArrayList<>();
 		OtherPersonnelDataType otherPersonnelDataTypeArray[] = new OtherPersonnelDataType[1];
 		if (periodInfo != null) {
 			for (OtherPersonnelDto otherPersonnelInfo : periodInfo
@@ -1075,7 +1075,7 @@ public class RRBudgetV1_1Generator extends RRBudgetBaseGenerator {
 		ScaleTwoDecimal extraFunds = ScaleTwoDecimal.ZERO;
 		if (periodInfo != null) {
 			if (periodInfo.getKeyPersons() != null) {
-			    List<KeyPersonDataType> keyPersonList = new ArrayList<KeyPersonDataType>();
+			    List<KeyPersonDataType> keyPersonList = new ArrayList<>();
 				int keyPersonCount = 0;
 				for (KeyPersonDto keyPerson : periodInfo.getKeyPersons()) {
 				  if(keyPerson.getRole().equals(NID_PD_PI) || hasPersonnelBudget(keyPerson,periodInfo.getBudgetPeriod())){
@@ -1222,6 +1222,7 @@ public class RRBudgetV1_1Generator extends RRBudgetBaseGenerator {
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

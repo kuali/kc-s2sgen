@@ -402,7 +402,8 @@ public class PHS398CoverPageSupplement_2_0V2_0Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
-	public XmlObject getFormObject(
+	@Override
+    public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getCoverPageSupplement();

@@ -47,18 +47,22 @@ public class GenericPrintable implements S2SPrintable {
 		xSLTemplates = templates;
 	}
 
+	@Override
 	public Map<String, byte[]> getAttachments() {
 		return attachments;
 	}
 
+	@Override
 	public Map<String, Source> getXSLTemplateWithBookmarks() {
 		return xSLTemplateWithBookmarks;
 	}
 
+	@Override
 	public List<Source> getXSLTemplates() {
 		return xSLTemplates;
 	}
 
+	@Override
 	public Map<String, byte[]> renderXML() {
 		return streamMap;
 	}

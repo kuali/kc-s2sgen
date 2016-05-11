@@ -98,7 +98,7 @@ public class RRPersonalDataV1_1Generator extends RRPersonalDataBaseGenerator {
      */
     private DirectorType[] getCoProjectDirectoryType() {
         DirectorType[] directorTypes = new DirectorType[0];
-        List<DirectorType> directorTypeList = new ArrayList<DirectorType>();
+        List<DirectorType> directorTypeList = new ArrayList<>();
         if (pdDoc.getDevelopmentProposal().getProposalPersons() != null) {
             ProposalPersonContract CoPI = null;
             for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
@@ -123,6 +123,7 @@ public class RRPersonalDataV1_1Generator extends RRPersonalDataBaseGenerator {
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRPersonalData();

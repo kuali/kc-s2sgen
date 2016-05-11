@@ -175,7 +175,8 @@ public class PerformanceSiteV1_3Generator extends PerformanceSiteBaseGenerator {
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
-	public XmlObject getFormObject(
+	@Override
+    public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPerformanceSite();

@@ -34,8 +34,8 @@ public class EquipmentDto {
 
 
     public EquipmentDto() {
-        cvEquipmentList = new ArrayList<CostDto>();
-        cvExtraEquipmentList = new ArrayList<CostDto>();
+        cvEquipmentList = new ArrayList<>();
+        cvExtraEquipmentList = new ArrayList<>();
 
     }
 

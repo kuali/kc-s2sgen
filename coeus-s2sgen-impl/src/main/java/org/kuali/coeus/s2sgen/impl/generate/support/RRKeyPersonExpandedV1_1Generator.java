@@ -210,7 +210,7 @@ public class RRKeyPersonExpandedV1_1Generator extends
 
 	private PersonProfileDataType[] getpersonProfileKeyPerson() {
 
-		List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<PersonProfileDataType>();
+		List<PersonProfileDataType> personProfileDataTypeList = new ArrayList<>();
 		List<? extends ProposalPersonContract> keyPersons = pdDoc.getDevelopmentProposal()
 				.getProposalPersons();
 		Collections.sort(keyPersons, new ProposalPersonComparator());
@@ -344,6 +344,7 @@ public class RRKeyPersonExpandedV1_1Generator extends
 		return personProfileDataArray;
 	}
 
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

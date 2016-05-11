@@ -217,18 +217,22 @@ public abstract class RRSF424BaseGenerator extends CommonSF424BaseGenerator {
         this.s2SConfigurationService = s2SConfigurationService;
     }
 
+    @Override
     public SponsorHierarchyService getSponsorHierarchyService() {
         return sponsorHierarchyService;
     }
 
+    @Override
     public void setSponsorHierarchyService(SponsorHierarchyService sponsorHierarchyService) {
         this.sponsorHierarchyService = sponsorHierarchyService;
     }
 
+    @Override
     public QuestionAnswerService getQuestionAnswerService() {
         return questionAnswerService;
     }
 
+    @Override
     public void setQuestionAnswerService(QuestionAnswerService questionAnswerService) {
         this.questionAnswerService = questionAnswerService;
     }

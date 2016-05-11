@@ -154,7 +154,7 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
         return phsFellowshipSupplementalDocument;
     }
     private List<AnswerContract> getAnswers(QuestionnaireQuestionContract questionnaireQuestion, AnswerHeaderContract answerHeader) {
-        List<AnswerContract> returnAnswers = new ArrayList<AnswerContract>();
+        List<AnswerContract> returnAnswers = new ArrayList<>();
         if (answerHeader != null) {
             List<? extends AnswerContract> answers = answerHeader.getAnswers();
             for (AnswerContract answer : answers) {
@@ -166,7 +166,7 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
         return returnAnswers;
     }
     private void setQuestionnaireData(PHSFellowshipSupplemental12 phsFellowshipSupplemental) {
-        Map<Integer, String> hmBudgetQuestions = new HashMap<Integer, String>();
+        Map<Integer, String> hmBudgetQuestions = new HashMap<>();
         List<? extends AnswerHeaderContract> answers = findQuestionnaireWithAnswers(pdDoc.getDevelopmentProposal());
         ResearchTrainingPlan researchTrainingPlan = phsFellowshipSupplemental.addNewResearchTrainingPlan();
         setHumanSubjectInvolvedAndVertebrateAnimalUsed(researchTrainingPlan);
@@ -174,7 +174,7 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
         AdditionalInformation additionalInfoType = phsFellowshipSupplemental.addNewAdditionalInformation();
         GraduateDegreeSought graduateDegreeSought = GraduateDegreeSought.Factory.newInstance();
         StemCells stemCellstype = StemCells.Factory.newInstance();
-        List<KirschsteinBean> cvKirsch = new ArrayList<KirschsteinBean>();
+        List<KirschsteinBean> cvKirsch = new ArrayList<>();
         for (AnswerHeaderContract answerHeader : answers) {
             QuestionnaireContract questionnaire = questionAnswerService.findQuestionnaireById(answerHeader.getQuestionnaireId());
             List<? extends QuestionnaireQuestionContract> questionnaireQuestions = questionnaire.getQuestionnaireQuestions();
@@ -412,11 +412,11 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
             additionalInfoType.setStemCells(stemCellstype);
         if (graduateDegreeSought.getDegreeType() != null)
             additionalInfoType.setGraduateDegreeSought(graduateDegreeSought);
-        List<KirschsteinBean> cvType = new ArrayList<KirschsteinBean>();
-        List<KirschsteinBean> cvStart = new ArrayList<KirschsteinBean>();
-        List<KirschsteinBean> cvEnd = new ArrayList<KirschsteinBean>();
-        List<KirschsteinBean> cvLevel = new ArrayList<KirschsteinBean>();
-        List<KirschsteinBean> cvGrant = new ArrayList<KirschsteinBean>();
+        List<KirschsteinBean> cvType = new ArrayList<>();
+        List<KirschsteinBean> cvStart = new ArrayList<>();
+        List<KirschsteinBean> cvEnd = new ArrayList<>();
+        List<KirschsteinBean> cvLevel = new ArrayList<>();
+        List<KirschsteinBean> cvGrant = new ArrayList<>();
         KirschsteinBean kbBean1 = new KirschsteinBean();
         KirschsteinBean kbBean2 = new KirschsteinBean();
         KirschsteinBean kbBean3 = new KirschsteinBean();
@@ -428,7 +428,7 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
                 KirschsteinBean kbBean = new KirschsteinBean();
                 Collections.sort(cvKirsch, BY_QUESTION_NUMBER);
                 for (int i = 0; i < cvKirsch.size(); i++) {
-                    kbBean = (KirschsteinBean) cvKirsch.get(i);
+                    kbBean = cvKirsch.get(i);
                     switch (kbBean.getQuestionId()) {
                         case PRE_OR_POST:
                             cvLevel.add(kbBean);
@@ -449,15 +449,15 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
 
                 }
             }
-            List<CurrentPriorNRSASupport> currentPriorNRSASupportList = new ArrayList<CurrentPriorNRSASupport>();
+            List<CurrentPriorNRSASupport> currentPriorNRSASupportList = new ArrayList<>();
             int numberRepeats = cvLevel.size();
             if (numberRepeats > 0) {
                 for (int j = 0; j < numberRepeats; j++) {
-                    kbBean1 = (KirschsteinBean) cvLevel.get(j);
-                    kbBean2 = (KirschsteinBean) cvType.get(j);
-                    kbBean3 = (KirschsteinBean) cvStart.get(j);
-                    kbBean4 = (KirschsteinBean) cvEnd.get(j);
-                    kbBean5 = (KirschsteinBean) cvGrant.get(j);
+                    kbBean1 = cvLevel.get(j);
+                    kbBean2 = cvType.get(j);
+                    kbBean3 = cvStart.get(j);
+                    kbBean4 = cvEnd.get(j);
+                    kbBean5 = cvGrant.get(j);
                     CurrentPriorNRSASupport nrsaSupportType = CurrentPriorNRSASupport.Factory.newInstance();
                     nrsaSupportType.setLevel(CurrentPriorNRSASupport.Level.Enum.forString(kbBean1.getAnswer()));
                     nrsaSupportType.setType(CurrentPriorNRSASupport.Type.Enum.forString(kbBean2.getAnswer()));
@@ -931,7 +931,7 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
      */
     private AttachmentGroupMin0Max100DataType getAppendix() {
         AttachmentGroupMin0Max100DataType attachmentGroupType = AttachmentGroupMin0Max100DataType.Factory.newInstance();
-        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
         AttachedFileDataType attachedFileDataType = null;
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             if (narrative.getNarrativeType().getCode() != null && Integer.parseInt(narrative.getNarrativeType().getCode()) == APPENDIX) {
@@ -1040,6 +1040,7 @@ public class PHS398FellowshipSupplementalV1_2Generator extends PHS398FellowshipS
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getPHSFellowshipSupplemental12();
