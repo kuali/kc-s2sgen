@@ -109,6 +109,7 @@ public class UserAttachedFormGenerator implements S2SFormGenerator, DynamicNames
         return null;
     }
 
+    @Override
     public List<AuditError> getAuditErrors() {
         return auditErrors;
     }
@@ -117,6 +118,7 @@ public class UserAttachedFormGenerator implements S2SFormGenerator, DynamicNames
         this.auditErrors = auditErrors;
     }
 
+    @Override
     public List<AttachmentData> getAttachments() {
         return attachments;
     }

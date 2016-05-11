@@ -298,15 +298,18 @@ public class RRKeyPersonExpandedV1_0Generator extends RRKeyPersonExpandedBaseGen
         return personProfileDataArray;
     }
 
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRKeyPersonExpanded();
     }
 
+    @Override
     public SponsorHierarchyService getSponsorHierarchyService() {
         return sponsorHierarchyService;
     }
 
+    @Override
     public void setSponsorHierarchyService(SponsorHierarchyService sponsorHierarchyService) {
         this.sponsorHierarchyService = sponsorHierarchyService;
     }

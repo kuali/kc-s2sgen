@@ -760,7 +760,7 @@ public class RRBudgetV1_0Generator extends RRBudgetBaseGenerator {
 	private OtherPersonnel getOtherPersonnel(BudgetPeriodDto periodInfo) {
 		OtherPersonnel otherPersonnel = OtherPersonnel.Factory.newInstance();
 		int OtherpersonalCount = 0;
-		List<OtherPersonnelDataType> otherPersonnelList = new ArrayList<OtherPersonnelDataType>();
+		List<OtherPersonnelDataType> otherPersonnelList = new ArrayList<>();
 		OtherPersonnelDataType otherPersonnelDataTypeArray[] = new OtherPersonnelDataType[1];
 		if (periodInfo != null) {
 			for (OtherPersonnelDto otherPersonnelInfo : periodInfo
@@ -932,7 +932,7 @@ public class RRBudgetV1_0Generator extends RRBudgetBaseGenerator {
 		if (periodInfo != null && periodInfo.getEquipment() != null
 				&& periodInfo.getEquipment().size() > 0) {
 			// Evaluating Equipments.
-			List<EquipmentList> equipmentArrayList = new ArrayList<EquipmentList>();
+			List<EquipmentList> equipmentArrayList = new ArrayList<>();
 			ScaleTwoDecimal totalFund = ScaleTwoDecimal.ZERO;
 			for (CostDto costInfo : periodInfo.getEquipment().get(0)
 					.getEquipmentList()) {
@@ -947,7 +947,7 @@ public class RRBudgetV1_0Generator extends RRBudgetBaseGenerator {
 				equipmentArrayList.add(equipmentList);
 			}
 			// Evaluating Extra Equipments.
-			List<CostDto> extraEquipmentArrayList = new ArrayList<CostDto>();
+			List<CostDto> extraEquipmentArrayList = new ArrayList<>();
 			ScaleTwoDecimal totalExtraEquipFund = ScaleTwoDecimal.ZERO;
 			for(CostDto costInfo:periodInfo.getEquipment().get(0).getExtraEquipmentList()){
 				extraEquipmentArrayList.add(costInfo);
@@ -1206,7 +1206,7 @@ public class RRBudgetV1_0Generator extends RRBudgetBaseGenerator {
 		IndirectCosts indirectCosts = null;
 
 		if (periodInfo != null) {
-			List<IndirectCosts.IndirectCost> indirectCostList = new ArrayList<IndirectCosts.IndirectCost>();
+			List<IndirectCosts.IndirectCost> indirectCostList = new ArrayList<>();
 			int IndirectCostCount = 0;
 			for (IndirectCostDetailsDto indirectCostDetails : periodInfo
 					.getIndirectCosts().getIndirectCostDetails()) {
@@ -1249,6 +1249,7 @@ public class RRBudgetV1_0Generator extends RRBudgetBaseGenerator {
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

@@ -419,6 +419,7 @@ public class RRKeyPersonExpandedV1_2Generator extends
 		profileKeyPerson.setOtherProjectRoleCategory(otherProjectRole);
 	}
 
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

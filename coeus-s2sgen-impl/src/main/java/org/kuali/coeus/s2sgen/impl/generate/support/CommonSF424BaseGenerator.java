@@ -62,11 +62,13 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
     @Qualifier("questionAnswerService")
     private QuestionAnswerService questionAnswerService;
 
+    @Override
     public QuestionAnswerService getQuestionAnswerService() {
 		return questionAnswerService;
 	}
 
-	public void setQuestionAnswerService(QuestionAnswerService questionAnswerService) {
+	@Override
+    public void setQuestionAnswerService(QuestionAnswerService questionAnswerService) {
 		this.questionAnswerService = questionAnswerService;
 	}
 
@@ -77,7 +79,7 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
      * @return Map&lt;String, String&gt; map containing the answers related to EOState Review for a given proposal.
      */
     public Map<String, String> getEOStateReview(ProposalDevelopmentDocumentContract pdDoc) {
-        Map<String, String> stateReview = new HashMap<String, String>();
+        Map<String, String> stateReview = new HashMap<>();
         List<? extends AnswerHeaderContract> answerHeaders = propDevQuestionAnswerService.getQuestionnaireAnswerHeaders(pdDoc.getDevelopmentProposal().getProposalNumber());
         if (!answerHeaders.isEmpty()) {
             for (AnswerContract answers : answerHeaders.get(0).getAnswers()) {
@@ -129,10 +131,12 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
         return divisionName;
     }
 
+    @Override
     public PropDevQuestionAnswerService getPropDevQuestionAnswerService() {
         return propDevQuestionAnswerService;
     }
 
+    @Override
     public void setPropDevQuestionAnswerService(PropDevQuestionAnswerService propDevQuestionAnswerService) {
         this.propDevQuestionAnswerService = propDevQuestionAnswerService;
     }

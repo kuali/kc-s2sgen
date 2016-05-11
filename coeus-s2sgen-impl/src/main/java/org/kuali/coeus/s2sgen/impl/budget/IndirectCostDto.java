@@ -32,7 +32,7 @@ public class IndirectCostDto {
 
 
     public IndirectCostDto() {
-        indirectCostDetails = new ArrayList<IndirectCostDetailsDto>();
+        indirectCostDetails = new ArrayList<>();
 
     }
 

@@ -549,7 +549,7 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
      * @return AttachedFileDataType[] array of attachments for project title attachment type.
      */
     private AttachedFileDataType[] getAttachedFileDataTypes() {
-        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
         AttachedFileDataType attachedFileDataType = null;
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             if (narrative.getNarrativeType().getCode() != null
@@ -570,6 +570,7 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);

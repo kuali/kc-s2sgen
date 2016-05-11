@@ -92,7 +92,7 @@ public class KeyContactsV1_0Generator extends S2SBaseFormGenerator {
         KeyContacts keyContacts = KeyContacts.Factory.newInstance();      
         keyContacts.setFormVersion(FormVersion.v1_0.getVersion());
         
-        List<RoleOnProject> roleOnProjectList = new ArrayList<RoleOnProject>();        
+        List<RoleOnProject> roleOnProjectList = new ArrayList<>();
         setAuthorizedRepresentative(roleOnProjectList);        
         
         keyContacts.setRoleOnProjectArray(roleOnProjectList.toArray(new RoleOnProject[0]));
@@ -129,8 +129,8 @@ public class KeyContactsV1_0Generator extends S2SBaseFormGenerator {
             
             
             
-            AddressDataType address = (AddressDataType) globLibV20Generator.getAddressDataType(aorInfo);
-            roleOnProject.setContactAddress((gov.grants.apply.system.globalLibraryV20.AddressDataType) address);
+            AddressDataType address = globLibV20Generator.getAddressDataType(aorInfo);
+            roleOnProject.setContactAddress(address);
         }
         if (roleOnProject != null) {
             roleOnProjectList.add(roleOnProject);

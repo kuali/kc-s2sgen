@@ -144,11 +144,11 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
             } catch(IOException e) {
                throw new RuntimeException("the stream could not be opened",e);
             }
-			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<String, Source>();
+			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<>();
 			xSLTemplateWithBookmarks.put("", xsltSource);
 
 			String xmlData = additionalEquipmentDoc.xmlText();
-			Map<String, byte[]> streamMap = new HashMap<String, byte[]>();
+			Map<String, byte[]> streamMap = new HashMap<>();
 			streamMap.put("", xmlData.getBytes());
 			GenericPrintable printable = new GenericPrintable();
 			printable.setXSLTemplateWithBookmarks(xSLTemplateWithBookmarks);
@@ -168,7 +168,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
 
 	private gov.grants.apply.coeus.additionalEquipment.AdditionalEquipmentListDocument.AdditionalEquipmentList.EquipmentList[] getEquipmentListArray(
 			List<CostDto> extraEquipmentArrayList) {
-		List<AdditionalEquipmentList.EquipmentList> additionalEquipmentListList = new ArrayList<AdditionalEquipmentList.EquipmentList>();
+		List<AdditionalEquipmentList.EquipmentList> additionalEquipmentListList = new ArrayList<>();
 		AdditionalEquipmentList.EquipmentList equipmentList = null;
 		for (CostDto costInfo : extraEquipmentArrayList) {
 			equipmentList = AdditionalEquipmentList.EquipmentList.Factory
@@ -194,7 +194,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
 			extraKeyPersonList.setKeyPersonsArray(getExtraKeyPersons(periodInfo.getExtraKeyPersons()));
 			extraKeyPersonListDocument.setExtraKeyPersonList(extraKeyPersonList);
 			String xmlData = extraKeyPersonListDocument.xmlText();
-			Map<String, byte[]> streamMap = new HashMap<String, byte[]>();
+			Map<String, byte[]> streamMap = new HashMap<>();
 			streamMap.put("", xmlData.getBytes());
             Source xsltSource = null;
             try {
@@ -202,7 +202,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
             } catch(IOException e) {
                 throw new RuntimeException("the stream could not be opened",e);
             }
-			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<String, Source>();
+			Map<String, Source> xSLTemplateWithBookmarks = new HashMap<>();
 			xSLTemplateWithBookmarks.put("", xsltSource);
 			
 			GenericPrintable printable = new GenericPrintable();
@@ -219,7 +219,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
 		return extraKPNarrative;
 	}
 	private gov.grants.apply.coeus.extraKeyPerson.ExtraKeyPersonListDocument.ExtraKeyPersonList.KeyPersons[] getExtraKeyPersons(List<KeyPersonDto> keyPersonList) {
-		List<gov.grants.apply.coeus.extraKeyPerson.ExtraKeyPersonListDocument.ExtraKeyPersonList.KeyPersons> keypersonslist = new ArrayList<gov.grants.apply.coeus.extraKeyPerson.ExtraKeyPersonListDocument.ExtraKeyPersonList.KeyPersons>();
+		List<gov.grants.apply.coeus.extraKeyPerson.ExtraKeyPersonListDocument.ExtraKeyPersonList.KeyPersons> keypersonslist = new ArrayList<>();
 		for(KeyPersonDto keyPersonInfo : keyPersonList){
 			gov.grants.apply.coeus.extraKeyPerson.ExtraKeyPersonListDocument.ExtraKeyPersonList.KeyPersons keyPerson = gov.grants.apply.coeus.extraKeyPerson.ExtraKeyPersonListDocument.ExtraKeyPersonList.KeyPersons.Factory.newInstance();
 			keyPerson.setFirstName(keyPersonInfo.getFirstName());
@@ -276,7 +276,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
     * @return true if key person has personnel budget else false.
     */
    protected Boolean hasPersonnelBudget(KeyPersonDto keyPerson,int period){
-       List<? extends BudgetLineItemContract> budgetLineItemList = new ArrayList<BudgetLineItemContract>();
+       List<? extends BudgetLineItemContract> budgetLineItemList = new ArrayList<>();
 
        ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
 
@@ -306,7 +306,7 @@ public abstract class RRBudgetBaseGenerator extends S2SBaseFormGenerator {
        ProposalDevelopmentBudgetExtContract budget = s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
        if(budget != null){
            for (BudgetPeriodContract period : budget.getBudgetPeriods()) {
-               List<String> participantSupportCode = new ArrayList<String>();
+               List<String> participantSupportCode = new ArrayList<>();
                participantSupportCode.add(s2sBudgetCalculatorService.getParticipantSupportCategoryCode());
                List<? extends BudgetLineItemContract> participantSupportLineItems =
                        s2sBudgetCalculatorService.getMatchingLineItems(period.getBudgetLineItems(), participantSupportCode);

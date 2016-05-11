@@ -323,6 +323,7 @@ public class RRKeyPersonV1_1Generator extends RRKeyPersonBase {
         return personProfileDataTypeArray;
     }
 
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRKeyPerson();

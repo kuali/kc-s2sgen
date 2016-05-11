@@ -110,8 +110,8 @@ public abstract class ED524BudgetBaseGenerator extends S2SBaseFormGenerator {
 
     public List<? extends BudgetCategoryMapContract> getBudgetCategoryMapListWithoutFilter() {
         if (budgetCategoryMapListWithoutFilter == null) {
-            budgetCategoryMapListWithoutFilter = s2sBudgetCalculatorService.getBudgetCategoryMapList(new ArrayList<String>(),
-                    new ArrayList<String>());
+            budgetCategoryMapListWithoutFilter = s2sBudgetCalculatorService.getBudgetCategoryMapList(new ArrayList<>(),
+                    new ArrayList<>());
         }
 
         return budgetCategoryMapListWithoutFilter;
@@ -179,7 +179,7 @@ public abstract class ED524BudgetBaseGenerator extends S2SBaseFormGenerator {
         }
 
 
-        List<String> filterTargetCategoryCodes = new ArrayList<String>();
+        List<String> filterTargetCategoryCodes = new ArrayList<>();
         filterTargetCategoryCodes.add(TARGET_CATEGORY_CODE_SUBCONTRACT);
         filterTargetCategoryCodes.add(TARGET_CATEGORY_CODE_PURCHASED_EQUIPMENT);
         filterTargetCategoryCodes.add(TARGET_CATEGORY_CODE_MATERIOALS_AND_SUPPLIES);
@@ -188,7 +188,7 @@ public abstract class ED524BudgetBaseGenerator extends S2SBaseFormGenerator {
         filterTargetCategoryCodes.add(TARGET_CATEGORY_CODE_PARTICIPANT_STIPENDS);
 
         List<? extends BudgetCategoryMapContract> budgetCategoryMapList = s2sBudgetCalculatorService.getBudgetCategoryMapList(
-                filterTargetCategoryCodes, new ArrayList<String>());
+                filterTargetCategoryCodes, new ArrayList<>());
 
         for (BudgetCategoryMapContract budgetCategoryMap : budgetCategoryMapList) {
             if (budgetCategoryMap.getCategoryType().equals(RATE_CLASS_TYPE_OTHER)) {

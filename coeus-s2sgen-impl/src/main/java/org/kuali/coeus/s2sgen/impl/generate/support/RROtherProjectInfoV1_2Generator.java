@@ -378,7 +378,7 @@ public class RROtherProjectInfoV1_2Generator extends
 			HumanSubjectsSupplement.ExemptionNumbers exemptionNumbers) {
 		if (Integer.parseInt(proposalSpecialReview.getApprovalType().getCode()) == APPROVAL_TYPE_EXCEMPT) {
 			if (proposalSpecialReview.getSpecialReviewExemptions() != null) {
-				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum>();
+				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<>();
 				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum = null;
 				for (ProposalSpecialReviewExemptionContract exemption : proposalSpecialReview.getSpecialReviewExemptions()) {
 					exemptionNumberEnum = HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum
@@ -499,7 +499,7 @@ public class RROtherProjectInfoV1_2Generator extends
 	 * NarrativeAttachment
 	 */
 	private AttachedFileDataType[] getAttachedFileDataTypes() {
-		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
 		DevelopmentProposalContract developmentProposal = pdDoc
 				.getDevelopmentProposal();
 		for (NarrativeContract narrative : developmentProposal.getNarratives()) {
@@ -525,6 +525,7 @@ public class RROtherProjectInfoV1_2Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

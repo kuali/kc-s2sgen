@@ -191,7 +191,7 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         }
 
         List<? extends BudgetCategoryMapContract> budgetCategoryMapList = s2sBudgetCalculatorService.getBudgetCategoryMapList(
-                new ArrayList<String>(), new ArrayList<String>());
+                new ArrayList<>(), new ArrayList<>());
         for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()) {
             for (BudgetLineItemContract budgetLineItem : budgetPeriod.getBudgetLineItems()) {
                 for (BudgetCategoryMapContract budgetCategoryMap : budgetCategoryMapList) {
@@ -504,6 +504,7 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getSF424A();

@@ -97,7 +97,7 @@ public class RROtherProjectInfoV1_0Generator extends RROtherProjectInfoBaseGener
                         if (proposalSpecialReview.getApprovalType() != null
                                 && Integer.parseInt(proposalSpecialReview.getApprovalType().getCode()) == APPROVAL_TYPE_EXCEMPT) {
                             if (proposalSpecialReview.getSpecialReviewExemptions() != null) {
-                            	List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList=new ArrayList<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum>();
+                            	List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList= new ArrayList<>();
                             	HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum = null;
                                 for (ProposalSpecialReviewExemptionContract exemption : proposalSpecialReview.getSpecialReviewExemptions()) {
                                 	exemptionNumberEnum = HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum.forInt(Integer.parseInt(exemption.getExemptionType().getCode()));
@@ -336,7 +336,7 @@ public class RROtherProjectInfoV1_0Generator extends RROtherProjectInfoBaseGener
      * @return attachedFileDataTypes(AttachedFileDataType[]) Array of other attachments based on narrative type code.
      */
     private AttachedFileDataType[] getAttachedFileDataTypes() {
-        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<AttachedFileDataType>();
+        List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
         AttachedFileDataType attachedFileDataType = null;
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             if (narrative.getNarrativeType().getCode() != null
@@ -357,6 +357,7 @@ public class RROtherProjectInfoV1_0Generator extends RROtherProjectInfoBaseGener
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
+    @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRROtherProjectInfo();

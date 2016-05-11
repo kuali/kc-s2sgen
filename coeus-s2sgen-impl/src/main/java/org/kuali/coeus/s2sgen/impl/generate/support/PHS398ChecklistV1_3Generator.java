@@ -156,7 +156,7 @@ public class PHS398ChecklistV1_3Generator extends PHS398ChecklistBaseGenerator {
 	private static IncomeBudgetPeriod[] getIncomeBudgetPeriod(
 			final List<? extends BudgetProjectIncomeContract> projectIncomes) {
 		//TreeMap Used to maintain the order of the Budget periods.
-		Map<Integer, IncomeBudgetPeriod> incomeBudgetPeriodMap = new TreeMap<Integer, IncomeBudgetPeriod>();
+		Map<Integer, IncomeBudgetPeriod> incomeBudgetPeriodMap = new TreeMap<>();
 		BigDecimal anticipatedAmount;
 		for (BudgetProjectIncomeContract projectIncome : projectIncomes) {
 
@@ -311,6 +311,7 @@ public class PHS398ChecklistV1_3Generator extends PHS398ChecklistBaseGenerator {
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

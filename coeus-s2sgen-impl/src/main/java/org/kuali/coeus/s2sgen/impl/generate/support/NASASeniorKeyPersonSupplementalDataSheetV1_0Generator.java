@@ -176,7 +176,7 @@ public class NASASeniorKeyPersonSupplementalDataSheetV1_0Generator extends
 		extraPersons = keyPersons.stream()
 				.filter(kp -> !nKeyPersons.contains(kp))
 				.collect(Collectors.toList());
-		List<gov.grants.apply.forms.nasaSeniorKeyPersonSupplementalDataSheetV10.NASASeniorKeyPersonSupplementalDataSheetDocument.NASASeniorKeyPersonSupplementalDataSheet.SeniorKeyPerson> seniorKeyPersonList = new LinkedList<gov.grants.apply.forms.nasaSeniorKeyPersonSupplementalDataSheetV10.NASASeniorKeyPersonSupplementalDataSheetDocument.NASASeniorKeyPersonSupplementalDataSheet.SeniorKeyPerson>();
+		List<gov.grants.apply.forms.nasaSeniorKeyPersonSupplementalDataSheetV10.NASASeniorKeyPersonSupplementalDataSheetDocument.NASASeniorKeyPersonSupplementalDataSheet.SeniorKeyPerson> seniorKeyPersonList = new LinkedList<>();
 		for (ProposalPersonContract proposalPerson : nKeyPersons) {
 			seniorKeyPersonList.add(getPerson(proposalPerson));
 		}
@@ -386,6 +386,7 @@ public class NASASeniorKeyPersonSupplementalDataSheetV1_0Generator extends
 	 * @return {@link XmlObject} which is generated using the given
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
+	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;

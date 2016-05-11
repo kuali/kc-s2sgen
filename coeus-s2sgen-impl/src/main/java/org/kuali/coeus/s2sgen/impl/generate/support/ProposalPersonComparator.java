@@ -41,6 +41,7 @@ public class ProposalPersonComparator implements Comparator<ProposalPersonContra
      * @param person2
      * @return int
      */
+    @Override
     public int compare(ProposalPersonContract person1, ProposalPersonContract person2) {
         int retval = 0;
                

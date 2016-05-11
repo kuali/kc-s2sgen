@@ -161,6 +161,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
      * @param printableArtifacts to be printed
      * @return PDF bytes
      */
+    @Override
     public S2SFile print(S2SPrintable printableArtifacts) {
         List<S2SPrintable> printables = new ArrayList<>();
         printables.add(printableArtifacts);
@@ -174,6 +175,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
      * @param printableArtifactList List of printableArtifact to be printed
      * @return {@link S2SFile} PDF bytes
      */
+    @Override
     public S2SFile print(List<S2SPrintable> printableArtifactList) {
         return print(printableArtifactList, false);
     }
