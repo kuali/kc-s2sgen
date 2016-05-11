@@ -68,9 +68,9 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
     //Exclude everything but numbers, alphabets, dots, hyphens and underscores
     private static final String REGEX_TITLE_FILENAME_PATTERN = "([^0-9a-zA-Z\\.\\-_])";
 
-    public ArrayList <String> attachmentList = new ArrayList<>();
-    public ArrayList <String> budgetIdList = new ArrayList<>();
-    public ArrayList <String> budgetSubawardNumberList = new ArrayList<>();
+    public final ArrayList <String> attachmentList = new ArrayList<>();
+    public final ArrayList <String> budgetIdList = new ArrayList<>();
+    public final ArrayList <String> budgetSubawardNumberList = new ArrayList<>();
 
     @Autowired
     @Qualifier("s2SErrorHandlerService")
@@ -115,14 +115,8 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
             DocumentBuilder builder = factory.newDocumentBuilder();
             return builder.parse(new InputSource(new StringReader(xmlSource)));
         }
-        catch (SAXException ex) {
-            throw new S2SException(ex.getMessage());
-        }
-        catch (ParserConfigurationException ex) {
-            throw new S2SException(ex.getMessage());
-        }
-        catch (IOException ex) {
-            throw new S2SException(ex.getMessage());
+        catch (SAXException | IOException | ParserConfigurationException ex) {
+            throw new S2SException(ex.getMessage(), ex);
         }
     }
 
@@ -192,7 +186,7 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
         // with underscores.
         String cleanSubAwardOrganizationName = checkAndReplaceInvalidCharacters(budgetSubAwards.getOrganizationName());
         attachmentName.append(cleanSubAwardOrganizationName);
-        BudgetContract budget = findBudgetFromProposal(pdDoc);
+        BudgetContract budget = findBudgetFromProposal();
         List<? extends BudgetSubAwardsContract> budgetSubAwardsList = budget.getBudgetSubAwards();
         ArrayList<String> attachments = new ArrayList<>();
         for (BudgetSubAwardsContract budgetSubAward: budgetSubAwardsList) {
@@ -271,7 +265,7 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
     protected List<BudgetSubAwardsContract> getBudgetSubAwards(ProposalDevelopmentDocumentContract proposalDevelopmentDocument,
             String namespace,boolean checkNull) {
         List<BudgetSubAwardsContract> budgetSubAwardsList = new ArrayList<>();
-        BudgetContract budget = findBudgetFromProposal(proposalDevelopmentDocument);
+        BudgetContract budget = findBudgetFromProposal();
         if(budget==null){
             getAuditErrors().add(s2SErrorHandlerService.getError(SUB_AWARD_BUDGET_NOT_FOUND, getFormName()));
         }else{
@@ -299,7 +293,7 @@ public abstract class S2SAdobeFormAttachmentBaseGenerator extends S2SBaseFormGen
         return budgetSubAwardsList;
     }
 
-    private BudgetContract findBudgetFromProposal(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    private BudgetContract findBudgetFromProposal() {
         return s2SCommonBudgetService.getBudget(pdDoc.getDevelopmentProposal());
     }
 

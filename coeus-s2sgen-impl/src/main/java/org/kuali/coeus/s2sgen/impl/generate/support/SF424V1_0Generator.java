@@ -551,8 +551,7 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 						.getOrganization().getOrganizationTypes().size() > 0) {
 			orgTypeCode = pdDoc.getDevelopmentProposal()
 					.getApplicantOrganization().getOrganization()
-					.getOrganizationTypes().get(0).getOrganizationTypeList().getCode()
-					.intValue();
+					.getOrganizationTypes().get(0).getOrganizationTypeList().getCode();
 		}
 		switch (orgTypeCode) {
 		case 1: {

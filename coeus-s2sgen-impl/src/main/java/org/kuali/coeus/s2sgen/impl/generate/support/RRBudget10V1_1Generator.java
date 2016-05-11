@@ -251,11 +251,11 @@ public class RRBudget10V1_1Generator extends RRBudgetBaseGenerator {
                 for (int j = 0; j < cvOthers.size(); j++) {
                     Map<String, String> hmCosts = cvOthers.get(j);
                     if (j==0){
-                        budgetSummary.setCumulativeOther1DirectCost(new BigDecimal(hmCosts.get(CostConstants.KEY_COST).toString()));
+                        budgetSummary.setCumulativeOther1DirectCost(new BigDecimal(hmCosts.get(CostConstants.KEY_COST)));
                        } else if (j==1) {
-                           budgetSummary.setCumulativeOther2DirectCost(new BigDecimal(hmCosts.get(CostConstants.KEY_COST).toString()));
+                           budgetSummary.setCumulativeOther2DirectCost(new BigDecimal(hmCosts.get(CostConstants.KEY_COST)));
                        } else {
-                        budgetSummary.setCumulativeOther3DirectCost(new BigDecimal(hmCosts.get(CostConstants.KEY_COST).toString()));
+                        budgetSummary.setCumulativeOther3DirectCost(new BigDecimal(hmCosts.get(CostConstants.KEY_COST)));
                      }
                 }
                 budgetSummary.setCumulativeTotalFundsRequestedDirectCosts(budgetSummaryData

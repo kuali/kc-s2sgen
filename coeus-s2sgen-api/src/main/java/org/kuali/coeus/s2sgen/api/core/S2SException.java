@@ -78,9 +78,7 @@ public class S2SException extends RuntimeException {
     public String[] getMessageWithParams() {
         String[] messageWithParams = new String[getParams().length+1];
         messageWithParams[0]=errorMessage;
-        for (int i = 1; i < messageWithParams.length; i++) {
-            messageWithParams[i]=params[i-1];
-        }
+        System.arraycopy(params, 0, messageWithParams, 1, messageWithParams.length - 1);
         return messageWithParams;
     }
 

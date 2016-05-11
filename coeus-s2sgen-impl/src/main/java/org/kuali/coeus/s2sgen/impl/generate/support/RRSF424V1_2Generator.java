@@ -856,8 +856,7 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 		return title;
 	}
 	private String getAgencyRoutingNumber(){
-	       String sponserProgramCode= pdDoc.getDevelopmentProposal().getAgencyProgramCode();
-	       return sponserProgramCode;
+		return pdDoc.getDevelopmentProposal().getAgencyProgramCode();
 	    }
 	/**
 	 * This method creates {@link XmlObject} of type {@link RRSF42412Document}

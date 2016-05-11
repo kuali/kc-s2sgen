@@ -345,7 +345,7 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
             }
             if (budgetSummaryData.getCumTotalCosts() != null && budgetSummaryData.getCumTotalDirectCostSharing() != null) {
                 directIndirectCosts.setFederalSummary(budgetSummaryData.getCumTotalCosts().bigDecimalValue());
-                directIndirectCosts.setNonFederalSummary((cumTotalDirectCostSharing.bigDecimalValue()).add(budgetSummaryData.getCumTotalIndirectCostSharing().bigDecimalValue()));;
+                directIndirectCosts.setNonFederalSummary((cumTotalDirectCostSharing.bigDecimalValue()).add(budgetSummaryData.getCumTotalIndirectCostSharing().bigDecimalValue()));
                 directIndirectCosts.setTotalFedNonFedSummary((budgetSummaryData.getCumTotalCosts().bigDecimalValue()).add(
                        cumTotalDirectCostSharing.bigDecimalValue()).add(budgetSummaryData.getCumTotalIndirectCostSharing().bigDecimalValue()));
             }
@@ -364,7 +364,7 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
      * BudgetSummaryInfo for the RRFedNonFedBudget.
      * 
      * @param budgetSummaryData (BudgetSummaryInfo) budget summary entry.
-     * @return CumulativeOtherDirect corresponding to the BudgetSummaryInfo object.
+
      */
     private void setCumulativeOtherDirect(BudgetSummary budgetSummary, BudgetSummaryDto budgetSummaryData) {
         SummaryDataType summary = SummaryDataType.Factory.newInstance();
@@ -506,7 +506,6 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
      * CumulativeNoofTrainees based on BudgetSummaryInfo for the RRFedNonFedBudget.
      * 
      * @param budgetSummaryData (BudgetSummaryInfo) budget summary entry.
-     * @return CumulativeTrainee corresponding to the BudgetSummaryInfo object.
      */
     private void setCumulativeTrainee(BudgetSummary budgetSummary,BudgetSummaryDto budgetSummaryData) {
         SummaryDataType summaryTraineeCosts = SummaryDataType.Factory.newInstance();
@@ -626,7 +625,6 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
      * form RRFedNonFedBudget.
      * 
      * @param budgetSummaryData (BudgetSummaryInfo) budget summary entry.
-     * @return CumulativeEquipments corresponding to the BudgetSummaryInfo object.
      */
     private void setCumulativeEquipments(BudgetSummary budgetSummary, BudgetSummaryDto budgetSummaryData) {
 
@@ -654,7 +652,6 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
      * CumulativeForeignTravelCosts based on BudgetSummaryInfo for the RRFedNonFedBudget.
      * 
      * @param budgetSummaryData (BudgetSummaryInfo) budget summary entry.
-     * @return CumulativeTravels corresponding to the BudgetSummaryInfo object.
      */
     private void setCumulativeTravels(BudgetSummary budgetSummary, BudgetSummaryDto budgetSummaryData) {
         SummaryDataType summary = SummaryDataType.Factory.newInstance();
@@ -1581,7 +1578,6 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
      * FundsRequested,SummerMonths,and RequestedSalary based on KeyPersonInfo for the OtherPersonnel.
      * 
      * @param compensation (CompensationInfo) compensation entry.
-     * @return SectBCompensationDataType corresponding to the CompensationInfo object.
      */
     private void setSectBCompensationDataType(OtherPersonnelDataType otherPersonnelDataType,CompensationDto compensation) {
 

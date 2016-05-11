@@ -218,7 +218,7 @@ public class PHS398ChecklistV1_0Generator extends PHS398ChecklistBaseGenerator {
 			IncomeBudgetPeriod incomeBudgPeriod = incomeBudgetPeriodMap.get(budgetPeriodNumber);
 			if (incomeBudgPeriod == null) {
 				incomeBudgPeriod = IncomeBudgetPeriod.Factory.newInstance();
-				incomeBudgPeriod.setBudgetPeriod(budgetPeriodNumber.intValue());
+				incomeBudgPeriod.setBudgetPeriod(budgetPeriodNumber);
 				anticipatedAmount = BigDecimal.ZERO;
 			} else {
 				anticipatedAmount = incomeBudgPeriod.getAnticipatedAmount();

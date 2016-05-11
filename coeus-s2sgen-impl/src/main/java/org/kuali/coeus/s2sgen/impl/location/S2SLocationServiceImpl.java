@@ -66,8 +66,7 @@ public class S2SLocationServiceImpl implements S2SLocationService {
     public StateContract getStateFromName(String countryAlternateCode, String stateName) {
         CountryContract country = getCountryFromCode(countryAlternateCode);
 
-        StateContract state = getKcStateService().getState(country.getCode(), stateName);
-        return state;
+        return getKcStateService().getState(country.getCode(), stateName);
     }
 
     public KcStateService getKcStateService() {

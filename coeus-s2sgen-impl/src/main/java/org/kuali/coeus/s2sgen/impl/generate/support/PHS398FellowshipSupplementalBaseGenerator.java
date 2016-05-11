@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -105,9 +106,7 @@ public abstract class PHS398FellowshipSupplementalBaseGenerator extends
         String costElementsParamValue = s2SConfigurationService.getValueAsString(costElementParam);
         String[] costElements = costElementsParamValue.split(",");
         List<String> costElementList = new ArrayList<>();
-        for (int i = 0; i < costElements.length; i++) {
-            costElementList.add(costElements[i]);
-        }
+        Collections.addAll(costElementList, costElements);
         return costElementList;
     }
 

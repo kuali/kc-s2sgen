@@ -85,19 +85,13 @@ public abstract class CommonSF424BaseGenerator extends S2SBaseFormGenerator  {
             for (AnswerContract answers : answerHeaders.get(0).getAnswers()) {
             	Integer questionSeqId = getQuestionAnswerService().findQuestionById(answers.getQuestionId()).getQuestionSeqId();
                 if (questionSeqId != null && questionSeqId.equals(PROPOSAL_YNQ_QUESTION_129)) {
-                    if (stateReview.get(YNQ_ANSWER) == null) {
-                        stateReview.put(YNQ_ANSWER, answers.getAnswer());
-                    }
+                    stateReview.putIfAbsent(YNQ_ANSWER, answers.getAnswer());
                 }
                 if (questionSeqId != null && questionSeqId.equals(PROPOSAL_YNQ_QUESTION_130)) {
-                    if (stateReview.get(YNQ_REVIEW_DATE) == null) {
-                        stateReview.put(YNQ_REVIEW_DATE, answers.getAnswer());
-                    }
+                    stateReview.putIfAbsent(YNQ_REVIEW_DATE, answers.getAnswer());
                 }
                 if (questionSeqId != null && questionSeqId.equals(PROPOSAL_YNQ_QUESTION_131)) {
-                    if (stateReview.get(YNQ_STATE_REVIEW_DATA) == null) {
-                        stateReview.put(YNQ_STATE_REVIEW_DATA, answers.getAnswer());
-                    }
+                    stateReview.putIfAbsent(YNQ_STATE_REVIEW_DATA, answers.getAnswer());
                 }
             }
         }
