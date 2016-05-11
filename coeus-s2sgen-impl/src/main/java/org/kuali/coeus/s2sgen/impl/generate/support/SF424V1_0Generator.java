@@ -319,7 +319,6 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 	 * TotalEstimatedAmount
 	 *
 	 * @return Budget total estimated budget details.
-	 * @throws S2SException
 	 */
 	private Budget getBudget() throws S2SException {
 

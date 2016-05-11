@@ -61,7 +61,6 @@ public interface S2SBudgetCalculatorService {
      * 
      * @param pdDoc ProposalDevelopmentDocumentContract.
      * @return BudgetSummaryInfo corresponding to the ProposalDevelopmentDocumentContract object.
-     * @throws S2SException
      */
     BudgetSummaryDto getBudgetInfo(ProposalDevelopmentDocumentContract pdDoc, List<BudgetPeriodDto> budgetperiodList) throws S2SException;
 
@@ -72,7 +71,6 @@ public interface S2SBudgetCalculatorService {
      * 
      * @param pdDoc ProposalDevelopmentDocumentContract
      * @return a List of BudgetPeriodInfo corresponding to the ProposalDevelopmentDocumentContract object.
-     * @throws S2SException
      */
     List<BudgetPeriodDto> getBudgetPeriods(ProposalDevelopmentDocumentContract pdDoc) throws S2SException;
 

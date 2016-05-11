@@ -20,7 +20,6 @@ package org.kuali.coeus.s2sgen.impl.generate.support;
 
 import gov.grants.apply.forms.rrBudgetV11.*;
 import gov.grants.apply.forms.rrBudgetV11.BudgetYearDataType.*;
-import gov.grants.apply.forms.rrBudgetV11.BudgetYearDataType.BudgetPeriod;
 import gov.grants.apply.forms.rrBudgetV11.BudgetYearDataType.Equipment.AdditionalEquipmentsAttachment;
 import gov.grants.apply.forms.rrBudgetV11.BudgetYearDataType.Equipment.EquipmentList;
 import gov.grants.apply.forms.rrBudgetV11.BudgetYearDataType.Equipment.TotalFundForAttachedEquipment;

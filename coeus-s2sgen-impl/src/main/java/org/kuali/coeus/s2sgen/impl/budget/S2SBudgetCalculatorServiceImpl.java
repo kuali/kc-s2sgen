@@ -31,7 +31,6 @@ import org.kuali.coeus.common.budget.api.rate.RateClassContract;
 import org.kuali.coeus.common.api.org.OrganizationRepositoryService;
 import org.kuali.coeus.common.api.person.KcPersonContract;
 import org.kuali.coeus.common.budget.api.rate.RateClassType;
-import org.kuali.coeus.common.budget.api.personnel.BudgetPersonContract;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.propdev.api.budget.ProposalDevelopmentBudgetExtContract;
 import org.kuali.coeus.propdev.api.budget.modular.BudgetModularIdcContract;
@@ -49,7 +48,6 @@ import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.common.budget.api.core.category.BudgetCategoryMapContract;
 import org.kuali.coeus.common.budget.api.core.category.BudgetCategoryMapService;
 import org.kuali.coeus.common.budget.api.core.category.BudgetCategoryMappingContract;
-import org.kuali.coeus.common.budget.api.personnel.BudgetPersonSalaryService;
 import org.kuali.coeus.common.api.sponsor.hierarchy.SponsorHierarchyService;
 
 import org.springframework.beans.factory.annotation.Autowired;

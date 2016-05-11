@@ -82,7 +82,6 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 	 * 
 	 * @param pdDocContract
 	 *            Proposal Development Document.
-	 * @throws S2SException
 	 */
     @Override
 	public FormValidationResult validateForms(
@@ -107,7 +106,6 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
 	 *            List of attachments.
 	 * @param pdDoc
 	 *            Proposal Development Document.
-	 * @throws S2SException
 	 */
 	protected FormGenerationResult generateAndValidateForms(Forms forms,
 			List<AttachmentData> attList, ProposalDevelopmentDocumentContract pdDoc) throws S2SException {
@@ -182,7 +180,6 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
      * @param forms
      *            {@link gov.grants.apply.system.metaGrantApplication.GrantApplicationDocument.GrantApplication.Forms} generated XML forms
      * @return {@link GrantApplicationDocument} populated with forms
-     * @throws S2SException
      */
     protected String getGrantApplicationDocument(
             ProposalDevelopmentDocumentContract pdDoc, GrantApplicationDocument.GrantApplication.Forms forms) throws S2SException {

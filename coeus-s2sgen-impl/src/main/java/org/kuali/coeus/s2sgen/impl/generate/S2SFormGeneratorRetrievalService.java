@@ -36,13 +36,11 @@ public interface S2SFormGeneratorRetrievalService {
      * 
      * @param nameSpace {@link String}
      * @return S2SFormGenerator form generator instances corresponding to the name space.
-     * @throws S2SException
      *
      */
     S2SFormGenerator getS2SGenerator(String proposalNumber,String nameSpace) throws S2SException;
     /**
      * This method is to get the namespace prefixes for some individual forms like, Subaward Budget and PHS398_ResearchTrainingProgramPlan
-     * @return
      */
     XmlOptions getXmlOptionsPrefixes();
 

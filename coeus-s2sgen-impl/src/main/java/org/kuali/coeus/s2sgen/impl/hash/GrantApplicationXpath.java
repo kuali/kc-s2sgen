@@ -92,7 +92,6 @@ public class GrantApplicationXpath
      * 
      * @return A DOM Node representing the <code>&lt;grant:Forms&gt;</code>
      *         tag in the XML document.
-     * @throws TransformerException
      */
     public Node getFormsNode()
         throws TransformerException
@@ -106,7 +105,6 @@ public class GrantApplicationXpath
      * @return A DOM Node representing the
      *         <code>&lt;header:GrantSubmissionHeader&gt;</code> tag in the
      *         XML document.
-     * @throws TransformerException
      */
     public Node getHeaderNode()
         throws TransformerException
@@ -120,7 +118,6 @@ public class GrantApplicationXpath
      * 
      * @return A DOM Node representing the <code>&lt;glob:HashValue&gt;</code>
      *         tag in the XML document.
-     * @throws TransformerException
      */
     public Node getHashNode()
         throws TransformerException
@@ -146,7 +143,7 @@ public class GrantApplicationXpath
      * @return The value that is currently in the
      *         <code>&lt;glob:HashValue&gt;</code> element or
      *         <code>null</code> if the element does not exist or is empty.
-     * @throws Exception
+     *
      */
     public String getHeaderHashValue()
         throws Exception
@@ -192,7 +189,7 @@ public class GrantApplicationXpath
 
     /**
      * @return the string of the opportunity title.
-     * @throws Exception
+     *
      */
     public String getOpportunityTitle()
         throws Exception
@@ -202,7 +199,7 @@ public class GrantApplicationXpath
 
     /**
      * @return the string of the competition ID.
-     * @throws Exception
+     *
      */
     public String getCompetitionId()
         throws Exception
@@ -212,7 +209,7 @@ public class GrantApplicationXpath
 
     /**
      * @return returns the submissionTitle.
-     * @throws Exception
+     *
      */
     public String getSubmissionTitle()
         throws Exception

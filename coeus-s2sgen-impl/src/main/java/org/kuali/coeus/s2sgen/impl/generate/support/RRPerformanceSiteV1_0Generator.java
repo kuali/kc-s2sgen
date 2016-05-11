@@ -117,8 +117,6 @@ public class RRPerformanceSiteV1_0Generator extends RRPerformanceSiteBaseGenerat
 
     /**
      * This method is to set the rolodex details to AddressType
-     * @param address
-     * @param rolodex
      */
     private void setAddress(Address address, RolodexContract rolodex) {
         if (rolodex != null) {

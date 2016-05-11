@@ -32,7 +32,6 @@ import org.kuali.coeus.propdev.api.location.CongressionalDistrictContract;
 import org.kuali.coeus.propdev.api.location.ProposalSiteContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
-import org.kuali.coeus.s2sgen.impl.generate.S2SBaseFormGenerator;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 
 import org.springframework.beans.factory.annotation.Autowired;

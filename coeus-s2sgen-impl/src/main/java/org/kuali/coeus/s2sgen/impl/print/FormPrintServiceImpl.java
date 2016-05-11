@@ -24,7 +24,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
-import org.apache.xpath.XPathAPI;
 import org.kuali.coeus.common.budget.api.core.BudgetContract;
 import org.kuali.coeus.propdev.api.budget.subaward.BudgetSubAwardAttachmentContract;
 import org.kuali.coeus.propdev.api.core.DevelopmentProposalContract;
@@ -66,7 +65,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.io.StringWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -485,9 +483,7 @@ public class FormPrintServiceImpl implements FormPrintService {
 	 *            GrantApplicationDocument object of the submitted form.
 	 * @return XmlObject form object corresponding to the
 	 *         GrantApplicationDocument and FormMappingInfo objects.
-	 * @throws S2SException
 	 */
-
 	protected XmlObject getFormObject(GrantApplicationDocument submittedXml) {
 		Forms forms = submittedXml.getGrantApplication().getForms();
 		return forms.newCursor().getObject();

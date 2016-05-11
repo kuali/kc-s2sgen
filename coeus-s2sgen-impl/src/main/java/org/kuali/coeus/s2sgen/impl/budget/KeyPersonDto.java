@@ -168,11 +168,6 @@ public class KeyPersonDto extends CompensationDto {
         return nonMITPersonFlag;
     }
 
-    /**
-     * Getter for nonMITPersonFlag
-     * 
-     * @param nonMITPersonFlag
-     */
     public void setNonMITPersonFlag(boolean nonMITPersonFlag) {
         this.nonMITPersonFlag = nonMITPersonFlag;
     }

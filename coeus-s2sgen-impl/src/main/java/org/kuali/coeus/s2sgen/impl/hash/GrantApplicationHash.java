@@ -88,8 +88,7 @@ public class GrantApplicationHash {
 
 	/**
 	 * Computes the hash of an binary attachment.
-	 * 
-	 * @param attachment
+	 *
 	 * @return The SHA-1 hash value of the attachment byte array.
 	 */
 	public final static String computeAttachmentHash(byte[] attachment) {

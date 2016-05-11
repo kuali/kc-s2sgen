@@ -107,9 +107,6 @@ public abstract class RRFedNonFedBudgetBaseGenerator extends S2SBaseFormGenerato
     
     /**
      * Perform manual validations on the budget. Similarly done in RRBudgetBaseGenerator.
-     * @param pdDoc
-     * @return
-     * @throws S2SException
      */
     protected boolean validateBudgetForForm(ProposalDevelopmentDocumentContract pdDoc) throws S2SException {
         boolean valid = true;
