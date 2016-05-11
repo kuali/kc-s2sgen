@@ -72,8 +72,7 @@ public class UserAttachedFormGenerator implements S2SFormGenerator, DynamicNames
         }
         S2sUserAttachedFormContract userAttachedForm = findUserAttachedForm();
         List<? extends S2sUserAttachedFormAttContract> attachments = userAttachedForm.getS2sUserAttachedFormAtts();
-        for (Iterator iterator = attachments.iterator(); iterator.hasNext();) {
-            S2sUserAttachedFormAttContract s2sUserAttachedFormAtt = (S2sUserAttachedFormAttContract) iterator.next();
+        for (S2sUserAttachedFormAttContract s2sUserAttachedFormAtt : attachments) {
             addAttachment(s2sUserAttachedFormAtt);
         }
         return xmlObject;

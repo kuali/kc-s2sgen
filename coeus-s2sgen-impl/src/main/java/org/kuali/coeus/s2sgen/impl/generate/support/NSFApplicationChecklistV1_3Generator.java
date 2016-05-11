@@ -45,6 +45,10 @@ import java.util.List;
 @FormGenerator("NSFApplicationChecklistV1_3Generator")
 public class NSFApplicationChecklistV1_3Generator extends NSFApplicationChecklistBaseGenerator {
 
+	private static final String QUESTIONNAIRE_ANSWER_YES = "Y";
+	private static final String QUESTIONNAIRE_ANSWER_NO = "N";
+	private static final String QUESTIONNAIRE_ANSWER_X = "X";
+
     @Value("http://apply.grants.gov/forms/NSF_ApplicationChecklist_1_3-V1.3")
     private String namespace;
 
@@ -59,10 +63,6 @@ public class NSFApplicationChecklistV1_3Generator extends NSFApplicationChecklis
 
     @Value(DEFAULT_SORT_INDEX)
     private int sortIndex;
-
-	private static String QUESTIONNAIRE_ANSWER_YES = "Y";
-	private static String QUESTIONNAIRE_ANSWER_NO = "N";
-	private static String QUESTIONNAIRE_ANSWER_X = "X";
 
 	/**
 	 * 

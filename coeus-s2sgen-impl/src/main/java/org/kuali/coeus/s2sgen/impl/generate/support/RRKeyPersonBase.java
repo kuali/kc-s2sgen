@@ -178,14 +178,6 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 		return result;
 	}
 	
-	private String getWhitespaceString(int length) {
-		StringBuffer sb = new StringBuffer();
-		char[] whiteSpace = new char[length];
-		Arrays.fill(whiteSpace, FieldValueConstants.SPACE_SEPARATOR);
-		sb.append(whiteSpace);
-		return sb.toString();
-	}
-	
 	protected PersonProfileList.ExtraKeyPerson[] getExtraKeyPersons() {
 		List<PersonProfileList.ExtraKeyPerson> extraPersonList = new ArrayList<>();
 
@@ -237,8 +229,8 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 				extraPerson.setCredential(proposalPerson
 						.getEraCommonsUserName());
 			}
-			setDepartmentName(extraPerson, proposalPerson);
-			setDivisionName(extraPerson, proposalPerson);
+			setDepartmentName(extraPerson);
+			setDivisionName(extraPerson);
 			if (proposalPerson.getEmailAddress() != null) {
 				extraPerson.setEmail(proposalPerson.getEmailAddress());
 			}
@@ -332,11 +324,11 @@ public abstract class RRKeyPersonBase extends S2SBaseFormGenerator {
 		return name;
 	}
 
-	private void setDivisionName(ExtraKeyPerson extraPerson, ProposalPersonContract proposalPerson) {
+	private void setDivisionName(ExtraKeyPerson extraPerson) {
 		extraPerson.setDivisionName("");
 	}
 
-	private void setDepartmentName(ExtraKeyPerson extraPerson, ProposalPersonContract proposalPerson) {
+	private void setDepartmentName(ExtraKeyPerson extraPerson) {
 		extraPerson.setDepartmentName("");
 	}
 	private NarrativeContract saveKeypersonProfileObject() {

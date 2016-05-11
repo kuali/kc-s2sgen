@@ -51,7 +51,7 @@ import java.util.List;
 @FormGenerator("SF424ShortV1_0Generator")
 public class SF424ShortV1_0Generator extends SF424BaseGenerator {
 
-    private String applicantTypeOtherSpecify = null;
+    private final String applicantTypeOtherSpecify = null;
     private static final String ABSTRACT_TYPE_PROJECT_DESCRIPTION = "1";
     private static final int SPONSOR_NAME_MAX_LENGTH = 60;
     private static final int CFDA_NUMBER_MAX_LENGTH = 15;

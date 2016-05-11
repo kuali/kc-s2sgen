@@ -310,7 +310,7 @@ public class NSFCoverPageV1_0Generator extends NSFCoverPageBaseGenerator {
                     || proposalPerson.getProposalPersonRoleId().equals(PI_C0_INVESTIGATOR)) {
                 for (ProposalPersonYnqContract personYnq : proposalPerson.getProposalPersonYnqs()) {
                     if (personYnq != null) {
-                        if (personYnq.getQuestionId() != null && personYnq.getQuestionId().equals(PROPOSAL_YNQ_LOBBYING_ACTIVITIES.toString())) {
+                        if (personYnq.getQuestionId() != null && personYnq.getQuestionId().equals(PROPOSAL_YNQ_LOBBYING_ACTIVITIES)) {
                             if (personYnq.getAnswer() != null && personYnq.getAnswer().equals(YnqConstant.YES.code())) {
                                 return YesNoDataType.YES;
                             }

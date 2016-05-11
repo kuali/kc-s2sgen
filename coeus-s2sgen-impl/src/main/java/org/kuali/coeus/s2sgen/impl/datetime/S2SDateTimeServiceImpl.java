@@ -96,8 +96,7 @@ public class S2SDateTimeServiceImpl implements S2SDateTimeService {
         if(timezoneId.length()>6){
             offset = timezoneId.substring(timezoneId.length()-6);
         }
-        String filteredApplicationStr = StringUtils.remove(applicationXmlText, offset);
-        return filteredApplicationStr;
+        return StringUtils.remove(applicationXmlText, offset);
     }
 
     /**

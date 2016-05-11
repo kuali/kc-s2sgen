@@ -41,8 +41,8 @@ public class FormMappingServiceImpl implements FormMappingService {
     private static final Logger LOG = LoggerFactory.getLogger(FormMappingServiceImpl.class);
 
 
-    private Map<String, FormMappingInfo> bindings = new ConcurrentHashMap<>();
-    private Map<Integer, Set<String>> sortedNameSpaces = new ConcurrentHashMap<>();
+    private final Map<String, FormMappingInfo> bindings = new ConcurrentHashMap<>();
+    private final Map<Integer, Set<String>> sortedNameSpaces = new ConcurrentHashMap<>();
 
     @Autowired
     @Qualifier("userAttachedFormService")

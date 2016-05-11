@@ -89,9 +89,7 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
 
         if (!isValid) {
             LOG.error("Errors occured during validation of XML from form generator" + validationErrors);
-            Iterator<XmlValidationError> iter = validationErrors.iterator();
-            while (iter.hasNext()) {
-                XmlError error = iter.next();
+            for (XmlValidationError error : validationErrors) {
                 LOG.info("Validation error:" + error);
                 Node node = error.getCursorLocation().getDomNode();
                 errors.add(getXPath(node));

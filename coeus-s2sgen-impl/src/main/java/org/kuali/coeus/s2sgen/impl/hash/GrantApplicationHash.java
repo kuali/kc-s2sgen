@@ -25,6 +25,7 @@ import org.apache.xml.security.c14n.InvalidCanonicalizerException;
 import org.apache.xml.security.signature.XMLSignatureException;
 import org.apache.xml.security.utils.Base64;
 import org.apache.xml.security.utils.DigesterOutputStream;
+import org.kuali.coeus.s2sgen.api.core.InfastructureConstants;
 import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.s2sgen.impl.util.XPathExecutor;
 import org.slf4j.Logger;
@@ -40,17 +41,17 @@ import javax.xml.transform.TransformerException;
  * 
  * @author David Wong
  */
-public class GrantApplicationHash {
+public final class GrantApplicationHash {
 
 	private static final Logger log = LoggerFactory.getLogger(GrantApplicationHash.class
             .getName());
 
-	static java.security.MessageDigest messageDigester = null;
+	private static java.security.MessageDigest MESSAGE_DIGESTER = null;
 
 	static {
 		org.apache.xml.security.Init.init();
 		try {
-			messageDigester = java.security.MessageDigest.getInstance("SHA-1");
+			MESSAGE_DIGESTER = java.security.MessageDigest.getInstance(InfastructureConstants.HASH_ALGORITHM);
 		} catch (Exception ex) {
 			log.error(
 					"Unable to get instance of java.security.MessageDigester",
@@ -62,7 +63,7 @@ public class GrantApplicationHash {
 	 * Added private constructor to prevent creation by user.
 	 */
 	private GrantApplicationHash() {
-
+		throw new UnsupportedOperationException("do not call");
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class GrantApplicationHash {
 	 * @throws S2SException
 	 *             When the XML cannot be parsed.
 	 */
-	public final static String computeGrantFormsHash(String xml) throws S2SException {
+	public static String computeGrantFormsHash(String xml) throws S2SException {
 		GrantApplicationXpath xpath;
         try {
             xpath = new GrantApplicationXpath(xml);
@@ -91,9 +92,9 @@ public class GrantApplicationHash {
 	 *
 	 * @return The SHA-1 hash value of the attachment byte array.
 	 */
-	public final static String computeAttachmentHash(byte[] attachment) {
+	public static String computeAttachmentHash(byte[] attachment) {
 
-		byte[] rawDigest = messageDigester.digest(attachment);
+		byte[] rawDigest = MESSAGE_DIGESTER.digest(attachment);
 
 		return Base64.encode(rawDigest);
 
@@ -124,7 +125,7 @@ public class GrantApplicationHash {
 	 * @throws Exception
 	 *             When the XML cannot be parsed.
 	 */
-	public final static String computeGrantFormsHash(Document xml) throws Exception {
+	public static String computeGrantFormsHash(Document xml) throws Exception {
 		XPathExecutor executor = new XPathExecutor(null);
 		executor.setDoc(xml);
 		GrantApplicationXpath xpath = new GrantApplicationXpath(null);

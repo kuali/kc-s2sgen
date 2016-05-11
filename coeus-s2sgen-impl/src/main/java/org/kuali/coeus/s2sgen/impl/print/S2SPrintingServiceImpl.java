@@ -53,9 +53,9 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
     private static final Logger LOG = LoggerFactory.getLogger(S2SPrintingServiceImpl.class);
     public static final String PDF_REPORT_CONTENT_TYPE = "application/pdf";
     public static final String PDF_FILE_EXTENSION = ".pdf";
-    public char SPACE_SEPARATOR = 32;
-    public int WHITESPACE_LENGTH_76 = 76;
-    public int WHITESPACE_LENGTH_60 = 60;
+    public final char SPACE_SEPARATOR = 32;
+    public final int WHITESPACE_LENGTH_76 = 76;
+    public final int WHITESPACE_LENGTH_60 = 60;
 
     @Autowired
     @Qualifier("s2SConfigurationService")
