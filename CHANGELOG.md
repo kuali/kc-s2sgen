@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1325: always setting mandatory attachments even when the narrative is not present.  This makes the error message presented to the screen more user friendly.
+  * Travis Schneeberger on Mon, 23 May 2016 16:22:24 -0400 [View Commit](../../commit/2c81e0146ee73d25590c31f86a2f650c09dedd8a)
+
+##coeus-s2sgen-1605.0004
 * No Changes
 
 
