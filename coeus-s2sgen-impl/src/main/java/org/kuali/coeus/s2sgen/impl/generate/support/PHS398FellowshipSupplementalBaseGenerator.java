@@ -85,6 +85,7 @@ public abstract class PHS398FellowshipSupplementalBaseGenerator extends
     protected static final int SELECTION_OF_SPONSOR_AND_INSTITUTION = 89;
     protected static final int RESPONSIBLE_CONDUCT_OF_RESEARCH = 90;
     protected static final int RESEARCH_STRATEGY = 127;
+
     protected static final int CONCURRENT_SUPPORT = 91;
     protected static final int FELLOWSHIP = 92;
     protected static final int DISSERTATION = 93;
