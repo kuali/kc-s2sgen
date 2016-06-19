@@ -7,13 +7,13 @@ xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:xdt="htt
 xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xmlns:header="http://apply.grants.gov/system/Header-V1.0"
 xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-	<xsl:output version="1.0" method="xml" encoding="UTF-8" indent="no"/>
+
 	<xsl:param name="SV_OutputFormat" select="'PDF'"/>
 	<xsl:variable name="XML" select="/"/>
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="default-page" page-height="11.0in" page-width="8.5in" margin-left="0.35in" margin-right="0.35in">
-				<fo:region-body margin-top="0.7in" margin-bottom="0.5in"/>
+				<fo:region-body margin-top="0.5in" margin-bottom="0.5in"/>
 				<fo:region-before extent="0.7in"/>
 				<fo:region-after extent=".3in" />
 			</fo:simple-page-master>
@@ -74,6 +74,29 @@ xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:fo="http://www.w
 									<xsl:text>&#x2029;</xsl:text>
 								</fo:block>
 							</fo:inline-container>
+							
+							<!-- Added static section on Page 1 for OMB Number / Expiration Date -->
+							<fo:table font-family="Verdana" table-layout="fixed" width="100%" border-spacing="2pt">
+								<fo:table-column column-width="proportional-column-width(1)"/>
+								<fo:table-column column-width="proportional-column-width(1)"/>
+								<fo:table-body start-indent="0pt">
+									<fo:table-row font-size="6px">
+										<fo:table-cell height="17" margin-top="1pt" padding="0" padding-top="0pt" number-columns-spanned="2" text-align="right" display-align="before">
+											<fo:block>
+												<fo:inline>
+													<xsl:text>OMB Number: 0925-0001</xsl:text>
+												</fo:inline>
+											</fo:block>
+											<fo:block>
+											    <fo:inline>
+											        <xsl:text>Expiration Date: 10/31/2018</xsl:text>
+											    </fo:inline>
+											</fo:block>
+										</fo:table-cell>
+									</fo:table-row>
+								</fo:table-body>
+							</fo:table>							
+							
 							<fo:table font-family="Helvetica" font-size="9px" table-layout="fixed" width="100%" border="solid 1pt black" border-spacing="2pt">
 								<fo:table-column column-width="proportional-column-width(1)"/>
 								<fo:table-body start-indent="0pt">
@@ -1696,9 +1719,11 @@ xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:fo="http://www.w
 																		<fo:table-column column-width="proportional-column-width(1)"/>
 																		<fo:table-body start-indent="0pt">
 																			<fo:table-row>
-																				<fo:table-cell padding="5pt" display-align="center">
-																					<fo:block>
-																	
+																				<fo:table-cell padding="5pt" display-align="center" height="auto">
+																					<fo:block font-family="arialuni">
+																						<fo:inline>
+																							<xsl:text>&#160;</xsl:text>
+																						</fo:inline>
 																						<xsl:for-each select="//PHS_Fellowship_Supplemental_3_1:PHS_Fellowship_Supplemental_3_1">
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_3_1:OtherResearchTrainingPlan">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_3_1:EuthanasiaMethodDescription">
@@ -2672,7 +2697,7 @@ xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:fo="http://www.w
 																							<xsl:for-each select="PHS_Fellowship_Supplemental_3_1:AdditionalInformation">
 																								<xsl:for-each select="PHS_Fellowship_Supplemental_3_1:StemCells">
 																									<xsl:for-each select="PHS_Fellowship_Supplemental_3_1:CellLines">
-																										<xsl:if test="position() = 15">
+																										<xsl:if test="position() = 17">
 																											<xsl:variable name="value-of-template">
 																												<xsl:apply-templates/>
 																											</xsl:variable>
@@ -5213,20 +5238,9 @@ xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:fo="http://www.w
 								</fo:block>
 							</fo:table-cell>
 						</fo:table-row>
-						<fo:table-row font-size="6px">
-							<fo:table-cell margin-top="1pt" padding="0" padding-top="0pt" number-columns-spanned="2" text-align="right" display-align="before">
-								<fo:block>
-									<fo:inline>
-										<xsl:text>OMB Number: 0925-0001</xsl:text>
-									</fo:inline>
-								</fo:block>
-								<fo:block>
-								    <fo:inline>
-								        <xsl:text>Expiration Date: 10/31/2018</xsl:text>
-								    </fo:inline>
-								</fo:block>
-							</fo:table-cell>
-						</fo:table-row>
+						
+						<!-- Removed repeatable header with OMB Number / Expiration Date -->
+						
 					</fo:table-body>
 				</fo:table>
 			</fo:block>
