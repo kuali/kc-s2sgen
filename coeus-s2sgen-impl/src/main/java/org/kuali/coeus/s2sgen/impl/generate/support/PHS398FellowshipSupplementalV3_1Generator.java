@@ -155,6 +155,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
 
     private static final String ANSWER_YES = "Yes";
     private static final String ANSWER_NO = "No";
+    public static final String TEMPORARY_VISA_ALSO_APPLIED_FOR_PERMANENT_RESIDENT_STATUS = "Temporary Visa also applied for permanent resident status";
 
     @Value("http://apply.grants.gov/forms/PHS_Fellowship_Supplemental_3_1-V3.1")
     private String namespace;
@@ -204,9 +205,6 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                 Integer questionId = question.getQuestionSeqId();
                 if (answer != null) {
                     switch (questionId) {
-                        case WILL_VERTEBRATE_ANIMALS_BE_USED:
-                            // Will vertebrate animals be used in this project?
-                            otherResearchTrainingPlan.setVertebrateAnimalsUsed(getYesNoEnum(answer));
                         case VERT:
                             // will the inclusion of vertebrate animals use be indefinite
                             otherResearchTrainingPlan.setVertebrateAnimalsIndefinite(getYesNoEnum(answer));
@@ -828,6 +826,9 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                 case 1:
                     researchTrainingPlan.setHumanSubjectsInvolved(YesNoDataType.Y_YES);
                     break;
+                case 2:
+                    researchTrainingPlan.setVertebrateAnimalsUsed(YesNoDataType.Y_YES);
+                    break;
                 default:
                     break;
             }
@@ -865,9 +866,11 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                 CitizenshipType citizenShip = s2SProposalPersonService.getCitizenship(proposalPerson);
                 if(citizenShip!=null && StringUtils.isNotBlank(citizenShip.getCitizenShip())){
                     if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())) {
+                        additionalInformation.setUSCitizen(YesNoDataType.N_NO);
                         additionalInformation.setNonUSCitizen(NonUSCitizenDataType.WITH_A_TEMPORARY_U_S_VISA);
                     }
                     else if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S.toString())) {
+                        additionalInformation.setUSCitizen(YesNoDataType.N_NO);
                         additionalInformation.setNonUSCitizen(NonUSCitizenDataType.WITH_A_PERMANENT_U_S_RESIDENT_VISA);
                     }
                     else if (citizenShip.getCitizenShip().trim().equals(
@@ -875,7 +878,8 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         additionalInformation.setUSCitizen(YesNoDataType.Y_YES);
                     }
                     else if (citizenShip.getCitizenShip().trim().equals(
-                            CitizenshipDataType.PERMANENT_RESIDENT_OF_U_S_PENDING.toString())) {
+                            TEMPORARY_VISA_ALSO_APPLIED_FOR_PERMANENT_RESIDENT_STATUS)) {
+                        additionalInformation.setUSCitizen(YesNoDataType.N_NO);
                         additionalInformation.setNonUSCitizen(NonUSCitizenDataType.WITH_A_TEMPORARY_U_S_VISA);
                         additionalInformation.setPermanentResidentByAwardIndicator(YesNoDataType.Y_YES);
                     }
