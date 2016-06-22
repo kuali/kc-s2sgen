@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1428, RESKC-1430: Fix PHS 3.1 supplemental issues.
+  * Gayathri Athreya on Wed, 22 Jun 2016 10:34:55 -0500 [View Commit](../../commit/8664fa4938b23e058a7424ba44bd1ddf7f9334da)
+
+##coeus-s2sgen-1606.0002
 * RESKC-941: Upgrade PHS xsl
   * Gayathri Athreya on Sun, 19 Jun 2016 07:49:32 -0700 [View Commit](../../commit/9c2a2133a77e631b74fc23abb8a133b3d0106e03)
 
