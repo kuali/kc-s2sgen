@@ -223,42 +223,53 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
             }
         }
 
-        AttachedFileDataType attachedFileDataType = null;
+        AttachedFileDataType attachedFileDataType;
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             final String code = narrative.getNarrativeType().getCode();
-            attachedFileDataType = getAttachedFileType(narrative);
-            if (code != null && attachedFileDataType != null) {
+            if (code != null) {
                 if(code.equalsIgnoreCase(VERTEBRATE_ANIMALS)) {
-                    VertebrateAnimals vertebrateAnimals = VertebrateAnimals.Factory.newInstance();
-                    vertebrateAnimals.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        VertebrateAnimals vertebrateAnimals = VertebrateAnimals.Factory.newInstance();
+                        vertebrateAnimals.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setVertebrateAnimals(vertebrateAnimals);
                     }
-                    otherResearchTrainingPlan.setVertebrateAnimals(vertebrateAnimals);
                 }
                 else if(code.equalsIgnoreCase(SELECT_AGENT_RESEARCH)) {
-                    SelectAgentResearch selectAgentResearch = SelectAgentResearch.Factory.newInstance();
-                    selectAgentResearch.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        SelectAgentResearch selectAgentResearch = SelectAgentResearch.Factory.newInstance();
+                        selectAgentResearch.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setSelectAgentResearch(selectAgentResearch);
                     }
-                    otherResearchTrainingPlan.setSelectAgentResearch(selectAgentResearch);
                 }
                 else if(code.equalsIgnoreCase(RESOURCE_SHARING_PLANS)) {
                     ResourceSharingPlan resourceSharingPlan = ResourceSharingPlan.Factory.newInstance();
-                    resourceSharingPlan.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        resourceSharingPlan.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setResourceSharingPlan(resourceSharingPlan);
                     }
-                    otherResearchTrainingPlan.setResourceSharingPlan(resourceSharingPlan);
                 }
                 else if(code.equalsIgnoreCase(PHS_FELLOW_AUTH_KEY_BIO_CHEM_RESOURCES)) {
                     KeyBiologicalAndOrChemicalResources keyBiologicalAndOrChemicalResources = KeyBiologicalAndOrChemicalResources.Factory.newInstance();
-                    keyBiologicalAndOrChemicalResources.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        keyBiologicalAndOrChemicalResources.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setKeyBiologicalAndOrChemicalResources(keyBiologicalAndOrChemicalResources);
                     }
-                    otherResearchTrainingPlan.setKeyBiologicalAndOrChemicalResources(keyBiologicalAndOrChemicalResources);
                 }
             }
         }
@@ -704,7 +715,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
      */
     protected void setNarrativeDataForResearchTrainingPlan(PHSFellowshipSupplemental31 phsFellowshipSupplemental,
                                                            ResearchTrainingPlan researchTrainingPlan) {
-        AttachedFileDataType attachedFileDataType = null;
+        AttachedFileDataType attachedFileDataType;
         Sponsors sponsors = phsFellowshipSupplemental.addNewSponsors();
         OtherResearchTrainingPlan otherResearchTrainingPlan = null;
         PHSFellowshipSupplemental31.InstitutionalEnvironment institutionalEnvironment = phsFellowshipSupplemental.addNewInstitutionalEnvironment();
@@ -713,101 +724,145 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
 
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             final String code = narrative.getNarrativeType().getCode();
-            attachedFileDataType = getAttachedFileType(narrative);
-            if (code != null && attachedFileDataType != null) {
+            if (code != null ) {
                 if (code.equalsIgnoreCase(INTRODUCTION_TO_APPLICATION)) {
-                    IntroductionToApplication introductionToApplication = IntroductionToApplication.Factory.newInstance();
-                    introductionToApplication.setAttFile(attachedFileDataType);
-                    introduction.setIntroductionToApplication(introductionToApplication);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        IntroductionToApplication introductionToApplication = IntroductionToApplication.Factory.newInstance();
+                        introductionToApplication.setAttFile(attachedFileDataType);
+                        introduction.setIntroductionToApplication(introductionToApplication);
+                    }
                 }
                 else if (code.equalsIgnoreCase(FELLOWSHIP_BACKGROUND_AND_GOALS)) {
-                    BackgroundandGoals backgroundandGoals = BackgroundandGoals.Factory.newInstance();
-                    backgroundandGoals.setAttFile(attachedFileDataType);
-                    fellowshipApplicant.setBackgroundandGoals(backgroundandGoals);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        BackgroundandGoals backgroundandGoals = BackgroundandGoals.Factory.newInstance();
+                        backgroundandGoals.setAttFile(attachedFileDataType);
+                        fellowshipApplicant.setBackgroundandGoals(backgroundandGoals);
+                    }
                 }
                 else if (code.equalsIgnoreCase(SPECIFIC_AIMS)) {
-                    ResearchTrainingPlan.SpecificAims specificAims = ResearchTrainingPlan.SpecificAims.Factory.newInstance();
-                    specificAims.setAttFile(attachedFileDataType);
-                    researchTrainingPlan.setSpecificAims(specificAims);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ResearchTrainingPlan.SpecificAims specificAims = ResearchTrainingPlan.SpecificAims.Factory.newInstance();
+                        specificAims.setAttFile(attachedFileDataType);
+                        researchTrainingPlan.setSpecificAims(specificAims);
+                    }
                 }
                 else if (code.equalsIgnoreCase(RESEARCH_STRATEGY)) {
-                    ResearchTrainingPlan.ResearchStrategy researchStrategy = ResearchTrainingPlan.ResearchStrategy.Factory.newInstance();
-                    researchStrategy.setAttFile(attachedFileDataType);
-                    researchTrainingPlan.setResearchStrategy(researchStrategy);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ResearchTrainingPlan.ResearchStrategy researchStrategy = ResearchTrainingPlan.ResearchStrategy.Factory.newInstance();
+                        researchStrategy.setAttFile(attachedFileDataType);
+                        researchTrainingPlan.setResearchStrategy(researchStrategy);
+                    }
                 }
                 else if (code.equalsIgnoreCase(RESPECTIVE_CONTRIBUTIONS)) {
-                    ResearchTrainingPlan.RespectiveContribution respectiveContribution = ResearchTrainingPlan.RespectiveContribution.Factory.newInstance();
-                    respectiveContribution.setAttFile(attachedFileDataType);
-                    researchTrainingPlan.setRespectiveContribution(respectiveContribution);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ResearchTrainingPlan.RespectiveContribution respectiveContribution = ResearchTrainingPlan.RespectiveContribution.Factory.newInstance();
+                        respectiveContribution.setAttFile(attachedFileDataType);
+                        researchTrainingPlan.setRespectiveContribution(respectiveContribution);
+                    }
                 }
                 else if (code.equalsIgnoreCase(SELECTION_OF_SPONSOR_AND_INSTITUTION)) {
-                    ResearchTrainingPlan.SponsorandInstitution sponsorAndInstitution = ResearchTrainingPlan.SponsorandInstitution.Factory
-                            .newInstance();
-                    sponsorAndInstitution.setAttFile(attachedFileDataType);
-                    researchTrainingPlan.setSponsorandInstitution(sponsorAndInstitution);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ResearchTrainingPlan.SponsorandInstitution sponsorAndInstitution = ResearchTrainingPlan.SponsorandInstitution.Factory
+                                .newInstance();
+                        sponsorAndInstitution.setAttFile(attachedFileDataType);
+                        researchTrainingPlan.setSponsorandInstitution(sponsorAndInstitution);
+                    }
                 }
                 else if (code.equalsIgnoreCase(PROGRESS_REPORT_PUBLICATION_LIST)) {
-                    ResearchTrainingPlan.ProgressReportPublicationList progressReportPublicationList = ProgressReportPublicationList.Factory
-                            .newInstance();
-                    progressReportPublicationList.setAttFile(attachedFileDataType);
-                    researchTrainingPlan.setProgressReportPublicationList(progressReportPublicationList);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ResearchTrainingPlan.ProgressReportPublicationList progressReportPublicationList = ProgressReportPublicationList.Factory
+                                .newInstance();
+                        progressReportPublicationList.setAttFile(attachedFileDataType);
+                        researchTrainingPlan.setProgressReportPublicationList(progressReportPublicationList);
+                    }
                 }
                 else if (code.equalsIgnoreCase(RESPONSIBLE_CONDUCT_OF_RESEARCH)) {
-                    ResearchTrainingPlan.TrainingInResponsibleConductOfResearch responsibleConductOfResearch = ResearchTrainingPlan.TrainingInResponsibleConductOfResearch.Factory
-                            .newInstance();
-                    responsibleConductOfResearch.setAttFile(attachedFileDataType);
-                    researchTrainingPlan.setTrainingInResponsibleConductOfResearch(responsibleConductOfResearch);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ResearchTrainingPlan.TrainingInResponsibleConductOfResearch responsibleConductOfResearch = ResearchTrainingPlan.TrainingInResponsibleConductOfResearch.Factory
+                                .newInstance();
+                        responsibleConductOfResearch.setAttFile(attachedFileDataType);
+                        researchTrainingPlan.setTrainingInResponsibleConductOfResearch(responsibleConductOfResearch);
+                    }
                 }
                 // -- Sponsor(s), Collaborator(s), and Consultant(s) Section
                 else if (code.equalsIgnoreCase(SPONSOR_COSPONSOR)) {
-                    Sponsors.SponsorAndCoSponsorStatements sponsorCosponsorInfo = sponsors.addNewSponsorAndCoSponsorStatements();
-                    sponsorCosponsorInfo.setAttFile(attachedFileDataType);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        Sponsors.SponsorAndCoSponsorStatements sponsorCosponsorInfo = sponsors.addNewSponsorAndCoSponsorStatements();
+                        sponsorCosponsorInfo.setAttFile(attachedFileDataType);
+                    }
                 }
                 else if (code.equalsIgnoreCase(LETTER_COLLAB_CONTRIB_CONSULT)){
-                    Sponsors.LettersOfSupport lettersOfSupport = Sponsors.LettersOfSupport.Factory.newInstance();
-                    lettersOfSupport.setAttFile(attachedFileDataType);
-                    sponsors.setLettersOfSupport(lettersOfSupport);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        Sponsors.LettersOfSupport lettersOfSupport = Sponsors.LettersOfSupport.Factory.newInstance();
+                        lettersOfSupport.setAttFile(attachedFileDataType);
+                        sponsors.setLettersOfSupport(lettersOfSupport);
+                    }
                 }
                 // Institutional Environment and Commitment to Training Section
                 else if (code.equalsIgnoreCase(PHS_FELLOW_INSTITUTION_ENVIRON_COMMITMENT)) {
-                    InstitutionalEnvironmentCommitmenttoTraining institutionalEnvironmentCommitmenttoTraining =
-                            InstitutionalEnvironmentCommitmenttoTraining.Factory.newInstance();
-                    institutionalEnvironmentCommitmenttoTraining.setAttFile(attachedFileDataType);
-                    institutionalEnvironment.setInstitutionalEnvironmentCommitmenttoTraining(institutionalEnvironmentCommitmenttoTraining);
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        InstitutionalEnvironmentCommitmenttoTraining institutionalEnvironmentCommitmenttoTraining =
+                                InstitutionalEnvironmentCommitmenttoTraining.Factory.newInstance();
+                        institutionalEnvironmentCommitmenttoTraining.setAttFile(attachedFileDataType);
+                        institutionalEnvironment.setInstitutionalEnvironmentCommitmenttoTraining(institutionalEnvironmentCommitmenttoTraining);
+                    }
                 }
                 // Other research training plan section
                 else if (code.equalsIgnoreCase(PROTECTION_OF_HUMAN_SUBJECTS)) {
-                    ProtectionOfHumanSubjects protectionOfHumanSubjects = ProtectionOfHumanSubjects.Factory.newInstance();
-                    protectionOfHumanSubjects.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ProtectionOfHumanSubjects protectionOfHumanSubjects = ProtectionOfHumanSubjects.Factory.newInstance();
+                        protectionOfHumanSubjects.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setProtectionOfHumanSubjects(protectionOfHumanSubjects);
                     }
-                    otherResearchTrainingPlan.setProtectionOfHumanSubjects(protectionOfHumanSubjects);
                 }
                 else if (code.equalsIgnoreCase(DATA_SAFETY_MONITORING_PLAN)) {
-                    DataSafetyMonitoringPlan dataSafetyMonitoringPlan = DataSafetyMonitoringPlan.Factory.newInstance();
-                    dataSafetyMonitoringPlan.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        DataSafetyMonitoringPlan dataSafetyMonitoringPlan = DataSafetyMonitoringPlan.Factory.newInstance();
+                        dataSafetyMonitoringPlan.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setDataSafetyMonitoringPlan(dataSafetyMonitoringPlan);
                     }
-                    otherResearchTrainingPlan.setDataSafetyMonitoringPlan(dataSafetyMonitoringPlan);
                 }
                 else if (code.equalsIgnoreCase(INCLUSION_OF_WOMEN_AND_MINORITIES)) {
-                    InclusionOfWomenAndMinorities inclusionOfWomenAndMinorities = InclusionOfWomenAndMinorities.Factory
-                            .newInstance();
-                    inclusionOfWomenAndMinorities.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        InclusionOfWomenAndMinorities inclusionOfWomenAndMinorities = InclusionOfWomenAndMinorities.Factory
+                                .newInstance();
+                        inclusionOfWomenAndMinorities.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setInclusionOfWomenAndMinorities(inclusionOfWomenAndMinorities);
                     }
-                    otherResearchTrainingPlan.setInclusionOfWomenAndMinorities(inclusionOfWomenAndMinorities);
                 }
                 else if (code.equalsIgnoreCase(INCLUSION_OF_CHILDREN)) {
-                    InclusionOfChildren inclusionOfChildren = InclusionOfChildren.Factory.newInstance();
-                    inclusionOfChildren.setAttFile(attachedFileDataType);
-                    if (otherResearchTrainingPlan == null) {
-                        otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        InclusionOfChildren inclusionOfChildren = InclusionOfChildren.Factory.newInstance();
+                        inclusionOfChildren.setAttFile(attachedFileDataType);
+                        if (otherResearchTrainingPlan == null) {
+                            otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
+                        }
+                        otherResearchTrainingPlan.setInclusionOfChildren(inclusionOfChildren);
                     }
-                    otherResearchTrainingPlan.setInclusionOfChildren(inclusionOfChildren);
                 }
             }
         }
@@ -898,13 +953,15 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             final String code = narrative.getNarrativeType().getCode();
             if (code != null) {
-                attachedFileDataType = getAttachedFileType(narrative);
-                if(code.equalsIgnoreCase(CONCURRENT_SUPPORT) && attachedFileDataType != null) {
-                    ConcurrentSupportDescription concurrentSupportDescription = ConcurrentSupportDescription.Factory
-                            .newInstance();
-                    concurrentSupportDescription.setAttFile(attachedFileDataType);
-                    additionalInformation.setConcurrentSupport(YesNoDataType.Y_YES);
-                    additionalInformation.setConcurrentSupportDescription(concurrentSupportDescription);
+                if(code.equalsIgnoreCase(CONCURRENT_SUPPORT)) {
+                    attachedFileDataType = getAttachedFileType(narrative);
+                    if (attachedFileDataType != null) {
+                        ConcurrentSupportDescription concurrentSupportDescription = ConcurrentSupportDescription.Factory
+                                .newInstance();
+                        concurrentSupportDescription.setAttFile(attachedFileDataType);
+                        additionalInformation.setConcurrentSupport(YesNoDataType.Y_YES);
+                        additionalInformation.setConcurrentSupportDescription(concurrentSupportDescription);
+                    }
                 }
             }
         }
