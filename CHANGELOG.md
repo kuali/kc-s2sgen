@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1433: Are vertebrate animals euthanised question fix.
+  * Gayathri Athreya on Thu, 23 Jun 2016 12:35:14 -0500 [View Commit](../../commit/1af0397fa24ab208ba53b2e6adacd122ae0e5c3a)
+
+##coeus-s2sgen-1606.0004
 * RESKC-1426: Stop s2s service from sending the same attachments several times.
   * I am unable to submit the PHS Fellowship Supplemental form 3.1 to Grants.gov. I get the following STE.
   * See Proposal No: 1394 in res-demo1
