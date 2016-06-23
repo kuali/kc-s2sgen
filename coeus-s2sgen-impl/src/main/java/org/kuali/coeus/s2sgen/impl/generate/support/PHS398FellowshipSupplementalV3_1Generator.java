@@ -208,6 +208,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         case VERT:
                             // will the inclusion of vertebrate animals use be indefinite
                             otherResearchTrainingPlan.setVertebrateAnimalsIndefinite(getYesNoEnum(answer));
+                            break;
                         case ARE_VERTEBRATE_ANIMALS_EUTHANISED:
                             // Are vertebrate animals euthanized
                             otherResearchTrainingPlan.setAreAnimalsEuthanized(getYesNoEnum(answer));
