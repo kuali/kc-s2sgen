@@ -144,7 +144,6 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
     protected static final String RESOURCE_SHARING_PLANS = "110";
 
 
-
     // Is method consistent with American Veterinary Medical Association (AVMA) guidelines?
     protected static final int CONSISTENT_AVMA_GUIDELINES = 147;
     // If NO to AVMA Guidelines, describe method and provide scientific justification in 1000 characters or less
@@ -182,7 +181,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
         setOtherResearchTrainingPlanVertebrate(phsFellowshipSupplemental);
         phsFellowshipSupplemental.setFormVersion(FormVersion.v3_1.getVersion());
         final AttachmentGroupMin0Max100DataType appendix = getAppendix();
-        if(appendix != null) {
+        if (appendix != null) {
             phsFellowshipSupplemental.setAppendix(appendix);
         }
         setQuestionnaireData(phsFellowshipSupplemental);
@@ -191,7 +190,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
 
     private void setOtherResearchTrainingPlanVertebrate(PHSFellowshipSupplemental31 phsFellowshipSupplemental) {
         OtherResearchTrainingPlan otherResearchTrainingPlan = phsFellowshipSupplemental.getOtherResearchTrainingPlan();
-        if(otherResearchTrainingPlan == null) {
+        if (otherResearchTrainingPlan == null) {
             otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
         }
         List<? extends AnswerHeaderContract> answers = findQuestionnaireWithAnswers(pdDoc.getDevelopmentProposal());
@@ -228,7 +227,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             final String code = narrative.getNarrativeType().getCode();
             if (code != null) {
-                if(code.equalsIgnoreCase(VERTEBRATE_ANIMALS)) {
+                if (code.equalsIgnoreCase(VERTEBRATE_ANIMALS)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         VertebrateAnimals vertebrateAnimals = VertebrateAnimals.Factory.newInstance();
@@ -238,8 +237,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         }
                         otherResearchTrainingPlan.setVertebrateAnimals(vertebrateAnimals);
                     }
-                }
-                else if(code.equalsIgnoreCase(SELECT_AGENT_RESEARCH)) {
+                } else if (code.equalsIgnoreCase(SELECT_AGENT_RESEARCH)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         SelectAgentResearch selectAgentResearch = SelectAgentResearch.Factory.newInstance();
@@ -249,8 +247,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         }
                         otherResearchTrainingPlan.setSelectAgentResearch(selectAgentResearch);
                     }
-                }
-                else if(code.equalsIgnoreCase(RESOURCE_SHARING_PLANS)) {
+                } else if (code.equalsIgnoreCase(RESOURCE_SHARING_PLANS)) {
                     ResourceSharingPlan resourceSharingPlan = ResourceSharingPlan.Factory.newInstance();
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
@@ -260,8 +257,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         }
                         otherResearchTrainingPlan.setResourceSharingPlan(resourceSharingPlan);
                     }
-                }
-                else if(code.equalsIgnoreCase(PHS_FELLOW_AUTH_KEY_BIO_CHEM_RESOURCES)) {
+                } else if (code.equalsIgnoreCase(PHS_FELLOW_AUTH_KEY_BIO_CHEM_RESOURCES)) {
                     KeyBiologicalAndOrChemicalResources keyBiologicalAndOrChemicalResources = KeyBiologicalAndOrChemicalResources.Factory.newInstance();
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
@@ -280,7 +276,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
         Map<Integer, String> hmBudgetQuestions = new HashMap<>();
         List<? extends AnswerHeaderContract> answers = findQuestionnaireWithAnswers(pdDoc.getDevelopmentProposal());
         OtherResearchTrainingPlan otherResearchTrainingPlan = phsFellowshipSupplemental.getOtherResearchTrainingPlan();
-        if(otherResearchTrainingPlan == null) {
+        if (otherResearchTrainingPlan == null) {
             otherResearchTrainingPlan = phsFellowshipSupplemental.addNewOtherResearchTrainingPlan();
         }
         setHumanSubjectInvolvedAndVertebrateAnimalUsed(otherResearchTrainingPlan);
@@ -322,10 +318,10 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                                     : YesNoDataType.N_NO);
                             break;
                         case STEMCELLLINES:
-                            List<? extends AnswerContract> answerList = getAnswers(questionnaireQuestion,answerHeader);
-                            for (AnswerContract questionnaireAnswerBO: answerList) {
-                                String questionnaireSubAnswer =  questionnaireAnswerBO.getAnswer();
-                                if(questionnaireSubAnswer!=null){
+                            List<? extends AnswerContract> answerList = getAnswers(questionnaireQuestion, answerHeader);
+                            for (AnswerContract questionnaireAnswerBO : answerList) {
+                                String questionnaireSubAnswer = questionnaireAnswerBO.getAnswer();
+                                if (questionnaireSubAnswer != null) {
                                     stemCellstype.addCellLines(questionnaireAnswerBO.getAnswer());
                                 }
                             }
@@ -443,8 +439,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                             break;
 
                     }
-                }
-                else if (answer == null ) {
+                } else if (answer == null) {
                     switch (questionId) {
                         case HUMAN:
                             otherResearchTrainingPlan.setHumanSubjectsIndefinite(null);
@@ -458,7 +453,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                             otherResearchTrainingPlan.setClinicalTrial(null);
                             break;
                         case PHASE3CLINICAL:
-                            if(otherResearchTrainingPlan.getClinicalTrial() == (YesNoDataType.Y_YES)) {
+                            if (otherResearchTrainingPlan.getClinicalTrial() == (YesNoDataType.Y_YES)) {
                                 otherResearchTrainingPlan.setPhase3ClinicalTrial(null);
                             }
                             break;
@@ -523,23 +518,23 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
             if (numberRepeats > 0) {
                 for (int j = 0; j < numberRepeats; j++) {
                     kbBean1 = cvLevel.get(j);
-                    if(cvType.size() - 1 >= j) {
+                    if (cvType.size() - 1 >= j) {
                         kbBean2 = cvType.get(j);
                     }
-                    if(cvStart.size() - 1 >= j) {
+                    if (cvStart.size() - 1 >= j) {
                         kbBean3 = cvStart.get(j);
                     }
-                    if(cvEnd.size() - 1 >= j) {
+                    if (cvEnd.size() - 1 >= j) {
                         kbBean4 = cvEnd.get(j);
                     }
-                    if(cvGrant.size() - 1 >= j) {
+                    if (cvGrant.size() - 1 >= j) {
                         kbBean5 = cvGrant.get(j);
                     }
                     CurrentPriorNRSASupport nrsaSupportType = CurrentPriorNRSASupport.Factory.newInstance();
                     if (kbBean1 != null) {
                         nrsaSupportType.setLevel(CurrentPriorNRSASupport.Level.Enum.forString(kbBean1.getAnswer()));
                     }
-                    if(kbBean2 != null) {
+                    if (kbBean2 != null) {
                         nrsaSupportType.setType(CurrentPriorNRSASupport.Type.Enum.forString(kbBean2.getAnswer()));
                     }
                     if (kbBean3 != null && !kbBean3.getAnswer().equals(FieldValueConstants.VALUE_UNKNOWN)) {
@@ -558,7 +553,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
             additionalInfoType.setCurrentPriorNRSASupportArray(currentPriorNRSASupportList.toArray(new CurrentPriorNRSASupport[0]));
         }
         phsFellowshipSupplemental.setBudget(createBudgetElements(hmBudgetQuestions));
-            setAdditionalInformation(additionalInfoType);
+        setAdditionalInformation(additionalInfoType);
     }
 
     protected Budget createBudgetElements(Map<Integer, String> budgetMap) {
@@ -653,7 +648,8 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         supplementationFromOtherSources.setAmount(new BigDecimal(hmBudgetQuestions.get(SUPP_FUNDING_AMT).toString()));
                         try {
                             supplementationFromOtherSources.setNumberOfMonths(new BigDecimal(hmBudgetQuestions.get(SUPP_MONTHS).toString()));
-                        }catch (Exception ex) {}
+                        } catch (Exception ex) {
+                        }
                         supplementationFromOtherSources.setType(hmBudgetQuestions.get(SUPP_TYPE).toString());
 
                     }
@@ -725,7 +721,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
 
         for (NarrativeContract narrative : pdDoc.getDevelopmentProposal().getNarratives()) {
             final String code = narrative.getNarrativeType().getCode();
-            if (code != null ) {
+            if (code != null) {
                 if (code.equalsIgnoreCase(INTRODUCTION_TO_APPLICATION)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
@@ -733,40 +729,35 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         introductionToApplication.setAttFile(attachedFileDataType);
                         introduction.setIntroductionToApplication(introductionToApplication);
                     }
-                }
-                else if (code.equalsIgnoreCase(FELLOWSHIP_BACKGROUND_AND_GOALS)) {
+                } else if (code.equalsIgnoreCase(FELLOWSHIP_BACKGROUND_AND_GOALS)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         BackgroundandGoals backgroundandGoals = BackgroundandGoals.Factory.newInstance();
                         backgroundandGoals.setAttFile(attachedFileDataType);
                         fellowshipApplicant.setBackgroundandGoals(backgroundandGoals);
                     }
-                }
-                else if (code.equalsIgnoreCase(SPECIFIC_AIMS)) {
+                } else if (code.equalsIgnoreCase(SPECIFIC_AIMS)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         ResearchTrainingPlan.SpecificAims specificAims = ResearchTrainingPlan.SpecificAims.Factory.newInstance();
                         specificAims.setAttFile(attachedFileDataType);
                         researchTrainingPlan.setSpecificAims(specificAims);
                     }
-                }
-                else if (code.equalsIgnoreCase(RESEARCH_STRATEGY)) {
+                } else if (code.equalsIgnoreCase(RESEARCH_STRATEGY)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         ResearchTrainingPlan.ResearchStrategy researchStrategy = ResearchTrainingPlan.ResearchStrategy.Factory.newInstance();
                         researchStrategy.setAttFile(attachedFileDataType);
                         researchTrainingPlan.setResearchStrategy(researchStrategy);
                     }
-                }
-                else if (code.equalsIgnoreCase(RESPECTIVE_CONTRIBUTIONS)) {
+                } else if (code.equalsIgnoreCase(RESPECTIVE_CONTRIBUTIONS)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         ResearchTrainingPlan.RespectiveContribution respectiveContribution = ResearchTrainingPlan.RespectiveContribution.Factory.newInstance();
                         respectiveContribution.setAttFile(attachedFileDataType);
                         researchTrainingPlan.setRespectiveContribution(respectiveContribution);
                     }
-                }
-                else if (code.equalsIgnoreCase(SELECTION_OF_SPONSOR_AND_INSTITUTION)) {
+                } else if (code.equalsIgnoreCase(SELECTION_OF_SPONSOR_AND_INSTITUTION)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         ResearchTrainingPlan.SponsorandInstitution sponsorAndInstitution = ResearchTrainingPlan.SponsorandInstitution.Factory
@@ -774,8 +765,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         sponsorAndInstitution.setAttFile(attachedFileDataType);
                         researchTrainingPlan.setSponsorandInstitution(sponsorAndInstitution);
                     }
-                }
-                else if (code.equalsIgnoreCase(PROGRESS_REPORT_PUBLICATION_LIST)) {
+                } else if (code.equalsIgnoreCase(PROGRESS_REPORT_PUBLICATION_LIST)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         ResearchTrainingPlan.ProgressReportPublicationList progressReportPublicationList = ProgressReportPublicationList.Factory
@@ -783,8 +773,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         progressReportPublicationList.setAttFile(attachedFileDataType);
                         researchTrainingPlan.setProgressReportPublicationList(progressReportPublicationList);
                     }
-                }
-                else if (code.equalsIgnoreCase(RESPONSIBLE_CONDUCT_OF_RESEARCH)) {
+                } else if (code.equalsIgnoreCase(RESPONSIBLE_CONDUCT_OF_RESEARCH)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         ResearchTrainingPlan.TrainingInResponsibleConductOfResearch responsibleConductOfResearch = ResearchTrainingPlan.TrainingInResponsibleConductOfResearch.Factory
@@ -800,8 +789,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         Sponsors.SponsorAndCoSponsorStatements sponsorCosponsorInfo = sponsors.addNewSponsorAndCoSponsorStatements();
                         sponsorCosponsorInfo.setAttFile(attachedFileDataType);
                     }
-                }
-                else if (code.equalsIgnoreCase(LETTER_COLLAB_CONTRIB_CONSULT)){
+                } else if (code.equalsIgnoreCase(LETTER_COLLAB_CONTRIB_CONSULT)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         Sponsors.LettersOfSupport lettersOfSupport = Sponsors.LettersOfSupport.Factory.newInstance();
@@ -830,8 +818,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         }
                         otherResearchTrainingPlan.setProtectionOfHumanSubjects(protectionOfHumanSubjects);
                     }
-                }
-                else if (code.equalsIgnoreCase(DATA_SAFETY_MONITORING_PLAN)) {
+                } else if (code.equalsIgnoreCase(DATA_SAFETY_MONITORING_PLAN)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         DataSafetyMonitoringPlan dataSafetyMonitoringPlan = DataSafetyMonitoringPlan.Factory.newInstance();
@@ -841,8 +828,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         }
                         otherResearchTrainingPlan.setDataSafetyMonitoringPlan(dataSafetyMonitoringPlan);
                     }
-                }
-                else if (code.equalsIgnoreCase(INCLUSION_OF_WOMEN_AND_MINORITIES)) {
+                } else if (code.equalsIgnoreCase(INCLUSION_OF_WOMEN_AND_MINORITIES)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         InclusionOfWomenAndMinorities inclusionOfWomenAndMinorities = InclusionOfWomenAndMinorities.Factory
@@ -853,8 +839,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                         }
                         otherResearchTrainingPlan.setInclusionOfWomenAndMinorities(inclusionOfWomenAndMinorities);
                     }
-                }
-                else if (code.equalsIgnoreCase(INCLUSION_OF_CHILDREN)) {
+                } else if (code.equalsIgnoreCase(INCLUSION_OF_CHILDREN)) {
                     attachedFileDataType = getAttachedFileType(narrative);
                     if (attachedFileDataType != null) {
                         InclusionOfChildren inclusionOfChildren = InclusionOfChildren.Factory.newInstance();
@@ -867,7 +852,36 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                 }
             }
         }
+
+        setMandatoryAttachmentsOnResearchTrainingPlan(researchTrainingPlan);
+        setMandatoryAttachmentsOnFellowshipApplicant(fellowshipApplicant);
     }
+
+    private void setMandatoryAttachmentsOnFellowshipApplicant(PHSFellowshipSupplemental31.FellowshipApplicant fellowshipApplicant) {
+        if(fellowshipApplicant.getBackgroundandGoals() == null) {
+            fellowshipApplicant.setBackgroundandGoals(BackgroundandGoals.Factory.newInstance());
+        }
+    }
+
+    private void setMandatoryAttachmentsOnResearchTrainingPlan(ResearchTrainingPlan researchTrainingPlan) {
+        if(researchTrainingPlan.getSpecificAims() == null) {
+            researchTrainingPlan.setSpecificAims(ResearchTrainingPlan.SpecificAims.Factory.newInstance());
+        }
+        if(researchTrainingPlan.getResearchStrategy() == null) {
+            researchTrainingPlan.setResearchStrategy(ResearchTrainingPlan.ResearchStrategy.Factory.newInstance());
+        }
+        if(researchTrainingPlan.getRespectiveContribution() == null) {
+            researchTrainingPlan.setRespectiveContribution(ResearchTrainingPlan.RespectiveContribution.Factory.newInstance());
+        }
+        if(researchTrainingPlan.getSponsorandInstitution() == null) {
+            researchTrainingPlan.setSponsorandInstitution(ResearchTrainingPlan.SponsorandInstitution.Factory.newInstance());
+        }
+        if(researchTrainingPlan.getTrainingInResponsibleConductOfResearch() == null) {
+            researchTrainingPlan.setTrainingInResponsibleConductOfResearch(ResearchTrainingPlan.TrainingInResponsibleConductOfResearch.Factory.newInstance());
+        }
+    }
+
+
 
     /**
      * This method is used to set HumanSubjectInvoved and VertebrateAnimalUsed XMLObject Data.
@@ -941,6 +955,9 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
                     }
                 }
             }
+        }
+        if (additionalInformation.getUSCitizen() == null && additionalInformation.getNonUSCitizen() == null) {
+            additionalInformation.setUSCitizen(YesNoDataType.N_NO);
         }
 
         if (principalInvestigator != null && principalInvestigator.getMobilePhoneNumber() != null) {
