@@ -1,6 +1,60 @@
 
 
 ##CURRENT
+* RESKC-1436: Clean up s2s error messages.
+  * Fellowship Supplemental Improper Error Validations: appear as invalid
+  * Error messages thrown incorrectly when adding a mandatory attachment, if there is a mandatory attachment listed earlier on the form that is missing.
+  * Steps to Reproduce
+  * Connect S2S to PA-DD-F32
+  * At attachments, add ResearchStrategy.
+  * Turn on Validation see message: /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/ResearchTrainingPlan/ResearchStrategy is not valid in PHS_Fellowship_Supplemental_3_1
+  * Attachment IS valid
+  * Add attachment SpecificAims
+  * Open Validations
+  * That incorrect message disappears
+same process when
+  * Sponsor and Institution added, but Contributions is missing.
+  * Message:
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/ResearchTrainingPlan/SponsorandInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+same process when
+  * Responsible Conduct is added, but Contributions is missing.
+  * Message:
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/ResearchTrainingPlan/TrainingInResponsibleConductOfResearch is not valid in PHS_Fellowship_Supplemental_3_1
+  * Also:
+  * Confusing message appears when any of the required forms under "research training plan section" are not added. is there any way we can modify this message?
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/ResearchTrainingPlan is not valid in PHS_Fellowship_Supplemental_3_1
+  * Some other cryptic / invalid error messages:
+  * 1. When I selected an invalid Citizenship Type (PERMANENT RESIDENT OF US PENDING or NOT RESIDING IN THE US) for the PI and then I try to generate the PHS Fellowship Supplemental Form 3.1 form, the system gives me couple cryptic Error Messages.
+  * This page has 3 errors
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/ChangeOfInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation is not valid in PHS_Fellowship_Supplemental_3_1
+  * Validation errors exist. Please correct these errors prior to submitting to Grants.gov.
+  * The following error has nothing to do with the Citizenship Type being invalid and should NOT be coming up: /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/ChangeOfInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+  * The second error message is valid but it doesn't provide all the detail:
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation is not valid in PHS_Fellowship_Supplemental_3_1
+  * Can this message be modified to state:
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/CitizenshipType is not valid in PHS_Fellowship_Supplemental_3_1
+************************************************************************************************
+  * 2. When no PI is added in the Key Personnel section, the system throws the following error messages that are invalid when I try to generate the PHS Fellowship Supplemental Form 3.1 form:
+  * This page has 4 errors
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/ChangeOfInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/FormerInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation is not valid in PHS_Fellowship_Supplemental_3_1
+  * Validation errors exist. Please correct these errors prior to submitting to Grants.gov.
+  * The following errors have nothing to do with the Citizenship Type being invalid and should NOT be coming up: /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/ChangeOfInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/FormerInstitution is not valid in PHS_Fellowship_Supplemental_3_1
+  * The third error message is valid but it doesn't provide all the detail:
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation is not valid in PHS_Fellowship_Supplemental_3_1
+  * Can this message be modified to state:
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/CitizenshipType is not valid in PHS_Fellowship_Supplemental_3_1
+**********************************************************************************************
+  * 3. User also gets a Grants.gov Error message when the Alternate Phone Number (Mobile in Person Details > Organization tab) is not entered for the PI:
+
+  * /GrantApplication/Forms/PHS_Fellowship_Supplemental_3_1/AdditionalInformation/AlernatePhoneNumber is not valid in PHS_Fellowship_Supplemental_3_1
+  * According to the PHS Fellowship Supplemental 3.1 form DAT, the 26. Alternate Phone Number is NOT required. Since it's not required, then the system should NOT be giving the user this error message forcing them to enter the number in order to pass the validation and submit the proposal.
+  * Gayathri Athreya on Tue, 28 Jun 2016 15:24:56 -0700 [View Commit](../../commit/a171a26f8111f6667e5f6ed4df059f3abb3c60f7)
+
+##coeus-s2sgen-1606.0005
 * RESKC-1433: Are vertebrate animals euthanised question fix.
   * Gayathri Athreya on Thu, 23 Jun 2016 12:35:14 -0500 [View Commit](../../commit/1af0397fa24ab208ba53b2e6adacd122ae0e5c3a)
 
