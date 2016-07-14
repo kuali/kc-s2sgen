@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1436: If citizenship type not selected, throw correct error. Do not make alternate phone number required.
+  * Gayathri Athreya on Thu, 14 Jul 2016 10:37:31 -0700 [View Commit](../../commit/b502a94afced964aa63e64f9a513ba6027db934e)
+
+##coeus-s2sgen-1606.0006
 * RESKC-1436: Clean up s2s error messages.
   * Fellowship Supplemental Improper Error Validations: appear as invalid
   * Error messages thrown incorrectly when adding a mandatory attachment, if there is a mandatory attachment listed earlier on the form that is missing.
