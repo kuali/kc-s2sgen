@@ -958,9 +958,10 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
         }
         if (additionalInformation.getUSCitizen() == null && additionalInformation.getNonUSCitizen() == null) {
             additionalInformation.setUSCitizen(YesNoDataType.N_NO);
+            additionalInformation.setNonUSCitizen(null);
         }
 
-        if (principalInvestigator != null && principalInvestigator.getMobilePhoneNumber() != null) {
+        if (principalInvestigator != null && StringUtils.isNotEmpty(principalInvestigator.getMobilePhoneNumber())) {
             additionalInformation.setAlernatePhoneNumber(principalInvestigator.getMobilePhoneNumber());
         }
     }
