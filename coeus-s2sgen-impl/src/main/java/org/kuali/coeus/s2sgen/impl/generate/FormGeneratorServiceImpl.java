@@ -278,13 +278,15 @@ public class FormGeneratorServiceImpl implements FormGeneratorService {
         if (StringUtils.isBlank(formName)) {
             throw new IllegalArgumentException("formName is blank");
         }
-        final boolean validationSucceeded;
+        boolean validationSucceeded = true;
         List<AuditError> auditErrors = new ArrayList<>();
         try {
             XmlObject xmlObject = XmlObject.Factory.parse(s2sUserAttachedFormFile.getXmlFile());
-            validationSucceeded = getS2SValidatorService().validate(xmlObject, auditErrors, formName);
+            if (StringUtils.isNotEmpty(xmlObject.schemaType().getFullJavaName())) {
+            	validationSucceeded = getS2SValidatorService().validate(xmlObject, auditErrors, formName);
+            }
         } catch (Exception e) {
-            throw new S2SException();
+            throw new S2SException(e.getMessage(), e);
         }
 
         FormGenerationResult result = new FormGenerationResult();

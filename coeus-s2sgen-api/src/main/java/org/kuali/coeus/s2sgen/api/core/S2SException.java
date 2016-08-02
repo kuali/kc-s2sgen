@@ -25,10 +25,10 @@ public class S2SException extends RuntimeException {
 
     public static final String ERROR_S2S_UNKNOWN = "error.s2s.unknown";
 
-    private String errorMessage;
+    private String errorMessage = "";
     private String errorKey = ERROR_S2S_UNKNOWN;
     private int messageType;
-    private String[] params;
+    private String[] params = new String[0];
     private String tabErrorKey;
 
     public S2SException() {
