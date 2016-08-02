@@ -1,6 +1,11 @@
 
 
 ##CURRENT
+* RESKC-1528:Do not attempt to validate user attached forms (#104)
+
+  * If we attempt to validate user attached forms then we also have to include the xsds for all potential forms.  * Douglas Pace on Tue, 2 Aug 2016 15:22:54 -0700 [View Commit](../../commit/bf40ca4474e684a95d34a95badfeb2f4925efe6e)
+
+##coeus-s2sgen-1607.0001
 * RESKC-1436: If citizenship type not selected, throw correct error. Do not make alternate phone number required.
   * Gayathri Athreya on Thu, 14 Jul 2016 10:37:31 -0700 [View Commit](../../commit/b502a94afced964aa63e64f9a513ba6027db934e)
 
