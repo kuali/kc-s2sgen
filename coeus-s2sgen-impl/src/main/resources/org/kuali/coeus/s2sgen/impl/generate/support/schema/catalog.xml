@@ -1091,6 +1091,7 @@
 	        <public publicId="http://apply.grants.gov/system/UniversalCodes-V2.0" uri="UniversalCodes-V2.0.xsd"/>
 	    </group>
 
-
-		
+		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/Project_Abstract_1_2-V1.2" uri="Project_Abstract_1_2-V1.2.xsd"/>
+		</group>
 </catalog>
