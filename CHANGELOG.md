@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* add project abstract 1.2 schema
+  * Terry Durkin on Wed, 10 Aug 2016 11:03:05 -0400 [View Commit](../../commit/9d6ccd669f9ce5921ddbd626a7ed0f17b48e7928)
+
+##coeus-s2sgen-1608.0001
 * RESKC-1528:Do not attempt to validate user attached forms (#104)
 
   * If we attempt to validate user attached forms then we also have to include the xsds for all potential forms.  * Douglas Pace on Tue, 2 Aug 2016 15:22:54 -0700 [View Commit](../../commit/bf40ca4474e684a95d34a95badfeb2f4925efe6e)
