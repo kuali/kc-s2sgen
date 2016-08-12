@@ -440,7 +440,7 @@ specific Funding Opportunity Announcement to determine which sections must be su
 						<fo:table-column column-width="proportional-column-width(1)"/>
 						<fo:table-body>
 
-					<!--  multiple attachmets -->
+					<!--  multiple attachments -->
 							<fo:table-row>
 								<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white" number-columns-spanned="2">
 									<xsl:call-template name="addBlankLines">

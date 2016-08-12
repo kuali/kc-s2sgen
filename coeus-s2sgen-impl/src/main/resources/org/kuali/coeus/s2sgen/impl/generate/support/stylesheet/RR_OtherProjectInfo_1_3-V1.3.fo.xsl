@@ -1045,7 +1045,7 @@
 											<fo:table-row>
 												<fo:table-cell>
 													<fo:block>
-														<fo:block font-size="8pt" font-weight="bold">12. Other Attatchments</fo:block> 
+														<fo:block font-size="8pt" font-weight="bold">12. Other Attachments</fo:block>
 														<xsl:for-each select="RR_OtherProjectInfo_1_3:OtherAttachments/RR_OtherProjectInfo_1_3:OtherAttachment">
 															<fo:block font-size="8pt">
 																<xsl:value-of select="att:FileName" />&#xa;
