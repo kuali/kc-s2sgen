@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* fix spelling errors
+  * Travis Schneeberger on Fri, 12 Aug 2016 09:10:22 -0400 [View Commit](../../commit/cfcb314f30f5c58e47e55440c5396842ec705445)
+
+##coeus-s2sgen-1608.0002
 * add project abstract 1.2 schema
   * Terry Durkin on Wed, 10 Aug 2016 11:03:05 -0400 [View Commit](../../commit/9d6ccd669f9ce5921ddbd626a7ed0f17b48e7928)
 
