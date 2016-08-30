@@ -85,7 +85,7 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
         ArrayList<XmlValidationError> validationErrors = new ArrayList<>();
         validationOptions.setErrorListener(validationErrors);
 
-        boolean isValid = formObject.validate(validationOptions);
+        boolean isValid = formObject.schemaType().toString().contains("apply.grants.gov") ? formObject.validate(validationOptions) : true;
 
         if (!isValid) {
             LOG.error("Errors occured during validation of XML from form generator" + validationErrors);
