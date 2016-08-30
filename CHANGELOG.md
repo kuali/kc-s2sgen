@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1571: Do not require validation of user attached forms
+  * Terry Durkin on Mon, 29 Aug 2016 17:36:04 -0400 [View Commit](../../commit/5d02197cb5a8a8ad073cc3dbfddce72d9b4215b5)
+
+##coeus-s2sgen-1608.0003
 * fix spelling errors
   * Travis Schneeberger on Fri, 12 Aug 2016 09:10:22 -0400 [View Commit](../../commit/cfcb314f30f5c58e47e55440c5396842ec705445)
 
