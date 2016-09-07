@@ -128,6 +128,8 @@ public class S2SDateTimeServiceImpl implements S2SDateTimeService {
         if (date != null) {
             calendar = Calendar.getInstance();
             calendar.setTime(date);
+            calendar.clear(Calendar.ZONE_OFFSET);
+            calendar.clear(Calendar.DST_OFFSET);
         }
         return calendar;
     }
