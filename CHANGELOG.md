@@ -1,6 +1,9 @@
 
 
 ##CURRENT
+* S2S submission issue due to bad date format on SF24 2.0   * vineeth on Wed, 7 Sep 2016 16:15:41 -0400 [View Commit](../../commit/5bf016654aadf01a5821c3c597a4e93c2d49b8b0)
+
+##coeus-s2sgen-1608.0004
 * RESKC-1571: Do not require validation of user attached forms
   * Terry Durkin on Mon, 29 Aug 2016 17:36:04 -0400 [View Commit](../../commit/5d02197cb5a8a8ad073cc3dbfddce72d9b4215b5)
 
