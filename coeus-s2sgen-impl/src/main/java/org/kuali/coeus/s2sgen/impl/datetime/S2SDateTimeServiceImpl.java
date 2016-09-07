@@ -84,19 +84,28 @@ public class S2SDateTimeServiceImpl implements S2SDateTimeService {
         return monthCount;
     }
 
-    @Override
     public String removeTimezoneFactor(String applicationXmlText) {
-        Calendar cal = Calendar.getInstance();
-        int dstOffsetMilli = cal.get(Calendar.DST_OFFSET);
+        return removeTimezoneFactor(applicationXmlText, Calendar.getInstance());
+    }
+
+    public String removeTimezoneFactor(String applicationXmlText, Calendar cal) {
         int zoneOffsetMilli = cal.get(Calendar.ZONE_OFFSET);
-        zoneOffsetMilli = cal.getTimeZone().useDaylightTime()?zoneOffsetMilli+dstOffsetMilli:zoneOffsetMilli;
-        int zoneOffset = zoneOffsetMilli/(1000*60*60);
-        String timezoneId = TimeZone.getTimeZone("GMT" + zoneOffset).getID();
+        int zoneOffsetNow = zoneOffsetMilli/(1000*60*60);
+        int zoneOffsetDST = zoneOffsetMilli/(1000*60*60) + 1;
+
+        String timezoneIdNow = TimeZone.getTimeZone("GMT" + zoneOffsetNow).getID();
+        String timezoneIdDst = TimeZone.getTimeZone("GMT" + zoneOffsetDST).getID();
         String offset="+00:00";
-        if(timezoneId.length()>6){
-            offset = timezoneId.substring(timezoneId.length()-6);
+        if(timezoneIdNow.length()>6){
+            offset = timezoneIdNow.substring(timezoneIdNow.length()-6);
+            applicationXmlText = StringUtils.remove(applicationXmlText, offset);
         }
-        return StringUtils.remove(applicationXmlText, offset);
+        if(timezoneIdDst.length()>6){
+            offset = timezoneIdDst.substring(timezoneIdDst.length()-6);
+            applicationXmlText = StringUtils.remove(applicationXmlText, offset);
+        }
+
+        return applicationXmlText;
     }
 
     /**
