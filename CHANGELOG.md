@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1689: SF424A future year budget amount mapping
+  * Terry Durkin on Sat, 10 Sep 2016 14:05:47 -0400 [View Commit](../../commit/21b97b1512ba614b729e2d5293f4b6f16d2a0e70)
+
+##coeus-s2sgen-1609.0001
 * S2S submission issue due to bad date format on SF24 2.0   * vineeth on Wed, 7 Sep 2016 16:15:41 -0400 [View Commit](../../commit/5bf016654aadf01a5821c3c597a4e93c2d49b8b0)
 
 ##coeus-s2sgen-1608.0004
