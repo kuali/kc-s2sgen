@@ -469,16 +469,16 @@ public class SF424AV1_0Generator extends SF424BaseGenerator {
         }
 
         for (BudgetPeriodContract budgetPeriod : budget.getBudgetPeriods()) {
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P1.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P2.getNum()) {
                 firstYearNetCost = firstYearNetCost.add(budgetPeriod.getTotalCost());
             }
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P2.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P3.getNum()) {
                 secondYearNetCost = secondYearNetCost.add(budgetPeriod.getTotalCost());
             }
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P3.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P4.getNum()) {
                 thirdYearNetCost = thirdYearNetCost.add(budgetPeriod.getTotalCost());
             }
-            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P4.getNum()) {
+            if (budgetPeriod.getBudgetPeriod() == BudgetPeriodNum.P5.getNum()) {
                 fourthYearNetCost = fourthYearNetCost.add(budgetPeriod.getTotalCost());
             }
         }
