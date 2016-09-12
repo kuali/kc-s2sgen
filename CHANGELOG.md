@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1683: Dates in generated S2S XML sometimes include DST offsets
+  * Terry Durkin on Wed, 7 Sep 2016 15:29:59 -0400 [View Commit](../../commit/496f20a48645e2e813195a258f35e1730acbb91d)
+
+##coeus-s2sgen-1609.0002
 * RESKC-1689: SF424A future year budget amount mapping
   * Terry Durkin on Sat, 10 Sep 2016 14:05:47 -0400 [View Commit](../../commit/21b97b1512ba614b729e2d5293f4b6f16d2a0e70)
 
