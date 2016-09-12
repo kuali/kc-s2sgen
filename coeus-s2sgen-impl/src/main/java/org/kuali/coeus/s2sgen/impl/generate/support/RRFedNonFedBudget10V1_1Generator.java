@@ -1115,8 +1115,7 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
         Equipment equipment = Equipment.Factory.newInstance();
         EquipmentList[] equipmentArray = new EquipmentList[0];
         List<EquipmentList> equipmentArrayList = new ArrayList<>();
-        if (periodInfo.getEquipment() != null && periodInfo.getEquipment() != null && periodInfo.getEquipment().size() > 0) {
-            if (periodInfo.getEquipment() != null) {
+        if (periodInfo.getEquipment() != null && periodInfo.getEquipment().size() > 0) {
                 SummaryDataType totalFund = SummaryDataType.Factory.newInstance();
                 totalFund.setFederalSummary(BigDecimal.ZERO);
                 totalFund.setNonFederalSummary(BigDecimal.ZERO);
@@ -1172,7 +1171,7 @@ public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGener
                 }
                 equipment.setTotalFund(summary);
                 
-            }
+
         }
         NarrativeContract narrative = saveExtraEquipment(periodInfo);
         AttachedFileDataType attachedFileDataType = null;
