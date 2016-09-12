@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1691: removing generator that is not correctly implemented
+  * Travis Schneeberger on Mon, 12 Sep 2016 16:23:35 -0400 [View Commit](../../commit/0683dc947c340148e3c3d0496bfd98daab753f64)
+
+##coeus-s2sgen-1609.0003
 * RESKC-1683: Dates in generated S2S XML sometimes include DST offsets
   * Terry Durkin on Wed, 7 Sep 2016 15:29:59 -0400 [View Commit](../../commit/496f20a48645e2e813195a258f35e1730acbb91d)
 
