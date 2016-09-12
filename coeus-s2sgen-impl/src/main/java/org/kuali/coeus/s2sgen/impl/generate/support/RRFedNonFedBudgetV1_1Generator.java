@@ -384,7 +384,7 @@ public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerat
     private CumulativeOtherDirect getCumulativeOtherDirect(BudgetSummaryDto budgetSummaryData) {
         CumulativeOtherDirect cumulativeOtherDirect = CumulativeOtherDirect.Factory.newInstance();
         SummaryDataType summary = SummaryDataType.Factory.newInstance();
-        if (budgetSummaryData != null && budgetSummaryData != null) {
+        if (budgetSummaryData != null) {
             for (OtherDirectCostInfoDto cumOtherDirect : budgetSummaryData.getOtherDirectCosts()) {
                 if (cumOtherDirect.gettotalOtherDirect() != null) {
                     summary.setFederalSummary(cumOtherDirect.gettotalOtherDirect().bigDecimalValue());
