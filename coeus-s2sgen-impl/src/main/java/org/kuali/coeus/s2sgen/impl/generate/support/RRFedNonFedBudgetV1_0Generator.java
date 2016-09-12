@@ -1061,7 +1061,7 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
         EquipmentList[] equipmentArray = new EquipmentList[0];
         List<EquipmentList> equipmentArrayList = new ArrayList<>();
         if (periodInfo != null) {
-            if (periodInfo.getEquipment() != null && periodInfo.getEquipment() != null && periodInfo.getEquipment().size() > 0) {
+            if (periodInfo.getEquipment() != null && periodInfo.getEquipment().size() > 0) {
                 SummaryDataType totalFund = SummaryDataType.Factory.newInstance();
                 totalFund.setFederalSummary(BigDecimal.ZERO);
                 totalFund.setNonFederalSummary(BigDecimal.ZERO);
