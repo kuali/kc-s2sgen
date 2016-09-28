@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1580: reworking error handling for better logging and to avoid a ClassCastException when an XmlError occurs instead of an XmlValidationError
+  * Travis Schneeberger on Wed, 28 Sep 2016 09:49:35 -0400 [View Commit](../../commit/596e9afebb3f26b0b95b75e77d27e4f9d749de91)
+
+##coeus-s2sgen-1609.0005
 * No Changes
 
 
