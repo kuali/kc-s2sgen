@@ -21,7 +21,6 @@ package org.kuali.coeus.s2sgen.impl.validate;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
-import org.apache.xmlbeans.XmlValidationError;
 import org.kuali.coeus.s2sgen.api.core.AuditError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +30,10 @@ import org.springframework.stereotype.Component;
 import org.w3c.dom.Node;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collection;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -60,13 +61,12 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
     @Override
     public boolean validate(XmlObject formObject, List<AuditError> errors, String formName) {
 
-        List<String> formErrors = new ArrayList<>();
-        boolean result = false;
-        result = validateXml(formObject, formErrors);
+        final List<String> formErrors = new ArrayList<>();
+        final boolean result = validateXml(formObject, formErrors);
 
-        for (String validationError : formErrors) {
-            errors.add(s2SErrorHandlerService.getError(GRANTS_GOV_PREFIX + validationError, formName));
-        }
+        errors.addAll(formErrors.stream()
+                .map(validationError -> s2SErrorHandlerService.getError(GRANTS_GOV_PREFIX + validationError, formName))
+                .collect(Collectors.toList()));
 
         return result;
     }
@@ -81,20 +81,29 @@ public class S2SValidatorServiceImpl implements S2SValidatorService {
      * @return validation result true if valid false otherwise.
      */
     protected boolean validateXml(XmlObject formObject, List<String> errors) {
-        XmlOptions validationOptions = new XmlOptions();
-        ArrayList<XmlValidationError> validationErrors = new ArrayList<>();
+        final XmlOptions validationOptions = new XmlOptions();
+        final Collection<Object> validationErrors = new ArrayList<>();
         validationOptions.setErrorListener(validationErrors);
 
-        boolean isValid = formObject.schemaType().toString().contains("apply.grants.gov") ? formObject.validate(validationOptions) : true;
+        final boolean isValid = !formObject.schemaType().toString().contains("apply.grants.gov") || formObject.validate(validationOptions);
 
         if (!isValid) {
-            LOG.error("Errors occured during validation of XML from form generator" + validationErrors);
-            for (XmlValidationError error : validationErrors) {
-                LOG.info("Validation error:" + error);
-                Node node = error.getCursorLocation().getDomNode();
-                errors.add(getXPath(node));
+            if (LOG.isInfoEnabled()) {
+                LOG.info("Errors occurred during validation of XML from form generator");
             }
-            LOG.debug("Error XPaths:" + errors);
+
+            for (Object error : validationErrors) {
+                String xpath = null;
+                if (error instanceof XmlError) {
+                    final Node node = ((XmlError) error).getCursorLocation().getDomNode();
+                    xpath = getXPath(node);
+                    errors.add(xpath);
+                }
+
+                if (LOG.isInfoEnabled()) {
+                    LOG.info("Error: " + error + (xpath != null ? " " + xpath : ""));
+                }
+            }
         }
         return isValid;
     }
