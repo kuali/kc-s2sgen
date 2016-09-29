@@ -932,7 +932,7 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
     private void setCitizenshipAndAlternatePhoneNumber(AdditionalInformation additionalInformation) {
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
         for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
-            if (proposalPerson.isInvestigator()) {
+            if (proposalPerson.isPrincipalInvestigator()) {
                 CitizenshipType citizenShip = s2SProposalPersonService.getCitizenship(proposalPerson);
                 if(citizenShip!=null && StringUtils.isNotBlank(citizenShip.getCitizenShip())){
                     if (citizenShip.getCitizenShip().trim().equals(CitizenshipDataType.NON_U_S_CITIZEN_WITH_TEMPORARY_VISA.toString())) {
