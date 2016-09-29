@@ -1,6 +1,13 @@
 
 
 ##CURRENT
+* KC system is populating form inappropriately with Yes to US Citizen by
+  * default when MIT HR Data has non-citizen or null data. It is still
+  * honoring the aggregator’s input data in key person extended attributes,
+  * checking the correct non-Citizen type boxes, but with Citizen always
+  * being “Yes”.   * vineeth on Thu, 29 Sep 2016 17:49:08 -0400 [View Commit](../../commit/bdddc783719a81484765f98e80ab30795dbbc00e)
+
+##coeus-s2sgen-1609.0006
 * RESKC-1580: reworking error handling for better logging and to avoid a ClassCastException when an XmlError occurs instead of an XmlValidationError
   * Travis Schneeberger on Wed, 28 Sep 2016 09:49:35 -0400 [View Commit](../../commit/596e9afebb3f26b0b95b75e77d27e4f9d749de91)
 
