@@ -814,7 +814,7 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
         additionalInformation.addNewActivitiesPlannedUnderThisAward();    
         ProposalPersonContract principalInvestigator = s2SProposalPersonService.getPrincipalInvestigator(pdDoc);
         for (ProposalPersonContract proposalPerson : pdDoc.getDevelopmentProposal().getProposalPersons()) {
-            if (proposalPerson.isInvestigator()) {
+            if (proposalPerson.isPrincipalInvestigator()) {
                 hasInvestigator = true;
                 CitizenshipType citizenShip = s2SProposalPersonService.getCitizenship(proposalPerson);
                 if(citizenShip!=null && StringUtils.isNotBlank(citizenShip.getCitizenShip())){
