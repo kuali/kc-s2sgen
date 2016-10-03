@@ -97,6 +97,10 @@ public class PHS398CareerDevelopmentAwardSupV3_0Generator extends
 		} else if(CitizenshipType.US_CITIZEN_OR_NONCITIZEN_NATIONAL.equals(citizenShip)) {
 			phs398CareerDevelopmentAwardSup30.setCitizenshipIndicator(YesNoDataType.Y_YES);
 		}
+        if(phs398CareerDevelopmentAwardSup30.getCitizenshipIndicator() == null) {
+            phs398CareerDevelopmentAwardSup30.setCitizenshipIndicator(YesNoDataType.N_NO);
+            phs398CareerDevelopmentAwardSup30.setIsNonUSCitizenship(null);
+        }
 	}
 
 	private CareerDevelopmentAwardAttachments getCareerDevelopmentAwardAttachments() {
