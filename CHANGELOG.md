@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1580: support for Research & Related Budget version 1.4
+  * Travis Schneeberger on Fri, 30 Sep 2016 13:36:16 -0400 [View Commit](../../commit/cec58b43034d50cdf7dce184dd150b340425c39e)
+
+##coeus-s2sgen-1610.0001
 * RESKC-1480: Fixing citizenship type error message.
   * S2S PHS Career Development Award Supplement V3.0 will not validate and print/preview despite meeting the minimum required attachment validation if there is no PI/citizenship data.
   * There must be a better validation that is specific to the missing PI and/or Citizenship data for this form to aid the user.
