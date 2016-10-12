@@ -42,32 +42,19 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 
-/**
- * This class provides the functionality for printing any {@link S2SPrintable} object. It uses the methods available in Printable
- * object to generate XML, fetch XSL style-sheets, then transforms the XML to a PDF after applying the style sheet.
- *
- */
 @Component("s2SPrintingService")
 public class S2SPrintingServiceImpl implements S2SPrintingService {
 
     private static final Logger LOG = LoggerFactory.getLogger(S2SPrintingServiceImpl.class);
-    public static final String PDF_REPORT_CONTENT_TYPE = "application/pdf";
-    public static final String PDF_FILE_EXTENSION = ".pdf";
-    public final char SPACE_SEPARATOR = 32;
-    public final int WHITESPACE_LENGTH_76 = 76;
-    public final int WHITESPACE_LENGTH_60 = 60;
+
+    private static final char SPACE_SEPARATOR = 32;
+    private static final int WHITESPACE_LENGTH_76 = 76;
+    private static final int WHITESPACE_LENGTH_60 = 60;
 
     @Autowired
     @Qualifier("s2SConfigurationService")
     private S2SConfigurationService s2SConfigurationService;
 
-    /**
-     * This method receives a {@link S2SPrintable} object, generates XML for it, transforms into PDF after applying style-sheet and
-     * returns the PDF bytes
-     *
-     * @param printableArtifact to be printed
-     * @return PDF bytes
-     */
     protected Map<String, byte[]> getPrintBytes(S2SPrintable printableArtifact) {
         try {
             Map<String, byte[]> streamMap = printableArtifact.renderXML();
@@ -153,13 +140,6 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         return bookmarkKey + (xslCount == 1 ? "" : " " + xslCount);
     }
 
-    /**
-     * This method receives a {@link S2SPrintable} object, generates XML for it, transforms into PDF after applying style-sheet and
-     * returns the PDF bytes as {@link S2SFile}
-     *
-     * @param printableArtifacts to be printed
-     * @return PDF bytes
-     */
     @Override
     public S2SFile print(S2SPrintable printableArtifacts) {
         List<S2SPrintable> printables = new ArrayList<>();
@@ -167,19 +147,8 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         return print(printables);
     }
 
-    /**
-     * This method receives a {@link java.util.List} of {@link S2SPrintable} object, generates XML for it, transforms into PDF after applying
-     * style-sheet and returns the PDF bytes as {@link S2SFile}
-     *
-     * @param printableArtifactList List of printableArtifact to be printed
-     * @return {@link S2SFile} PDF bytes
-     */
     @Override
     public S2SFile print(List<S2SPrintable> printableArtifactList) {
-        return print(printableArtifactList, false);
-    }
-
-    public S2SFile print(List<S2SPrintable> printableArtifactList, boolean headerFooterRequired) {
         S2SFile printablePdf;
         List<String> bookmarksList = new ArrayList<>();
         List<byte[]> pdfBaosList = new ArrayList<>();
@@ -195,7 +164,7 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         }
 
         printablePdf = new S2SFile();
-        byte[] mergedPdfBytes = mergePdfBytes(pdfBaosList, bookmarksList, headerFooterRequired);
+        byte[] mergedPdfBytes = mergePdfBytes(pdfBaosList, bookmarksList, false);
 
         // If there is a stylesheet issue, the pdf bytes will be null. To avoid an exception
         // initialize to an empty array before sending the content back
@@ -206,9 +175,15 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         printablePdf.setData(mergedPdfBytes);
         StringBuilder fileName = new StringBuilder();
         fileName.append(getReportName());
-        fileName.append(PDF_FILE_EXTENSION);
+        fileName.append(PrintConstants.PDF_FILE_EXTENSION);
         printablePdf.setName(fileName.toString());
-        printablePdf.setType(PDF_REPORT_CONTENT_TYPE);
+        printablePdf.setType(PrintConstants.PDF_REPORT_CONTENT_TYPE);
+
+        final boolean loggingEnable = s2SConfigurationService.getValueAsBoolean(ConfigurationConstants.PRINT_PDF_LOGGING_ENABLE);
+        if (loggingEnable) {
+            logPdfPrintDetails(printablePdf);
+        }
+
         return printablePdf;
     }
 
@@ -227,10 +202,6 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
         return StringUtils.deleteWhitespace(dateString);
     }
 
-    /**
-     * @param pdfBytesList List containing the PDF data bytes
-     * @param bookmarksList List of bookmarks corresponding to the PDF bytes.
-     */
     @Override
     public byte[] mergePdfBytes(List<byte[]> pdfBytesList, List<String> bookmarksList, boolean headerFooterRequired) {
         Document document = null;
@@ -352,12 +323,9 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
                 String xmlString = new String(xmlBytes);
                 String dateString = new Timestamp(new Date().getTime()).toString();
                 String reportName = StringUtils.deleteWhitespace(key);
-                String createdTime = StringUtils.replaceChars(StringUtils.deleteWhitespace(dateString), ":", "_");
-                File dir = new File(loggingDirectory);
-                if(!dir.exists() || !dir.isDirectory()){
-                    dir.mkdirs();
-                }
-                File file = new File(dir , reportName + createdTime + ".xml");
+                String createdTime = StringUtils.replaceChars(StringUtils.deleteWhitespace(dateString), PrintConstants.COLON, PrintConstants.UNDERSCORE);
+                File dir = getLoggingDir(loggingDirectory);
+                File file = new File(dir , reportName + PrintConstants.UNDERSCORE + createdTime + PrintConstants.XML_FILE_EXTENSION);
                 try(BufferedWriter out = new BufferedWriter(new FileWriter(file))) {
                     out.write(xmlString);
                 } catch (IOException e) {
@@ -365,6 +333,30 @@ public class S2SPrintingServiceImpl implements S2SPrintingService {
                 }
             }
         }
+    }
+
+    protected void logPdfPrintDetails(S2SFile pdf) {
+        final String loggingDirectory = s2SConfigurationService.getValueAsString(ConfigurationConstants.PRINT_LOGGING_DIRECTORY);
+        if (loggingDirectory != null && pdf != null && pdf.getData() != null) {
+            final String dateString = new Timestamp(new Date().getTime()).toString();
+            final String createdTime = StringUtils.replaceChars(StringUtils.deleteWhitespace(dateString), PrintConstants.COLON, PrintConstants.UNDERSCORE);
+            final String fileName = StringUtils.replaceChars(StringUtils.deleteWhitespace(pdf.getName().replace(PrintConstants.PDF_FILE_EXTENSION, "")), PrintConstants.COLON, PrintConstants.UNDERSCORE) + PrintConstants.UNDERSCORE +
+                    createdTime + PrintConstants.PDF_FILE_EXTENSION;
+            try(FileOutputStream fos = new FileOutputStream(new File(getLoggingDir(loggingDirectory), fileName))) {
+                fos.write(pdf.getData());
+                fos.flush();
+            } catch (IOException e) {
+                LOG.error(e.getMessage(), e);
+            }
+        }
+    }
+
+    protected File getLoggingDir(String loggingDirectory) {
+        File dir = new File(loggingDirectory);
+        if(!dir.exists() || !dir.isDirectory()){
+            dir.mkdirs();
+        }
+        return dir;
     }
 
     public S2SConfigurationService getS2SConfigurationService() {
