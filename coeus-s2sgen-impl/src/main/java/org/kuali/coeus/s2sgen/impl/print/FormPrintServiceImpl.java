@@ -78,20 +78,19 @@ import java.util.zip.ZipOutputStream;
 @Component("formPrintService")
 public class FormPrintServiceImpl implements FormPrintService {
 	private static final Logger LOG = LoggerFactory.getLogger(FormPrintServiceImpl.class);
-    private static final String PDF_FILE_EXTENSION = ".pdf";
+
     private static final String NARRATIVE_CONTENT_ID_PREFIX = "N";
     private static final String BIOGRAPHY_CONTENT_ID_PREFIX = "B";
     private static final String NARRATIVE_LEGACY_DATA_CONTENT_ID_PREFIX = "M";
     private static final String BIOGRAPHY_LEGACY_DATA_CONTENT_ID_PREFIX = "ID";
     private static final String BIOGRAPHY_LEGACY_DATA_CONTENT_ID_ELEMENT = "BN";
-	private static final String HYPHEN = "-";
-	private static final String UNDERSCORE = "_";
 
-	private static final List<String> ATT_PREFIXES = Stream.of(NARRATIVE_CONTENT_ID_PREFIX + HYPHEN,
-			BIOGRAPHY_CONTENT_ID_PREFIX + HYPHEN,
-			NARRATIVE_LEGACY_DATA_CONTENT_ID_PREFIX + HYPHEN,
-			BIOGRAPHY_LEGACY_DATA_CONTENT_ID_PREFIX + HYPHEN,
-			BIOGRAPHY_LEGACY_DATA_CONTENT_ID_ELEMENT + HYPHEN).collect(Collectors.toList());
+
+	private static final List<String> ATT_PREFIXES = Stream.of(NARRATIVE_CONTENT_ID_PREFIX + PrintConstants.HYPHEN,
+			BIOGRAPHY_CONTENT_ID_PREFIX + PrintConstants.HYPHEN,
+			NARRATIVE_LEGACY_DATA_CONTENT_ID_PREFIX + PrintConstants.HYPHEN,
+			BIOGRAPHY_LEGACY_DATA_CONTENT_ID_PREFIX + PrintConstants.HYPHEN,
+			BIOGRAPHY_LEGACY_DATA_CONTENT_ID_ELEMENT + PrintConstants.HYPHEN).collect(Collectors.toList());
 
 	@Autowired
     @Qualifier("s2sApplicationService")
@@ -178,10 +177,10 @@ public class FormPrintServiceImpl implements FormPrintService {
 	    String loggingDirectory = s2SConfigurationService.getValueAsString(ConfigurationConstants.PRINT_XML_DIRECTORY);
         String opportunityId = pdDoc.getDevelopmentProposal().getS2sOpportunity().getOpportunityId();
         String proposalnumber = pdDoc.getDevelopmentProposal().getProposalNumber();
-        String exportDate = StringUtils.replaceChars((pdDoc.getDevelopmentProposal().getUpdateTimestamp().toString()), ":", UNDERSCORE);
-        exportDate = StringUtils.replaceChars(exportDate, " ", ".");
+        String exportDate = StringUtils.replaceChars((pdDoc.getDevelopmentProposal().getUpdateTimestamp().toString()), PrintConstants.COLON, PrintConstants.UNDERSCORE);
+        exportDate = StringUtils.replaceChars(exportDate, PrintConstants.SPACE, PrintConstants.PERIOD);
 
-        File grantsGovXmlDirectoryFile = new File(loggingDirectory + opportunityId + "." + proposalnumber + "." + exportDate);
+        File grantsGovXmlDirectoryFile = new File(loggingDirectory + opportunityId + PrintConstants.PERIOD + proposalnumber + PrintConstants.PERIOD + exportDate);
         if (!grantsGovXmlDirectoryFile.exists() || formEntryFlag) {
             grantsGovXmlDirectoryFile.mkdir();
         }
@@ -205,12 +204,12 @@ public class FormPrintServiceImpl implements FormPrintService {
 				}
 			}
         }
-        File xmlFile= new File(grantsGovXmlDirectoryFile,opportunityId + "." + proposalnumber + "." + exportDate+".xml");
+        File xmlFile= new File(grantsGovXmlDirectoryFile,opportunityId + PrintConstants.PERIOD + proposalnumber + PrintConstants.PERIOD + exportDate+PrintConstants.XML_FILE_EXTENSION);
         try (BufferedWriter out = new BufferedWriter(new FileWriter(xmlFile))) {
             out.write(formObject.xmlText());
         }
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream(grantsGovXmlDirectoryFile+".zip"); ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream)) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(grantsGovXmlDirectoryFile+PrintConstants.ZIP_FILE_EXTENSION); ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream)) {
             addFolderToZip("", grantsGovXmlDirectoryFile.getPath(), zipOutputStream);
             zipOutputStream.flush();
         }
@@ -248,7 +247,7 @@ public class FormPrintServiceImpl implements FormPrintService {
 		fileName.append(pdDoc.getDocumentNumber());
 		fileName.append(pdDoc.getDevelopmentProposal()
 				.getProgramAnnouncementNumber());
-		fileName.append(PDF_FILE_EXTENSION);
+		fileName.append(PrintConstants.PDF_FILE_EXTENSION);
 		return fileName.toString();
 	}
 
@@ -286,7 +285,7 @@ public class FormPrintServiceImpl implements FormPrintService {
 				formFragment = getFormObject(submittedDocument);
 				frmXpath = "//*[namespace-uri(.) = '"+namespace+"']";               
 
-				byte[] formXmlBytes = formFragment.xmlText().getBytes();
+				formFragment.xmlText().getBytes();
 				GenericPrintable formPrintable = new GenericPrintable();
 
 				ArrayList<Source> templates = new ArrayList<>();
@@ -502,8 +501,8 @@ public class FormPrintServiceImpl implements FormPrintService {
 		}
 
 		if (ATT_PREFIXES.stream().anyMatch(contentId::startsWith)) {
-			final String[] contentIds = contentId.split(HYPHEN);
-			final String[] contentDesc = contentIds[1].split(UNDERSCORE);
+			final String[] contentIds = contentId.split(PrintConstants.HYPHEN);
+			final String[] contentDesc = contentIds[1].split(PrintConstants.UNDERSCORE);
 			if (StringUtils.equals(contentIds[0], NARRATIVE_CONTENT_ID_PREFIX)) {
 				for (NarrativeContract narrative : pdDoc.getDevelopmentProposal()
 						.getNarratives()) {
@@ -532,7 +531,7 @@ public class FormPrintServiceImpl implements FormPrintService {
 			return pdDoc.getDevelopmentProposal().getNarratives().stream().filter(narrative ->
 					(narrative.getModuleNumber().equals(Integer.valueOf(contentDesc[0])))).findAny().get().getNarrativeAttachment();
 		} else if (StringUtils.equals(contentIds[0], BIOGRAPHY_LEGACY_DATA_CONTENT_ID_PREFIX) && StringUtils.equals(contentDesc[1], BIOGRAPHY_LEGACY_DATA_CONTENT_ID_ELEMENT)) {
-			String[] biographyDescrption = contentIds[2].split(UNDERSCORE);
+			String[] biographyDescrption = contentIds[2].split(PrintConstants.UNDERSCORE);
 			return pdDoc.getDevelopmentProposal().getPropPersonBios().stream().filter(biography ->
 					(biography.getPersonId().equals(contentDesc[0]) && biography.getBiographyNumber().equals(Integer.valueOf(biographyDescrption[0])))).findAny().get().getPersonnelAttachment();
 		}
@@ -632,14 +631,6 @@ public class FormPrintServiceImpl implements FormPrintService {
         return userAttachedFormService.findFormNamespaces(proposalNumber);
     }
 
-	public void setS2SFormGeneratorService(
-			S2SFormGeneratorRetrievalService s2SFormGeneratorService) {
-		this.s2SFormGeneratorService = s2SFormGeneratorService;
-	}
-
-	public void setS2SValidatorService(S2SValidatorService s2SValidatorService) {
-		this.s2SValidatorService = s2SValidatorService;
-	}
 
 	protected boolean isPdfType(byte[] data) {
 		final int ATTRIBUTE_CHUNK_SIZE = 1200;// increased for ppt
@@ -697,6 +688,20 @@ public class FormPrintServiceImpl implements FormPrintService {
 		return byteVal;
 	}
 
+	protected void setFormObject(Forms forms, XmlObject formObject) {
+		// Create a cursor from the grants.gov form
+		XmlCursor formCursor = formObject.newCursor();
+		formCursor.toStartDoc();
+		formCursor.toNextToken();
+
+		// Create a cursor from the Forms object
+		XmlCursor metaGrantCursor = forms.newCursor();
+		metaGrantCursor.toNextToken();
+
+		// Add the form to the Forms object.
+		formCursor.moveXml(metaGrantCursor);
+	}
+
     public NarrativeService getNarrativeService() {
         return narrativeService;
     }
@@ -712,19 +717,6 @@ public class FormPrintServiceImpl implements FormPrintService {
 	public void setS2SPrintingService(S2SPrintingService s2SPrintingService) {
 		this.s2SPrintingService = s2SPrintingService;
 	}
-	protected void setFormObject(Forms forms, XmlObject formObject) {
-        // Create a cursor from the grants.gov form
-        XmlCursor formCursor = formObject.newCursor();
-        formCursor.toStartDoc();
-        formCursor.toNextToken();
-
-        // Create a cursor from the Forms object
-        XmlCursor metaGrantCursor = forms.newCursor();
-        metaGrantCursor.toNextToken();
-
-        // Add the form to the Forms object.
-        formCursor.moveXml(metaGrantCursor);
-    }
 
     public S2SConfigurationService getS2SConfigurationService() {
         return s2SConfigurationService;
@@ -780,6 +772,14 @@ public class FormPrintServiceImpl implements FormPrintService {
 
 	public void setS2SCommonBudgetService(S2SCommonBudgetService s2SCommonBudgetService) {
 		this.s2SCommonBudgetService = s2SCommonBudgetService;
+	}
+
+	public void setS2SFormGeneratorService(S2SFormGeneratorRetrievalService s2SFormGeneratorService) {
+		this.s2SFormGeneratorService = s2SFormGeneratorService;
+	}
+
+	public void setS2SValidatorService(S2SValidatorService s2SValidatorService) {
+		this.s2SValidatorService = s2SValidatorService;
 	}
 
 	protected static class PrintableResult {

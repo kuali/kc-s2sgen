@@ -101,6 +101,7 @@ public final class ConfigurationConstants {
     //printing
     public static final String PRINT_XML_DIRECTORY = "print.xml.directory";
     public static final String PRINT_LOGGING_ENABLE = "print.logging.enable";
+    public static final String PRINT_PDF_LOGGING_ENABLE = "print.pdf.logging.enable";
     public static final String PRINT_LOGGING_DIRECTORY = "print.logging.directory";
     public static final String APPLICATION_URL_KEY = "application.url";
 
