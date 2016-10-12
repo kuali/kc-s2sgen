@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+* RESKC-1583: allowing pdf files to be saved to the filesystem, code cleanup
+  * Travis Schneeberger on Wed, 12 Oct 2016 12:02:47 -0400 [View Commit](../../commit/29acaf524a2b0bd1282cf8b0b753682256e4968a)
+* RESKC-1583: support for Research & Related Budget 10 version 1.4
+  * Travis Schneeberger on Tue, 11 Oct 2016 16:56:47 -0400 [View Commit](../../commit/4dc3c437bc1e01efe63edc63d898af0c7fa5cbbb)
+
+##coeus-s2sgen-1610.0002
 * RESKC-1580: support for Research & Related Budget version 1.4
   * Travis Schneeberger on Fri, 30 Sep 2016 13:36:16 -0400 [View Commit](../../commit/cec58b43034d50cdf7dce184dd150b340425c39e)
 
