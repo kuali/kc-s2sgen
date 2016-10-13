@@ -283,7 +283,7 @@ public class FormPrintServiceImpl implements FormPrintService {
 			if(info==null) continue;
 			if(StringUtils.isNotBlank(info.getStyleSheet())){
 				formFragment = getFormObject(submittedDocument);
-				frmXpath = "//*[namespace-uri(.) = '"+namespace+"']";               
+				frmXpath = "/xml-fragment/*[namespace-uri(.) = '"+namespace+"']";
 
 				formFragment.xmlText().getBytes();
 				GenericPrintable formPrintable = new GenericPrintable();
