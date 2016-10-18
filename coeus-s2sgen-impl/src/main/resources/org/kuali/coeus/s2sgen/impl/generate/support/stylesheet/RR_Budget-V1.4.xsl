@@ -2815,7 +2815,7 @@
                <fo:table-row>
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">K. Total Cost and Fee</fo:inline>
+                        <fo:inline font-size="8pt" font-weight="bold">K. Total Costs and Fee</fo:inline>
                      </fo:block>
                   </fo:table-cell>
                   <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
@@ -2827,7 +2827,7 @@
                <fo:table-row>
                   <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">Total Cost and Fee (I + J)</fo:inline>
+                        <fo:inline font-size="8pt" font-weight="bold">Total Costs and Fee (I + J)</fo:inline>
                      </fo:block>
                   </fo:table-cell>
                   <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
@@ -2853,7 +2853,7 @@
                <fo:table-row>
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">K. * Budget Justification</fo:inline>
+                        <fo:inline font-size="8pt" font-weight="bold">L. * Budget Justification</fo:inline>
                      </fo:block>
                   </fo:table-cell>
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
