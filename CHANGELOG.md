@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1580: fixing the stylesheet for certain field labels
+  * Travis Schneeberger on Tue, 18 Oct 2016 09:02:23 -0400 [View Commit](../../commit/403bda1e7a8fa6df74d876b0804a71551c9b8d89)
+
+##coeus-s2sgen-1610.0004
 * RESKC-1295: when search for form to print only look at the node directly under the Forms element rather than any matching nested element
   * Travis Schneeberger on Thu, 13 Oct 2016 16:06:33 -0400 [View Commit](../../commit/9a739c817a4dd48d407e1bb38650d4c22703caa6)
 
