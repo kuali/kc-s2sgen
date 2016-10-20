@@ -738,7 +738,7 @@
                            
   <fo:table-row>
                               <fo:table-cell hyphenate="true" language="en" padding-before="3pt" padding-after="3pt">
-                                 <fo:block font-weight="bold">Section K, Total Costs and Fees (I + J)</fo:block>
+                                 <fo:block font-weight="bold">Section K, Total Costs and Fee (I + J)</fo:block>
                               </fo:table-cell>
                               <fo:table-cell>
                                  <fo:block/>
