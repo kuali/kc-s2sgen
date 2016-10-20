@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1580: fixing the stylesheet for a field label
+  * Travis Schneeberger on Thu, 20 Oct 2016 09:25:03 -0400 [View Commit](../../commit/847dd082763c535b82c524a1b16d92add47bf8aa)
+
+##coeus-s2sgen-1610.0005
 * RESKC-1580: fixing the stylesheet for certain field labels
   * Travis Schneeberger on Tue, 18 Oct 2016 09:02:23 -0400 [View Commit](../../commit/403bda1e7a8fa6df74d876b0804a71551c9b8d89)
 
