@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* updating several dependencies, including commons-collections4
+  * Travis Schneeberger on Mon, 24 Oct 2016 10:31:57 -0400 [View Commit](../../commit/10bed29cf1a7fa8977673fd464399ad87548f84e)
+
+##coeus-s2sgen-1610.0006
 * RESKC-1580: fixing the stylesheet for a field label
   * Travis Schneeberger on Thu, 20 Oct 2016 09:25:03 -0400 [View Commit](../../commit/847dd082763c535b82c524a1b16d92add47bf8aa)
 
