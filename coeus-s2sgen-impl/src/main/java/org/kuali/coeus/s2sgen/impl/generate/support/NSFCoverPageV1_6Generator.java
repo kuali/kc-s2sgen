@@ -140,6 +140,10 @@ public class NSFCoverPageV1_6Generator extends NSFCoverPageBaseGenerator {
             fundingMechanism = FundingMechanism.FELLOWSHIP;
         } else if (StringUtils.equalsIgnoreCase(answer, FundingMechanism.IDEAS_LAB.toString())) {
             fundingMechanism = FundingMechanism.IDEAS_LAB;
+        } else if (StringUtils.equalsIgnoreCase(answer, FundingMechanism.INTERNATIONAL_TRAVEL.toString())) {
+            fundingMechanism = FundingMechanism.INTERNATIONAL_TRAVEL;
+        } else if (StringUtils.equalsIgnoreCase(answer, FundingMechanism.RESEARCH_OTHER_THAN_RAPID_OR_EAGER.toString())) {
+            fundingMechanism = FundingMechanism.RESEARCH_OTHER_THAN_RAPID_OR_EAGER;
         }
         nsfCoverPage16.setFundingMechanism(fundingMechanism);
     }
