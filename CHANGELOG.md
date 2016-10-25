@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1604: supporting RR Subaward Budget 10 10 version 1.4.  Fixing version 1.2 and 1.3 of the  RR Subaward Budget 10 10 forms' stylesheets when there is no equipment present.
+  * Travis Schneeberger on Tue, 25 Oct 2016 17:00:57 -0400 [View Commit](../../commit/372ba6d8cc4d9b8164406ee93877c2b78c6c959c)
+
+##coeus-s2sgen-1610.0008
 * RESKC-1784: Fix missing/broken NSF1.6 Funding Mechanisms
   * Terry Durkin on Tue, 25 Oct 2016 14:03:06 -0400 [View Commit](../../commit/758db3bcc4f662a4c84318daf9191f4ddde613aa)
 
