@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1784: Fix missing/broken NSF1.6 Funding Mechanisms
+  * Terry Durkin on Tue, 25 Oct 2016 14:03:06 -0400 [View Commit](../../commit/758db3bcc4f662a4c84318daf9191f4ddde613aa)
+
+##coeus-s2sgen-1610.0007
 * updating several dependencies, including commons-collections4
   * Travis Schneeberger on Mon, 24 Oct 2016 10:31:57 -0400 [View Commit](../../commit/10bed29cf1a7fa8977673fd464399ad87548f84e)
 
