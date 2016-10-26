@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1577: RRSF424 stylesheet update.
+  * Gayathri Athreya on Wed, 26 Oct 2016 09:32:33 -0700 [View Commit](../../commit/b60f35b4ef94ceec2cfc064f8b59767c4c514ad7)
+
+##coeus-s2sgen-1610.0009
 * RESKC-1604: supporting RR Subaward Budget 10 10 version 1.4.  Fixing version 1.2 and 1.3 of the  RR Subaward Budget 10 10 forms' stylesheets when there is no equipment present.
   * Travis Schneeberger on Tue, 25 Oct 2016 17:00:57 -0400 [View Commit](../../commit/372ba6d8cc4d9b8164406ee93877c2b78c6c959c)
 
