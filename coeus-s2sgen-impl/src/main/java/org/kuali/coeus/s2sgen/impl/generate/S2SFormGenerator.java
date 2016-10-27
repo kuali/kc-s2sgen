@@ -19,10 +19,10 @@
 package org.kuali.coeus.s2sgen.impl.generate;
 
 import org.apache.xmlbeans.XmlObject;
-import org.kuali.coeus.s2sgen.api.core.S2SException;
-import org.kuali.coeus.s2sgen.api.generate.AttachmentData;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.s2sgen.api.core.AuditError;
+import org.kuali.coeus.s2sgen.api.core.S2SException;
+import org.kuali.coeus.s2sgen.api.generate.AttachmentData;
 
 import java.util.List;
 
