@@ -870,7 +870,7 @@
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget-V1.2" uri="RR_FedNonFed_SubawardBudget-V1.2.xsd"/>
 	    </group>
-		
+
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget10_10-V1.2" uri="RR_FedNonFed_SubawardBudget10_10-V1.2.xsd"/>
 	    </group>
@@ -895,6 +895,11 @@
 	        <public publicId="http://apply.grants.gov/forms/RR_FedNonFedBudget-V1.1" uri="RR_FNF_A-V1.1.xsd"/>
 	    </group>
 		-->
+
+		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/RR_FedNonFedBudget_1_2-V1.2" uri="RR_FedNonFedBudget_1_2-V1.2.xsd"/>
+		</group>
+
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/RR_KeyPerson-V1.1" uri="RR_KeyPerson-V1.1.xsd"/>
 	    </group>
