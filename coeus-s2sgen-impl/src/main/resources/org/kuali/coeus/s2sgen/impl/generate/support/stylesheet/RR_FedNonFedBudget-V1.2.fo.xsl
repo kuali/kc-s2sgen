@@ -1242,7 +1242,8 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeADPComputerServices/RR_FedNonFedBudget_1_2:NonFederal = '' or not(R_FedNonFedBudget_1_2:CumulativeADPComputerServices/RR_FedNonFedBudget_1_2:NonFederal)">
+													<xsl:when
+															test="RR_FedNonFedBudget_1_2:CumulativeADPComputerServices/RR_FedNonFedBudget_1_2:NonFederal = '' or not(RR_FedNonFedBudget_1_2:CumulativeADPComputerServices/RR_FedNonFedBudget_1_2:NonFederal)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
