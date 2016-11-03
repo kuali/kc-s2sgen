@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1602: supporting RR FedNonFed Budget 1.2, fixing stylesheet
+  * Travis Schneeberger on Thu, 3 Nov 2016 10:41:04 -0400 [View Commit](../../commit/c7384cb241836a39862ad8e3b62049faf7f3aee1)
+
+##coeus-s2sgen-1611.0001
 * RESKC-1602: supporting RR FedNonFed Budget 1.2
   * Travis Schneeberger on Wed, 2 Nov 2016 17:22:55 -0400 [View Commit](../../commit/50415b0d6a07f474e4c5649810a55447c3957bab)
 
