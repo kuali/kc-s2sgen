@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1602: supporting RR FedNonFed Budget 1.2
+  * Travis Schneeberger on Wed, 2 Nov 2016 17:22:55 -0400 [View Commit](../../commit/50415b0d6a07f474e4c5649810a55447c3957bab)
+
+##coeus-s2sgen-1610.0013
 * RESKC-1582: Added new version of R&R Subaward Budget Attachment Form 5 YR 30 ATT
   * Gayathri Athreya on Thu, 27 Oct 2016 14:31:11 -0700 [View Commit](../../commit/dfd7020b2be3fd73cb9c74df22c53f59db052029)
 
