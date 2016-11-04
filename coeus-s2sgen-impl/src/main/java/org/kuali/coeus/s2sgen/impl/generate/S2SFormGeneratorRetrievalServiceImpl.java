@@ -82,19 +82,7 @@ public class S2SFormGeneratorRetrievalServiceImpl implements S2SFormGeneratorRet
     public XmlOptions getXmlOptionsPrefixes() {
         XmlOptions xmlOptions = new XmlOptions();
         Map<String, String> prefixMap = new HashMap<>();
-        prefixMap.put(
-                "http://apply.grants.gov/system/MetaGrantApplication", "");
-        prefixMap.put(
-                "http://apply.grants.gov/forms/RR_SubawardBudget-V1.0",
-                "RR_SubawardBudget");
-        prefixMap.put(
-                "http://apply.grants.gov/forms/RR_SubawardBudget-V1.1",
-                "RR_SubawardBudget");
-        prefixMap.put(
-                "http://apply.grants.gov/forms/RR_SubawardBudget-V1.2",
-                "RR_SubawardBudget");
-        
-
+        prefixMap.put("http://apply.grants.gov/system/MetaGrantApplication", "");
         xmlOptions.setSaveSuggestedPrefixes(prefixMap);
         return xmlOptions;
     }

@@ -41,14 +41,10 @@ import org.w3c.dom.NodeList;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Class for generating the XML object for grants.gov RRSubAwardBudgetV1.1. Form is generated using XMLBean classes and is based on
- * RRSubAwardBudget schema.
- * 
- * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
- */
+
 @FormGenerator("RRSubAwardBudgetV1_1Generator")
 public class RRSubAwardBudgetV1_1Generator extends S2SAdobeFormAttachmentBaseGenerator {
 
@@ -67,92 +63,76 @@ public class RRSubAwardBudgetV1_1Generator extends S2SAdobeFormAttachmentBaseGen
     @Value("177")
     private int sortIndex;
 
-    /**
-     * 
-     * This method is to get SubAward Budget details
-     * 
-     * @return rrSubawardBudgetDocument {@link XmlObject} of type RRSubawardBudgetDocument.
-     */
     private RRSubawardBudgetDocument getRRSubAwardBudget() throws S2SException{
 
         RRSubawardBudgetDocument rrSubawardBudgetDocument = RRSubawardBudgetDocument.Factory.newInstance();
         RRSubawardBudget rrSubawardBudget = RRSubawardBudget.Factory.newInstance();
 
         BudgetAttachments budgetAttachments = BudgetAttachments.Factory.newInstance();
-        List<BudgetSubAwardsContract> budgetSubAwardsList = getBudgetSubAwards(pdDoc,RR_BUDGET_11_NAMESPACE_URI,true);
-        RRBudget[] budgetList = new RRBudget[budgetSubAwardsList.size()];
+        List<BudgetSubAwardsContract> budgetSubAwardsList = getBudgetSubAwards(pdDoc,RR_BUDGET_10_NAMESPACE_URI,true);
+        List<RRBudget> budgetList = new ArrayList<>();
         rrSubawardBudget.setFormVersion(FormVersion.v1_1.getVersion());
+
         int attCount = 1;
         for (BudgetSubAwardsContract budgetSubAwards : budgetSubAwardsList) {
-            switch (attCount) {
-                case 1:
-                    rrSubawardBudget.setATT1(prepareAttName(budgetSubAwards));
-                    budgetList[0] = getRRBudget(budgetSubAwards);
-                    break;
-                case 2:
-                    rrSubawardBudget.setATT2(prepareAttName(budgetSubAwards));
-                    budgetList[1] = getRRBudget(budgetSubAwards);
-                    break;
-                case 3:
-                    rrSubawardBudget.setATT3(prepareAttName(budgetSubAwards));
-                    budgetList[2] = getRRBudget(budgetSubAwards);
-                    break;
-                case 4:
-                    rrSubawardBudget.setATT4(prepareAttName(budgetSubAwards));
-                    budgetList[3] = getRRBudget(budgetSubAwards);
-                    break;
-                case 5:
-                    rrSubawardBudget.setATT5(prepareAttName(budgetSubAwards));
-                    budgetList[4] = getRRBudget(budgetSubAwards);
-                    break;
-                case 6:
-                    rrSubawardBudget.setATT6(prepareAttName(budgetSubAwards));
-                    budgetList[5] = getRRBudget(budgetSubAwards);
-                    break;
-                case 7:
-                    rrSubawardBudget.setATT7(prepareAttName(budgetSubAwards));
-                    budgetList[6] = getRRBudget(budgetSubAwards);
-                    break;
-                case 8:
-                    rrSubawardBudget.setATT8(prepareAttName(budgetSubAwards));
-                    budgetList[7] = getRRBudget(budgetSubAwards);
-                    break;
-                case 9:
-                    rrSubawardBudget.setATT9(prepareAttName(budgetSubAwards));
-                    budgetList[8] = getRRBudget(budgetSubAwards);
-                    break;
-                case 10:
-                    rrSubawardBudget.setATT10(prepareAttName(budgetSubAwards));
-                    budgetList[9] = getRRBudget(budgetSubAwards);
-                    break;
+            final RRBudgetDocument rrBudgetDocument = getRRBudget(budgetSubAwards);
+            if (rrBudgetDocument != null) {
+                RRBudget rrBudget = rrBudgetDocument.getRRBudget();
+                switch (attCount) {
+                    case 1:
+                        rrSubawardBudget.setATT1(prepareAttName(budgetSubAwards));
+                        budgetList.add(0, rrBudget);
+                        break;
+                    case 2:
+                        rrSubawardBudget.setATT2(prepareAttName(budgetSubAwards));
+                        budgetList.add(1, rrBudget);
+                        break;
+                    case 3:
+                        rrSubawardBudget.setATT3(prepareAttName(budgetSubAwards));
+                        budgetList.add(2, rrBudget);
+                        break;
+                    case 4:
+                        rrSubawardBudget.setATT4(prepareAttName(budgetSubAwards));
+                        budgetList.add(3, rrBudget);
+                        break;
+                    case 5:
+                        rrSubawardBudget.setATT5(prepareAttName(budgetSubAwards));
+                        budgetList.add(4, rrBudget);
+                        break;
+                    case 6:
+                        rrSubawardBudget.setATT6(prepareAttName(budgetSubAwards));
+                        budgetList.add(5, rrBudget);
+                        break;
+                    case 7:
+                        rrSubawardBudget.setATT7(prepareAttName(budgetSubAwards));
+                        budgetList.add(6, rrBudget);
+                        break;
+                    case 8:
+                        rrSubawardBudget.setATT8(prepareAttName(budgetSubAwards));
+                        budgetList.add(7, rrBudget);
+                        break;
+                    case 9:
+                        rrSubawardBudget.setATT9(prepareAttName(budgetSubAwards));
+                        budgetList.add(8, rrBudget);
+                        break;
+                    case 10:
+                        rrSubawardBudget.setATT10(prepareAttName(budgetSubAwards));
+                        budgetList.add(9, rrBudget);
+                        break;
+                }
+                addSubAwdAttachments(budgetSubAwards);
+                attCount++;
             }
-            addSubAwdAttachments(budgetSubAwards);
-            attCount++;
         }
-        budgetAttachments.setRRBudgetArray(budgetList);
+        budgetAttachments.setRRBudgetArray(budgetList.toArray(new RRBudget[budgetList.size()]));
         rrSubawardBudget.setBudgetAttachments(budgetAttachments);
         rrSubawardBudgetDocument.setRRSubawardBudget(rrSubawardBudget);
         return rrSubawardBudgetDocument;
     }
 
-    /**
-     * 
-     * This method is used to get RRBudget from BudgetSubAwards
-     * 
-     * @param budgetSubAwards(BudgetSubAwards) budget sub awards entry.
-     * @return RRBudget corresponding to the BudgetSubAwards object.
-     */
-    private RRBudget getRRBudget(BudgetSubAwardsContract budgetSubAwards) throws S2SException{
-        RRBudget rrBudget = RRBudget.Factory.newInstance();
-        RRBudgetDocument rrBudgetDocument = RRBudgetDocument.Factory.newInstance();
+    private RRBudgetDocument getRRBudget(BudgetSubAwardsContract budgetSubAwards) throws S2SException{
         String subAwdXML = budgetSubAwards.getSubAwardXmlFileData();
-        Document subAwdFormsDoc;
-        try {
-            subAwdFormsDoc = stringToDom(subAwdXML);
-        }
-        catch (S2SException e1) {
-            return rrBudget;
-        }
+        Document subAwdFormsDoc = stringToDom(subAwdXML);
         Element subAwdFormsElement = subAwdFormsDoc.getDocumentElement();
         NodeList subAwdNodeList = subAwdFormsElement.getElementsByTagNameNS(RR_BUDGET_11_NAMESPACE_URI, LOCAL_NAME);
         Node subAwdNode = null;
@@ -162,37 +142,23 @@ public class RRSubAwardBudgetV1_1Generator extends S2SAdobeFormAttachmentBaseGen
             }
             subAwdNode = subAwdNodeList.item(0);
         }
-        byte[] subAwdNodeBytes = null;
+        byte[] subAwdNodeBytes;
         InputStream bgtIS  = null;
         try {
             subAwdNodeBytes = docToBytes(nodeToDom(subAwdNode));
             bgtIS = new ByteArrayInputStream(subAwdNodeBytes);
-            rrBudgetDocument = (RRBudgetDocument) XmlObject.Factory.parse(bgtIS);
-            rrBudget = rrBudgetDocument.getRRBudget();
+            return (RRBudgetDocument) XmlObject.Factory.parse(bgtIS);
         }
-        catch (S2SException e) {
-            return rrBudget;
-        }
-        catch (XmlException e) {
-            return rrBudget;
-        }
-        catch (IOException e) {
-            return rrBudget;
+
+        catch (XmlException|IOException e) {
+            throw new RuntimeException(e);
         }finally{
             if(bgtIS!=null){
                 try {bgtIS.close();}catch (IOException e) {} 
             }
         }
-        return rrBudget;
     }
 
-    /**
-     * This method creates {@link XmlObject} of type {@link RRSubawardBudgetDocument} by populating data from the given
-     * {@link ProposalDevelopmentDocumentContract}
-     * 
-     * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
-     * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
-     */
     @Override
     public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException{
         pdDoc=proposalDevelopmentDocument;
