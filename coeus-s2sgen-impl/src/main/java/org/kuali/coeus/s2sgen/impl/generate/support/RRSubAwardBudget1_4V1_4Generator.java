@@ -18,18 +18,17 @@
  */
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
-import gov.grants.apply.forms.rrBudget13V13.RRBudget13Document;
-import gov.grants.apply.forms.rrBudget13V13.RRBudget13Document.RRBudget13;
-import gov.grants.apply.forms.rrSubawardBudget13V13.RRSubawardBudget13Document;
-import gov.grants.apply.forms.rrSubawardBudget13V13.RRSubawardBudget13Document.RRSubawardBudget13;
-import gov.grants.apply.forms.rrSubawardBudget13V13.RRSubawardBudget13Document.RRSubawardBudget13.BudgetAttachments;
+import gov.grants.apply.forms.rrBudget14V14.RRBudget14Document;
+import gov.grants.apply.forms.rrBudget14V14.RRBudget14Document.RRBudget14;
+import gov.grants.apply.forms.rrSubawardBudget14V14.RRSubawardBudget14Document;
+import gov.grants.apply.forms.rrSubawardBudget14V14.RRSubawardBudget14Document.RRSubawardBudget14;
+import gov.grants.apply.forms.rrSubawardBudget14V14.RRSubawardBudget14Document.RRSubawardBudget14.BudgetAttachments;
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.propdev.api.budget.subaward.BudgetSubAwardsContract;
-import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
+import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.w3c.dom.Document;
@@ -39,45 +38,45 @@ import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-@FormGenerator("RRSubAwardBudget1_3V1_3Generator")
-public class RRSubAwardBudget1_3V1_3Generator extends S2SAdobeFormAttachmentBaseGenerator {
+@FormGenerator("RRSubAwardBudget1_4V1_4Generator")
+public class RRSubAwardBudget1_4V1_4Generator extends S2SAdobeFormAttachmentBaseGenerator {
 
-    private static final String RR_BUDGET1_3_NAMESPACE_URI = "http://apply.grants.gov/forms/RR_Budget_1_3-V1.3";
-    private static final String RR_BUDGET1_3_LOCAL_NAME = "RR_Budget_1_3";
+    private static final String RR_BUDGET1_4_NAMESPACE_URI = "http://apply.grants.gov/forms/RR_Budget_1_4-V1.4";
+    private static final String RR_BUDGET1_4_LOCAL_NAME = "RR_Budget_1_4";
 
-    @Value("http://apply.grants.gov/forms/RR_SubawardBudget_1_3-V1.3")
+    @Value("http://apply.grants.gov/forms/RR_SubawardBudget_1_4-V1.4")
     private String namespace;
 
-    @Value("RR_SubawardBudget_1_3")
+    @Value("RR_SubawardBudget_1_4")
     private String formName;
 
-    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/RR_SubawardBudget-V1.3.xsl")
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/RR_SubawardBudget-V1.4.xsl")
     private Resource stylesheet;
 
-    @Value("gov.grants.apply.forms.rrSubawardBudget13V13")
+    @Value("gov.grants.apply.forms.rrSubawardBudget14V14")
     private String packageName;
 
     @Value("177")
     private int sortIndex;
 
-    private RRSubawardBudget13Document getRRSubawardBudgetDocument() {
+    private RRSubawardBudget14Document getRRSubawardBudgetDocument() {
 
-        RRSubawardBudget13Document rrSubawardBudgetDocument = RRSubawardBudget13Document.Factory.newInstance();
-        RRSubawardBudget13 rrSubawardBudget = RRSubawardBudget13.Factory.newInstance();
+        RRSubawardBudget14Document rrSubawardBudgetDocument = RRSubawardBudget14Document.Factory.newInstance();
+        RRSubawardBudget14 rrSubawardBudget = RRSubawardBudget14.Factory.newInstance();
         BudgetAttachments budgetAttachments = BudgetAttachments.Factory.newInstance();
-        List<BudgetSubAwardsContract> budgetSubAwardsList = getBudgetSubAwards(pdDoc,RR_BUDGET1_3_NAMESPACE_URI,false);
-        List<RRBudget13> budgetList = new ArrayList<>();
-        rrSubawardBudget.setFormVersion(FormVersion.v1_3.getVersion());
+        List<BudgetSubAwardsContract> budgetSubAwardsList = getBudgetSubAwards(pdDoc,RR_BUDGET1_4_NAMESPACE_URI,false);
+        List<RRBudget14> budgetList = new ArrayList<>();
+        rrSubawardBudget.setFormVersion(FormVersion.v1_4.getVersion());
 
         int attCount = 1;
         for (BudgetSubAwardsContract budgetSubAwards : budgetSubAwardsList) {
-            RRBudget13Document rrBudgetDocument = getRRBudget10(budgetSubAwards);
+            final RRBudget14Document rrBudgetDocument = getRRBudget10(budgetSubAwards);
             if (rrBudgetDocument != null) {
-                RRBudget13 rrBudget = rrBudgetDocument.getRRBudget13();
+               final  RRBudget14 rrBudget = rrBudgetDocument.getRRBudget14();
+
                 switch (attCount) {
                     case 1:
                         rrSubawardBudget.setATT1(prepareAttName(budgetSubAwards));
@@ -123,18 +122,21 @@ public class RRSubAwardBudget1_3V1_3Generator extends S2SAdobeFormAttachmentBase
                 addSubAwdAttachments(budgetSubAwards);
                 attCount++;
             }
+            
         }
-        budgetAttachments.setRRBudget13Array(budgetList.toArray(new RRBudget13[budgetList.size()]));
+        budgetAttachments.setRRBudget14Array(budgetList.toArray(new RRBudget14[budgetList.size()]));
         rrSubawardBudget.setBudgetAttachments(budgetAttachments);
-        rrSubawardBudgetDocument.setRRSubawardBudget13(rrSubawardBudget);
+        rrSubawardBudgetDocument.setRRSubawardBudget14(rrSubawardBudget);
         return rrSubawardBudgetDocument;
     }
 
-    private RRBudget13Document getRRBudget10(BudgetSubAwardsContract budgetSubAwards) {
+    private RRBudget14Document getRRBudget10(BudgetSubAwardsContract budgetSubAwards) {
+        final RRBudget14Document rrBudget;
         String subAwdXML = budgetSubAwards.getSubAwardXmlFileData();
         Document subAwdFormsDoc = stringToDom(subAwdXML);
+
         Element subAwdFormsElement = subAwdFormsDoc.getDocumentElement();
-        NodeList subAwdNodeList = subAwdFormsElement.getElementsByTagNameNS(RR_BUDGET1_3_NAMESPACE_URI, RR_BUDGET1_3_LOCAL_NAME);
+        NodeList subAwdNodeList = subAwdFormsElement.getElementsByTagNameNS(RR_BUDGET1_4_NAMESPACE_URI, RR_BUDGET1_4_LOCAL_NAME);
         Node subAwdNode = null;
         if (subAwdNodeList != null){
             if(subAwdNodeList.getLength() == 0) {
@@ -142,14 +144,17 @@ public class RRSubAwardBudget1_3V1_3Generator extends S2SAdobeFormAttachmentBase
             }
             subAwdNode = subAwdNodeList.item(0);
         }
-        byte[] subAwdNodeBytes;
+
+
+        byte[] subAwdNodeBytes = docToBytes(nodeToDom(subAwdNode));
+
         try {
-            subAwdNodeBytes = docToBytes(nodeToDom(subAwdNode));
-            InputStream bgtIS = new ByteArrayInputStream(subAwdNodeBytes);
-            return (RRBudget13Document) XmlObject.Factory.parse(bgtIS);
+            rrBudget = (RRBudget14Document) XmlObject.Factory.parse(new ByteArrayInputStream(subAwdNodeBytes));
         } catch (XmlException|IOException e) {
             throw new RuntimeException(e);
         }
+
+        return rrBudget;
     }
 
     @Override
