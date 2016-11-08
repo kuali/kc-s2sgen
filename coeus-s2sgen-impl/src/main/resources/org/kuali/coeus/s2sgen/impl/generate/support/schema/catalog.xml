@@ -900,6 +900,10 @@
 			<public publicId="http://apply.grants.gov/forms/RR_FedNonFedBudget_1_2-V1.2" uri="RR_FedNonFedBudget_1_2-V1.2.xsd"/>
 		</group>
 
+        <group prefer="public">
+            <public publicId="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget30-V1.3" uri="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget30-V1.3.xsd"/>
+        </group>
+
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/RR_KeyPerson-V1.1" uri="RR_KeyPerson-V1.1.xsd"/>
 	    </group>

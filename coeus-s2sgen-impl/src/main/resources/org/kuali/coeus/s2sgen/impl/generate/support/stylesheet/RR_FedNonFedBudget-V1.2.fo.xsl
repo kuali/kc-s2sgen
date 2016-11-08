@@ -18,7 +18,14 @@
    - along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <!-- $Revision:   1.2  $ -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:RR_FedNonFedBudget_1_2="http://apply.grants.gov/forms/RR_FedNonFedBudget_1_2-V1.2" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0" xmlns:footer="http://apply.grants.gov/system/Footer-V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:header="http://devapply.row.com/system/Header-V1.0">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                xmlns:RR_FedNonFedBudget_1_2="http://apply.grants.gov/forms/RR_FedNonFedBudget_1_2-V1.2"
+                xmlns:glob="http://apply.grants.gov/system/Global-V1.0"
+                xmlns:att="http://apply.grants.gov/system/Attachments-V1.0"
+                xmlns:globLib="http://apply.grants.gov/system/GlobalLibrary-V2.0"
+                xmlns:footer="http://apply.grants.gov/system/Footer-V1.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:header="http://devapply.row.com/system/Header-V1.0">
 	<xsl:template match="RR_FedNonFedBudget_1_2:RR_FedNonFedBudget_1_2[name(..)!='RR_FedNonFed_SubawardBudget:BudgetAttachments']">
 		<fo:root>
 			<fo:layout-master-set>
