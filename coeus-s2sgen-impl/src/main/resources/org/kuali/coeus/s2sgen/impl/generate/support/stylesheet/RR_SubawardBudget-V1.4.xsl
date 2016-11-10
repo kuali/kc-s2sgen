@@ -63,7 +63,7 @@
 										<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
 									</fo:block>
 									<fo:block>
-										<fo:inline font-size="6px" font-weight="bold">Expiration Date: 06/30/2016</fo:inline>
+										<fo:inline font-size="6px" font-weight="bold">Expiration Date: 10/31/2019</fo:inline>
 									</fo:block>
 								</fo:table-cell>
 							</fo:table-row>
@@ -84,14 +84,14 @@
 									<fo:block font-size="8pt" hyphenate="true" language="en" wrap-option="wrap">
 										<fo:inline font-weight="bold" font-size="8pt">Instructions:</fo:inline>
 
-                                     Instructions: On this form, you will attach the R&amp;R Subaward Budget files for your grant application. Complete the subawardee budget(s) in accordance with the R&amp;R budget instructions. Please remember that any files you attach must be a PDF document.
+                                     On this form, you will attach the R&amp;R Subaward Budget files for your grant application. Complete the subawardee budget(s) in accordance with the R&amp;R budget instructions. Please remember that any files you attach must be a PDF document.
                            </fo:block>
 									<fo:block line-height="4pt">&#160;</fo:block>
 									<fo:block>&#160;</fo:block>
 									<fo:block>&#160;</fo:block>
 									<fo:block font-size="8pt" hyphenate="true" language="en">
 										<fo:inline font-weight="bold" font-size="8pt">Important:</fo:inline>  
-                               Important: Please attach your subawardee budget file(s) with the file name of the subawardee organization.  Each file name must be unique. 
+                               Please attach your subawardee budget file(s) with the file name of the subawardee organization.  Each file name must be unique.
                            </fo:block>
 									<fo:block>&#160;</fo:block>
 								</fo:table-cell>
@@ -215,7 +215,7 @@
 											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
 										</fo:block>
 										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 06/30/2016</fo:inline>
+											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 10/31/2019</fo:inline>
 										</fo:block>
 									</fo:table-cell>
 								</fo:table-row>
@@ -253,7 +253,7 @@
 											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
 										</fo:block>
 										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 06/30/2016</fo:inline>
+											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 10/31/2019</fo:inline>
 										</fo:block>
 									</fo:table-cell>
 								</fo:table-row>
@@ -801,6 +801,23 @@
 											<fo:table-cell text-align="right">
 												<fo:block>
 													<xsl:for-each select="RR_Budget_1_4:CumulativeFee">
+														<fo:inline font-weight="bold">
+															<xsl:value-of select="format-number(., '#,##0.00')"/>
+														</fo:inline>
+													</xsl:for-each>
+												</fo:block>
+											</fo:table-cell>
+										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell hyphenate="true" language="en" padding-before="3pt" padding-after="3pt">
+												<fo:block font-weight="bold">Section K, Total Costs and Fee (I + J)</fo:block>
+											</fo:table-cell>
+											<fo:table-cell>
+												<fo:block/>
+											</fo:table-cell>
+											<fo:table-cell text-align="right">
+												<fo:block>
+													<xsl:for-each select="RR_Budget_1_4:CumulativeTotalCostsFee">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -2913,6 +2930,43 @@
                </fo:table-row>
             </fo:table-body>
          </fo:table>
+		  <fo:block>
+			  <fo:leader leader-pattern="space"/>
+		  </fo:block>
+		  <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
+			  <fo:table-column column-width="proportional-column-width(85)"/>
+			  <fo:table-column column-width="proportional-column-width(16)"/>
+			  <fo:table-body>
+				  <fo:table-row>
+					  <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
+						  <fo:block>
+							  <fo:inline font-size="8pt" font-weight="bold">K. Total Costs and Fee</fo:inline>
+						  </fo:block>
+					  </fo:table-cell>
+					  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						  <fo:block>
+							  <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
+						  </fo:block>
+					  </fo:table-cell>
+				  </fo:table-row>
+				  <fo:table-row>
+					  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						  <fo:block>
+							  <fo:inline font-size="8pt" font-weight="bold">Total Costs and Fee (I + J)</fo:inline>
+						  </fo:block>
+					  </fo:table-cell>
+					  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						  <fo:block>
+							  <xsl:for-each select="RR_Budget_1_4:TotalCostsFee">
+								  <fo:inline font-size="8pt" font-weight="bold">
+									  <xsl:value-of select="format-number(., '#,##0.00')"/>
+								  </fo:inline>
+							  </xsl:for-each>
+						  </fo:block>
+					  </fo:table-cell>
+				  </fo:table-row>
+			  </fo:table-body>
+		  </fo:table>
          <fo:block>
             <fo:leader leader-pattern="space"/>
          </fo:block>
@@ -2924,7 +2978,7 @@
                <fo:table-row>
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">K. * Budget Justification</fo:inline>
+                        <fo:inline font-size="8pt" font-weight="bold">L. * Budget Justification</fo:inline>
                      </fo:block>
                   </fo:table-cell>
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
