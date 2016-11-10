@@ -755,7 +755,7 @@
 					</fo:block-container>
 					<!--Block below is for the label named LABEL3-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="456.3636363636364px" hyphenate="true" language="en" keep-together="always" top="17.575757575757578px" height="13.333333333333334px" width="105.45454545454545px">
-						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 03/31/2012</fo:block>
+						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 10/31/2019</fo:block>
 					</fo:block-container>
 					<!--Block below is for the label named LABEL2-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="463.6363636363637px" hyphenate="true" language="en" keep-together="always" top="5.454545454545455px" height="13.333333333333334px" width="98.18181818181819px">
@@ -1105,7 +1105,7 @@
 					</fo:block-container>
 					<!--Block below is for the label named LABEL3-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="456.3636363636364px" hyphenate="true" language="en" keep-together="always" top="17.575757575757578px" height="13.333333333333334px" width="105.45454545454545px">
-						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 07/31/2006</fo:block>
+						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 10/31/2019</fo:block>
 					</fo:block-container>
 					<!--Block below is for the label named LABEL2-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="463.6363636363637px" hyphenate="true" language="en" keep-together="always" top="5.454545454545455px" height="13.333333333333334px" width="98.18181818181819px">
@@ -1798,7 +1798,7 @@
 					</fo:block-container>
 					<!--Block below is for the label named LABEL3-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="456.3636363636364px" hyphenate="true" language="en" keep-together="always" top="17.575757575757578px" height="13.333333333333334px" width="105.45454545454545px">
-						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 07/31/2006</fo:block>
+						<fo:block background-color="transparent" color="#000000" text-align="end" font-size="8pt" font-style="normal" font-family="Helvetica" font-weight="normal">Expiration Date: 10/31/2019</fo:block>
 					</fo:block-container>
 					<!--Block below is for the label named LABEL2-->
 					<fo:block-container background-color="transparent" border-style="none" position="absolute" left="463.6363636363637px" hyphenate="true" language="en" keep-together="always" top="5.454545454545455px" height="13.333333333333334px" width="98.18181818181819px">
