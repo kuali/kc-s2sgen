@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+* RESKC-1811: Totals fix.
+  * Gayathri Athreya on Thu, 10 Nov 2016 15:42:15 -0700 [View Commit](../../commit/a4d9295995f5ba8df5776bd19629abb9aba20491)
+* RESKC-1805: updating the OMB Expiration Date
+  * Travis Schneeberger on Thu, 10 Nov 2016 16:26:57 -0500 [View Commit](../../commit/b2c478c3f671cd9bed54430bb531a377db071b08)
+
+##coeus-s2sgen-1611.0004
 * RESKC-1603: fixing Subaward budget 1.4 form.
   * Travis Schneeberger on Thu, 10 Nov 2016 15:03:23 -0500 [View Commit](../../commit/36ee7767411561633a08e8717d621009a8442703)
 
