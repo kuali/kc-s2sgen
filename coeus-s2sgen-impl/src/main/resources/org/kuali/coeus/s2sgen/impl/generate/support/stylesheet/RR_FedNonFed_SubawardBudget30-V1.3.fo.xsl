@@ -2049,6 +2049,51 @@
 											</fo:table-cell>
 										</fo:table-row>
 
+                                        <fo:table-row>
+                                            <fo:table-cell hyphenate="true" language="en" padding-before="3pt" padding-after="3pt">
+                                                <fo:block font-weight="bold">Section K, Total Costs and Fee (I + J)</fo:block>
+                                            </fo:table-cell>
+                                            <fo:table-cell text-align="right">
+                                                <fo:block>
+                                                    <xsl:choose>
+                                                        <xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:FederalSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:FederalSummary)">
+                                                            <fo:inline>&#160;</fo:inline>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:FederalSummary
+, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+                                                </fo:block>
+                                            </fo:table-cell>
+                                            <fo:table-cell text-align="right">
+                                                <fo:block>
+                                                    <xsl:choose>
+                                                        <xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:NonFederalSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:NonFederalSummary)">
+                                                            <fo:inline>&#160;</fo:inline>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:NonFederalSummary
+, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+                                                </fo:block>
+                                            </fo:table-cell>
+                                            <fo:table-cell text-align="right">
+                                                <fo:block>
+                                                    <xsl:choose>
+                                                        <xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary)">
+                                                            <fo:inline>&#160;</fo:inline>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTotalCostsFee/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary
+, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+                                                </fo:block>
+                                            </fo:table-cell>
+                                        </fo:table-row>
+
 									</xsl:for-each>
 								</fo:table-body>
 							</fo:table>
@@ -5012,6 +5057,73 @@
 					</fo:table-row>
 				</fo:table-body>
 			</fo:table>
+            <fo:block>
+                <fo:leader leader-pattern="space"/>
+            </fo:block>
+            <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                <fo:table-column column-width="proportional-column-width(53)"/>
+                <fo:table-column column-width="proportional-column-width(16)"/>
+                <fo:table-column column-width="proportional-column-width(16)"/>
+                <fo:table-column column-width="proportional-column-width(16)"/>
+                <fo:table-body>
+                    <fo:table-row>
+                        <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
+                            <fo:block>
+                                <fo:inline font-size="8pt" font-weight="bold">K. Total Costs and Fee</fo:inline>
+                            </fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <fo:inline font-weight="bold" font-size="8pt">*Federal (&#36;)</fo:inline>
+                            </fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <fo:inline font-weight="bold" font-size="8pt">*Non-Federal (&#36;)</fo:inline>
+                            </fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <fo:inline font-weight="bold" font-size="8pt">*Total (Fed + Non-Fed) (&#36;)</fo:inline>
+                            </fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
+                    <fo:table-row>
+                        <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <fo:inline font-size="8pt" font-weight="bold">Total Costs and Fee (I + J)</fo:inline>
+                            </fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <xsl:for-each select="RR_FedNonFedBudget_1_2:TotalCostsFee/RR_FedNonFedBudget_1_2:FederalSummary">
+                                    <fo:inline font-size="8pt" font-weight="bold">
+                                        <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                    </fo:inline>
+                                </xsl:for-each>
+                            </fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <xsl:for-each select="RR_FedNonFedBudget_1_2:TotalCostsFee/RR_FedNonFedBudget_1_2:NonFederalSummary">
+                                    <fo:inline font-size="8pt" font-weight="bold">
+                                        <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                    </fo:inline>
+                                </xsl:for-each>
+                            </fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+                            <fo:block>
+                                <xsl:for-each select="RR_FedNonFedBudget_1_2:TotalCostsFee/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary">
+                                    <fo:inline font-size="8pt" font-weight="bold">
+                                        <xsl:value-of select="format-number(., '#,##0.00')"/>
+                                    </fo:inline>
+                                </xsl:for-each>
+                            </fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
+                </fo:table-body>
+            </fo:table>
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
@@ -5024,7 +5136,7 @@
 					<fo:table-row>
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
-								<fo:inline font-size="8pt" font-weight="bold">K. * Budget Justification</fo:inline>
+								<fo:inline font-size="8pt" font-weight="bold">L. * Budget Justification</fo:inline>
 							</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
