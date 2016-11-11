@@ -3608,7 +3608,6 @@
 									<fo:table-column column-width="proportional-column-width(16)"/>
 									<fo:table-header>
 										<fo:table-row>
-
 											<fo:table-cell border-before-color="white" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 												<fo:block>
 													<fo:inline font-weight="bold" font-size="8pt">*Equipment Item</fo:inline>
@@ -3635,20 +3634,14 @@
 										<xsl:for-each select="RR_FedNonFedBudget_1_2:Equipment">
 											<xsl:for-each select="RR_FedNonFedBudget_1_2:EquipmentList">
 												<fo:table-row>
-													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-														<fo:block>
-															<fo:inline font-size="8pt">
-																<xsl:value-of select="position()"/>.&#160;</fo:inline>
-														</fo:block>
-													</fo:table-cell>
-													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
+													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center">
 														<fo:block>
 															<fo:inline font-size="8pt">
 																<xsl:value-of select="RR_FedNonFedBudget_1_2:EquipmentItem"/>
 															</fo:inline>
 														</fo:block>
 													</fo:table-cell>
-													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
+													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center">
 														<fo:block>
 															<xsl:for-each select="RR_FedNonFedBudget_1_2:FundsRequested/RR_FedNonFedBudget_1_2:Federal">
 																<fo:inline font-size="8pt">
@@ -3657,7 +3650,7 @@
 															</xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
-													<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
+													<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center">
 														<fo:block>
 															<xsl:for-each select="RR_FedNonFedBudget_1_2:FundsRequested/RR_FedNonFedBudget_1_2:NonFederal">
 																<fo:inline font-size="8pt">
@@ -3666,16 +3659,7 @@
 															</xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
-													<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
-														<fo:block>
-															<xsl:for-each select="RR_FedNonFedBudget_1_2:FundsRequested/RR_FedNonFedBudget_1_2:TotalFedNonFed">
-																<fo:inline font-size="8pt">
-																	<xsl:value-of select="format-number(., '#,##0.00')"/>
-																</fo:inline>
-															</xsl:for-each>
-														</fo:block>
-													</fo:table-cell>
-													<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
+													<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center">
 														<fo:block>
 															<xsl:for-each select="RR_FedNonFedBudget_1_2:FundsRequested/RR_FedNonFedBudget_1_2:TotalFedNonFed">
 																<fo:inline font-size="8pt">
@@ -5142,7 +5126,7 @@
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
 								<fo:inline font-size="8pt">File Name: </fo:inline>
-								<xsl:for-each select="../RR_FedNonFedBudget_1_2:BudgetYear[1]/RR_FedNonFedBudget_1_2:BudgetJustificationAttachment/att:FileName">
+								<xsl:for-each select="../RR_FedNonFedBudget_1_2:BudgetJustificationAttachment/att:FileName">
 									<fo:inline font-size="8pt">
 										<xsl:apply-templates/>
 									</fo:inline>
@@ -5152,7 +5136,7 @@
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
 								<fo:inline font-size="8pt">Mime Type: </fo:inline>
-								<xsl:for-each select="../RR_FedNonFedBudget_1_2:BudgetYear[1]/RR_FedNonFedBudget_1_2:BudgetJustificationAttachment/att:MimeType">
+								<xsl:for-each select="../RR_FedNonFedBudget_1_2:BudgetJustificationAttachment/att:MimeType">
 									<fo:inline font-size="8pt">
 										<xsl:apply-templates/>
 									</fo:inline>
