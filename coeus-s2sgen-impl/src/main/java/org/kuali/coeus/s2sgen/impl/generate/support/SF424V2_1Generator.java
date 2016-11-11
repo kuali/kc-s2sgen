@@ -41,7 +41,6 @@ import org.kuali.coeus.common.budget.api.period.BudgetPeriodContract;
 import org.kuali.coeus.propdev.api.budget.ProposalDevelopmentBudgetExtContract;
 import org.kuali.coeus.propdev.api.location.ProposalSiteContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.propdev.api.s2s.S2sOpportunityContract;
 import org.kuali.coeus.propdev.api.s2s.S2sSubmissionTypeContract;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
@@ -53,8 +52,6 @@ import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.person.DepartmentalPersonDto;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
@@ -95,10 +92,6 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
 
     @Value(DEFAULT_SORT_INDEX)
     private int sortIndex;
-
-    @Autowired
-    @Qualifier("s2SConfigurationService")
-    protected S2SConfigurationService s2SConfigurationService;
 
     /**
      * 
@@ -419,11 +412,6 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
         return sf424V21;
     }
 
-    protected boolean doesParameterContainCode(String parameterName, String code) {
-        List<String> parameterValues = s2SConfigurationService.getValuesFromCommaSeparatedParam(parameterName);
-        return parameterValues.contains(code);
-    }
-
     private void setApplicatTypeCodes(SF42421 sf424V21) {
         OrganizationContract organization = pdDoc.getDevelopmentProposal().getApplicantOrganization().getOrganization();
         List<? extends OrganizationTypeContract> organizationTypes = organization.getOrganizationTypes();
@@ -575,14 +563,6 @@ public class SF424V2_1Generator extends SF424BaseGenerator {
         this.pdDoc = proposalDevelopmentDocument;
         aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);
         return getSF42421Doc();
-    }
-
-    public S2SConfigurationService getS2SConfigurationService() {
-        return s2SConfigurationService;
-    }
-
-    public void setS2SConfigurationService(S2SConfigurationService s2SConfigurationService) {
-        this.s2SConfigurationService = s2SConfigurationService;
     }
 
     @Override

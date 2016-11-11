@@ -44,7 +44,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
             
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block font-size="8pt">
-                    <fo:table text-align="right" width="100%">
+                    <fo:table text-align="right" width="100%" table-layout="fixed">
                     <fo:table-column column-width="proportional-column-width(100)" />
 																					<fo:table-body>
 																						<fo:table-row>
@@ -54,7 +54,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
 																						</fo:table-row>
 																					</fo:table-body>
 																				</fo:table>
-                            <fo:table padding="0" text-align="center" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                            <fo:table padding="0" text-align="center" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                 <fo:table-column column-width="proportional-column-width(25)" />
                                 <fo:table-column column-width="proportional-column-width(40)" />
                                 <fo:table-body>
@@ -74,18 +74,18 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                       
                                         <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="0pt" padding-end="1pt" padding-start="0pt" display-align="after" text-align="left" border-style="solid" border-width="1pt" border-color="white">
                                             <fo:block>
-                                                <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-                                                    <fo:table-column column-width="proportional-column-width(100)" />
-                                                    <fo:table-column />
-                                                    <fo:table-column />
+                                                <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
+                                                    <fo:table-column column-width="proportional-column-width(33)" />
+                                                    <fo:table-column column-width="proportional-column-width(33)" />
+                                                    <fo:table-column column-width="proportional-column-width(33)" />
                                                     <fo:table-body>
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" number-columns-spanned="3" width="100%" display-align="center" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
-                                                                        <fo:table-column column-width="proportional-column-width(50)" />
-                                                                        <fo:table-column column-width="proportional-column-width(50)" />
-                                                                        <fo:table-column />
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
+                                                                        <fo:table-column column-width="proportional-column-width(33)" />
+                                                                        <fo:table-column column-width="proportional-column-width(33)" />
+                                                                        <fo:table-column column-width="proportional-column-width(33)" />
                                                                         <fo:table-body>
                                                                             <fo:table-row>
                                                                                 <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="0pt" padding-start="0pt" display-align="after" number-columns-spanned="3" width="50%" text-align="start" border-style="solid" border-width="1pt" border-color="white">
@@ -217,10 +217,11 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                         </fo:table-cell>
                                           <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="0pt" padding-start="0pt" display-align="before" height="0pt" text-align="left" width="60%" border-style="solid" border-width="1pt" border-color="white">
                                             <fo:block>
-                                                <fo:table padding="0" text-align="left" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+
+                                                <fo:table padding="0" text-align="left" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                     <fo:table-column column-width="proportional-column-width(30)" />
                                                     <fo:table-column column-width="proportional-column-width(20)" />
-                                                    <fo:table-column />
+                                                    <fo:table-column column-width="proportional-column-width(50)" />
                                                     <fo:table-body>
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="0pt" padding-start="0pt" display-align="before" text-align="start" border-style="solid" border-width="1pt" border-color="black">
@@ -470,7 +471,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="0pt" padding-end="1pt" padding-start="1pt" number-columns-spanned="3" display-align="center" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(25)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -572,7 +573,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="0pt" padding-end="0pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(60)" />
                                                                         <fo:table-body>
@@ -681,7 +682,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                             </fo:table-cell>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="0pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="3" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(50)" />
                                                                         <fo:table-column column-width="proportional-column-width(50)" />
                                                                         <fo:table-body>
@@ -1069,7 +1070,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1254,7 +1255,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1300,7 +1301,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1347,7 +1348,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1394,7 +1395,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1441,7 +1442,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" number-rows-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1544,7 +1545,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="8pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="2" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table height="8pt" padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table height="8pt" padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(75)" />
                                                                         <fo:table-body>
@@ -1613,7 +1614,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" display-align="before" number-columns-spanned="5" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(20)" />
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
                                                                         <fo:table-column column-width="proportional-column-width(40)" />
@@ -1670,7 +1671,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" number-columns-spanned="5" display-align="center" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(55)" />
                                                                         <fo:table-column column-width="proportional-column-width(45)" />
                                                                         <fo:table-body>
@@ -1712,7 +1713,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" number-columns-spanned="5" display-align="center" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(55)" />
                                                                         <fo:table-column column-width="proportional-column-width(45)" />
                                                                         <fo:table-body>
@@ -1754,7 +1755,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" number-columns-spanned="5" display-align="center" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(55)" />
                                                                         <fo:table-column column-width="proportional-column-width(45)" />
                                                                         <fo:table-body>
@@ -1796,7 +1797,7 @@ xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:SF424="http://appl
                                                         <fo:table-row>
                                                             <fo:table-cell font-size="7pt" padding-after="0pt" padding-before="1pt" padding-end="1pt" padding-start="1pt" number-columns-spanned="5" display-align="center" text-align="start" border-style="solid" border-width="1pt" border-color="black">
                                                                 <fo:block>
-                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
+                                                                    <fo:table padding="0" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
                                                                         <fo:table-column column-width="proportional-column-width(55)" />
                                                                         <fo:table-column column-width="proportional-column-width(45)" />
                                                                         <fo:table-body>

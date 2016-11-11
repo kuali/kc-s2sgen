@@ -19,12 +19,15 @@
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
 import org.kuali.coeus.propdev.api.core.SubmissionInfoService;
+import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.s2sgen.impl.budget.S2SBudgetCalculatorService;
 import org.kuali.coeus.s2sgen.impl.datetime.S2SDateTimeService;
 import org.kuali.coeus.s2sgen.impl.person.DepartmentalPersonService;
 import org.kuali.coeus.s2sgen.impl.person.S2SProposalPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.util.List;
 
 /**
  * This abstract class has methods that are common to all the versions of SF424 form.
@@ -95,6 +98,11 @@ public abstract class SF424BaseGenerator extends CommonSF424BaseGenerator {
 
     protected static final int DEPARTMENT_NAME_MAX_LENGTH = 30;
 
+    protected boolean doesParameterContainCode(String parameterName, String code) {
+        List<String> parameterValues = s2SConfigurationService.getValuesFromCommaSeparatedParam(parameterName);
+        return parameterValues.contains(code);
+    }
+
     @Autowired
     @Qualifier("submissionInfoService")
     protected SubmissionInfoService submissionInfoService;
@@ -114,6 +122,10 @@ public abstract class SF424BaseGenerator extends CommonSF424BaseGenerator {
     @Autowired
     @Qualifier("s2SBudgetCalculatorService")
     protected S2SBudgetCalculatorService s2sBudgetCalculatorService;
+
+    @Autowired
+    @Qualifier("s2SConfigurationService")
+    protected S2SConfigurationService s2SConfigurationService;
 
     public DepartmentalPersonService getDepartmentalPersonService() {
         return departmentalPersonService;
@@ -153,5 +165,13 @@ public abstract class SF424BaseGenerator extends CommonSF424BaseGenerator {
 
     public void setS2SDateTimeService(S2SDateTimeService s2SDateTimeService) {
         this.s2SDateTimeService = s2SDateTimeService;
+    }
+
+    public S2SConfigurationService getS2SConfigurationService() {
+        return s2SConfigurationService;
+    }
+
+    public void setS2SConfigurationService(S2SConfigurationService s2SConfigurationService) {
+        this.s2SConfigurationService = s2SConfigurationService;
     }
 }
