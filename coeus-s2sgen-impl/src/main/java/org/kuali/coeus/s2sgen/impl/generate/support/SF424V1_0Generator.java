@@ -44,7 +44,6 @@ import org.kuali.coeus.common.budget.api.income.BudgetProjectIncomeContract;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
 import org.kuali.coeus.propdev.api.budget.ProposalDevelopmentBudgetExtContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormVersion;
 import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
@@ -53,8 +52,6 @@ import org.kuali.coeus.s2sgen.api.core.S2SException;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.person.DepartmentalPersonDto;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
@@ -74,10 +71,6 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 	private static final Logger LOG = LoggerFactory.getLogger(SF424V1_0Generator.class);
 	private DepartmentalPersonDto aorInfo;
 	private String stateReviewDate = null;
-
-    @Autowired
-    @Qualifier("s2SConfigurationService")
-    protected S2SConfigurationService s2SConfigurationService;
 
     @Value("http://apply.grants.gov/forms/SF424-V1.0")
     private String namespace;
@@ -137,12 +130,21 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 		grantApplicationType.setSubmittedDate(Calendar.getInstance());
 		ApplicationTypeCodeType.Enum applicationTypeCodeDataType = null;
 		if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
-			int proposalTypeCode = Integer.parseInt(pdDoc
-					.getDevelopmentProposal().getProposalType().getCode());
-			if (proposalTypeCode < Integer.parseInt(s2SConfigurationService.getValueAsString(
-                    ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION))) {
-				applicationTypeCodeDataType = ApplicationTypeCodeType.Enum
-						.forInt(proposalTypeCode);
+			String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
+			if(doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW,proposalTypeCode)){
+				applicationTypeCodeDataType = ApplicationTypeCodeType.N;
+			}else if(doesParameterContainCode(
+					ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION,proposalTypeCode)){
+				applicationTypeCodeDataType = ApplicationTypeCodeType.R;
+			}else if(doesParameterContainCode(
+					ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL,proposalTypeCode)){
+				applicationTypeCodeDataType = ApplicationTypeCodeType.C;
+			}else if(doesParameterContainCode(
+					ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION,proposalTypeCode)){
+				applicationTypeCodeDataType = ApplicationTypeCodeType.C;
+			}else if(doesParameterContainCode(
+					ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION,proposalTypeCode)){
+				applicationTypeCodeDataType = ApplicationTypeCodeType.R;
 			}
 		}
 		grantApplicationType
@@ -686,14 +688,6 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 		aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);
 		return getGrantApplication();
 	}
-
-    public S2SConfigurationService getS2SConfigurationService() {
-        return s2SConfigurationService;
-    }
-
-    public void setS2SConfigurationService(S2SConfigurationService s2SConfigurationService) {
-        this.s2SConfigurationService = s2SConfigurationService;
-    }
 
     @Override
     public String getNamespace() {

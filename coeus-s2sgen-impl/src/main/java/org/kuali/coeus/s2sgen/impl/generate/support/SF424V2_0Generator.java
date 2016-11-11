@@ -42,7 +42,6 @@ import org.kuali.coeus.propdev.api.abstrct.ProposalAbstractContract;
 import org.kuali.coeus.propdev.api.budget.ProposalDevelopmentBudgetExtContract;
 import org.kuali.coeus.propdev.api.location.ProposalSiteContract;
 import org.kuali.coeus.propdev.api.person.ProposalPersonContract;
-import org.kuali.coeus.propdev.api.s2s.S2SConfigurationService;
 import org.kuali.coeus.propdev.api.s2s.S2sOpportunityContract;
 import org.kuali.coeus.propdev.api.s2s.S2sSubmissionTypeContract;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
@@ -54,8 +53,6 @@ import org.kuali.coeus.s2sgen.api.core.ConfigurationConstants;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
 import org.kuali.coeus.s2sgen.impl.person.DepartmentalPersonDto;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
@@ -96,10 +93,6 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
     @Value(DEFAULT_SORT_INDEX)
     private int sortIndex;
 
-    @Autowired
-    @Qualifier("s2SConfigurationService")
-    protected S2SConfigurationService s2SConfigurationService;
-
     /**
      * 
      * This method returns SF424Document object based on proposal development document which contains the SF424Document information
@@ -133,20 +126,19 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
             ApplicationType.Enum applicationTypeEnum = null;
             if (pdDoc.getDevelopmentProposal().getProposalType() != null) {
                 String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalType().getCode();
-                if(s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW).equals(proposalTypeCode)){
+                if(doesParameterContainCode(ConfigurationConstants.PROPOSAL_TYPE_CODE_NEW,proposalTypeCode)){
 					applicationTypeEnum = ApplicationType.NEW;
-                }else if(s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION).equals(proposalTypeCode)){
+                }else if(doesParameterContainCode(
+                        ConfigurationConstants.PROPOSAL_TYPE_CODE_RESUBMISSION,proposalTypeCode)){
 					applicationTypeEnum = ApplicationType.REVISION;
-                }else if(s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL).equals(proposalTypeCode)){
+                }else if(doesParameterContainCode(
+                        ConfigurationConstants.PROPOSAL_TYPE_CODE_RENEWAL,proposalTypeCode)){
                     applicationTypeEnum = ApplicationType.CONTINUATION;
-                }else if(s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION).equals(proposalTypeCode)){
+                }else if(doesParameterContainCode(
+                        ConfigurationConstants.PROPOSAL_TYPE_CODE_CONTINUATION,proposalTypeCode)){
                     applicationTypeEnum = ApplicationType.CONTINUATION;
-                }else if(s2SConfigurationService.getValueAsString(
-                        ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION).equals(proposalTypeCode)){
+                }else if(doesParameterContainCode(
+                        ConfigurationConstants.PROPOSAL_TYPE_CODE_REVISION,proposalTypeCode)){
                     applicationTypeEnum = ApplicationType.REVISION;
                 }
             }
@@ -586,14 +578,6 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
         this.pdDoc = proposalDevelopmentDocument;
         aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);
         return getSF424Doc();
-    }
-
-    public S2SConfigurationService getS2SConfigurationService() {
-        return s2SConfigurationService;
-    }
-
-    public void setS2SConfigurationService(S2SConfigurationService s2SConfigurationService) {
-        this.s2SConfigurationService = s2SConfigurationService;
     }
 
     @Override
