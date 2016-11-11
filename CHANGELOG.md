@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+* Added total costs and Fee
+  * Gayathri Athreya on Fri, 11 Nov 2016 09:33:43 -0700 [View Commit](../../commit/96232b82902059b22de1ba583413b12998655aba)
+* RESKC-1606: New form.
+  * Gayathri Athreya on Tue, 8 Nov 2016 12:26:49 -0700 [View Commit](../../commit/e70be1a4353a048fe3e984e7a4b2b1ed0f2085db)
+
+##coeus-s2sgen-1611.0006
 * RESKC-1811: Totals fix.
   * Gayathri Athreya on Thu, 10 Nov 2016 15:42:15 -0700 [View Commit](../../commit/a4d9295995f5ba8df5776bd19629abb9aba20491)
 * RESKC-1805: updating the OMB Expiration Date
