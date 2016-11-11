@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1606: Fix equipment and file attachment.
+  * Gayathri Athreya on Fri, 11 Nov 2016 15:44:18 -0700 [View Commit](../../commit/e2960de71067439cc34d4eb6a89be7b1f45eed74)
+
+##coeus-s2sgen-1611.0008
 * RESKC-1805: fixing older generators and stylesheets
   * Travis Schneeberger on Fri, 11 Nov 2016 14:06:06 -0500 [View Commit](../../commit/49566a960c0871ddd37f3bd75b76e7480863b76f)
 
