@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1805: fixing older generators and stylesheets
+  * Travis Schneeberger on Fri, 11 Nov 2016 14:06:06 -0500 [View Commit](../../commit/49566a960c0871ddd37f3bd75b76e7480863b76f)
+
+##coeus-s2sgen-1611.0007
 * Added total costs and Fee
   * Gayathri Athreya on Fri, 11 Nov 2016 09:33:43 -0700 [View Commit](../../commit/96232b82902059b22de1ba583413b12998655aba)
 * RESKC-1606: New form.
