@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1581: updating Expiraation Date
+  * Travis Schneeberger on Thu, 17 Nov 2016 13:37:00 -0500 [View Commit](../../commit/96c1593df74b96e2d205318f6a844081d90399a8)
+
+##coeus-s2sgen-1611.0009
 * RESKC-1606: Fix equipment and file attachment.
   * Gayathri Athreya on Fri, 11 Nov 2016 15:44:18 -0700 [View Commit](../../commit/e2960de71067439cc34d4eb6a89be7b1f45eed74)
 
