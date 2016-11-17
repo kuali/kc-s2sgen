@@ -61,7 +61,7 @@ xmlns:header="http://devapply.row.com/system/Header-V1.0">
                          border-width="0pt"
                          border-color="white">
                            <fo:block><fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0010</fo:inline></fo:block>
-                           <fo:block><fo:inline font-size="6px" font-weight="bold">   </fo:inline></fo:block>
+                           <fo:block><fo:inline font-size="6px" font-weight="bold">Expiration Date: 10/31/2019</fo:inline></fo:block>
                         </fo:table-cell>
                      </fo:table-row>
                   </fo:table-body>
