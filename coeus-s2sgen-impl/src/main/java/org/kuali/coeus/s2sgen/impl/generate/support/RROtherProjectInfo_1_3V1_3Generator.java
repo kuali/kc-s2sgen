@@ -46,20 +46,11 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <p>
- * Class for generating the XML object for grants.gov RROtherProjectInfoV1.2.
- * Form is generated using XMLBean classes and is based on RROtherProjectInfo
- * schema.
- * <p>
- * 
- * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
- */
-@FormGenerator("RROtherProjectInfo_1_3V1_0Generator")
-public class RROtherProjectInfo_1_3V1_0Generator extends
+
+@FormGenerator("RROtherProjectInfo_1_3V1_3Generator")
+public class RROtherProjectInfo_1_3V1_3Generator extends
 		RROtherProjectInfoBaseGenerator {
 	private static final Integer HISTORIC_DESTIONATION_YNQ = 125;
-	private static final int NSF_DATAMGMNT_ATTAACHMENT = 200;
 
 	List<? extends AnswerHeaderContract> answerHeaders;
 
@@ -82,11 +73,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
     @Qualifier("s2SConfigurationService")
     private S2SConfigurationService s2SConfigurationService;
 
-	/*
-	 * This method gives information about RROtherProjectInfo of proposal
-	 * special reviews based on the data in the proposal development document.
-	 * 
-	 */
 	private RROtherProjectInfo13Document getRROtherProjectInfo() {
 		RROtherProjectInfo13Document rrOtherProjectInfoDocument = RROtherProjectInfo13Document.Factory
 				.newInstance();
@@ -111,9 +97,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		return rrOtherProjectInfoDocument;
 	}
 
-	/*
-	 * This method will set the values to historic destination
-	 */
 	private void setHistoricDestionation(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo) {
 	    String historicDestinationAnswer = getAnswer(HISTORIC_DESTIONATION_YNQ, answerHeaders);
@@ -134,19 +117,16 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 						            .trim());
 	            }
 	        } else if (YnqConstant.YES.code().equals(historicDestinationAnswer)) {
-	            rrOtherProjectInfo.setHistoricDesignationExplanation(answerExplanation);
+	            rrOtherProjectInfo.setHistoricDesignationExplanation(null);
 	        }
 	    } else {
 	        rrOtherProjectInfo.setHistoricDesignation(null);
 	    }
 	}
 
-	/*
-	 * This method will set the values of Proprietary Information
-	 */
 	private void setProprietaryInformationIndicator(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo) {
-		YesNoDataType.Enum answer = null;
+		YesNoDataType.Enum answer;
 		String propertyInformationAnswer = getAnswer(PROPRIETARY_INFORMATION_INDICATOR, answerHeaders);
 		if (propertyInformationAnswer != null && !propertyInformationAnswer.equals(NOT_ANSWERED)) {
     		answer = YnqConstant.YES.code().equals(
@@ -157,9 +137,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		}
 	}
 
-	/*
-	 * This method will set the values to environmental impact
-	 */
 	private void setEnvironmentalImpactDetails(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo) {
 		EnvironmentalImpact environmentalImpact = EnvironmentalImpact.Factory
@@ -169,13 +146,9 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		rrOtherProjectInfo.setEnvironmentalImpact(environmentalImpact);
 	}
 
-	/*
-	 * This method will set the values to environmental impact indicator and
-	 * environmental impact explanation
-	 */
 	private void setEnvironmentalImpactIndicatorAndExplanation(
 			EnvironmentalImpact environmentalImpact) {
-		String answerExplanation = null;
+		String answerExplanation;
 		String environmentalImpactAnswer = getAnswer(ENVIRONMENTAL_IMPACT_YNQ, answerHeaders);
 		if (environmentalImpactAnswer != null && !environmentalImpactAnswer.equals(NOT_ANSWERED)) {
     		YesNoDataType.Enum answer = YnqConstant.YES.code()
@@ -195,45 +168,37 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
     								.trim());
     			}
     		} else if (YnqConstant.YES.code().equals(environmentalImpactAnswer)) {
-    		    environmentalImpact.setEnvironmentalImpactExplanation(answerExplanation);
+    		    environmentalImpact.setEnvironmentalImpactExplanation(null);
     		}
 		} else {
 		    environmentalImpact.setEnvironmentalImpactIndicator(null);
 		}
 	}
 
-	/*
-	 * This method will set the values to human subject supplement and
-	 * vertebrate animals supplement
-	 */
 	private void setHumanSubjAndVertebrateAnimals(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo,
 			OrganizationContract organization) {
 		rrOtherProjectInfo.
 		setHumanSubjectsIndicator(YesNoDataType.N_NO); 
-		rrOtherProjectInfo.setVertebrateAnimalsIndicator(YesNoDataType.N_NO); 
-		for (ProposalSpecialReviewContract proposalSpecialReview : pdDoc
-				.getDevelopmentProposal().getPropSpecialReviews()) {
-			if (proposalSpecialReview.getSpecialReviewType() != null) {
-				if (Integer.valueOf(proposalSpecialReview
-						.getSpecialReviewType().getCode()) == HUMAN_SUBJECT_SUPPLEMENT) {
-					setHumaSubjectSupplementDetails(rrOtherProjectInfo,
-                            organization, proposalSpecialReview);
-				} else if (Integer.valueOf(proposalSpecialReview
-						.getSpecialReviewType().getCode()) == VERTEBRATE_ANIMALS_SUPPLEMENT) {
-					setVertebrateAnimalsSupplementDetails(rrOtherProjectInfo,
-							organization, proposalSpecialReview);
-				}
+		rrOtherProjectInfo.setVertebrateAnimalsIndicator(YesNoDataType.N_NO);
+		pdDoc.getDevelopmentProposal().getPropSpecialReviews().stream()
+				.filter(proposalSpecialReview -> proposalSpecialReview.getSpecialReviewType() != null)
+				.forEach(proposalSpecialReview -> {
+			if (Integer.valueOf(proposalSpecialReview
+					.getSpecialReviewType().getCode()) == HUMAN_SUBJECT_SUPPLEMENT) {
+				setHumaSubjectSupplementDetails(rrOtherProjectInfo,
+						organization, proposalSpecialReview);
+			} else if (Integer.valueOf(proposalSpecialReview
+					.getSpecialReviewType().getCode()) == VERTEBRATE_ANIMALS_SUPPLEMENT) {
+				setVertebrateAnimalsSupplementDetails(rrOtherProjectInfo,
+						organization, proposalSpecialReview);
 			}
-		}
+		});
 	}
 
-	/*
-	 * This method will set the values to environmental exemption
-	 */
 	private void setEnvironmentalExemption(
 			EnvironmentalImpact environmentalImpact) {
-		YesNoDataType.Enum answer = null;
+		YesNoDataType.Enum answer;
 		String answerExplanation;		
 		answerExplanation = getChildQuestionAnswer(ENVIRONMENTAL_EXEMPTION_YNQ, EXPLANATION, answerHeaders);
 		String ynqAnswer = getAnswer(ENVIRONMENTAL_EXEMPTION_YNQ, answerHeaders);
@@ -257,7 +222,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
     					environmentalExemption.setEnvironmentalExemptionExplanation(answerExplanation.trim());
     				}
     			} else if (YnqConstant.YES.code().equals(ynqAnswer)) {
-    			    environmentalExemption.setEnvironmentalExemptionExplanation(answerExplanation);
+    			    environmentalExemption.setEnvironmentalExemptionExplanation(null);
     			}
     		    environmentalImpact.setEnvironmentalExemption(environmentalExemption);
     
@@ -267,15 +232,11 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
         }    		
 	}
 
-	/*
-	 * This method will set the International Activities are
-	 * InternationalActivitiesIndicator ,ActivitiesPartnershipsCountries
-	 */
 	private void setInternationalActivities(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo) {
 		InternationalActivities internationalActivities = InternationalActivities.Factory
 				.newInstance();
-		YesNoDataType.Enum answer = null;
+		YesNoDataType.Enum answer;
 		String answerExplanation;
 		String internationalActivitiesAnswer = getAnswer(INTERNATIONAL_ACTIVITIES_YNQ, answerHeaders);
 		if (internationalActivitiesAnswer != null && !internationalActivitiesAnswer.equals(NOT_ANSWERED)) {
@@ -306,9 +267,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		rrOtherProjectInfo.setInternationalActivities(internationalActivities);
 	}
 
-	/*
-	 * This method will set the values to vertebrate animals supplement details
-	 */
 	private void setVertebrateAnimalsSupplementDetails(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo,
 			OrganizationContract organization,
@@ -327,9 +285,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 				.setVertebrateAnimalsSupplement(vertebrateAnimalsSupplement);
 	}
 
-	/*
-	 * This method will set the values to human subject supplement details
-	 */
 	private void setHumaSubjectSupplementDetails(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo,
 			OrganizationContract organization,
@@ -354,7 +309,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 			if (proposalSpecialReview.getSpecialReviewExemptions() != null && !proposalSpecialReview.getSpecialReviewExemptions().isEmpty()) {
 				humanSubjectsSupplement.setExemptFedReg(YesNoDataType.Y_YES);				
 				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<>();
-				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum = null;
+				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum;
 				for (ProposalSpecialReviewExemptionContract exemption : proposalSpecialReview.getSpecialReviewExemptions()) {
 					exemptionNumberEnum = HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum
 							.forInt(Integer.parseInt(exemption.getExemptionType().getCode()));
@@ -384,10 +339,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		}
 	}
 
-	/*
-	 * This method will set the Vertebrate Animals IACUC Review details are date
-	 * and indicator based on condition
-	 */
 	private void setVertebrateAnimalsIACUCReviewDetails(
 			ProposalSpecialReviewContract proposalSpecialReview,
 			VertebrateAnimalsSupplement vertebrateAnimalsSupplement) {
@@ -414,9 +365,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		}
 	}
 
-	/*
-	 * This method will set the exemptions to human subjects supplement
-	 */
 	private void setExemptions(ProposalSpecialReviewContract proposalSpecialReview,
 			HumanSubjectsSupplement humanSubjectsSupplement,
 			HumanSubjectsSupplement.ExemptionNumbers exemptionNumbers) {
@@ -424,7 +372,7 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		if (Integer.parseInt(proposalSpecialReview.getApprovalType().getCode()) == APPROVAL_TYPE_EXCEMPT) {
 			if (proposalSpecialReview.getSpecialReviewExemptions() != null) {
 				List<HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum> exemptionNumberList = new ArrayList<>();
-				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum = null;
+				HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum exemptionNumberEnum;
 				for (ProposalSpecialReviewExemptionContract exemption : proposalSpecialReview.getSpecialReviewExemptions()) {
 					exemptionNumberEnum = HumanSubjectsSupplement.ExemptionNumbers.ExemptionNumber.Enum
 							.forInt(Integer.parseInt(exemption.getExemptionType().getCode()));
@@ -443,9 +391,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		
 	}
 
-	/*
-	 * This method will set the Human Subject IRB Review Indicator
-	 */
 	private void setHumanSubjectIRBReviewIndicator(
 			ProposalSpecialReviewContract proposalSpecialReview,
 			HumanSubjectsSupplement humanSubjectsSupplement) {
@@ -465,10 +410,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
         }
     }
 
-	/*
-	 * This method will set the attachments to RR Other Project info document
-	 * based on the type of attachment
-	 */
 	private void setAttachments(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo) {
         Boolean isOtherAttachmentsExists = false;
@@ -527,10 +468,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
         }
 	}
 
-	/*
-	 * This method will set the other attachments to RR other Project info
-	 * document
-	 */
 	private void setOtherAttachments(
 			RROtherProjectInfo13Document.RROtherProjectInfo13 rrOtherProjectInfo) {
 		OtherAttachments otherAttachments = OtherAttachments.Factory
@@ -539,13 +476,9 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		rrOtherProjectInfo.setOtherAttachments(otherAttachments);
 	}
 
-	/*
-	 * 
-	 * This method is used to get List of attachments from
-	 * NarrativeAttachment
-	 */
+
 	private AttachedFileDataType[] getAttachedFileDataTypes() {
-		AttachedFileDataType attachedFileDataType = null;
+		AttachedFileDataType attachedFileDataType;
 		List<AttachedFileDataType> attachedFileDataTypeList = new ArrayList<>();
 		DevelopmentProposalContract developmentProposal = pdDoc
 				.getDevelopmentProposal();
@@ -561,16 +494,6 @@ public class RROtherProjectInfo_1_3V1_0Generator extends
 		return attachedFileDataTypeList.toArray(new AttachedFileDataType[0]);
 	}
 
-	/**
-	 * This method creates {@link XmlObject} of type
-	 * {@link RROtherProjectInfo13Document} by populating data from the given
-	 * {@link ProposalDevelopmentDocumentContract}
-	 * 
-	 * @param proposalDevelopmentDocument
-	 *            for which the {@link XmlObject} needs to be created
-	 * @return {@link XmlObject} which is generated using the given
-	 *         {@link ProposalDevelopmentDocumentContract}
-	 */
 	@Override
 	public XmlObject getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
