@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1806: updating expiration date.
+  * Travis Schneeberger on Mon, 21 Nov 2016 12:38:01 -0500 [View Commit](../../commit/b4b431cd2880417faf68a0f18b21d40245b612db)
+
+##coeus-s2sgen-1611.0011
 * RESKC-1578: updating expiration date.
   * Travis Schneeberger on Thu, 17 Nov 2016 19:31:11 -0500 [View Commit](../../commit/d7f22d30f67989b141a0516f3e4f6e2c47d4337d)
 
