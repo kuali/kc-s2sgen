@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1807: Changing expiration date.
+  * Gayathri Athreya on Tue, 22 Nov 2016 11:10:42 -0700 [View Commit](../../commit/1ffb7d9cf3e0be38bbfdd0808e6f70fb533109e4)
+
+##coeus-s2sgen-1611.0012
 * RESKC-1806: updating expiration date.
   * Travis Schneeberger on Mon, 21 Nov 2016 12:38:01 -0500 [View Commit](../../commit/b4b431cd2880417faf68a0f18b21d40245b612db)
 
