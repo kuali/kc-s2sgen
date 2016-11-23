@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1806: Supporting Research & Related Subaward Budget (Total Fed + Non-Fed) Attachment(s) Form V1.3.  Fixing other forms
+  * Travis Schneeberger on Wed, 23 Nov 2016 09:51:14 -0500 [View Commit](../../commit/6e53a034237213518ae5f0008131bcefcf3a7da9)
+
+##coeus-s2sgen-1611.0013
 * RESKC-1807: Changing expiration date.
   * Gayathri Athreya on Tue, 22 Nov 2016 11:10:42 -0700 [View Commit](../../commit/1ffb7d9cf3e0be38bbfdd0808e6f70fb533109e4)
 
