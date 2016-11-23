@@ -3458,15 +3458,6 @@
 															</xsl:for-each>
 														</fo:block>
 													</fo:table-cell>
-													<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
-														<fo:block>
-															<xsl:for-each select="RR_FedNonFedBudget:FundsRequested/RR_FedNonFedBudget:TotalFedNonFed">
-																<fo:inline font-size="8pt">
-																	<xsl:value-of select="format-number(., '#,##0.00')"/>
-																</fo:inline>
-															</xsl:for-each>
-														</fo:block>
-													</fo:table-cell>
 												</fo:table-row>
 											</xsl:for-each>
 										</xsl:for-each>
