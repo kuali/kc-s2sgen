@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1608: Fixing printing of Research & Related Subaward Budget (Total Fed + Non-Fed) Attachment(s) Form V1.3 when equipment line items exist
+  * Travis Schneeberger on Wed, 23 Nov 2016 18:02:29 -0500 [View Commit](../../commit/8c08302c7d2f6ede621e84da68aa96fc4c4c4468)
+
+##coeus-s2sgen-1611.0015
 * RESKC-1603: Fix page break issues in R & R Subaward Budget Attachment(s) Form V1.4 form
   * Travis Schneeberger on Wed, 23 Nov 2016 15:07:59 -0500 [View Commit](../../commit/ec6845f79372593654500261a5b186c41ce4c405)
 
