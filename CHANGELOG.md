@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1608: Fixing printing of Research & Related Subaward Budget (Total Fed + Non-Fed) Attachment(s) Form V1.2 when equipment line items exist
+  * Travis Schneeberger on Wed, 23 Nov 2016 18:22:54 -0500 [View Commit](../../commit/a49dbe2d0a7d9c22fd50896a95fc22ffd7eb2a05)
+
+##coeus-s2sgen-1611.0016
 * RESKC-1608: Fixing printing of Research & Related Subaward Budget (Total Fed + Non-Fed) Attachment(s) Form V1.3 when equipment line items exist
   * Travis Schneeberger on Wed, 23 Nov 2016 18:02:29 -0500 [View Commit](../../commit/8c08302c7d2f6ede621e84da68aa96fc4c4c4468)
 
