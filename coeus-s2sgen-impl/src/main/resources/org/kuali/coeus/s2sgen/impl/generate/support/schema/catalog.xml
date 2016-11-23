@@ -872,6 +872,10 @@
 	    </group>
 
 		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget_1_3-V1.3" uri="RR_FedNonFed_SubawardBudget_1_3-V1.3.xsd"/>
+		</group>
+
+		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/RR_FedNonFed_SubawardBudget10_10-V1.2" uri="RR_FedNonFed_SubawardBudget10_10-V1.2.xsd"/>
 	    </group>
 		
