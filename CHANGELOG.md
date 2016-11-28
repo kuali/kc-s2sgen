@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1795: supporting Attachments 1.2 (aka Other Attachments) and fixing the stylesheet for version 1.1
+  * Travis Schneeberger on Mon, 28 Nov 2016 13:49:09 -0500 [View Commit](../../commit/00f4f6c8ffb0d06c10038d7b1c462c344997c46a)
+
+##coeus-s2sgen-1611.0017
 * RESKC-1608: Fixing printing of Research & Related Subaward Budget (Total Fed + Non-Fed) Attachment(s) Form V1.2 when equipment line items exist
   * Travis Schneeberger on Wed, 23 Nov 2016 18:22:54 -0500 [View Commit](../../commit/a49dbe2d0a7d9c22fd50896a95fc22ffd7eb2a05)
 
