@@ -71,7 +71,11 @@
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/Attachments-V1.1" uri="Attachments-V1.1.xsd"/>
 	    </group>
-		
+
+		<group prefer="public">
+			<public publicId="http://apply.grants.gov/forms/AttachmentForm_1_2-V1.2" uri="AttachmentForm_1_2-V1.2.xsd"/>
+		</group>
+
 		<group prefer="public">
 	        <public publicId="http://apply.grants.gov/forms/BasicBudget-V1.0" uri="BasicBudget-V1.0.xsd"/>
 	    </group>

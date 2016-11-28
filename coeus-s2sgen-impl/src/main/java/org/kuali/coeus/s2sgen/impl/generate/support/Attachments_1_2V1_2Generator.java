@@ -19,9 +19,9 @@
 package org.kuali.coeus.s2sgen.impl.generate.support;
 
 
-import gov.grants.apply.forms.attachmentsV11.AttachmentsDocument;
-import gov.grants.apply.forms.attachmentsV11.AttachmentsDocument.Attachments;
-import gov.grants.apply.forms.attachmentsV11.AttachmentsDocument.Attachments.*;
+import gov.grants.apply.forms.attachmentForm12V12.AttachmentForm12Document;
+import gov.grants.apply.forms.attachmentForm12V12.AttachmentForm12Document.AttachmentForm12;
+import gov.grants.apply.forms.attachmentForm12V12.AttachmentForm12Document.AttachmentForm12.*;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
@@ -32,32 +32,31 @@ import org.kuali.coeus.s2sgen.impl.generate.S2SBaseFormGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 
-@FormGenerator("AttachmentsV1_1Generator")
-public class AttachmentsV1_1Generator extends S2SBaseFormGenerator {
+@FormGenerator("Attachments_1_2V1_2Generator")
+public class Attachments_1_2V1_2Generator extends S2SBaseFormGenerator {
 
     private static final String NARRATIVECODE_ATTACHMENTS = "61";
 
-    @Value("http://apply.grants.gov/forms/Attachments-V1.1")
+    @Value("http://apply.grants.gov/forms/AttachmentForm_1_2-V1.2")
     private String namespace;
 
-    @Value("Attachments-V1.1")
+    @Value("Attachments_1_2V1_2")
     private String formName;
 
-    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/Attachments-V1.1.fo.xsl")
+    @Value("classpath:org/kuali/coeus/s2sgen/impl/generate/support/stylesheet/Attachments-V1.2.fo.xsl")
     private Resource stylesheet;
 
-    @Value("gov.grants.apply.forms.attachmentsV11")
+    @Value("gov.grants.apply.forms.attachmentForm12V12")
     private String packageName;
 
     @Value("240")
     private int sortIndex;
 
+    private AttachmentForm12Document getAttachment() {
 
-    private AttachmentsDocument getAttachment() {
-
-        AttachmentsDocument attachmentsDocument = AttachmentsDocument.Factory.newInstance();
-        Attachments attachments = Attachments.Factory.newInstance();
-        attachments.setFormVersion(FormVersion.v1_1.getVersion());
+        AttachmentForm12Document attachmentsDocument = AttachmentForm12Document.Factory.newInstance();
+        AttachmentForm12 attachments = Factory.newInstance();
+        attachments.setFormVersion(FormVersion.v1_2.getVersion());
         ATT1 att1 = ATT1.Factory.newInstance();
         ATT2 att2 = ATT2.Factory.newInstance();
         ATT3 att3 = ATT3.Factory.newInstance();
@@ -162,7 +161,7 @@ public class AttachmentsV1_1Generator extends S2SBaseFormGenerator {
                 }
             }
         }
-        attachmentsDocument.setAttachments(attachments);
+        attachmentsDocument.setAttachmentForm12(attachments);
         return attachmentsDocument;
     }
 

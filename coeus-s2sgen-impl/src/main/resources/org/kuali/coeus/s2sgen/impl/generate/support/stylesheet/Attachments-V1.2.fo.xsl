@@ -19,7 +19,7 @@
  -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" 
 xmlns:footer="http://apply.grants.gov/system/Footer-V1.0"
-xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+xmlns:AttachmentForm_1_2="http://apply.grants.gov/forms/AttachmentForm_1_2-V1.2" xmlns:att="http://apply.grants.gov/system/Attachments-V1.0" xmlns:glob="http://apply.grants.gov/system/Global-V1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xsl:variable name="fo:layout-master-set">
 		<fo:layout-master-set>
 			<fo:simple-page-master master-name="default-page" page-height="11in" page-width="8.5in" margin-left="0.34in" margin-right="0.34in">
@@ -28,7 +28,7 @@ xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="ht
 			</fo:simple-page-master>
 		</fo:layout-master-set>
 	</xsl:variable>
-	<xsl:template match="Attachments:Attachments">
+	<xsl:template match="AttachmentForm_1_2:AttachmentForm_1_2">
 		<fo:root>
 
 			<xsl:copy-of select="$fo:layout-master-set"/>
@@ -53,8 +53,8 @@ xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="ht
         Attachments Form</fo:block>
         <fo:block>&#160;</fo:block>
          <fo:block font-size="8pt" hyphenate="true">
-       <fo:inline font-weight="bold" font-size="8pt">Instructions:</fo:inline>  On this form, you will attach the various files that make up your grant application.  Please consult with the appropriate Agency Guidelines for more information about each needed file.  Please remember that any files you attach must be in the document format and named as specified in the Guidelines.
-</fo:block>
+       		<fo:inline font-weight="bold" font-size="8pt">Instructions:</fo:inline>  On this form, you will attach the various files that make up your grant application.  Please consult with the appropriate Agency Guidelines for more information about each needed file.  Please remember that any files you attach must be in the document format and named as specified in the Guidelines.
+		</fo:block>
 <fo:block line-height="4pt">&#160;</fo:block>
 <fo:block font-size="8pt" hyphenate="true"><fo:inline font-weight="bold" font-size="8pt">Important:</fo:inline>  Please attach your files in the proper sequence.  See the appropriate Agency Guidelines for details.
 					</fo:block>
@@ -71,121 +71,121 @@ xmlns:Attachments="http://apply.grants.gov/forms/Attachments-V1.1" xmlns:att="ht
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">1) Please attach Attachment 1</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT1/Attachments:ATT1File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT1/AttachmentForm_1_2:ATT1File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT1/Attachments:ATT1File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT1/AttachmentForm_1_2:ATT1File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">2) Please attach Attachment 2</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT2/Attachments:ATT2File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT2/AttachmentForm_1_2:ATT2File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT2/Attachments:ATT2File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT2/AttachmentForm_1_2:ATT2File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">3) Please attach Attachment 3</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT3/Attachments:ATT3File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT3/AttachmentForm_1_2:ATT3File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT3/Attachments:ATT3File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT3/AttachmentForm_1_2:ATT3File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">4) Please attach Attachment 4</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT4/Attachments:ATT4File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT4/AttachmentForm_1_2:ATT4File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT4/Attachments:ATT4File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT4/AttachmentForm_1_2:ATT4File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">5) Please attach Attachment 5</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT5/Attachments:ATT5File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT5/AttachmentForm_1_2:ATT5File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT5/Attachments:ATT5File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT5/AttachmentForm_1_2:ATT5File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">6) Please attach Attachment 6</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT6/Attachments:ATT6File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT6/AttachmentForm_1_2:ATT6File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT6/Attachments:ATT6File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT6/AttachmentForm_1_2:ATT6File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">7) Please attach Attachment 7</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT7/Attachments:ATT7File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT7/AttachmentForm_1_2:ATT7File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT7/Attachments:ATT7File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT7/AttachmentForm_1_2:ATT7File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">8) Please attach Attachment 8</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT8/Attachments:ATT8File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT8/AttachmentForm_1_2:ATT8File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT8/Attachments:ATT8File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT8/AttachmentForm_1_2:ATT8File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">9) Please attach Attachment 9</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT9/Attachments:ATT9File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT9/AttachmentForm_1_2:ATT9File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT9/Attachments:ATT9File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT9/AttachmentForm_1_2:ATT9File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">10) Please attach Attachment 10</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT10/Attachments:ATT10File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT10/AttachmentForm_1_2:ATT10File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT10/Attachments:ATT10File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT10/AttachmentForm_1_2:ATT10File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">11) Please attach Attachment 11</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT11/Attachments:ATT11File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT11/AttachmentForm_1_2:ATT11File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT11/Attachments:ATT11File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT11/AttachmentForm_1_2:ATT11File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">12) Please attach Attachment 12</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT12/Attachments:ATT12File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT12/AttachmentForm_1_2:ATT12File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT12/Attachments:ATT12File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT12/AttachmentForm_1_2:ATT12File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">13) Please attach Attachment 13</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT13/Attachments:ATT13File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT13/AttachmentForm_1_2:ATT13File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT13/Attachments:ATT13File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT13/AttachmentForm_1_2:ATT13File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">14) Please attach Attachment 14</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT14/Attachments:ATT14File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT14/AttachmentForm_1_2:ATT14File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT14/Attachments:ATT14File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT14/AttachmentForm_1_2:ATT14File/att:MimeType"/>
 							</xsl:call-template>
 							<xsl:call-template name="attach_block">
 								<xsl:with-param name="block_num"></xsl:with-param>
 								<xsl:with-param name="block_title">15) Please attach Attachment 15</xsl:with-param>
 								<xsl:with-param name="filename">
-									<xsl:value-of select="Attachments:ATT15/Attachments:ATT15File/att:FileName"/>
+									<xsl:value-of select="AttachmentForm_1_2:ATT15/AttachmentForm_1_2:ATT15File/att:FileName"/>
 								</xsl:with-param>
-								<xsl:with-param name="mimetype" select="Attachments:ATT15/Attachments:ATT15File/att:MimeType"/>
+								<xsl:with-param name="mimetype" select="AttachmentForm_1_2:ATT15/AttachmentForm_1_2:ATT15File/att:MimeType"/>
 							</xsl:call-template>
 						</fo:table-body>
 					</fo:table>
