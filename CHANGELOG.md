@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1810: adding total cost fee fields to printed form for R&R Subaward Budget Attachment Form 5 YR 30 ATT v1.4.  Fixing display issues in previous version of form.
+  * Travis Schneeberger on Tue, 29 Nov 2016 12:32:15 -0500 [View Commit](../../commit/688b1d296621c0e3b3d5675ff7e5a9b548cbb7a4)
+
+##coeus-s2sgen-1611.0019
 * RESKC-1812: adding total cost fee fields to printed form for RR_SubawardBudget10_10_1_4
   * Travis Schneeberger on Tue, 29 Nov 2016 10:53:41 -0500 [View Commit](../../commit/20755211c102cc039980a8b634e506f14df87910)
 
