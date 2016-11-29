@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1812: adding total cost fee fields to printed form for RR_SubawardBudget10_10_1_4
+  * Travis Schneeberger on Tue, 29 Nov 2016 10:53:41 -0500 [View Commit](../../commit/20755211c102cc039980a8b634e506f14df87910)
+
+##coeus-s2sgen-1611.0018
 * RESKC-1795: supporting Attachments 1.2 (aka Other Attachments) and fixing the stylesheet for version 1.1
   * Travis Schneeberger on Mon, 28 Nov 2016 13:49:09 -0500 [View Commit](../../commit/00f4f6c8ffb0d06c10038d7b1c462c344997c46a)
 
