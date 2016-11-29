@@ -461,10 +461,10 @@
 							<fo:leader leader-pattern="space"/>
 						</fo:block>
 						<fo:block font-size="8pt">
-							<fo:table width="420pt" space-before.optimum="3pt" space-after.optimum="2pt">
-								<fo:table-column column-width="proportional-column-width(60)"/>
-								<fo:table-column column-width="proportional-column-width(20)"/>
-								<fo:table-column column-width="proportional-column-width(20)"/>
+							<fo:table width="600pt" space-before.optimum="3pt" space-after.optimum="2pt" table-layout="fixed">
+								<fo:table-column column-width="proportional-column-width(50)"/>
+								<fo:table-column column-width="proportional-column-width(25)"/>
+								<fo:table-column column-width="proportional-column-width(25)"/>
 								<fo:table-body>
 
 									<!--============= ROWS Begin ======================-->
@@ -1387,7 +1387,7 @@
 											</fo:table-body>
 										</fo:table>
 									</xsl:for-each>
-									<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
+									<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
 										<fo:table-column column-width="proportional-column-width(10)"/>
 										<fo:table-column column-width="proportional-column-width(18)"/>
 										<fo:table-column column-width="proportional-column-width(12)"/>
