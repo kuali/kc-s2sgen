@@ -986,6 +986,23 @@
 												</fo:block>
 											</fo:table-cell>
 										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell hyphenate="true" language="en" padding-before="3pt" padding-after="3pt">
+												<fo:block font-weight="bold">Section K, Total Costs and Fee (I + J)</fo:block>
+											</fo:table-cell>
+											<fo:table-cell>
+												<fo:block/>
+											</fo:table-cell>
+											<fo:table-cell text-align="right">
+												<fo:block>
+													<xsl:for-each select="RR_Budget10_1_4:CumulativeTotalCostsFee">
+														<fo:inline font-weight="bold">
+															<xsl:value-of select="format-number(., '#,##0.00')"/>
+														</fo:inline>
+													</xsl:for-each>
+												</fo:block>
+											</fo:table-cell>
+										</fo:table-row>
 										<!--============ ROWS End ================================-->
 									</xsl:for-each>
 								</fo:table-body>
@@ -3008,6 +3025,43 @@
 			<fo:block>
 				<fo:leader leader-pattern="space"/>
 			</fo:block>
+			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
+				<fo:table-column column-width="proportional-column-width(85)"/>
+				<fo:table-column column-width="proportional-column-width(16)"/>
+				<fo:table-body>
+					<fo:table-row>
+						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
+							<fo:block>
+								<fo:inline font-size="8pt" font-weight="bold">K. Total Costs and Fee</fo:inline>
+							</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+							<fo:block>
+								<fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
+							</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+					<fo:table-row>
+						<fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+							<fo:block>
+								<fo:inline font-size="8pt" font-weight="bold">Total Costs and Fee (I + J)</fo:inline>
+							</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+							<fo:block>
+								<xsl:for-each select="RR_Budget10_1_4:TotalCostsFee">
+									<fo:inline font-size="8pt" font-weight="bold">
+										<xsl:value-of select="format-number(., '#,##0.00')"/>
+									</fo:inline>
+								</xsl:for-each>
+							</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+				</fo:table-body>
+			</fo:table>
+			<fo:block>
+				<fo:leader leader-pattern="space"/>
+			</fo:block>
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt">
 				<fo:table-column/>
 				<fo:table-column/>
@@ -3016,7 +3070,7 @@
 					<fo:table-row>
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
-								<fo:inline font-size="8pt" font-weight="bold">K. * Budget Justification</fo:inline>
+								<fo:inline font-size="8pt" font-weight="bold">L. * Budget Justification</fo:inline>
 							</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
