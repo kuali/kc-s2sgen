@@ -227,37 +227,6 @@
 							<xsl:call-template name="SingleYearPart1">
 								<xsl:with-param name="year"><xsl:value-of select="position()"/></xsl:with-param>
 							</xsl:call-template>
-						</xsl:for-each>
-					</fo:flow>
-				</fo:page-sequence>
-
-				<fo:page-sequence master-reference="AB" format="1">
-					<fo:static-content flow-name="xsl-region-after">
-						<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
-							<fo:table-column column-width="proportional-column-width(1)"/>
-							<fo:table-column column-width="proportional-column-width(1)"/>
-							<fo:table-body>
-								<fo:table-row>
-									<fo:table-cell hyphenate="true" language="en" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left" border-style="solid" border-width="0pt" border-color="white">
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Tracking Number: <xsl:value-of select="/*/*/footer:Grants_govTrackingNumber"/>
-											</fo:inline>
-										</fo:block>
-									</fo:table-cell>
-									<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="0pt" padding-end="0pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right" border-style="solid" border-width="0pt" border-color="white">
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">OMB Number: 4040-0001</fo:inline>
-										</fo:block>
-										<fo:block>
-											<fo:inline font-size="6px" font-weight="bold">Expiration Date: 10/31/2019</fo:inline>
-										</fo:block>
-									</fo:table-cell>
-								</fo:table-row>
-							</fo:table-body>
-						</fo:table>
-					</fo:static-content>
-					<fo:flow flow-name="xsl-region-body">
-						<xsl:for-each select="RR_Budget_1_4:BudgetYear">
 							<xsl:call-template name="SingleYearPart2">
 								<xsl:with-param name="year"><xsl:value-of select="position()"/></xsl:with-param>
 							</xsl:call-template>
@@ -312,10 +281,10 @@
 							<fo:leader leader-pattern="space"/>
 						</fo:block>
 						<fo:block font-size="8pt">
-							<fo:table width="420pt" space-before.optimum="3pt" space-after.optimum="2pt" table-layout="fixed">
-								<fo:table-column column-width="proportional-column-width(60)"/>
-								<fo:table-column column-width="proportional-column-width(20)"/>
-								<fo:table-column column-width="proportional-column-width(20)"/>
+                            <fo:table width="600pt" space-before.optimum="3pt" space-after.optimum="2pt" table-layout="fixed">
+                                <fo:table-column column-width="proportional-column-width(50)"/>
+                                <fo:table-column column-width="proportional-column-width(25)"/>
+                                <fo:table-column column-width="proportional-column-width(25)"/>
 								<fo:table-body>
 									<!--============= ROWS Begin ======================-->
 									<xsl:for-each select="RR_Budget_1_4:BudgetSummary">
@@ -931,7 +900,7 @@
 	<!--==============   Single Year Template ======================================-->
 	<xsl:template name="SingleYearPart1">
       <xsl:param name="year"/>
-      <fo:block>
+        <fo:block page-break-before="always">
          <fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt">
             <fo:table-column/>
             <fo:table-body>
@@ -1989,6 +1958,9 @@
          </fo:table>
          <fo:block font-size="8pt">RESEARCH &amp; RELATED Budget {A-B} (Funds Requested)</fo:block>
       </fo:block>
+        <fo:block break-after="page">
+            <xsl:text>&#xA;</xsl:text>
+        </fo:block>
    </xsl:template>
  <xsl:template name="SingleYearPart2">
       <xsl:param name="year"/>
