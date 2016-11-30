@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1603: Fix page break issues in R & R Subaward Budget Attachment(s) Form V1.4 form
+  * Travis Schneeberger on Wed, 30 Nov 2016 10:54:15 -0500 [View Commit](../../commit/b5bab44bd1d500a5edeb6df232425a7004cb70eb)
+
+##coeus-s2sgen-1611.0020
 * RESKC-1810: adding total cost fee fields to printed form for R&R Subaward Budget Attachment Form 5 YR 30 ATT v1.4.  Fixing display issues in previous version of form.
   * Travis Schneeberger on Tue, 29 Nov 2016 12:32:15 -0500 [View Commit](../../commit/688b1d296621c0e3b3d5675ff7e5a9b548cbb7a4)
 
