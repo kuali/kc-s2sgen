@@ -339,7 +339,7 @@ public class PHS398CoverPageSupplement_3_0V3_0Generator extends PHS398CoverPageS
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public PHS398CoverPageSupplement30Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getCoverPageSupplement();
     }

@@ -495,7 +495,7 @@ public class RROtherProjectInfo_1_3V1_3Generator extends
 	}
 
 	@Override
-	public XmlObject getFormObject(
+	public RROtherProjectInfo13Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getRROtherProjectInfo();

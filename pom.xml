@@ -55,6 +55,7 @@
         <bouncycastle.version>1.51</bouncycastle.version>
         <coeus-api-all.version>1609.0002</coeus-api-all.version>
         <commons-collections4.version>4.1</commons-collections4.version>
+        <commons-io.version>2.4</commons-io.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <fop.version>1.1</fop.version>
         <itext.version>2.1.7</itext.version>
@@ -214,6 +215,13 @@
         <dependencies>
 
             <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>com.lowagie</groupId>
                 <artifactId>itext</artifactId>
                 <version>${itext.version}</version>
@@ -366,14 +374,20 @@
 
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
+                <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
-                <scope>runtime</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
 

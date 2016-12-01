@@ -108,7 +108,7 @@ public class OtherV1_1Generator extends OtherBaseGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public OtherNarrativeAttachmentsDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getOtherNarrativeAttachments();
     }

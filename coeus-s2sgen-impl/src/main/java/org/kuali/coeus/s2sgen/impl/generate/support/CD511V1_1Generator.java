@@ -114,7 +114,7 @@ public class CD511V1_1Generator extends S2SBaseFormGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public CD511Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);
         return getcd511Document();

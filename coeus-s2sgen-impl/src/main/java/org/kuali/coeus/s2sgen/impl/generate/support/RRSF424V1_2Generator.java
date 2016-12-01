@@ -868,7 +868,7 @@ public class RRSF424V1_2Generator extends RRSF424BaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public RRSF42412Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		departmentalPerson = departmentalPersonService

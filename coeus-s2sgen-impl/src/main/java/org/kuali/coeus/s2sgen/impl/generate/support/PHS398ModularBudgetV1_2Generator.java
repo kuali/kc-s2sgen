@@ -370,7 +370,7 @@ PHS398ModularBudgetBaseGenerator{
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public PHS398ModularBudget12Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPHS398ModularBudget();

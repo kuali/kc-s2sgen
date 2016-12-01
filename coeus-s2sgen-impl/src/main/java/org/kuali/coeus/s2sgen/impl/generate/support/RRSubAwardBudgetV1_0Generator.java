@@ -155,7 +155,7 @@ public class RRSubAwardBudgetV1_0Generator extends S2SAdobeFormAttachmentBaseGen
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRSubawardBudgetDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRSubawardBudgetDocument();
     }

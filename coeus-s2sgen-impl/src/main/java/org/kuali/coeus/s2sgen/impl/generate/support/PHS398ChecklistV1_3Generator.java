@@ -310,7 +310,7 @@ public class PHS398ChecklistV1_3Generator extends PHS398ChecklistBaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public PHS398Checklist13Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPHS398Checklist();

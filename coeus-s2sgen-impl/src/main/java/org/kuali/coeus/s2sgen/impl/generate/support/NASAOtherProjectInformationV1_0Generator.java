@@ -539,7 +539,7 @@ public class NASAOtherProjectInformationV1_0Generator extends
      *         {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(
+    public NASAOtherProjectInformationDocument getFormObject(
             ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         answerHeaders = getPropDevQuestionAnswerService().getQuestionnaireAnswerHeaders(pdDoc.getDevelopmentProposal().getProposalNumber());

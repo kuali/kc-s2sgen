@@ -120,7 +120,7 @@ public class BudgetV1_1Generator extends S2SBaseFormGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public BudgetNarrativeAttachmentsDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getBudgetNarrativeAttachmentsDocument();
     }

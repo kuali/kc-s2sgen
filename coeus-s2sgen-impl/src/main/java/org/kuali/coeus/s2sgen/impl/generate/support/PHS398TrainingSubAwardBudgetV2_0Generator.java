@@ -199,7 +199,7 @@ public class PHS398TrainingSubAwardBudgetV2_0Generator extends S2SAdobeFormAttac
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException{
+    public PHS398TrainingSubawardBudget20Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException{
         pdDoc=proposalDevelopmentDocument;
         return getPHS398TrainingSubawardBudget();
     }

@@ -133,7 +133,7 @@ public class RRPersonalDataV1_2Generator extends RRPersonalDataBaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public RRPersonalData12Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getRRPersonalData();

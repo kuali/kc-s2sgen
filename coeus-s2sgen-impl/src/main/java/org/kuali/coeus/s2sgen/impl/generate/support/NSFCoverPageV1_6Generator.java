@@ -184,7 +184,7 @@ public class NSFCoverPageV1_6Generator extends NSFCoverPageBaseGenerator {
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public NSFCoverPage16Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getNSFCoverPage16();
     }

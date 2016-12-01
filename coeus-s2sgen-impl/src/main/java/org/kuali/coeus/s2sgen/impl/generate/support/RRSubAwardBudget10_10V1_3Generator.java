@@ -193,7 +193,7 @@ public class RRSubAwardBudget10_10V1_3Generator extends S2SAdobeFormAttachmentBa
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRSubawardBudget101013Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         pdDoc=proposalDevelopmentDocument;
         return getRRSubawardBudgetDocument();
     }

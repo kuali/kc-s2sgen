@@ -193,7 +193,7 @@ public class RRFedNonFedSubAwardBudgetV1_2Generator extends S2SAdobeFormAttachme
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRFedNonFedSubawardBudgetDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         pdDoc=proposalDevelopmentDocument;
         return getRRFedNonFedSubawardBudgetDocument();
     }

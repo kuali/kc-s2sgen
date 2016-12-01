@@ -90,7 +90,7 @@ public class EDGEPA427V1_0Generator extends EDGEPA427BaseGenerator {
      * 
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public GEPA427AttachmentsDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
         this.pdDoc = proposalDevelopmentDocument;
         return getGEPA427Attachments();

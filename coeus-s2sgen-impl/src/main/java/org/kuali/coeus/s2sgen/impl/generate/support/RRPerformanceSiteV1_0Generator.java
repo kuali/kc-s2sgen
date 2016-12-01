@@ -144,7 +144,7 @@ public class RRPerformanceSiteV1_0Generator extends RRPerformanceSiteBaseGenerat
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRPerformanceSiteDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRPerformanceSite();
     }

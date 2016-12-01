@@ -82,7 +82,7 @@ public class PerformanceSiteV2_0Generator extends PerformanceSiteBaseGenerator {
     @Qualifier("s2SErrorHandlerService")
     private S2SErrorHandlerService s2SErrorHandlerService;
 
-	private XmlObject getPerformanceSite() {
+	private PerformanceSite20Document getPerformanceSite() {
 		PerformanceSite20Document performanceSite14Document = PerformanceSite20Document.Factory
 				.newInstance();
 		PerformanceSite20 performanceSite14 = PerformanceSite20.Factory
@@ -182,7 +182,7 @@ public class PerformanceSiteV2_0Generator extends PerformanceSiteBaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-    public XmlObject getFormObject(
+    public PerformanceSite20Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPerformanceSite();

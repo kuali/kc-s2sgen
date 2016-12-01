@@ -258,7 +258,7 @@ public class NasaPIandAORSupplementalDataSheetV1_0Generator extends
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public NasaPIandAORSupplementalDataSheetDocument getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getnasapIandAORSupplementalDataSheetDocument();

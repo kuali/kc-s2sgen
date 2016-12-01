@@ -1066,7 +1066,8 @@ public class PHS398FellowshipSupplementalV3_1Generator extends PHS398FellowshipS
      * @param proposalDevelopmentDocument for which the {@link XmlObject} needs to be created
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    @Override
+    public PHSFellowshipSupplemental31Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getPHSFellowshipSupplemental31();
     }

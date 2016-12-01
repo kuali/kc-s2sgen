@@ -1015,7 +1015,7 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public PHSFellowshipSupplemental20Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getPHSFellowshipSupplemental20();
     }

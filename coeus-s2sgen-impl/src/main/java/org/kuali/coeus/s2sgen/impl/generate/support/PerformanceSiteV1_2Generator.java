@@ -75,7 +75,7 @@ public class PerformanceSiteV1_2Generator extends PerformanceSiteBaseGenerator {
     @Qualifier("rolodexService")
     private RolodexService rolodexService;
 
-    private XmlObject getPerformanceSite() {
+    private PerformanceSite12Document getPerformanceSite() {
 		PerformanceSite12Document performanceSite12Document = PerformanceSite12Document.Factory
 				.newInstance();
 		PerformanceSite12 performanceSite12 = PerformanceSite12.Factory
@@ -166,7 +166,7 @@ public class PerformanceSiteV1_2Generator extends PerformanceSiteBaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public PerformanceSite12Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPerformanceSite();

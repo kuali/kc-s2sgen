@@ -1843,7 +1843,7 @@ public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerat
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRFedNonFedBudgetDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRFedNonFedBudget();
     }

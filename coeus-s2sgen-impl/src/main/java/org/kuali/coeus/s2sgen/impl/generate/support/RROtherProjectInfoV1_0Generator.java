@@ -358,7 +358,7 @@ public class RROtherProjectInfoV1_0Generator extends RROtherProjectInfoBaseGener
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RROtherProjectInfoDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRROtherProjectInfo();
     }

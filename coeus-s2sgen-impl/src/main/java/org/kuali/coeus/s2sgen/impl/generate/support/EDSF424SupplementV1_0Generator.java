@@ -189,7 +189,7 @@ public class EDSF424SupplementV1_0Generator extends
 	 * 
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public EDSF424SupplementDocument getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
 		this.pdDoc = proposalDevelopmentDocument;

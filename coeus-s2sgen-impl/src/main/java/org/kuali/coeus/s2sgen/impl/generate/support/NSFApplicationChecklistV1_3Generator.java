@@ -318,7 +318,7 @@ public class NSFApplicationChecklistV1_3Generator extends NSFApplicationChecklis
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public NSFApplicationChecklist13Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getNSFApplicationChecklist13();

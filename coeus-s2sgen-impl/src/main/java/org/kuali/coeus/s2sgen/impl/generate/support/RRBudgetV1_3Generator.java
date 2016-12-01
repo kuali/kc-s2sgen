@@ -911,7 +911,7 @@ public class RRBudgetV1_3Generator extends RRBudgetBaseGenerator {
      *         {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(
+    public RRBudget13Document getFormObject(
             ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRBudget13();

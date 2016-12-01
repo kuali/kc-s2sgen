@@ -276,7 +276,7 @@ public class RRFedNonFedSubAwardBudget5_30V1_2Generator extends S2SAdobeFormAtta
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRFedNonFedSubawardBudget30Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         pdDoc=proposalDevelopmentDocument;
         return getRRFedNonFedSubawardBudgetDocument();
     }

@@ -40,7 +40,7 @@ public interface S2SFormGenerator {
      * This method creates an XML document using the APIs generated using XMLBeans by compiling the form's schema and returns it
      * as XmlObject.
      */
-    XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException;
+    <T extends XmlObject> T getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException;
 
     List<AttachmentData> getAttachments();
 

@@ -149,7 +149,7 @@ public class RRFedNonFedSubAwardBudget_1_3_V1_3Generator extends S2SAdobeFormAtt
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRFedNonFedSubawardBudget13Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         pdDoc=proposalDevelopmentDocument;
         return getRRFedNonFedSubawardBudgetDocument();
     }
