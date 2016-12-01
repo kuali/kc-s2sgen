@@ -64,7 +64,7 @@ public class PHS398CareerDevelopmentAwardSupV3_0Generator extends
     @Value("200")
     private int sortIndex;
 
-    private XmlObject getPHS398CareerDevelopmentAwardSup() {
+    private PHS398CareerDevelopmentAwardSup30Document getPHS398CareerDevelopmentAwardSup() {
 	    PHS398CareerDevelopmentAwardSup30Document phs398CareerDevelopmentAwardSupDocument = PHS398CareerDevelopmentAwardSup30Document.Factory.newInstance();
 		PHS398CareerDevelopmentAwardSup30 phs398CareerDevelopmentAwardSup30 = PHS398CareerDevelopmentAwardSup30.Factory.newInstance();
 		phs398CareerDevelopmentAwardSup30.setFormVersion(FormVersion.v3_0.getVersion());
@@ -317,7 +317,7 @@ public class PHS398CareerDevelopmentAwardSupV3_0Generator extends
 	}
 	
 	@Override
-	public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+	public PHS398CareerDevelopmentAwardSup30Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPHS398CareerDevelopmentAwardSup();
 	}

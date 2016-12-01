@@ -743,7 +743,7 @@ public class NSFKeyPersonExpandedV1_0Generator extends S2SBaseFormGenerator {
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public NSFKeyPersonExpandedDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getNSFKeyPersonExpanded();
     }

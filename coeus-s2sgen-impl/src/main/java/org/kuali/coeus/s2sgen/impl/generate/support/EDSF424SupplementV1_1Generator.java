@@ -236,7 +236,7 @@ public class EDSF424SupplementV1_1Generator extends
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public EDSF424SupplementDocument getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
 		this.pdDoc = proposalDevelopmentDocument;

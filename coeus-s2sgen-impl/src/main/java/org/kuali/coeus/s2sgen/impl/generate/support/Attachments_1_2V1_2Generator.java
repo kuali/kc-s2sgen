@@ -23,7 +23,6 @@ import gov.grants.apply.forms.attachmentForm12V12.AttachmentForm12Document;
 import gov.grants.apply.forms.attachmentForm12V12.AttachmentForm12Document.AttachmentForm12;
 import gov.grants.apply.forms.attachmentForm12V12.AttachmentForm12Document.AttachmentForm12.*;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
-import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.s2sgen.impl.generate.FormGenerator;
@@ -166,7 +165,7 @@ public class Attachments_1_2V1_2Generator extends S2SBaseFormGenerator {
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public AttachmentForm12Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
         this.pdDoc = proposalDevelopmentDocument;
         return getAttachment();

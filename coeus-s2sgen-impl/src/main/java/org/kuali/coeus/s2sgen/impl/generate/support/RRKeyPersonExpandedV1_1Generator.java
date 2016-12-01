@@ -345,7 +345,7 @@ public class RRKeyPersonExpandedV1_1Generator extends
 	}
 
 	@Override
-	public XmlObject getFormObject(
+	public RRKeyPersonExpandedDocument getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getRRKeyPersonExpanded();

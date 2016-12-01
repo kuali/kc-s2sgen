@@ -197,7 +197,7 @@ public class PHS398ResearchPlan_2_0V2_0Generator extends
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public PHS398ResearchPlan20Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPHS398ResearchPlan();

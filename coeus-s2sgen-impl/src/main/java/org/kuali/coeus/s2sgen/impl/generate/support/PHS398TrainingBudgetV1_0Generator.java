@@ -132,7 +132,7 @@ public class PHS398TrainingBudgetV1_0Generator extends S2SBaseFormGenerator {
     private S2SCommonBudgetService s2SCommonBudgetService;
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
+    public PHS398TrainingBudgetDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
         PHS398TrainingBudgetDocument trainingBudgetTypeDocument = PHS398TrainingBudgetDocument.Factory.newInstance();
         trainingBudgetTypeDocument.setPHS398TrainingBudget(getPHS398TrainingBudget(proposalDevelopmentDocument));
         return trainingBudgetTypeDocument;

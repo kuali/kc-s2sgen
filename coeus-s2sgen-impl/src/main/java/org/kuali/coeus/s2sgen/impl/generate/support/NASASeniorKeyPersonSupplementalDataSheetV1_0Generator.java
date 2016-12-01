@@ -387,7 +387,7 @@ public class NASASeniorKeyPersonSupplementalDataSheetV1_0Generator extends
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public NASASeniorKeyPersonSupplementalDataSheetDocument getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getNasaSeniorKeyPersonSupplementalDataSheetDocument();

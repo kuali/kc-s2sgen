@@ -1710,7 +1710,7 @@ public class RRFedNonFedBudgetV1_2Generator extends RRFedNonFedBudgetBaseGenerat
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public RRFedNonFedBudget12Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getRRFedNonFedBudget();
     }

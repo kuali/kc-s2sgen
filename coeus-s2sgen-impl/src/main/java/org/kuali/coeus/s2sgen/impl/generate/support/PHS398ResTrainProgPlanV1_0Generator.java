@@ -253,7 +253,7 @@ public class PHS398ResTrainProgPlanV1_0Generator extends S2SBaseFormGenerator{
     }
 
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
+    public PHS398ResearchTrainingProgramPlanDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) throws S2SException {
         PHS398ResearchTrainingProgramPlan phs398ResearchTrainingProgramPlan = getPHS398ResearchTrainingProgramPlan(proposalDevelopmentDocument);
         PHS398ResearchTrainingProgramPlanDocument phs398ResearchTrainingProgramPlanDocument = PHS398ResearchTrainingProgramPlanDocument.Factory.newInstance();
         phs398ResearchTrainingProgramPlanDocument.setPHS398ResearchTrainingProgramPlan(phs398ResearchTrainingProgramPlan);

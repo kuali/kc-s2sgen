@@ -574,7 +574,7 @@ public class SF424V2_0Generator extends SF424BaseGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public SF424Document getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);
         return getSF424Doc();

@@ -687,7 +687,7 @@ public class ED524BudgetV1_1Generator extends ED524BudgetBaseGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public ED524BudgetDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
         this.pdDoc = proposalDevelopmentDocument;
         return getED524Budget();

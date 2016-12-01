@@ -111,7 +111,7 @@ public class FaithBasedSurveyOnEEOV1_0Generator extends S2SBaseFormGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public SurveyOnEEODocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
         this.pdDoc = proposalDevelopmentDocument;
         return getSurveyOnEEO();

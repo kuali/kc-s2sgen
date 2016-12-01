@@ -682,7 +682,7 @@ public class SF424V1_0Generator extends SF424BaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-	public XmlObject getFormObject(
+	public GrantApplicationDocument getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);

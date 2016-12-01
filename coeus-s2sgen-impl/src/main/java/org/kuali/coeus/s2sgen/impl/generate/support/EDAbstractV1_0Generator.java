@@ -90,7 +90,7 @@ public class EDAbstractV1_0Generator extends EDAbstractBaseGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public AbstractAttachmentsDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 
         this.pdDoc = proposalDevelopmentDocument;
         return getAbstractAttachments();

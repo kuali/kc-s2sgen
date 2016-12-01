@@ -85,7 +85,7 @@ public class NSFSuggestedReviewersV1_1Generator extends NSFSuggestedReviewersBas
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public NSFSuggestedReviewersDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         return getNSFSuggestedReviewers();
     }

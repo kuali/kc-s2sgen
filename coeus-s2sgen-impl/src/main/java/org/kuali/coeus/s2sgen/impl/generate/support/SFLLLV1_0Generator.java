@@ -261,7 +261,7 @@ public class SFLLLV1_0Generator extends SFLLLBaseGenerator {
      * @return {@link XmlObject} which is generated using the given {@link ProposalDevelopmentDocumentContract}
      */
     @Override
-    public XmlObject getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
+    public LobbyingActivitiesDisclosureDocument getFormObject(ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
         this.pdDoc = proposalDevelopmentDocument;
         aorInfo = departmentalPersonService.getDepartmentalPerson(pdDoc);
         return getLobbyingActivitiesDisclosure();

@@ -92,7 +92,7 @@ public class PHSCoverLetterV1_2Generator extends PHSCoverLetterBaseGenerator {
 	 *         {@link ProposalDevelopmentDocumentContract}
 	 */
 	@Override
-    public XmlObject getFormObject(
+    public PHSCoverLetter12Document getFormObject(
 			ProposalDevelopmentDocumentContract proposalDevelopmentDocument) {
 		this.pdDoc = proposalDevelopmentDocument;
 		return getPHSCoverLetter();
