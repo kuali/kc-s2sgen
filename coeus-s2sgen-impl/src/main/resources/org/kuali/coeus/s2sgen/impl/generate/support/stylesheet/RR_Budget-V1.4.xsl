@@ -885,67 +885,67 @@
                                  <fo:table-row>
                                     <fo:table-cell number-columns-spanned="2" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Prefix</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Prefix</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* First Name</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">* First Name</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Middle Name</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Middle Name</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Last Name</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">* Last Name</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Suffix</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Suffix</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Project</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">* Project</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Base</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Base</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Calendar</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Calendar</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Academic</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Academic</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Summer</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Summer</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Requested</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">* Requested</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Fringe</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">* Fringe</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Funds</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">* Funds</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                  </fo:table-row>
@@ -977,42 +977,42 @@
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Role</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Role</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Salary (&#36;)</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Salary (&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Months</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Months</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Months</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Months</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Months</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Months</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Salary&#160;(&#36;)</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Salary&#160;(&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Benefits (&#36;)</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Benefits (&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Requested&#160;(&#36;)</fo:inline>
+                                          <fo:inline font-weight="bold" font-size="7pt">Requested&#160;(&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                  </fo:table-row>

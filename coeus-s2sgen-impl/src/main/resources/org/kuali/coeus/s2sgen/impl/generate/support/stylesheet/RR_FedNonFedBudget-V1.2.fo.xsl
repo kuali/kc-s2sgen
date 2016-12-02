@@ -33,7 +33,7 @@
 					<fo:region-body margin-top="0.3in" margin-bottom=".4in"/>
 					<fo:region-after extent=".3in"/>
 				</fo:simple-page-master>
-				<fo:simple-page-master master-name="main" page-height="8.5in" page-width="11in" margin-left="0.4in" margin-right="0.4in">
+			<fo:simple-page-master master-name="main" page-height="11in" page-width="8.5in" margin-left="0.4in" margin-right="0.4in">
 					<fo:region-body margin-top="0.5in" margin-bottom="0.5in"/>
 					<fo:region-after extent=".5in"/>
 				</fo:simple-page-master>
@@ -43,6 +43,10 @@
 				<fo:page-sequence-master master-name="summary">
 					<fo:single-page-master-reference master-reference="main"/>
 				</fo:page-sequence-master>
+			<fo:simple-page-master master-name="default-page" page-height="11in" page-width="8.5in" margin-left="0.34in" margin-right="0.34in">
+				<fo:region-body margin-top="0.5in" margin-bottom="0.5in" font-family="Helvetica,Times,Courier" font-size="8pt"/>
+				<fo:region-after extent=".5in"/>
+			</fo:simple-page-master>
 			</fo:layout-master-set>
 			<!--==========================================================================-->
 			<fo:page-sequence master-reference="AB" format="1">
@@ -426,6 +430,9 @@
 					<fo:block>
 						<fo:leader leader-pattern="space"/>
 					</fo:block>
+					<fo:block>
+						<fo:leader leader-pattern="space"/>
+					</fo:block>
 					<fo:block font-size="8pt">
 						<fo:table width="500pt" space-before.optimum="3pt" space-after.optimum="2pt" table-layout="fixed">
 							<fo:table-column column-width="proportional-column-width(70)"/>
@@ -433,7 +440,6 @@
 							<fo:table-column column-width="proportional-column-width(30)"/>
 							<fo:table-column column-width="proportional-column-width(30)"/>
 							<fo:table-body>
-								<!--============= ROWS Begin ======================-->
 								<xsl:for-each select="RR_FedNonFedBudget_1_2:BudgetSummary">
 									<fo:table-row>
 										<fo:table-cell>
@@ -656,11 +662,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:FederalSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:FederalSummary)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:FederalSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:FederalSummary)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:FederalSummary, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:FederalSummary, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -668,11 +674,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:NonFederalSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:NonFederalSummary)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:NonFederalSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:NonFederalSummary)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:NonFederalSummary, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:NonFederalSummary, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -680,11 +686,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary = '' or not(RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeTotalFundsRequestedTravel/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTotalFundsTequestedTravel/RR_FedNonFedBudget_1_2:TotalFedNonFedSummary, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -698,11 +704,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:Federal = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:Federal)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:Federal = '' or not(RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:Federal)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:Federal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:Federal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -710,11 +716,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:NonFederal = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:NonFederal)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:NonFederal = '' or not(RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:NonFederal)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:NonFederal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:NonFederal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -722,11 +728,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed = '' or not(RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeDomesticTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -740,11 +746,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:Federal = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:Federal)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:Federal = '' or not(RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:Federal)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:Federal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:Federal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -752,11 +758,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:NonFederal = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:NonFederal)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:NonFederal = '' or not(RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:NonFederal)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:NonFederal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:NonFederal, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -764,11 +770,11 @@
 										<fo:table-cell text-align="right">
 											<fo:block>
 												<xsl:choose>
-													<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed = '' or not(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed)">
+														<xsl:when test="RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed = '' or not(RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed)">
 														<fo:inline>&#160;</fo:inline>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeTravels/RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+															<xsl:value-of select="format-number(RR_FedNonFedBudget_1_2:CumulativeForeignTravelCosts/RR_FedNonFedBudget_1_2:TotalFedNonFed, '#,##0.00')" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
 													</xsl:otherwise>
 												</xsl:choose>
 											</fo:block>
@@ -1746,13 +1752,13 @@
 										</fo:table-cell>
 									</fo:table-row>
 
-									<!--============ ROWS End ================================-->
 								</xsl:for-each>
 							</fo:table-body>
 						</fo:table>
 						<fo:block font-size="8pt">RESEARCH &amp; RELATED Budget (Total Fed + Non-Fed)</fo:block>
 					</fo:block>
-					<!--================== end new section summary ======================= -->
+
+
 				</fo:flow>
 			</fo:page-sequence>
 		</fo:root>
@@ -3187,8 +3193,6 @@
                                        </fo:block>
 								<fo:inline font-size="8pt" font-weight="bold">List items and dollar amount for each item exceeding $5,000</fo:inline>
 
-						<xsl:for-each select="RR_FedNonFedBudget_1_2:Equipment">
-							<xsl:for-each select="RR_FedNonFedBudget_1_2:EquipmentList">
 								<fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
 									<fo:table-column column-width="proportional-column-width(3)"/>
 									<fo:table-column column-width="proportional-column-width(50)"/>
@@ -3221,6 +3225,22 @@
 										</fo:table-row>
 									</fo:table-header>
 									<fo:table-body>
+										<xsl:if test="string-length(RR_FedNonFedBudget_1_2:Equipment)=0">
+											<fo:table-row>
+												<fo:table-cell >
+													<fo:block/>
+												</fo:table-cell>
+											</fo:table-row>
+										</xsl:if>
+										<xsl:for-each select="RR_FedNonFedBudget_1_2:Equipment">
+											<xsl:if test="string-length(RR_FedNonFedBudget_1_2:EquipmentList)=0">
+												<fo:table-row>
+													<fo:table-cell >
+														<fo:block/>
+													</fo:table-cell>
+												</fo:table-row>
+											</xsl:if>
+											<xsl:for-each select="RR_FedNonFedBudget_1_2:EquipmentList">
 										<fo:table-row>
 											<fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 												<fo:block>
@@ -3264,10 +3284,11 @@
 												</fo:block>
 											</fo:table-cell>											
 										</fo:table-row>
+											</xsl:for-each>
+										</xsl:for-each>
 									</fo:table-body>
 								</fo:table>
-							</xsl:for-each>
-						</xsl:for-each>
+
 								<fo:table width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
 									<fo:table-column column-width="proportional-column-width(53)"/>
 									<fo:table-column column-width="proportional-column-width(16)"/>
@@ -4381,6 +4402,13 @@
 					</fo:table-row>
 				</fo:table-header>
 				<fo:table-body>
+					<xsl:if test="RR_FedNonFedBudget_1_2:IndirectCosts=''">
+						<fo:table-row>
+							<fo:table-cell >
+								<fo:block/>
+							</fo:table-cell>
+						</fo:table-row>
+					</xsl:if>
 					<xsl:for-each select="RR_FedNonFedBudget_1_2:IndirectCosts">
 						<xsl:for-each select="RR_FedNonFedBudget_1_2:IndirectCost">
 							<fo:table-row>
@@ -4638,6 +4666,9 @@
 				</fo:table-row>
 				</fo:table-body>
 			</fo:table>
+			<fo:block>
+				<fo:leader leader-pattern="space"/>
+			</fo:block>
 			<fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
 				<fo:table-column column-width="proportional-column-width(53)"/>
 				<fo:table-column column-width="proportional-column-width(16)"/>
@@ -4714,7 +4745,7 @@
 					<fo:table-row>
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
 							<fo:block>
-								<fo:inline font-size="8pt" font-weight="bold">K. * Budget Justification</fo:inline>
+								<fo:inline font-size="8pt" font-weight="bold">L. * Budget Justification</fo:inline>
 							</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
@@ -4753,8 +4784,8 @@
 			<fo:block font-size="8pt">RESEARCH &amp; RELATED Budget {F-K} (Total Fed + Non-Fed)</fo:block>
 		</fo:block>
 	</xsl:template>
-	<!--===========================End Single Year Template===========-->
-	<!--========================== date template =================-->
+
+
 	<xsl:template name="formatDate">
 		<xsl:param name="value"/>
 		<xsl:value-of select="format-number(substring($value,6,2), '00')"/>
