@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1603, RESKC-1608, RESKC-1602, RESKC-1810: fix formatting issues
+  * Travis Schneeberger on Fri, 2 Dec 2016 14:03:34 -0500 [View Commit](../../commit/70e5e2c66dc61e32614881d65dbd0b77f0ee4904)
+
+##coeus-s2sgen-1612.0003
 * RESKC-1603: fixing display issues on cumulative page for RR Subaward Budget 1.3 & 1.4
   * Travis Schneeberger on Fri, 2 Dec 2016 11:58:30 -0500 [View Commit](../../commit/8c3fa73a3e40c1fdf8bfeee58ac03b16b2d34e35)
 
