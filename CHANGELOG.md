@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1603: fixing display issues on cumulative page for RR Subaward Budget 1.3 & 1.4
+  * Travis Schneeberger on Fri, 2 Dec 2016 11:58:30 -0500 [View Commit](../../commit/8c3fa73a3e40c1fdf8bfeee58ac03b16b2d34e35)
+
+##coeus-s2sgen-1612.0002
 * RESKC-1603: fixing formatting on Budget Subaward forms 1.3 and 1.4
   * Travis Schneeberger on Fri, 2 Dec 2016 09:50:55 -0500 [View Commit](../../commit/e0b4ef61cd8478e2f872464cae8ae6814b536260)
 
