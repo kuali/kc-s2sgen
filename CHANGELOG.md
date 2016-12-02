@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+* RESKC-1606: More fixes.
+  * Gayathri Athreya on Fri, 2 Dec 2016 10:23:34 -0700 [View Commit](../../commit/b2201348757b2864f1f3ddfa87db588a35791090)
+* RESKC-1606: Fix xsl issues.
+  * Gayathri Athreya on Thu, 1 Dec 2016 15:32:29 -0700 [View Commit](../../commit/d9159610278b8016d990e2d1034fb050aa7e676f)
+
+##coeus-s2sgen-1612.0004
 * RESKC-1603, RESKC-1608, RESKC-1602, RESKC-1810: fix formatting issues
   * Travis Schneeberger on Fri, 2 Dec 2016 14:03:34 -0500 [View Commit](../../commit/70e5e2c66dc61e32614881d65dbd0b77f0ee4904)
 
