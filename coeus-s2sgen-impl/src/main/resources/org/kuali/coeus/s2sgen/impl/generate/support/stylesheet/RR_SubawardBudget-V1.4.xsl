@@ -281,10 +281,10 @@
 							<fo:leader leader-pattern="space"/>
 						</fo:block>
 						<fo:block font-size="8pt">
-                            <fo:table width="600pt" space-before.optimum="3pt" space-after.optimum="2pt" table-layout="fixed">
-                                <fo:table-column column-width="proportional-column-width(50)"/>
-                                <fo:table-column column-width="proportional-column-width(25)"/>
-                                <fo:table-column column-width="proportional-column-width(25)"/>
+							<fo:table width="420pt" space-before.optimum="3pt" space-after.optimum="2pt" table-layout="fixed">
+								<fo:table-column column-width="proportional-column-width(60)"/>
+								<fo:table-column column-width="proportional-column-width(20)"/>
+								<fo:table-column column-width="proportional-column-width(20)"/>
 								<fo:table-body>
 									<!--============= ROWS Begin ======================-->
 									<xsl:for-each select="RR_Budget_1_4:BudgetSummary">
@@ -993,9 +993,8 @@
                      <fo:table-cell border-style="solid" border-color="black" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                         <fo:block>
                            <fo:inline font-size="8pt" font-weight="bold">A. Senior/Key Person</fo:inline>
-                           <fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
-                              <fo:table-column column-width="proportional-column-width(2)"/>
-                              <fo:table-column column-width="proportional-column-width(6)"/>
+									<fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" border="1" table-layout="fixed">
+										<fo:table-column column-width="proportional-column-width(4)"/>
                               <fo:table-column column-width="proportional-column-width(10)"/>
                               <fo:table-column column-width="proportional-column-width(10)"/>
                               <fo:table-column column-width="proportional-column-width(22)"/>
@@ -1010,7 +1009,7 @@
                               <fo:table-column column-width="proportional-column-width(16)"/>
                               <fo:table-body>
                                  <fo:table-row>
-                                    <fo:table-cell number-columns-spanned="2" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+												<fo:table-cell number-columns-spanned="1" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
                                           <fo:inline font-weight="bold" font-size="8pt">Prefix</fo:inline>
                                        </fo:block>
@@ -1037,109 +1036,42 @@
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Project</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">* Project Role</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Base</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">Base Salary (&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Calendar</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">Cal. Months</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Academic</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">Acad. Months</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Summer</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">Sum. Months</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Requested</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">* Requested Salary&#160;(&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Fringe</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">* Fringe Benefits (&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">* Funds</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                 </fo:table-row>
-                                 <!-- adding next row -->
-                                 <fo:table-row>
-                                    <fo:table-cell number-columns-spanned="2" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                        
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                         
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                         
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Role</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Salary (&#36;)</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Months</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Months</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Months</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Salary&#160;(&#36;)</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Benefits (&#36;)</fo:inline>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-weight="bold" font-size="8pt">Requested&#160;(&#36;)</fo:inline>
+														<fo:inline font-weight="bold" font-size="8pt">* Funds Requested&#160;(&#36;)</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
                                  </fo:table-row>
@@ -1147,8 +1079,7 @@
                            </fo:table>
                            <xsl:for-each select="RR_Budget_1_4:KeyPerson">
                               <fo:table width="100%" space-before.optimum="0pt" space-after.optimum="0pt" table-layout="fixed">
-                                 <fo:table-column column-width="proportional-column-width(2)"/>
-                                 <fo:table-column column-width="proportional-column-width(6)"/>
+								    <fo:table-column column-width="proportional-column-width(4)"/>
                                  <fo:table-column column-width="proportional-column-width(10)"/>
                                  <fo:table-column column-width="proportional-column-width(10)"/>
                                  <fo:table-column column-width="proportional-column-width(22)"/>
@@ -1165,13 +1096,7 @@
                                     <fo:table-row>
                                        <fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                           <fo:block>
-                                             <fo:inline font-size="8pt">
-                                                <xsl:value-of select="position()"/>.&#160;</fo:inline>
-                                          </fo:block>
-                                       </fo:table-cell>
-                                       <fo:table-cell hyphenate="true" language="en" line-height="9pt" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                          <fo:block>
-                                             <xsl:for-each select="RR_Budget_1_4:Name">
+											  <xsl:for-each select="RR_Budget_1_4:Name">
                                                 <xsl:for-each select="globLib:PrefixName">
                                                    <fo:inline font-size="8pt">
                                                       <xsl:apply-templates/>
@@ -1331,12 +1256,12 @@
                                     </fo:table-cell>
                                  </fo:table-row>
                                  <fo:table-row>
-                                    <fo:table-cell number-columns-spanned="3" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+												<fo:table-cell number-columns-spanned="2" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
                                           <fo:inline font-size="8pt" font-weight="bold">Additional Senior Key Persons:</fo:inline>
                                        </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell number-columns-spanned="4" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+												<fo:table-cell number-columns-spanned="2" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
                                           <fo:inline font-size="8pt">File Name: </fo:inline>
                                           <xsl:for-each select="RR_Budget_1_4:AttachedKeyPersons">
@@ -1348,7 +1273,18 @@
                                           </xsl:for-each>
                                        </fo:block>
                                     </fo:table-cell>
-                                    
+												<fo:table-cell number-columns-spanned="3" text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+													<fo:block>
+														<fo:inline font-size="8pt">Mime Type: </fo:inline>
+														<xsl:for-each select="RR_Budget_1_4:AttachedKeyPersons">
+															<xsl:for-each select="att:MimeType">
+																<fo:inline font-size="8pt">
+																	<xsl:apply-templates/>
+																</fo:inline>
+															</xsl:for-each>
+														</xsl:for-each>
+													</fo:block>
+												</fo:table-cell>
                                     <fo:table-cell number-columns-spanned="4" text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                        <fo:block>
                                           <fo:inline font-size="8pt" font-weight="bold">Total Senior/Key Person</fo:inline>
@@ -1360,25 +1296,6 @@
                                              <fo:inline font-size="8pt" font-weight="bold">
                                                 <xsl:value-of select="format-number(., '#,##0.00')"/>
                                              </fo:inline>
-                                          </xsl:for-each>
-                                       </fo:block>
-                                    </fo:table-cell>
-                                 </fo:table-row>
-                                 <fo:table-row>
-                                 <fo:table-cell number-columns-spanned="3" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                         
-                                       </fo:block>
-                                    </fo:table-cell>
-                                  <fo:table-cell number-columns-spanned="3" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
-                                       <fo:block>
-                                          <fo:inline font-size="8pt">Mime Type: </fo:inline>
-                                          <xsl:for-each select="RR_Budget_1_4:AttachedKeyPersons">
-                                             <xsl:for-each select="att:MimeType">
-                                                <fo:inline font-size="8pt">
-                                                   <xsl:apply-templates/>
-                                                </fo:inline>
-                                             </xsl:for-each>
                                           </xsl:for-each>
                                        </fo:block>
                                     </fo:table-cell>
@@ -1421,7 +1338,7 @@
                                        <fo:inline font-weight="bold" font-size="8pt">* Number of Personnel</fo:inline>
                                     </fo:block>
                                  </fo:table-cell>
-                                 <fo:table-cell text-align="left" width="150pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+											<fo:table-cell text-align="center" width="150pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                     <fo:block>
                                        <fo:inline font-weight="bold" font-size="8pt">* Project Role</fo:inline>
                                     </fo:block>
@@ -1451,7 +1368,7 @@
                                        <fo:inline font-weight="bold" font-size="8pt">* Fringe Benefits</fo:inline>
                                     </fo:block>
                                  </fo:table-cell>
-                                 <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+											<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                                     <fo:block>
                                        <fo:inline font-weight="bold" font-size="8pt">* Funds Requested (&#36;)</fo:inline>
                                     </fo:block>
@@ -2081,13 +1998,23 @@
                               </fo:table-row>
                            </fo:table-header>
                            <fo:table-body>
+
+								<xsl:if test="string-length(RR_Budget_1_4:Equipment)=0">
                                <fo:table-row>
                                    <fo:table-cell>
-                                       <fo:block></fo:block>
+													<fo:block/>
                                    </fo:table-cell>
                                </fo:table-row>
-                              <xsl:for-each select="RR_Budget_1_4:Equipment">
-                                 <xsl:for-each select="RR_Budget_1_4:EquipmentList">
+								</xsl:if>
+                            <xsl:for-each select="RR_Budget_1_4:Equipment">
+                                <xsl:if test="string-length(RR_Budget_1_4:EquipmentList)=0">
+                                    <fo:table-row>
+                                        <fo:table-cell>
+                                            <fo:block/>
+                                        </fo:table-cell>
+                                    </fo:table-row>
+                                </xsl:if>
+                                <xsl:for-each select="RR_Budget_1_4:EquipmentList">
                                     <fo:table-row>
                                        <fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                                           <fo:block>
@@ -2169,13 +2096,10 @@
                                        <fo:inline font-size="8pt" font-weight="bold">Additional Equipment: </fo:inline>
                                     </fo:block>
                                  </fo:table-cell>
-                                 <!-- ele adding row -->
-                               </fo:table-row>
-                               <fo:table-row>
-                                 <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start"  number-columns-spanned="2">
+											<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                                     <fo:block>
-                                       <fo:inline font-size="8pt">&#160;&#160;&#160;&#160;&#160;&#160;File Name: </fo:inline>
-                                       <xsl:for-each select="RR_Budget_1_4:Equipment/RR_Budget_1_4:AdditionalEquipmentsAttachment">
+										<fo:inline font-size="8pt">File Name: </fo:inline>
+													<xsl:for-each select="RR_Budget_1_4:Equipment/RR_Budget_1_4:AdditionalEquipmentsAttachment">
                                           <xsl:for-each select="att:FileName">
                                              <fo:inline font-size="8pt">
                                                 <xsl:apply-templates/>
@@ -2208,8 +2132,8 @@
             <fo:leader leader-pattern="space"/>
          </fo:block>
          <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
-            <fo:table-column column-width="proportional-column-width(87)"/>
-            <fo:table-column column-width="proportional-column-width(13)"/>
+				<fo:table-column column-width="proportional-column-width(85)"/>
+				<fo:table-column column-width="proportional-column-width(16)"/>
             <fo:table-body>
                <fo:table-row>
                   <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
@@ -2217,7 +2141,7 @@
                         <fo:inline font-size="8pt" font-weight="bold">D. Travel</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
                      </fo:block>
@@ -2277,24 +2201,23 @@
             <fo:leader leader-pattern="space"/>
          </fo:block>
          <fo:table border-style="solid" border-color="black" width="100%" space-before.optimum="1pt" space-after.optimum="2pt" table-layout="fixed">
-            <fo:table-column column-width="proportional-column-width(50)"/>
-            <fo:table-column column-width="proportional-column-width(35)"/>
-             <fo:table-column column-width="proportional-column-width(15)"/>
+				<fo:table-column column-width="proportional-column-width(85)"/>
+				<fo:table-column column-width="proportional-column-width(16)"/>
             <fo:table-body>
                <fo:table-row>
-                  <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start" number-columns-spanned="2">
+						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="8pt" font-weight="bold">E. Participant/Trainee Support Costs</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
                      </fo:block>
                   </fo:table-cell>
                </fo:table-row>
                <fo:table-row>
-                  <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start" number-columns-spanned="2">
+						<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="8pt">1. Tuition/Fees/Health Insurance</fo:inline>
                      </fo:block>
@@ -2310,7 +2233,7 @@
                   </fo:table-cell>
                </fo:table-row>
                <fo:table-row>
-                  <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start" number-columns-spanned="2">
+						<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="8pt">2. Stipends</fo:inline>
                      </fo:block>
@@ -2326,7 +2249,7 @@
                   </fo:table-cell>
                </fo:table-row>
                <fo:table-row>
-                  <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start" number-columns-spanned="2">
+						<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="8pt">3. Travel</fo:inline>
                      </fo:block>
@@ -2342,7 +2265,7 @@
                   </fo:table-cell>
                </fo:table-row>
                <fo:table-row>
-                  <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start" number-columns-spanned="2">
+						<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block>
                         <fo:inline font-size="8pt">4. Subsistence</fo:inline>
                      </fo:block>
@@ -2358,7 +2281,7 @@
                   </fo:table-cell>
                </fo:table-row>
                <fo:table-row>
-                  <fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start" number-columns-spanned="2">
+						<fo:table-cell line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                      <fo:block hyphenate="true">
                         <fo:inline font-size="8pt">5. Other:&#160;&#160; </fo:inline>
                         <xsl:for-each select="RR_Budget_1_4:ParticipantTraineeSupportCosts/RR_Budget_1_4:Other">
@@ -2390,17 +2313,9 @@
                               <xsl:apply-templates/>
                            </fo:inline>
                         </xsl:for-each>
-
-                         <fo:inline font-size="8pt" font-weight="bold">&#160;&#160;&#160;Number of Participants/Trainees</fo:inline>       
+								<fo:inline font-size="8pt" font-weight="bold">&#160;&#160;&#160;Number of Participants/Trainees&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Total Participant/Trainee Support Costs</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-
-                  <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
-                     <fo:block>
-                        <fo:inline font-size="8pt" font-weight="bold">&#160;&#160;&#160;&#160;&#160;&#160;Total Participant Trainee Support Costs</fo:inline>                
-                     </fo:block>
-                  </fo:table-cell>
-                  
                   <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <xsl:for-each select="RR_Budget_1_4:ParticipantTraineeSupportCosts/RR_Budget_1_4:TotalCost">
@@ -2451,7 +2366,6 @@
             </fo:inline>
          </xsl:for-each>
          <fo:inline font-size="8pt"> Project&#160;&#160;&#160;&#160;&#160;&#160; </fo:inline>
-
          <xsl:for-each select="../RR_Budget_1_4:BudgetType">
             <fo:inline padding-before="-1pt" padding-after="-2pt" color="black">
                <fo:inline font-size="8pt">
@@ -2514,7 +2428,7 @@
                         <fo:inline font-size="8pt" font-weight="bold">F. Other Direct Costs</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
                      </fo:block>
@@ -2690,7 +2604,7 @@
                         <fo:inline font-size="8pt" font-weight="bold">G. Direct Costs</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
                      </fo:block>
@@ -2731,7 +2645,7 @@
                   </fo:table-cell>
                </fo:table-row>
                <fo:table-row>
-                  <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="left">
+						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center">
                      <fo:block>
                         <fo:inline font-size="8pt" font-weight="bold">Indirect Cost Type</fo:inline>
                      </fo:block>
@@ -2746,7 +2660,7 @@
                         <fo:inline font-size="8pt" font-weight="bold">Indirect Cost Base ($)</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="right">
+						<fo:table-cell padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="center">
                      <fo:block>
                         <fo:inline font-size="8pt" font-weight="bold">* Funds Requested (&#36;)</fo:inline>
                      </fo:block>
@@ -2754,15 +2668,8 @@
                </fo:table-row>
             </fo:table-header>
             <fo:table-body>
-                <fo:table-row>
-                    <fo:table-cell>
-                        <fo:block>
-                            
-                        </fo:block>
-                    </fo:table-cell>
-                </fo:table-row>
-               <xsl:for-each select="RR_Budget_1_4:IndirectCosts">
-                  <xsl:for-each select="RR_Budget_1_4:IndirectCost">
+					<xsl:for-each select="RR_Budget_1_4:IndirectCosts">
+						<xsl:for-each select="RR_Budget_1_4:IndirectCost">
                      <fo:table-row>
                         <fo:table-cell hyphenate="true" language="en" line-height="9pt" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before" text-align="start">
                            <fo:block>
@@ -2826,7 +2733,7 @@
                <fo:table-row>
                   <fo:table-cell hyphenate="true" language="en" number-columns-spanned="4" text-align="left" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="0pt" display-align="before">
 				  <fo:block>
-				  <fo:table table-layout="fixed">
+                                                    <fo:table width="100%" table-layout="fixed">
                      <fo:table-column column-width="proportional-column-width(40)"/>
                      <fo:table-column column-width="proportional-column-width(60)"/>                                                
                      <fo:table-body>
@@ -2872,7 +2779,7 @@
                         <fo:inline font-size="8pt" font-weight="bold">I. Total Direct and Indirect Costs</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
                      </fo:block>
@@ -2909,7 +2816,7 @@
                         <fo:inline font-size="8pt" font-weight="bold">J. Fee</fo:inline>
                      </fo:block>
                   </fo:table-cell>
-                  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
                      <fo:block>
                         <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
                      </fo:block>
@@ -2946,7 +2853,7 @@
 							  <fo:inline font-size="8pt" font-weight="bold">K. Total Costs and Fee</fo:inline>
 						  </fo:block>
 					  </fo:table-cell>
-					  <fo:table-cell text-align="right" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
+						<fo:table-cell text-align="center" padding-start="1pt" padding-end="1pt" padding-before="1pt" padding-after="1pt" display-align="before">
 						  <fo:block>
 							  <fo:inline font-weight="bold" font-size="8pt">Funds Requested (&#36;)</fo:inline>
 						  </fo:block>
