@@ -378,7 +378,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeEquipments/RR_Budget_1_3:CumulativeTotalFundsRequestedEquipment">
+                                    <xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedEquipment">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -395,7 +395,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTravels/RR_Budget_1_3:CumulativeTotalFundsRequestedTravel">
+                                    <xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedTravel">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -409,7 +409,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTravels/RR_Budget_1_3:CumulativeDomesticTravelCosts">
+                                    <xsl:for-each select="RR_Budget_1_3:CumulativeDomesticTravelCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -426,7 +426,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTravels/RR_Budget_1_3:CumulativeForeignTravelCosts">
+                                    <xsl:for-each select="RR_Budget_1_3:CumulativeForeignTravelCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -446,7 +446,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeTotalFundsRequestedTraineeCosts">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedTraineeCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -460,7 +460,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeTraineeTuitionFeesHealthInsurance">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeTraineeTuitionFeesHealthInsurance">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -477,7 +477,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeTraineeStipends">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeTraineeStipends">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -494,7 +494,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeTraineeTravel">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeTraineeTravel">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -511,7 +511,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeTraineeSubsistence">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeTraineeSubsistence">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -528,7 +528,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeOtherTraineeCost">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeOtherTraineeCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -545,7 +545,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:value-of select="RR_Budget_1_3:CumulativeTrainee/RR_Budget_1_3:CumulativeNoofTrainees"/>
+                                       <xsl:value-of select="RR_Budget_1_3:CumulativeNoofTrainees"/>
 												</fo:block>
 											</fo:table-cell>
 											<fo:table-cell>
@@ -561,7 +561,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeTotalFundsRequestedOtherDirectCosts">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeTotalFundsRequestedOtherDirectCosts">
 														<fo:inline font-weight="bold">
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -575,7 +575,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeMaterialAndSupplies">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeMaterialAndSupplies">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -592,7 +592,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativePublicationCosts">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativePublicationCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -609,7 +609,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeConsultantServices">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeConsultantServices">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -626,7 +626,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeADPComputerServices">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeADPComputerServices">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -643,7 +643,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeSubawardConsortiumContractualCosts">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeSubawardConsortiumContractualCosts">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -660,7 +660,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeEquipmentFacilityRentalFees">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeEquipmentFacilityRentalFees">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -677,7 +677,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeAlterationsAndRenovations">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeAlterationsAndRenovations">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -694,7 +694,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeOther1DirectCost">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeOther1DirectCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -711,7 +711,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeOther2DirectCost">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeOther2DirectCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
@@ -728,7 +728,7 @@
 											</fo:table-cell>
 											<fo:table-cell text-align="right">
 												<fo:block>
-													<xsl:for-each select="RR_Budget_1_3:CumulativeOtherDirect/RR_Budget_1_3:CumulativeOther3DirectCost">
+                                       <xsl:for-each select="RR_Budget_1_3:CumulativeOther3DirectCost">
 														<fo:inline>
 															<xsl:value-of select="format-number(., '#,##0.00')"/>
 														</fo:inline>
