@@ -34,6 +34,7 @@ import gov.grants.apply.forms.rrFedNonFedBudgetV10.RRFedNonFedBudgetDocument.RRF
 import gov.grants.apply.forms.rrFedNonFedBudgetV10.RRFedNonFedBudgetDocument.RRFedNonFedBudget.BudgetSummary.CumulativeTrainee;
 import gov.grants.apply.forms.rrFedNonFedBudgetV10.RRFedNonFedBudgetDocument.RRFedNonFedBudget.BudgetSummary.CumulativeTravels;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
+import org.kuali.coeus.sys.api.model.ScaleTwoDecimal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
@@ -983,10 +984,10 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
                 sectBCompensation.setSummerMonths(compensation.getSummerMonths().bigDecimalValue());
             }
             if (compensation.getRequestedSalary() != null) {
-                sectBCompensation.setRequestedSalary(compensation.getRequestedSalary().bigDecimalValue());
+                sectBCompensation.setRequestedSalary(compensation.getRequestedSalary().add(compensation.getCostSharingAmount() != null ? compensation.getCostSharingAmount() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             if (compensation.getFringe() != null) {
-                sectBCompensation.setFringeBenefits(compensation.getFringe().bigDecimalValue());
+                sectBCompensation.setFringeBenefits(compensation.getFringe().add(compensation.getFringeCostSharing() != null ? compensation.getFringeCostSharing() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             TotalDataType total = TotalDataType.Factory.newInstance();
             if (compensation.getFundsRequested() != null) {
@@ -1023,13 +1024,13 @@ public class RRFedNonFedBudgetV1_0Generator extends RRFedNonFedBudgetBaseGenerat
                 keyPersonCompensation.setCalendarMonths(keyPerson.getCalendarMonths().bigDecimalValue());
             }
             if (keyPerson.getFringe() != null) {
-                keyPersonCompensation.setFringeBenefits(keyPerson.getFringe().bigDecimalValue());
+                keyPersonCompensation.setFringeBenefits(keyPerson.getFringe().add(keyPerson.getFringeCostSharing() != null ? keyPerson.getFringeCostSharing() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             if (keyPerson.getSummerMonths() != null) {
                 keyPersonCompensation.setSummerMonths(keyPerson.getSummerMonths().bigDecimalValue());
             }
             if (keyPerson.getRequestedSalary() != null) {
-                keyPersonCompensation.setRequestedSalary(keyPerson.getRequestedSalary().bigDecimalValue());
+                keyPersonCompensation.setRequestedSalary(keyPerson.getRequestedSalary().add(keyPerson.getCostSharingAmount() != null ? keyPerson.getCostSharingAmount() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             TotalDataType total = TotalDataType.Factory.newInstance();
             if (keyPerson.getFundsRequested() != null) {

@@ -1350,9 +1350,9 @@ public class RRFedNonFedBudgetV1_2Generator extends RRFedNonFedBudgetBaseGenerat
         compensation.setSummerMonths(keyPersonInfo.getSummerMonths().bigDecimalValue());
 
          compensation.setBaseSalary(keyPersonInfo.getBaseSalary().bigDecimalValue());
-        compensation.setFringeBenefits(keyPersonInfo.getFringe().add(keyPersonInfo.getFringeCostSharing()).bigDecimalValue());
+        compensation.setFringeBenefits(keyPersonInfo.getFringe().add(keyPersonInfo.getFringeCostSharing() != null ? keyPersonInfo.getFringeCostSharing() : ScaleTwoDecimal.ZERO).bigDecimalValue());
         compensation.setFundsRequested(keyPersonInfo.getFundsRequested().bigDecimalValue());
-        compensation.setRequestedSalary(keyPersonInfo.getRequestedSalary().add(keyPersonInfo.getCostSharingAmount()).bigDecimalValue());
+        compensation.setRequestedSalary(keyPersonInfo.getRequestedSalary().add(keyPersonInfo.getCostSharingAmount() != null ? keyPersonInfo.getCostSharingAmount() : ScaleTwoDecimal.ZERO).bigDecimalValue());
         compensation.setNonFederal(keyPersonInfo.getNonFundsRequested().bigDecimalValue());
         if (keyPersonInfo.getFundsRequested() != null){
             compensation.setTotalFedNonFed(keyPersonInfo.getFundsRequested().add(keyPersonInfo.getNonFundsRequested()).bigDecimalValue());
@@ -1453,11 +1453,11 @@ public class RRFedNonFedBudgetV1_2Generator extends RRFedNonFedBudgetBaseGenerat
                             }
 
                             if (compensation.getFringe() != null) {
-                                otherPersonnelDataType.setFringeBenefits(compensation.getFringe().bigDecimalValue());
+                                otherPersonnelDataType.setFringeBenefits(compensation.getFringe().add(compensation.getFringeCostSharing() != null ? compensation.getFringeCostSharing() : ScaleTwoDecimal.ZERO).bigDecimalValue());
                             }
 
                             if (compensation.getRequestedSalary() != null) {
-                                otherPersonnelDataType.setRequestedSalary(compensation.getRequestedSalary().bigDecimalValue());
+                                otherPersonnelDataType.setRequestedSalary(compensation.getRequestedSalary().add(compensation.getCostSharingAmount() != null ? compensation.getCostSharingAmount() : ScaleTwoDecimal.ZERO).bigDecimalValue());
                             }
 
                             otherPersonnelDataType.setOtherTotal(getCompensationTotalDataType(compensation));
@@ -1560,10 +1560,10 @@ public class RRFedNonFedBudgetV1_2Generator extends RRFedNonFedBudgetBaseGenerat
                 sectBCompensation.setSummerMonths(compensation.getSummerMonths().bigDecimalValue());
             }
             if (compensation.getFringe() != null) {
-                sectBCompensation.setFringeBenefits(compensation.getFringe().bigDecimalValue());
+                sectBCompensation.setFringeBenefits(compensation.getFringe().add(compensation.getFringeCostSharing() != null ? compensation.getFringeCostSharing() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             if (compensation.getRequestedSalary() != null) {
-                sectBCompensation.setRequestedSalary(compensation.getRequestedSalary().bigDecimalValue());
+                sectBCompensation.setRequestedSalary(compensation.getRequestedSalary().add(compensation.getCostSharingAmount() != null ? compensation.getCostSharingAmount() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
 
             sectBCompensation.setOtherTotal(getCompensationTotalDataType(compensation));
@@ -1671,10 +1671,10 @@ public class RRFedNonFedBudgetV1_2Generator extends RRFedNonFedBudgetBaseGenerat
                 keyPersonCompensation.setSummerMonths(keyPerson.getSummerMonths().bigDecimalValue());
             }
             if (keyPerson.getFringe() != null) {
-                keyPersonCompensation.setFringeBenefits(keyPerson.getFringe().bigDecimalValue());
+                keyPersonCompensation.setFringeBenefits(keyPerson.getFringe().add(keyPerson.getFringeCostSharing() != null ? keyPerson.getFringeCostSharing() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             if (keyPerson.getRequestedSalary() != null) {
-                keyPersonCompensation.setRequestedSalary(keyPerson.getRequestedSalary().bigDecimalValue());
+                keyPersonCompensation.setRequestedSalary(keyPerson.getRequestedSalary().add(keyPerson.getCostSharingAmount() != null ? keyPerson.getCostSharingAmount() : ScaleTwoDecimal.ZERO).bigDecimalValue());
             }
             TotalDataType totalDataType = TotalDataType.Factory.newInstance();
             if (keyPerson.getFundsRequested() != null) {
