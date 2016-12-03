@@ -1,6 +1,12 @@
 
 
 ##CURRENT
+* RESKC-1608: Fixing Section D on Research & Related Budget (Total Fed + Non-Fed) Form V1.2
+  * Travis Schneeberger on Sat, 3 Dec 2016 09:23:01 -0500 [View Commit](../../commit/78126855ca79823e7e842e5fb600095dd38a9101)
+* RESKC-1608: Fixing Section D on Research & Related Subaward Budget (Total Fed + Non-Fed) Attachment(s) Form V1.3
+  * Travis Schneeberger on Sat, 3 Dec 2016 09:20:10 -0500 [View Commit](../../commit/b27eea593448bc8b23b8a507dff2e41413afdf5d)
+
+##coeus-s2sgen-1612.0005
 * RESKC-1606: More fixes.
   * Gayathri Athreya on Fri, 2 Dec 2016 10:23:34 -0700 [View Commit](../../commit/b2201348757b2864f1f3ddfa87db588a35791090)
 * RESKC-1606: Fix xsl issues.
