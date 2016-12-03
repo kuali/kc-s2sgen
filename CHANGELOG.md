@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1602: fixing requested salary and fringe benefits calculation for the following forms: RR Fed Non Fed Budget 10 version 1.1 and RR Fed Non Fed Budget versions 1.0, 1.1, and 1.2
+  * Travis Schneeberger on Sat, 3 Dec 2016 13:03:54 -0500 [View Commit](../../commit/38056eaaf25dab8445562cc069c7b29121170fbc)
+
+##coeus-s2sgen-1612.0007
 * No Changes
 
 
