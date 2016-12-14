@@ -78,7 +78,7 @@ import java.util.Map;
 public class RRFedNonFedBudget10V1_1Generator extends RRFedNonFedBudgetBaseGenerator {
 
     private static final int FED_NONFED_BUDGET_JUSTIFICATION_133 = 133;
-    private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudgetV1_0Generator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudget10V1_1Generator.class);
 	private static final String EXTRA_KEYPERSONS = "RRFEDNONFED_EXTRA_KEYPERSONS";
 	private static final int EXTRA_KEYPERSONS_TYPE = 11;
 	private static final String EXTRA_KEYPERSONS_COMMENT = "RRFEDNONFED_EXTRA_KEYPERSONS";

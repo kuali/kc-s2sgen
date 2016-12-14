@@ -23,8 +23,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.api.org.OrganizationContract;
 import org.kuali.coeus.common.api.rolodex.RolodexContract;
@@ -59,8 +57,6 @@ import org.springframework.core.io.Resource;
 @FormGenerator("PHS398ModularBudgetV1_2Generator")
 public class PHS398ModularBudgetV1_2Generator extends
 PHS398ModularBudgetBaseGenerator{
-
-	private static final Logger LOG = LoggerFactory.getLogger(PHS398ModularBudgetV1_1Generator.class);
 
 	private ScaleTwoDecimal cumulativeConsortiumFandA = ScaleTwoDecimal.ZERO;
 	private ScaleTwoDecimal cumulativeDirectCostLessConsortiumFandA = ScaleTwoDecimal.ZERO;

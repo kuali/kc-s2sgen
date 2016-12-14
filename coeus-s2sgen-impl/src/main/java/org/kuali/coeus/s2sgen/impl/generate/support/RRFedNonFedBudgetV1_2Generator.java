@@ -36,7 +36,6 @@ import gov.grants.apply.forms.rrFedNonFedBudget12V12.BudgetYearDataType.Particip
 import gov.grants.apply.forms.rrFedNonFedBudget12V12.RRFedNonFedBudget12Document.RRFedNonFedBudget12;
 import gov.grants.apply.forms.rrFedNonFedBudget12V12.RRFedNonFedBudget12Document.RRFedNonFedBudget12.BudgetSummary;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
-import org.apache.xmlbeans.XmlObject;
 import org.kuali.coeus.common.budget.api.core.BudgetContract;
 import org.kuali.coeus.propdev.api.attachment.NarrativeContract;
 import org.kuali.coeus.propdev.api.core.ProposalDevelopmentDocumentContract;
@@ -67,7 +66,7 @@ import java.util.stream.Stream;
 @FormGenerator("RRFedNonFedBudgetV1_2Generator")
 public class RRFedNonFedBudgetV1_2Generator extends RRFedNonFedBudgetBaseGenerator {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudgetV1_0Generator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudgetV1_2Generator.class);
     private static final String EXTRA_KEYPERSONS = "RRFEDNONFED_EXTRA_KEYPERSONS";
     private static final int EXTRA_KEYPERSONS_TYPE = 11;
     private static final String EXTRA_KEYPERSONS_COMMENT = "RRFEDNONFED_EXTRA_KEYPERSONS";
