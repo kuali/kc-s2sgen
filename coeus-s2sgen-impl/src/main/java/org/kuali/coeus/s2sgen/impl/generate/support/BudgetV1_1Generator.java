@@ -47,7 +47,7 @@ import java.util.List;
 @FormGenerator("BudgetV1_1Generator")
 public class BudgetV1_1Generator extends S2SBaseFormGenerator {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ProjectV1_0Generator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BudgetV1_1Generator.class);
     private static final int BUDGET_ATTACHMENTS = 57;
 
     @Value("http://apply.grants.gov/forms/Budget-V1.1")
