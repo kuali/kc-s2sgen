@@ -81,7 +81,7 @@ import java.util.Map;
 @FormGenerator("RRFedNonFedBudgetV1_1Generator")
 public class RRFedNonFedBudgetV1_1Generator extends RRFedNonFedBudgetBaseGenerator {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudgetV1_0Generator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RRFedNonFedBudgetV1_1Generator.class);
     private static final String EXTRA_KEYPERSONS = "RRFEDNONFED_EXTRA_KEYPERSONS";
     private static final int EXTRA_KEYPERSONS_TYPE = 11;
     private static final String EXTRA_KEYPERSONS_COMMENT = "RRFEDNONFED_EXTRA_KEYPERSONS";
