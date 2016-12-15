@@ -1,6 +1,10 @@
 
 
 ##CURRENT
+* RESKC-1729: update coeus-api, aligning dependencies with the research project
+  * Travis Schneeberger on Thu, 15 Dec 2016 15:36:13 -0500 [View Commit](../../commit/948e7856e9e64d494f4f4ffd199d6d803c6d6ff2)
+
+##coeus-s2sgen-1612.0011
 * No Changes
 
 
