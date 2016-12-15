@@ -53,16 +53,16 @@
     <properties>
         <avalon-framework.version>4.3.1</avalon-framework.version>
         <bouncycastle.version>1.51</bouncycastle.version>
-        <coeus-api-all.version>1609.0002</coeus-api-all.version>
+        <coeus-api-all.version>1612.0001</coeus-api-all.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <fop.version>1.1</fop.version>
         <itext.version>2.1.7</itext.version>
         <junit.version>4.12</junit.version>
-        <slf4j.version>1.7.7</slf4j.version>
+        <slf4j.version>1.7.13</slf4j.version>
         <spring.version>4.0.5.RELEASE</spring.version>
-        <xalan.version>2.7.1</xalan.version>
+        <xalan.version>2.7.2</xalan.version>
         <xmlsec.version>1.5.6</xmlsec.version>
         <xmlbeans.version>2.6.0</xmlbeans.version>
 
